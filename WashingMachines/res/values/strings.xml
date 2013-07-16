@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WashingMachines</string>
+    <string name="action_settings">Settings</string>
+    <string name="machine_type">Machine type</string>
+    <string name="brand_name">Brand name</string>
+    <string name="weight">Weight</string>
+    <string name="maxRpm">Max RPM</string>
+    <string name="washTemp">Washing temperature</string>
+    <string name="hasEnergyStar">Has energy star</string>
+    <string name="powerUsage">Power usage</string>
+    <string name="title_activity_details">MainActivity</string>
+	<string name="main_list_btn">To the list</string>	
+	<string name="machineImageDescrp">Current machine image</string>
+</resources>
