@@ -58,7 +58,7 @@ public class DetailsActivity extends Activity {
 		powerUsage.setText(powerUsageValue);
 
 		this.machineImage = (ImageView) findViewById(R.id.machine_image);
-		this.machineImage.setImageResource(this.setImageId(this.brandName.getText().toString()));
+		this.machineImage.setImageResource(this.setImageResource(this.brandName.getText().toString()));
 		
 		this.mainListBtn = (Button) findViewById(R.id.main_list_btn);
 		this.mainListBtn.setOnClickListener(new OnClickListener() {
@@ -70,7 +70,7 @@ public class DetailsActivity extends Activity {
 		});
 	}
 
-	private int setImageId(String brandNameStr) {
+	private int setImageResource(String brandNameStr) {
 		int result = 0;
 		if (brandNameStr.equals(WMConstants.LG)) {
 			result = R.drawable.lg;
