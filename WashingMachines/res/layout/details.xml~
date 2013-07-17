@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DetailsActivity" >
+    tools:context=".DetailsActivity" 
+    android:name="Details">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -135,30 +136,21 @@
             android:hint="@string/powerUsage" />
     </LinearLayout>
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/machine_image"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="40dp"
-        android:layout_width="232dp"
-        android:layout_height="202dp"
-        android:background="#ff000000"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/machine_image"
-            android:layout_width="230dp"
-            android:layout_height="200dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="1dp"
-            android:contentDescription="@string/machineImageDescrp"
-            android:src="@drawable/bsh" />
-    </LinearLayout>
+        android:contentDescription="@string/machineImageDescrp"
+        android:layout_width="230dp"
+        android:layout_height="200dp"
+        android:src="@drawable/bsh" />
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
         android:id="@+id/main_list_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="10dp"
         android:text="@string/main_list_btn" />
 
 </LinearLayout>
