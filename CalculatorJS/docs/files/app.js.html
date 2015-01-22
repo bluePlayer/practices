@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>app.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/APP.html">APP</a></li>
+                                <li><a href="../classes/Constants.html">Constants</a></li>
+                                <li><a href="../classes/Main.html">Main</a></li>
+                                <li><a href="../classes/percent.html">percent</a></li>
+                                <li><a href="../classes/pressEqual.html">pressEqual</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/APP.html">APP</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: app.js</h1>
+                        
+                        <div class="file">
+                            <pre class="code prettyprint linenums">
+                        /**
+                         * Main application module that contains all necessary classes/objects,
+                         * methods and properties for the Calculator application.
+                         * @module APP
+                         */
+                        window.APP = window.APP || (function (global) {&#x27;use strict&#x27;;
+                        
+                            var name = &quot;Calculator&quot;,
+                                version = &quot;1.0.0&quot;;
+                        
+                            return {
+                        
+                                operation: &#x27;&#x27;,
+                                operand: 0,
+                                operandStr: &#x27;&#x27;,
+                                memory: &#x27;&#x27;,
+                                result: &#x27;&#x27;,
+                                memoryLabelField: {},
+                                digitsField: {},
+                                dgField: &#x27;&#x27;,
+                                operationField: {},
+                                opField: &#x27;&#x27;,
+                                eraseDigits: true,
+                        
+                                /**
+                                 * Returns application&#x27;s name as a string value.
+                                 * @class APP
+                                 * @method getName
+                                 * @return {String} Returs the application&#x27;s name in string format. 
+                                 */
+                                getName: function () {
+                                    return name;
+                                },
+                        
+                                /**
+                                 * Returns application&#x27;s version as a string value.
+                                 * @class APP
+                                 * @method getVersion
+                                 * @return {String} Returs the application&#x27;s version in string format. 
+                                 */
+                                getVersion: function () {
+                                    return version;
+                                },
+                        
+                                /**
+                                 * Prints the application&#x27;s internal state in console.
+                                 * @class APP
+                                 * @method printData
+                                 * @return {Object} Returs the main APP object. 
+                                 */
+                                printData: function () {
+                                    var props = {
+                                        operation: this.operation,
+                                        operand: this.operand,
+                                        operandStr: this.operandStr,
+                                        memory: this.memory,
+                                        result: this.result,
+                                        digitsField: this.digitsField,
+                                        dgField: this.dgField,
+                                        operationField: this.operationField,
+                                        opField: this.opField
+                                    };
+                                    console.dir(props);
+                                    return this;
+                                },
+                        
+                                /**
+                                 * Constants is a contructor so it should be called with new keyword. Each object should have its own Constants object.
+                                 * Creates object of four functions, set(), isDefined(), list() and get() which enable creation of new immutable constant
+                                 * that cannot be changed with Firebug or other debugging tool. 
+                                 * @class APP
+                                 * @method Constants
+                                 * @return {Object} Returs object with functions necessary to define new constant and prevent its change. 
+                                 */
+                                Constants: function (constMapObject) {
+                                    var constants = {},
+                                        ownProp = Object.prototype.hasOwnProperty,
+                                        allowed = {
+                                            string: 1,
+                                            number: 1,
+                                            boolean: 1
+                                        },
+                                        prefix = (Math.random() + &quot;_&quot;).slice(2);
+                        
+                                    return {
+                        
+                                        /**
+                                         * Creates new immuatble constant. 
+                                         * @class Constants
+                                         * @method set
+                                         * @return {Boolean} Returs true if new constant is created or false otherwise.
+                                         */
+                                        set: function (name, value) {
+                                            if (this.isDefined(name)) {
+                                                return false;
+                                            }
+                                            if (!ownProp.call(allowed, typeof value)) {
+                                                return false;
+                                            }
+                        
+                                            constants[prefix + name] = value;
+                                            /**
+                                             * @todo use constMapObject to create new constant key in the given constants map object. 
+                                             */
+                                            return true;
+                                        },
+                        
+                                        /**
+                                         * Creates new immuatble constant. 
+                                         * @class Constants
+                                         * @method isDefined
+                                         * @return {Boolean} Returs true if new constant is created or false otherwise.
+                                         */
+                                        isDefined: function (name) {
+                                            return ownProp.call(constants, prefix + name);
+                                        },
+                        
+                                        /**
+                                         * Returns the value of the required constant. 
+                                         * @class Constants
+                                         * @method get
+                                         * @return {Object} Returns the value of the required constant. 
+                                         */
+                                        get: function (name) {
+                                            if (this.isDefined(name)) {
+                                                return constants[prefix + name];
+                                            }
+                                            return null;
+                                        },
+                        
+                                        /**
+                                         * Lists all constants with their values in array like format. Useful in JavaScript console. 
+                                         * @class Constants
+                                         * @method list
+                                         */
+                                        list: function () {
+                                            var index = 0,
+                                                newStr = &quot;&quot;,
+                                                constant = &#x27;&#x27;;
+                        
+                                            for (constant in constants) {
+                                                if (constants.hasOwnProperty(constant)) {
+                                                    index = constant.indexOf(&#x27;_&#x27;);
+                                                    newStr = constant.substr(index + 1);
+                                                    console.log(newStr + &quot;: &quot; + constants[constant]);
+                                                }
+                                            }
+                                        }
+                                    };
+                                },
+                        
+                                /**
+                                 * Creates objects and subobjects by using just a string in dotted notation. 
+                                 * Example namespace(&#x27;my.new.namespace&#x27;); will create object &#x27;my&#x27; that contains subobject &#x27;new&#x27;, which contains 
+                                 * subobject &#x27;namespace&#x27;. 
+                                 * @class APP
+                                 * @method namespace
+                                 * @param {String} String describing the namespace of objects separated by a dots. 
+                                 * @param {Object} And object to initialize each of the newly created subobject. If you add a property with all caps it will consider it as a
+                                 * constant and therefore use Constants object to create new constant that cannot be changed using Firebug and console. 
+                                 * @return {Object} Returns the new object that represents the new namespace of objects and subobjects, defined by the dots in the string
+                                 * argument.
+                                 */
+                                namespace: function (nsString, newObjectDefinition) {
+                                    var parts = nsString.split(&#x27;.&#x27;),
+                                        parent = this,
+                                        newObject = {},
+                                        i = 0,
+                                        property = {};
+                        
+                                    newObject.Constants = new this.Constants();
+                                    newObject.constMap = {};
+                        
+                                    if (parts[0] === this.getName()) {
+                                        parts = parts.slice(1);
+                                    }
+                        
+                                    for (i = 0; i &lt; parts.length; i += 1) {
+                                        if (parent[parts[i]] === undefined) {
+                                            for (property in newObjectDefinition) {
+                                                if (newObjectDefinition.hasOwnProperty(property)) {
+                                                    if (property === property.toUpperCase()) {
+                                                        newObject.Constants.set(property, newObjectDefinition[property]);
+                                                        newObject.constMap[property] = property;
+                                                    } else {
+                                                        newObject[property] = newObjectDefinition[property];
+                                                    }
+                                                }
+                                            }
+                                            parent[parts[i]] = newObject;
+                                        }
+                                        parent = parent[parts[i]];
+                                    }
+                        
+                                    return parent;
+                                },
+                        
+                                /**
+                                 * Creates new immutable constant of the main application object.
+                                 * @class APP
+                                 * @method init
+                                 * @return {Object} Returs the main APP object. false if the creation failed somehow. It is called upon page load, so
+                                 * all necessary initializations which cannot be called befor page load should be called in this function. 
+                                 */
+                                init: function (config) {
+                                    try {
+                                        this.memoryLabelField = global.getElementById(&#x27;memoryLabel&#x27;);
+                                        this.digitsField = global.getElementById(&#x27;digitsField&#x27;);
+                                        this.digitsField.value = &#x27;0&#x27;;
+                                        this.operationField = global.getElementById(&#x27;operationField&#x27;);
+                                        this.operationField.value = &#x27;&#x27;;
+                                        return this;
+                                    } catch (error) {
+                                        console.log(error.message);
+                                        return error.message;
+                                    }
+                                },
+                        
+                                /**
+                                 * Parses string value into decimal integer number if possible, and then returns the result.
+                                 * @class APP
+                                 * @method myParseInt
+                                 * @param param param string value that should be a number.
+                                 * @return {Number} Returns decimal integer representation of given string value.
+                                 */
+                                myParseInt: function (param) {
+                                    return parseInt(param, 10);
+                                },
+                        
+                                /**
+                                 * Parses string value into decimal floating point number if possible, and then returns the result.
+                                 * @class APP
+                                 * @method myParseFloat
+                                 * @param param string value that should be a number.
+                                 * @return {Number} Returns decimal floating point representation of given string value.
+                                 */
+                                myParseFloat: function (param) {
+                                    return parseFloat(param, 10);
+                                }
+                            };
+                            }(window.document));
+                        
+                        window.document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {&#x27;use strict&#x27;;
+                            window.APP.init({&quot;event&quot;: event});
+                            });
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

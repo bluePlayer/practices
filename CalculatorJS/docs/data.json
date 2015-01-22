@@ -1,80 +1,67 @@
 {
     "project": {},
     "files": {
-        "Application.js": {
-            "name": "Application.js",
+        "app.js": {
+            "name": "app.js",
             "modules": {
-                "APPLICATION": 1,
-                "Calculator": 1
+                "APP": 1
             },
             "classes": {
-                "APPLICATION": 1,
-                "Constants": 1,
+                "APP": 1,
+                "Constants": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "script.js": {
+            "name": "script.js",
+            "modules": {},
+            "classes": {
                 "Main": 1,
-                "Trigonometry": 1,
-                "EventFunctions": 1
+                "Aritmetic": 1,
+                "Buttons": 1
             },
             "fors": {},
             "namespaces": {}
         }
     },
     "modules": {
-        "APPLICATION": {
-            "name": "APPLICATION",
-            "submodules": {
-                "Calculator": 1
-            },
+        "APP": {
+            "name": "APP",
+            "submodules": {},
             "classes": {
-                "APPLICATION": 1,
+                "APP": 1,
                 "Constants": 1,
                 "Main": 1,
-                "Trigonometry": 1,
-                "EventFunctions": 1
+                "Aritmetic": 1,
+                "Buttons": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "Application.js",
-            "line": 344,
-            "description": "APPLICATION is a main application file that holds general properties and functions for the whole application\nIt also holds the main Calculator namespace. All necessary initializations are made in init() function."
-        },
-        "Calculator": {
-            "name": "Calculator",
-            "submodules": {},
-            "classes": {
-                "APPLICATION": 1,
-                "Main": 1,
-                "Trigonometry": 1,
-                "EventFunctions": 1
-            },
-            "fors": {},
-            "is_submodule": 1,
-            "namespaces": {},
-            "module": "APPLICATION",
-            "namespace": "",
-            "file": "Application.js",
-            "line": 344,
-            "description": "Calculator submodule. It contains all calculator related properties, methods and submodules, like, Main, Trigonometry."
+            "file": "script.js",
+            "line": 404,
+            "description": "Main application module that contains all necessary classes/objects,\nmethods and properties for the Calculator application."
         }
     },
     "classes": {
-        "APPLICATION": {
-            "name": "APPLICATION",
-            "shortname": "APPLICATION",
+        "APP": {
+            "name": "APP",
+            "shortname": "APP",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "APPLICATION",
+            "module": "APP",
             "namespace": "",
-            "file": "Application.js",
-            "line": 113,
-            "description": "Creates objects and subobjects by using just a string in dotted notation. \nExample namespace('my.new.namespace'); will create object 'my' that contains subobject 'new', which contains \nsubobject 'namespace'.",
+            "file": "app.js",
+            "line": 230,
+            "description": "Parses string value into decimal floating point number if possible, and then returns the result.",
             "itemtype": "method",
             "return": {
-                "description": "Returs the main APPLICATION object. false if the creation failed somehow. It is called upon page load, so\nall necessary initializations which cannot be called befor page load should be called in this function.",
-                "type": "Object"
+                "description": "Returs the application's name in string format.",
+                "type": "String"
             },
             "params": [
                 {
@@ -87,8 +74,7 @@
                     "description": "object to initialize each of the newly created subobject. If you add a property with all caps it will consider it as a\nconstant and therefore use Constants object to create new constant that cannot be changed using Firebug and console.",
                     "type": "Object"
                 }
-            ],
-            "submodule": "Calculator"
+            ]
         },
         "Constants": {
             "name": "Constants",
@@ -98,10 +84,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "APPLICATION",
+            "module": "APP",
             "namespace": "",
-            "file": "Application.js",
-            "line": 95,
+            "file": "app.js",
+            "line": 131,
             "description": "Lists all constants with their values in array like format. Useful in JavaScript console.",
             "itemtype": "method",
             "return": {
@@ -117,463 +103,64 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "APPLICATION",
-            "submodule": "Calculator",
+            "module": "APP",
             "namespace": "",
-            "file": "Application.js",
-            "line": 163,
-            "description": "Main class object for all properties and methods of the Calculator application"
+            "file": "script.js",
+            "line": 1,
+            "description": "Main calculator class. Contains all necessary Calculator related properties/methods."
         },
-        "Trigonometry": {
-            "name": "Trigonometry",
-            "shortname": "Trigonometry",
+        "Aritmetic": {
+            "name": "percent",
+            "shortname": "Aritmetic",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "APPLICATION",
-            "submodule": "Calculator",
+            "module": "APP",
             "namespace": "",
-            "file": "Application.js",
-            "line": 302,
-            "description": "Trigonometry class for all properties and methods specific for trigonometry"
+            "file": "script.js",
+            "line": 81,
+            "description": "Percent method. It needs both \"result\" and display field values to be different than 0 to work. \nTherefore an aritmetic operation must be used before you can calculate percents of a given value. \nExample: Press number 555 and then press the plus(+) sign button. \"result\" operand now has the value of 555\nand the application waits for input for the second operand. Insert value of 33 and then press the percent(%) \nbutton. The application finds there are two available operands so it calculates 33% of 555 which is 183.15 and\nsets the display field to this new percent value. If you press the equal(=) sign button, it will sum up 555 + 183.15 \nwhich is 738.15. This same set of tasks applies to all other binary operations so if we used division(/) instead of \nadtion(+) the final result would be 3.030303 or (555 / (33% of 555)) = (555 / 183.15)",
+            "itemtype": "method"
         },
-        "EventFunctions": {
-            "name": "EventFunctions",
-            "shortname": "EventFunctions",
+        "Buttons": {
+            "name": "pressEqual",
+            "shortname": "Buttons",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "APPLICATION",
-            "submodule": "Calculator",
+            "module": "APP",
             "namespace": "",
-            "file": "Application.js",
-            "line": 344,
-            "description": "Basic Events class for all needed events"
+            "file": "script.js",
+            "line": 404,
+            "description": "pressEqual method (called upon pressing equal(=) button)call calculate() method to do the calculation on \"result\" and \ndigits display value and resets operand to 0 and operation field value to empty string ''.",
+            "itemtype": "method",
+            "params": [
+                {
+                    "name": "memoryStr",
+                    "description": "string value which can be some these MC, MR, MS, M+, M-"
+                }
+            ]
         }
     },
     "classitems": [
         {
-            "file": "Application.js",
-            "line": 170,
-            "description": "STANDARD is a constant of a value 1 which describes state in which the Calculator holds only basic math operations\nlike aritmetic operations.",
-            "itemtype": "property",
-            "name": "STANDARD",
-            "type": "{Number}",
-            "final": 1,
-            "default": "1",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 180,
-            "description": "SCIENTIFIC is a constant of a value 2 which describes state in which the Calculator holds basic math operations\nbut also trigonometric, exponential, logaritmic, factorial etc...",
-            "itemtype": "property",
-            "name": "SCIENTIFIC",
-            "type": "{Number}",
-            "final": 1,
-            "default": "2",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 190,
-            "description": "PROGRAMMER is a constant of a value 3 which describes state in which the Calculator holds basic math operations\nbut also binary, hexadecomal and logical operations.",
-            "itemtype": "property",
-            "name": "PROGRAMMER",
-            "type": "{Number}",
-            "final": 1,
-            "default": "3",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 200,
-            "description": "currentState is the current state of the Calculator, which can be between STANDARD(1), SCIENTIFIC(2) and PROGRAMMER(3)",
-            "itemtype": "property",
-            "name": "currentState",
-            "type": "{Number}",
-            "default": "1 (STANDARD)",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 208,
-            "description": "A property that holds current value of the Calculator",
-            "itemtype": "property",
-            "name": "currentValue",
-            "type": "{Number}",
-            "default": "0",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 216,
-            "description": "A property that holds memorized value",
-            "itemtype": "property",
-            "name": "memoValue",
-            "type": "{Number}",
-            "default": "0",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 224,
-            "description": "A property showing whether digit grouping is enabled(true) or diabled(false)",
-            "itemtype": "property",
-            "name": "digitGrouping",
-            "type": "{Boolean}",
-            "default": "false (disabled)",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 232,
-            "description": "A property showing whether history panel is displayed(true) or hidden(false)",
-            "itemtype": "property",
-            "name": "historyPanel",
-            "type": "{Boolean}",
-            "default": "false (hidden)",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 240,
-            "description": "A property showing whether unit conversion panel is displayed(true) or hidden(false)",
-            "itemtype": "property",
-            "name": "unitConversionPanel",
-            "type": "{Boolean}",
-            "default": "false (hidden)",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 248,
-            "description": "A property showing whether date calculation panel is displayed(true) or hidden(false)",
-            "itemtype": "property",
-            "name": "dateCalculationPanel",
-            "type": "{Boolean}",
-            "default": "false (hidden)",
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 256,
-            "description": "Changes the state of the Calculator and displays different sets of buttons/operations \nspecific to each state: STANDARD, SCIENTIFIC, PROGRAMMER",
-            "itemtype": "event",
-            "name": "changeState",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 263,
+            "file": "app.js",
+            "line": 102,
             "todo": [
-                "currentState = event.newState;"
+                "use constMapObject to create new constant key in the given constants map object."
             ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 268,
-            "description": "Displays the history panel",
-            "itemtype": "event",
-            "name": "showHistoryPanel",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 274,
-            "todo": [
-                ""
-            ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 279,
-            "description": "Displays the unit conversion panel",
-            "itemtype": "event",
-            "name": "showUnitConversionPanel",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 285,
-            "todo": [
-                ""
-            ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 290,
-            "description": "Displays the date calculation panel",
-            "itemtype": "event",
-            "name": "showDateCalculationPanel",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 296,
-            "todo": [
-                ""
-            ],
-            "class": "Main",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 308,
-            "description": "DEGREES is a string constant which tells the whole application that angles are in degrees format.",
-            "itemtype": "property",
-            "name": "DEGREES",
-            "type": "{String}",
-            "final": 1,
-            "default": "\"degrees\"",
-            "class": "Trigonometry",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 317,
-            "description": "RADIANS is a string constant which tells the whole application that angles are in radian format.",
-            "itemtype": "property",
-            "name": "RADIANS",
-            "type": "{String}",
-            "final": 1,
-            "default": "\"radians\"",
-            "class": "Trigonometry",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 326,
-            "description": "GRADS is a string constant which tells the whole application that angles are in grads format.",
-            "itemtype": "property",
-            "name": "GRADS",
-            "type": "{String}",
-            "final": 1,
-            "default": "\"grads\"",
-            "class": "Trigonometry",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 335,
-            "description": "currentAngleFormat is a string variable which represents current format of angles.",
-            "itemtype": "property",
-            "name": "currentAngleFormat",
-            "type": "{String}",
-            "default": "\"null\"",
-            "class": "Trigonometry",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 351,
-            "description": "Called when 0 button was pressed",
-            "itemtype": "event",
-            "name": "pressZero",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "EventFunctions",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 360,
-            "description": "Called when 1 button was pressed",
-            "itemtype": "event",
-            "name": "pressOne",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "EventFunctions",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 369,
-            "description": "Called when 2 button was pressed",
-            "itemtype": "event",
-            "name": "pressTwo",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "EventFunctions",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 378,
-            "description": "Called when sum(+) button was pressed",
-            "itemtype": "event",
-            "name": "pressSum",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "EventFunctions",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 387,
-            "description": "Called when subtract(-) button was pressed",
-            "itemtype": "event",
-            "name": "pressSubtract",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "EventFunctions",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 396,
-            "description": "Called when multiply(*) button was pressed",
-            "itemtype": "event",
-            "name": "pressMultiply",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "EventFunctions",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
-        },
-        {
-            "file": "Application.js",
-            "line": 405,
-            "description": "Called when divide(/) button was pressed",
-            "itemtype": "event",
-            "name": "pressDivide",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "Event object holding event specific data",
-                    "type": "Object"
-                }
-            ],
-            "class": "EventFunctions",
-            "module": "APPLICATION",
-            "submodule": "Calculator"
+            "class": "Constants",
+            "module": "APP"
         }
     ],
     "warnings": [
         {
             "message": "Missing item type",
-            "line": " Application.js:263"
-        },
-        {
-            "message": "Missing item type",
-            "line": " Application.js:274"
-        },
-        {
-            "message": "Missing item type",
-            "line": " Application.js:285"
-        },
-        {
-            "message": "Missing item type",
-            "line": " Application.js:296"
+            "line": " app.js:102"
         }
     ]
 }
