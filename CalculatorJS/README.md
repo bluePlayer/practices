@@ -12,6 +12,7 @@ in Jasmine.js or Prototype.js.
 I removed history feature as it will take lot of time to develop. Probably in some of the next releases. 
 
 Go ahead and test it for me if possible, at: http://calculator-blueplayer.rhcloud.com/
+Check the docs at: http://calculator-blueplayer.rhcloud.com/docs/
 
 Thanks, Vlado.
 
