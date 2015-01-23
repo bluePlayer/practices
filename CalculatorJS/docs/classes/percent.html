@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Calculator</title>
+    <title>percent</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -38,16 +38,15 @@
                 
                         <div id="api-tabview-panel">
                             <ul id="api-classes" class="apis classes">
-                                <li><a href="../classes/APPLICATION.html">APPLICATION</a></li>
+                                <li><a href="../classes/APP.html">APP</a></li>
                                 <li><a href="../classes/Constants.html">Constants</a></li>
-                                <li><a href="../classes/EventFunctions.html">EventFunctions</a></li>
                                 <li><a href="../classes/Main.html">Main</a></li>
-                                <li><a href="../classes/Trigonometry.html">Trigonometry</a></li>
+                                <li><a href="../classes/percent.html">percent</a></li>
+                                <li><a href="../classes/pressEqual.html">pressEqual</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
-                                <li><a href="../modules/APPLICATION.html">APPLICATION</a></li>
-                                <li><a href="../modules/Calculator.html">Calculator</a></li>
+                                <li><a href="../modules/APP.html">APP</a></li>
                             </ul>
                         </div>
                     </div>
@@ -81,52 +80,50 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Calculator Module</h1>
-                        <div class="box clearfix meta">
+                        <h1>percent Class</h1>
+                        <div class="box meta">
                         
                         
                                 <div class="foundat">
-                                    Defined in: <a href="../files/Application.js.html#l344"><code>Application.js:344</code></a>
+                                    Defined in: <a href="../files/script.js.html#l81"><code>script.js:81</code></a>
                                 </div>
+                        
+                                    Module: <a href="../modules/APP.html">APP</a>
                         
                         </div>
                         
                         
                         <div class="box intro">
-                            <p>Calculator submodule. It contains all calculator related properties, methods and submodules, like, Main, Trigonometry.</p>
+                            <p>Percent method. It needs both &quot;result&quot; and display field values to be different than 0 to work. 
+                        Therefore an aritmetic operation must be used before you can calculate percents of a given value. 
+                        Example: Press number 555 and then press the plus(+) sign button. &quot;result&quot; operand now has the value of 555
+                        and the application waits for input for the second operand. Insert value of 33 and then press the percent(%) 
+                        button. The application finds there are two available operands so it calculates 33% of 555 which is 183.15 and
+                        sets the display field to this new percent value. If you press the equal(=) sign button, it will sum up 555 + 183.15 
+                        which is 738.15. This same set of tasks applies to all other binary operations so if we used division(/) instead of 
+                        adtion(+) the final result would be 3.030303 or (555 / (33% of 555)) = (555 / 183.15)</p>
                         
                         </div>
                         
                         
-                        <div class="yui3-g">
-                            <div class="yui3-u-1-2">
-                                    <p>This module provides the following classes:</p>
+                        <div id="classdocs" class="tabview">
+                            <ul class="api-class-tabs">
+                                <li class="api-class-tab index"><a href="#index">Index</a></li>
                         
-                                    <ul class="module-classes">
-                                        <li class="module-class">
-                                            <a href="../classes/APPLICATION.html">
-                                                APPLICATION
-                                            </a>
-                                        </li>
-                                        <li class="module-class">
-                                            <a href="../classes/EventFunctions.html">
-                                                EventFunctions
-                                            </a>
-                                        </li>
-                                        <li class="module-class">
-                                            <a href="../classes/Main.html">
-                                                Main
-                                            </a>
-                                        </li>
-                                        <li class="module-class">
-                                            <a href="../classes/Trigonometry.html">
-                                                Trigonometry
-                                            </a>
-                                        </li>
-                                    </ul>
-                            </div>
+                            </ul>
                         
-                            <div class="yui3-u-1-2">
+                            <div>
+                                <div id="index" class="api-class-tabpanel index">
+                                    <h2 class="off-left">Item Index</h2>
+                        
+                        
+                        
+                        
+                                </div>
+                        
+                        
+                        
+                        
                             </div>
                         </div>
                     </div>

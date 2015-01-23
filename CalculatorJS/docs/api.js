@@ -1,26 +1,20 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "APPLICATION",
+        "APP",
         "Constants",
-        "EventFunctions",
         "Main",
-        "Trigonometry"
+        "percent",
+        "pressEqual"
     ],
     "modules": [
-        "APPLICATION",
-        "Calculator"
+        "APP"
     ],
     "allModules": [
         {
-            "displayName": "APPLICATION",
-            "name": "APPLICATION",
-            "description": "APPLICATION is a main application file that holds general properties and functions for the whole application\nIt also holds the main Calculator namespace. All necessary initializations are made in init() function."
-        },
-        {
-            "displayName": "Calculator",
-            "name": "Calculator",
-            "description": "Calculator submodule. It contains all calculator related properties, methods and submodules, like, Main, Trigonometry."
+            "displayName": "APP",
+            "name": "APP",
+            "description": "Main application module that contains all necessary classes/objects,\nmethods and properties for the Calculator application."
         }
     ]
 } };
