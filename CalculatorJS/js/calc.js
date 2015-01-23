@@ -1,16 +1,262 @@
 /**
+ * Main application module that contains all necessary classes/objects,
+ * methods and properties for the Calculator application.
+ * @module APP
+ */
+window.APP = window.APP || (function (global) {'use strict';
+
+    var name = "Calculator",
+        version = "1.0.0";
+
+    return {
+
+        operation: '',
+        operand: 0,
+        operandStr: '',
+        memory: '',
+        result: '',
+        memoryLabelField: {},
+        digitsField: {},
+        dgField: '',
+        operationField: {},
+        opField: '',
+        eraseDigits: true,
+
+        /**
+         * Returns application's name as a string value.
+         * @class APP
+         * @method getName
+         * @return {String} Returs the application's name in string format. 
+         */
+        getName: function () {
+            return name;
+        },
+
+        /**
+         * Returns application's version as a string value.
+         * @class APP
+         * @method getVersion
+         * @return {String} Returs the application's version in string format. 
+         */
+        getVersion: function () {
+            return version;
+        },
+
+        /**
+         * Prints the application's internal state in console.
+         * @class APP
+         * @method printData
+         * @return {Object} Returs the main APP object. 
+         */
+        printData: function () {
+            var props = {
+                operation: this.operation,
+                operand: this.operand,
+                operandStr: this.operandStr,
+                memory: this.memory,
+                result: this.result,
+                digitsField: this.digitsField,
+                dgField: this.dgField,
+                operationField: this.operationField,
+                opField: this.opField
+            };
+            console.dir(props);
+            return this;
+        },
+
+        /**
+         * Constants is a contructor so it should be called with new keyword. Each object should have its own Constants object.
+         * Creates object of four functions, set(), isDefined(), list() and get() which enable creation of new immutable constant
+         * that cannot be changed with Firebug or other debugging tool. 
+         * @class APP
+         * @method Constants
+         * @return {Object} Returs object with functions necessary to define new constant and prevent its change. 
+         */
+        Constants: function (constMapObject) {
+            var constants = {},
+                ownProp = Object.prototype.hasOwnProperty,
+                allowed = {
+                    string: 1,
+                    number: 1,
+                    boolean: 1
+                },
+                prefix = (Math.random() + "_").slice(2);
+
+            return {
+
+                /**
+                 * Creates new immuatble constant. 
+                 * @class Constants
+                 * @method set
+                 * @return {Boolean} Returs true if new constant is created or false otherwise.
+                 */
+                set: function (name, value) {
+                    if (this.isDefined(name)) {
+                        return false;
+                    }
+                    if (!ownProp.call(allowed, typeof value)) {
+                        return false;
+                    }
+
+                    constants[prefix + name] = value;
+                    /**
+                     * @todo use constMapObject to create new constant key in the given constants map object. 
+                     */
+                    return true;
+                },
+
+                /**
+                 * Creates new immuatble constant. 
+                 * @class Constants
+                 * @method isDefined
+                 * @return {Boolean} Returs true if new constant is created or false otherwise.
+                 */
+                isDefined: function (name) {
+                    return ownProp.call(constants, prefix + name);
+                },
+
+                /**
+                 * Returns the value of the required constant. 
+                 * @class Constants
+                 * @method get
+                 * @return {Object} Returns the value of the required constant. 
+                 */
+                get: function (name) {
+                    if (this.isDefined(name)) {
+                        return constants[prefix + name];
+                    }
+                    return null;
+                },
+
+                /**
+                 * Lists all constants with their values in array like format. Useful in JavaScript console. 
+                 * @class Constants
+                 * @method list
+                 */
+                list: function () {
+                    var index = 0,
+                        newStr = "",
+                        constant = '';
+
+                    for (constant in constants) {
+                        if (constants.hasOwnProperty(constant)) {
+                            index = constant.indexOf('_');
+                            newStr = constant.substr(index + 1);
+                            console.log(newStr + ": " + constants[constant]);
+                        }
+                    }
+                }
+            };
+        },
+
+        /**
+         * Creates objects and subobjects by using just a string in dotted notation. 
+         * Example namespace('my.new.namespace'); will create object 'my' that contains subobject 'new', which contains 
+         * subobject 'namespace'. 
+         * @class APP
+         * @method namespace
+         * @param {String} String describing the namespace of objects separated by a dots. 
+         * @param {Object} And object to initialize each of the newly created subobject. If you add a property with all caps it will consider it as a
+         * constant and therefore use Constants object to create new constant that cannot be changed using Firebug and console. 
+         * @return {Object} Returns the new object that represents the new namespace of objects and subobjects, defined by the dots in the string
+         * argument.
+         */
+        namespace: function (nsString, newObjectDefinition) {
+            var parts = nsString.split('.'),
+                parent = this,
+                newObject = {},
+                i = 0,
+                property = {};
+
+            newObject.Constants = new this.Constants();
+            newObject.constMap = {};
+
+            if (parts[0] === this.getName()) {
+                parts = parts.slice(1);
+            }
+
+            for (i = 0; i < parts.length; i += 1) {
+                if (parent[parts[i]] === undefined) {
+                    for (property in newObjectDefinition) {
+                        if (newObjectDefinition.hasOwnProperty(property)) {
+                            if (property === property.toUpperCase()) {
+                                newObject.Constants.set(property, newObjectDefinition[property]);
+                                newObject.constMap[property] = property;
+                            } else {
+                                newObject[property] = newObjectDefinition[property];
+                            }
+                        }
+                    }
+                    parent[parts[i]] = newObject;
+                }
+                parent = parent[parts[i]];
+            }
+
+            return parent;
+        },
+
+        /**
+         * Creates new immutable constant of the main application object.
+         * @class APP
+         * @method init
+         * @return {Object} Returs the main APP object. false if the creation failed somehow. It is called upon page load, so
+         * all necessary initializations which cannot be called befor page load should be called in this function. 
+         */
+        init: function (config) {
+            try {
+                this.memoryLabelField = global.getElementById('memoryLabel');
+                this.digitsField = global.getElementById('digitsField');
+                this.digitsField.value = '0';
+                this.operationField = global.getElementById('operationField');
+                this.operationField.value = '';
+                return this;
+            } catch (error) {
+                console.log(error.message);
+                return error.message;
+            }
+        },
+
+        /**
+         * Parses string value into decimal integer number if possible, and then returns the result.
+         * @class APP
+         * @method myParseInt
+         * @param param param string value that should be a number.
+         * @return {Number} Returns decimal integer representation of given string value.
+         */
+        myParseInt: function (param) {
+            return parseInt(param, 10);
+        },
+
+        /**
+         * Parses string value into decimal floating point number if possible, and then returns the result.
+         * @class APP
+         * @method myParseFloat
+         * @param param string value that should be a number.
+         * @return {Number} Returns decimal floating point representation of given string value.
+         */
+        myParseFloat: function (param) {
+            return parseFloat(param, 10);
+        }
+    };
+    }(window.document));
+
+window.document.addEventListener("DOMContentLoaded", function (event) {'use strict';
+    window.APP.init({"event": event});
+    });
+
+/**
  * Main calculator class. Contains all necessary Calculator related properties/methods.
  * @class Main
  * @module APP
  */
-window.APP.namespace('Main', (function () {
+window.APP.namespace('Main', (function () {'use strict';
     var parent = window.APP;
     return {
         test: function () {
             console.dir(parent);
         }
     };
-}()));
+    }()));
 
 /**
  * Arithmetic module. Contains all necessary properties/methods related to aritmetic operations. 
@@ -19,7 +265,7 @@ window.APP.namespace('Main', (function () {
  * @module APP
  * @class Aritmetic
  */
-window.APP.namespace('Aritmetic', (function () {
+window.APP.namespace('Aritmetic', (function () {'use strict';
     var parent = window.APP;
     return {
         /**
@@ -27,13 +273,13 @@ window.APP.namespace('Aritmetic', (function () {
          * @class Aritmetic 
          * @method divide
          */
-        divide: function () {'use strict';
+        divide: function () {
             if (parent.result === '') {
                 parent.result = parent.dgField;
             } else if (parent.dgField !== '0') {
                 parent.result = parent.myParseFloat(parent.result) / parent.myParseFloat(parent.dgField);
             } else {
-                parent.dgField == "Cannot divide by zero";
+                parent.dgField = "Cannot divide by zero";
             }
             parent.opField += parent.dgField + " " + parent.operation + " ";
             parent.dgField = parent.result;
@@ -44,7 +290,7 @@ window.APP.namespace('Aritmetic', (function () {
          * @method multiply
          * @class Aritmetic 
          */
-        multiply: function () {'use strict';
+        multiply: function () {
             if (parent.result === '') {
                 parent.result = parent.dgField;
             } else {
@@ -59,12 +305,12 @@ window.APP.namespace('Aritmetic', (function () {
          * @method add
          * @class Aritmetic 
          */
-        add: function () {'use strict';
+        add: function () {
             if (parent.result === '') {
                 parent.result = parent.dgField;
             } else {
                 parent.result = parent.myParseFloat(parent.result) + parent.myParseFloat(parent.dgField);
-            } 
+            }
             parent.opField += parent.dgField + " " + parent.operation + " ";
             parent.dgField = parent.result;
         },
@@ -99,25 +345,27 @@ window.APP.namespace('Aritmetic', (function () {
         percent: function () {
             var sum = 0,
                 percent = 0,
-                outcome = 0;
+                outcome = 0,
+                operandString = '';
 
             if (parent.result === '') {
                 parent.opField = '0';
                 parent.dgField = '0';
             } else {
                 if (parent.dgField === '0' || parent.dgField === '0.') {
-                    if (parent.opField.substr(parent.opField.length - 1) !== '0' ) {
+                    if (parent.opField.substr(parent.opField.length - 1) !== '0') {
                         parent.opField = parent.opField + '0';
-                    } 
+                    }
                     parent.dgField = '0';
                     parent.printData();
                 } else {
                     sum = parent.myParseFloat(parent.result);
                     percent = parent.myParseFloat(parent.dgField);
                     outcome = percent * sum / 100;
-                    if (parent.opField.indexOf("" + parent.operand) !== -1) {
-                        parent.opField = parent.opField.substr(0, parent.opField.indexOf("" + parent.operand));
-                    } 
+                    operandString = parent.operand.toString();
+                    if (parent.opField.indexOf(operandString) !== -1) {
+                        parent.opField = parent.opField.substr(0, parent.opField.indexOf(operandString));
+                    }
                     parent.opField += outcome;
                     parent.operand = outcome;
                     parent.dgField = outcome;
@@ -125,14 +373,14 @@ window.APP.namespace('Aritmetic', (function () {
             }
         }
     };
-}()));
+    }()));
 
 /**
  * Buttons class. Contains all necessary properties/methods related to the visible buttons.
  * @class Buttons
  * @module APP
  */
-window.APP.namespace('Buttons', (function () {
+window.APP.namespace('Buttons', (function () {'use strict';
     var parent = window.APP;
     return {
         /**
@@ -144,7 +392,7 @@ window.APP.namespace('Buttons', (function () {
          * @param number number value in string format. It may be some of these values '1', '2', ..., '9'
          * @class Buttons 
          */
-        pressNumber: function (number) {'use strict';
+        pressNumber: function (number) {
             parent.dgField = parent.digitsField.value;
             if (number === '0') {
                 if (parent.dgField === '0' || parent.eraseDigits) {
@@ -169,7 +417,7 @@ window.APP.namespace('Buttons', (function () {
          * @param op operation value in string format. It may be some of these values 'sqrt'(square root), '1/x'(reciproc), '+/-'(negate).
          * @class Buttons 
          */
-        pressUnaryOperation: function (op) {'use strict';
+        pressUnaryOperation: function (op) {
             var index = 0;
             parent.opField = parent.operationField.value;
             parent.dgField = parent.digitsField.value;
@@ -183,43 +431,43 @@ window.APP.namespace('Buttons', (function () {
             }
 
             switch (op) {
-                case 'sqrt':
-                    parent.operandStr = (parent.operandStr === '' ? "sqrt(" + parent.operand + ")" : "sqrt(" + parent.operandStr + ")");
-                    if (parent.operand < 0) {
-                        parent.dgField = "invalid input";
-                    } else {
-                        parent.dgField = Math.sqrt(parent.operand);
-                        parent.result = parent.dgField;
-                    }
+            case 'sqrt':
+                parent.operandStr = (parent.operandStr === '' ? "sqrt(" + parent.operand + ")" : "sqrt(" + parent.operandStr + ")");
+                if (parent.operand < 0) {
+                    parent.dgField = "invalid input";
+                } else {
+                    parent.dgField = Math.sqrt(parent.operand);
+                    parent.result = parent.dgField;
+                }
                 break;
-                case '1/x':
-                    parent.operandStr = (parent.operandStr === '' ? "reciproc(" + parent.operand + ")" : "reciproc(" + parent.operandStr + ")");
-                    if (parent.operand === 0) {
-                        parent.dgField = "Cannot divide by zero";
-                    } else {
-                        parent.dgField = 1 / parent.operand;
-                        parent.result = parent.dgField;
-                    }
+            case '1/x':
+                parent.operandStr = (parent.operandStr === '' ? "reciproc(" + parent.operand + ")" : "reciproc(" + parent.operandStr + ")");
+                if (parent.operand === 0) {
+                    parent.dgField = "Cannot divide by zero";
+                } else {
+                    parent.dgField = 1 / parent.operand;
+                    parent.result = parent.dgField;
+                }
                 break;
-                case '+/-':
-                    if (parent.result === '') {
-                        if (parent.dgField !== '0') {
-                            if (parent.dgField.indexOf('-') === -1) {
-                                parent.dgField = '-' + parent.dgField;
-                            } else {
-                                parent.dgField = parent.dgField.substr(1);
-                            }
-                        }
-                    } else {
-                        if (parent.dgField !== '0') {
-                            if (parent.dgField.indexOf('-') === -1) {
-                                parent.dgField = '-' + parent.dgField;
-                            } else {
-                                parent.dgField = parent.dgField.substr(1);
-                            }
-                            parent.operandStr = (parent.operandStr === '' ? "negate(" + parent.operand + ")" : "negate(" + parent.operandStr + ")");
+            case '+/-':
+                if (parent.result === '') {
+                    if (parent.dgField !== '0') {
+                        if (parent.dgField.indexOf('-') === -1) {
+                            parent.dgField = '-' + parent.dgField;
+                        } else {
+                            parent.dgField = parent.dgField.substr(1);
                         }
                     }
+                } else {
+                    if (parent.dgField !== '0') {
+                        if (parent.dgField.indexOf('-') === -1) {
+                            parent.dgField = '-' + parent.dgField;
+                        } else {
+                            parent.dgField = parent.dgField.substr(1);
+                        }
+                        parent.operandStr = (parent.operandStr === '' ? "negate(" + parent.operand + ")" : "negate(" + parent.operandStr + ")");
+                    }
+                }
                 break;
             }
 
@@ -238,7 +486,7 @@ window.APP.namespace('Buttons', (function () {
          * @param op operation in string format from these values: '+', '-', '/', '*', '%'
          * @class Buttons 
          */
-        pressBinaryOperation: function (op) {'use strict';
+        pressBinaryOperation: function (op) {
             parent.dgField = parent.digitsField.value;
             parent.opField = parent.operationField.value;
             if (op !== '%') {
@@ -247,20 +495,20 @@ window.APP.namespace('Buttons', (function () {
             parent.eraseDigits = true;
 
             switch (op) {
-                case '/': 
-                    parent.Aritmetic.divide();
+            case '/':
+                parent.Aritmetic.divide();
                 break;
-                case '*': 
-                    parent.Aritmetic.multiply();
+            case '*':
+                parent.Aritmetic.multiply();
                 break;
-                case '+': 
-                    parent.Aritmetic.add();
+            case '+':
+                parent.Aritmetic.add();
                 break;
-                case '-': 
-                    parent.Aritmetic.subtract();
+            case '-':
+                parent.Aritmetic.subtract();
                 break;
-                case '%': 
-                    parent.Aritmetic.percent();
+            case '%':
+                parent.Aritmetic.percent();
                 break;
             }
 
@@ -284,7 +532,7 @@ window.APP.namespace('Buttons', (function () {
                     parent.dgField += '.';
                 }
                 parent.digitsField.value = parent.dgField;
-            } 
+            }
         },
 
         /**
@@ -348,7 +596,7 @@ window.APP.namespace('Buttons', (function () {
                     parent.Aritmetic.multiply();
                 } else if (parent.operation === '/') {
                     parent.Aritmetic.divide();
-                } 
+                }
                 parent.result = '';
                 parent.printData();
                 parent.operation = '';
@@ -358,7 +606,7 @@ window.APP.namespace('Buttons', (function () {
 
             parent.digitsField.value = parent.dgField;
         },
-        
+
         /**
          * pressMemoryButton method (called upon pressing one of MC (Memory Clear), MR (Memory Recall), MS (Memory Save), M+ (Memory Add) or M- (Memory Subtract) * memory buttons) saves current digits field value into parent.memory property and shows M label in view, when MS button is pressed. 
          * When MR button is pressed, digits field is filled with value from parent.memory property if available. When M+ or M- buttons are pressed, 
@@ -372,39 +620,39 @@ window.APP.namespace('Buttons', (function () {
         pressMemoryButton: function (memoryStr) {
             parent.dgField = parent.digitsField.value;
             switch (memoryStr) {
-                case 'MC':
-                    parent.memoryLabelField.value = '';
-                    parent.memory = '';
+            case 'MC':
+                parent.memoryLabelField.value = '';
+                parent.memory = '';
                 break;
-                case 'MR':
-                    if (parent.memory === '') {
-                        parent.dgField = '0';
-                    } else {
-                        parent.dgField = parent.memory;
-                    }
-                    parent.digitsField.value = parent.dgField;
-                    parent.eraseDigits = true;
+            case 'MR':
+                if (parent.memory === '') {
+                    parent.dgField = '0';
+                } else {
+                    parent.dgField = parent.memory;
+                }
+                parent.digitsField.value = parent.dgField;
+                parent.eraseDigits = true;
                 break;
-                case 'MS':
-                    if (parent.dgField !== '0' || parent.dgField !== '0.') {
-                        parent.memory = parent.dgField;
-                        parent.memoryLabelField.value = 'M = ' + parent.dgField;
-                    } else {
-                        parent.digitsField.value = '0';
-                    }
-                    parent.eraseDigits = true;
+            case 'MS':
+                if (parent.dgField !== '0' || parent.dgField !== '0.') {
+                    parent.memory = parent.dgField;
+                    parent.memoryLabelField.value = 'M = ' + parent.dgField;
+                } else {
+                    parent.digitsField.value = '0';
+                }
+                parent.eraseDigits = true;
                 break;
-                case 'M+':
-                    if (parent.memory !== '') {
-                        parent.memory = parent.myParseFloat(parent.memory) + parent.myParseFloat(parent.dgField);
-                        parent.memoryLabelField.value = 'M = ' + parent.memory;
-                    }
+            case 'M+':
+                if (parent.memory !== '') {
+                    parent.memory = parent.myParseFloat(parent.memory) + parent.myParseFloat(parent.dgField);
+                    parent.memoryLabelField.value = 'M = ' + parent.memory;
+                }
                 break;
-                case 'M-':
-                    if (parent.memory !== '') {
-                        parent.memory = parent.myParseFloat(parent.memory) - parent.myParseFloat(parent.dgField);
-                        parent.memoryLabelField.value = 'M = ' + parent.memory;
-                    }
+            case 'M-':
+                if (parent.memory !== '') {
+                    parent.memory = parent.myParseFloat(parent.memory) - parent.myParseFloat(parent.dgField);
+                    parent.memoryLabelField.value = 'M = ' + parent.memory;
+                }
                 break;
             }
         },
@@ -421,4 +669,4 @@ window.APP.namespace('Buttons', (function () {
             parent.operand = 0;
         }
     };
-}()));
+    }()));
