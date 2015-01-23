@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Constants</title>
+    <title>Aritmetic</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -80,12 +80,12 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Constants Class</h1>
+                        <h1>Aritmetic Class</h1>
                         <div class="box meta">
                         
                         
                                 <div class="foundat">
-                                    Defined in: <a href="../files/calc.js.html#l65"><code>calc.js:65</code></a>
+                                    Defined in: <a href="../files/calc.js.html#l253"><code>calc.js:253</code></a>
                                 </div>
                         
                                     Module: <a href="../modules/APP.html">APP</a>
@@ -94,9 +94,9 @@
                         
                         
                         <div class="box intro">
-                            <p>Constants is a contructor so it should be called with new keyword. Each object should have its own Constants object.
-                        Creates object of four functions, set(), isDefined(), list() and get() which enable creation of new immutable constant
-                        that cannot be changed with Firebug or other debugging tool.</p>
+                            <p>Arithmetic module. Contains all necessary properties/methods related to aritmetic operations. 
+                        Like, addition, multiplication, division, etc... All aritmetic operations are binary operations, i.e need two
+                        operands to work.</p>
                         
                         </div>
                         
@@ -117,19 +117,23 @@
                         
                                             <ul class="index-list methods">
                                                     <li class="index-item method">
-                                                        <a href="#method_get">get</a>
+                                                        <a href="#method_add">add</a>
                         
                                                     </li>
                                                     <li class="index-item method">
-                                                        <a href="#method_isDefined">isDefined</a>
+                                                        <a href="#method_divide">divide</a>
                         
                                                     </li>
                                                     <li class="index-item method">
-                                                        <a href="#method_list">list</a>
+                                                        <a href="#method_multiply">multiply</a>
                         
                                                     </li>
                                                     <li class="index-item method">
-                                                        <a href="#method_set">set</a>
+                                                        <a href="#method_percent">percent</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_subtract">subtract</a>
                         
                                                     </li>
                                             </ul>
@@ -142,92 +146,8 @@
                                     <div id="methods" class="api-class-tabpanel">
                                         <h2 class="off-left">Methods</h2>
                         
-                                            <div id="method_get" class="method item">
-                                                <h3 class="name"><code>get</code></h3>
-                                            
-                                                    <span class="paren">()</span>
-                                            
-                                                    <span class="returns-inline">
-                                                        <span class="type">Object</span>
-                                                    </span>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                                <div class="meta">
-                                                            <p>
-                                                            Defined in
-                                                    <a href="../files/calc.js.html#l115"><code>calc.js:115</code></a>
-                                                    </p>
-                                            
-                                            
-                                            
-                                                </div>
-                                            
-                                                <div class="description">
-                                                    <p>Returns the value of the required constant.</p>
-                                            
-                                                </div>
-                                            
-                                            
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
-                                            
-                                                        <div class="returns-description">
-                                                                    <span class="type">Object</span>:
-                                                                <p>Returns the value of the required constant.</p>
-                                            
-                                                        </div>
-                                                    </div>
-                                            
-                                            </div>
-                                            <div id="method_isDefined" class="method item">
-                                                <h3 class="name"><code>isDefined</code></h3>
-                                            
-                                                    <span class="paren">()</span>
-                                            
-                                                    <span class="returns-inline">
-                                                        <span class="type">Boolean</span>
-                                                    </span>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                                <div class="meta">
-                                                            <p>
-                                                            Defined in
-                                                    <a href="../files/calc.js.html#l106"><code>calc.js:106</code></a>
-                                                    </p>
-                                            
-                                            
-                                            
-                                                </div>
-                                            
-                                                <div class="description">
-                                                    <p>Creates new immuatble constant.</p>
-                                            
-                                                </div>
-                                            
-                                            
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
-                                            
-                                                        <div class="returns-description">
-                                                                    <span class="type">Boolean</span>:
-                                                                <p>Returs true if new constant is created or false otherwise.</p>
-                                            
-                                                        </div>
-                                                    </div>
-                                            
-                                            </div>
-                                            <div id="method_list" class="method item">
-                                                <h3 class="name"><code>list</code></h3>
+                                            <div id="method_add" class="method item">
+                                                <h3 class="name"><code>add</code></h3>
                                             
                                                     <span class="paren">()</span>
                                             
@@ -241,7 +161,7 @@
                                                 <div class="meta">
                                                             <p>
                                                             Defined in
-                                                    <a href="../files/calc.js.html#l127"><code>calc.js:127</code></a>
+                                                    <a href="../files/calc.js.html#l293"><code>calc.js:293</code></a>
                                                     </p>
                                             
                                             
@@ -249,21 +169,18 @@
                                                 </div>
                                             
                                                 <div class="description">
-                                                    <p>Lists all constants with their values in array like format. Useful in JavaScript console.</p>
+                                                    <p>Add method. Adds &quot;result&quot; operand to the value in the display field.</p>
                                             
                                                 </div>
                                             
                                             
                                             
                                             </div>
-                                            <div id="method_set" class="method item">
-                                                <h3 class="name"><code>set</code></h3>
+                                            <div id="method_divide" class="method item">
+                                                <h3 class="name"><code>divide</code></h3>
                                             
                                                     <span class="paren">()</span>
                                             
-                                                    <span class="returns-inline">
-                                                        <span class="type">Boolean</span>
-                                                    </span>
                                             
                                             
                                             
@@ -274,7 +191,7 @@
                                                 <div class="meta">
                                                             <p>
                                                             Defined in
-                                                    <a href="../files/calc.js.html#l86"><code>calc.js:86</code></a>
+                                                    <a href="../files/calc.js.html#l263"><code>calc.js:263</code></a>
                                                     </p>
                                             
                                             
@@ -282,20 +199,108 @@
                                                 </div>
                                             
                                                 <div class="description">
-                                                    <p>Creates new immuatble constant.</p>
+                                                    <p>Divide method. Divides &quot;result&quot; operand with the value in the display field. It also checks for division by zero.</p>
                                             
                                                 </div>
                                             
                                             
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
                                             
-                                                        <div class="returns-description">
-                                                                    <span class="type">Boolean</span>:
-                                                                <p>Returs true if new constant is created or false otherwise.</p>
+                                            </div>
+                                            <div id="method_multiply" class="method item">
+                                                <h3 class="name"><code>multiply</code></h3>
                                             
-                                                        </div>
-                                                    </div>
+                                                    <span class="paren">()</span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l279"><code>calc.js:279</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Multiply method. Multiplies &quot;result&quot; operand with the value in the display field.</p>
+                                            
+                                                </div>
+                                            
+                                            
+                                            
+                                            </div>
+                                            <div id="method_percent" class="method item">
+                                                <h3 class="name"><code>percent</code></h3>
+                                            
+                                                    <span class="paren">()</span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l321"><code>calc.js:321</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Percent method. It needs both &quot;result&quot; and display field values to be different than 0 to work. 
+                                            Therefore an aritmetic operation must be used before you can calculate percents of a given value. 
+                                            Example: Press number 555 and then press the plus(+) sign button. &quot;result&quot; operand now has the value of 555
+                                            and the application waits for input for the second operand. Insert value of 33 and then press the percent(%) 
+                                            button. The application finds there are two available operands so it calculates 33% of 555 which is 183.15 and
+                                            sets the display field to this new percent value. If you press the equal(=) sign button, it will sum up 555 + 183.15 
+                                            which is 738.15. This same set of tasks applies to all other binary operations so if we used division(/) instead of 
+                                            adtion(+) the final result would be 3.030303 or (555 / (33% of 555)) = (555 / 183.15)</p>
+                                            
+                                                </div>
+                                            
+                                            
+                                            
+                                            </div>
+                                            <div id="method_subtract" class="method item">
+                                                <h3 class="name"><code>subtract</code></h3>
+                                            
+                                                    <span class="paren">()</span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l307"><code>calc.js:307</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Subtract method. Subtracts the value in the display field from &quot;result&quot; operand.</p>
+                                            
+                                                </div>
+                                            
+                                            
                                             
                                             </div>
                                     </div>

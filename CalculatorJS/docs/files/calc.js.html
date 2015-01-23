@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>calc.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/APP.html">APP</a></li>
+                                <li><a href="../classes/Aritmetic.html">Aritmetic</a></li>
+                                <li><a href="../classes/Buttons.html">Buttons</a></li>
+                                <li><a href="../classes/Constants.html">Constants</a></li>
+                                <li><a href="../classes/Main.html">Main</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/APP.html">APP</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: calc.js</h1>
+                        
+                        <div class="file">
+                            <pre class="code prettyprint linenums">
+                        /**
+                         * Main application module that contains all necessary classes/objects,
+                         * methods and properties for the Calculator application.
+                         * @module APP
+                         * @class APP
+                         */
+                        window.APP = window.APP || (function (global) {&#x27;use strict&#x27;;
+                        
+                            var name = &quot;Calculator&quot;,
+                                version = &quot;1.0.0&quot;;
+                        
+                            return {
+                        
+                                operation: &#x27;&#x27;,
+                                operand: 0,
+                                operandStr: &#x27;&#x27;,
+                                memory: &#x27;&#x27;,
+                                result: &#x27;&#x27;,
+                                memoryLabelField: {},
+                                digitsField: {},
+                                dgField: &#x27;&#x27;,
+                                operationField: {},
+                                opField: &#x27;&#x27;,
+                                eraseDigits: true,
+                        
+                                /**
+                                 * Returns application&#x27;s name as a string value.
+                                 * @method getName
+                                 * @return {String} Returs the application&#x27;s name in string format. 
+                                 */
+                                getName: function () {
+                                    return name;
+                                },
+                        
+                                /**
+                                 * Returns application&#x27;s version as a string value.
+                                 * @method getVersion
+                                 * @return {String} Returs the application&#x27;s version in string format. 
+                                 */
+                                getVersion: function () {
+                                    return version;
+                                },
+                        
+                                /**
+                                 * Prints the application&#x27;s internal state in console.
+                                 * @method printData
+                                 * @return {Object} Returs the main APP object. 
+                                 */
+                                printData: function () {
+                                    var props = {
+                                        operation: this.operation,
+                                        operand: this.operand,
+                                        operandStr: this.operandStr,
+                                        memory: this.memory,
+                                        result: this.result,
+                                        digitsField: this.digitsField,
+                                        dgField: this.dgField,
+                                        operationField: this.operationField,
+                                        opField: this.opField
+                                    };
+                                    console.dir(props);
+                                    return this;
+                                },
+                        
+                                /**
+                                 * Constants is a contructor so it should be called with new keyword. Each object should have its own Constants object.
+                                 * Creates object of four functions, set(), isDefined(), list() and get() which enable creation of new immutable constant
+                                 * that cannot be changed with Firebug or other debugging tool. 
+                                 * @class Constants
+                                 * @contructor Constants
+                                 * @param {Object} constMapObject
+                                 * @return {Object} Returs object with functions necessary to define new constant and prevent its change. 
+                                 */
+                                Constants: function (constMapObject) {
+                                    var constants = {},
+                                        ownProp = Object.prototype.hasOwnProperty,
+                                        allowed = {
+                                            string: 1,
+                                            number: 1,
+                                            boolean: 1
+                                        },
+                                        prefix = (Math.random() + &quot;_&quot;).slice(2);
+                        
+                                    return {
+                        
+                                        /**
+                                         * Creates new immuatble constant. 
+                                         * @method set
+                                         * @return {Boolean} Returs true if new constant is created or false otherwise.
+                                         */
+                                        set: function (name, value) {
+                                            if (this.isDefined(name)) {
+                                                return false;
+                                            }
+                                            if (!ownProp.call(allowed, typeof value)) {
+                                                return false;
+                                            }
+                        
+                                            constants[prefix + name] = value;
+                                            /**
+                                             * @todo use constMapObject to create new constant key in the given constants map object. 
+                                             */
+                                            return true;
+                                        },
+                        
+                                        /**
+                                         * Creates new immuatble constant. 
+                                         * @method isDefined
+                                         * @return {Boolean} Returs true if new constant is created or false otherwise.
+                                         */
+                                        isDefined: function (name) {
+                                            return ownProp.call(constants, prefix + name);
+                                        },
+                        
+                                        /**
+                                         * Returns the value of the required constant. 
+                                         * @method get
+                                         * @return {Object} Returns the value of the required constant. 
+                                         */
+                                        get: function (name) {
+                                            if (this.isDefined(name)) {
+                                                return constants[prefix + name];
+                                            }
+                                            return null;
+                                        },
+                        
+                                        /**
+                                         * Lists all constants with their values in array like format. Useful in JavaScript console. 
+                                         * @method list
+                                         */
+                                        list: function () {
+                                            var index = 0,
+                                                newStr = &quot;&quot;,
+                                                constant = &#x27;&#x27;;
+                        
+                                            for (constant in constants) {
+                                                if (constants.hasOwnProperty(constant)) {
+                                                    index = constant.indexOf(&#x27;_&#x27;);
+                                                    newStr = constant.substr(index + 1);
+                                                    console.log(newStr + &quot;: &quot; + constants[constant]);
+                                                }
+                                            }
+                                        }
+                                    };
+                                },
+                        
+                                /**
+                                 * Creates objects and subobjects by using just a string in dotted notation. 
+                                 * Example namespace(&#x27;my.new.namespace&#x27;); will create object &#x27;my&#x27; that contains subobject &#x27;new&#x27;, which contains 
+                                 * subobject &#x27;namespace&#x27;. 
+                                 * @class APP
+                                 * @method namespace
+                                 * @param {String} String describing the namespace of objects separated by a dots. 
+                                 * @param {Object} And object to initialize each of the newly created subobject. If you add a property with all caps it will consider it as a
+                                 * constant and therefore use Constants object to create new constant that cannot be changed using Firebug and console. 
+                                 * @return {Object} Returns the new object that represents the new namespace of objects and subobjects, defined by the dots in the string
+                                 * argument.
+                                 */
+                                namespace: function (nsString, newObjectDefinition) {
+                                    var parts = nsString.split(&#x27;.&#x27;),
+                                        parent = this,
+                                        newObject = {},
+                                        i = 0,
+                                        property = {};
+                        
+                                    newObject.Constants = new this.Constants();
+                                    newObject.constMap = {};
+                        
+                                    if (parts[0] === this.getName()) {
+                                        parts = parts.slice(1);
+                                    }
+                        
+                                    for (i = 0; i &lt; parts.length; i += 1) {
+                                        if (parent[parts[i]] === undefined) {
+                                            for (property in newObjectDefinition) {
+                                                if (newObjectDefinition.hasOwnProperty(property)) {
+                                                    if (property === property.toUpperCase()) {
+                                                        newObject.Constants.set(property, newObjectDefinition[property]);
+                                                        newObject.constMap[property] = property;
+                                                    } else {
+                                                        newObject[property] = newObjectDefinition[property];
+                                                    }
+                                                }
+                                            }
+                                            parent[parts[i]] = newObject;
+                                        }
+                                        parent = parent[parts[i]];
+                                    }
+                        
+                                    return parent;
+                                },
+                        
+                                /**
+                                 * Creates new immutable constant of the main application object.
+                                 * @method init
+                                 * @return {Object} Returs the main APP object. false if the creation failed somehow. It is called upon page load, so
+                                 * all necessary initializations which cannot be called befor page load should be called in this function. 
+                                 */
+                                init: function (config) {
+                                    try {
+                                        this.memoryLabelField = global.getElementById(&#x27;memoryLabel&#x27;);
+                                        this.digitsField = global.getElementById(&#x27;digitsField&#x27;);
+                                        this.digitsField.value = &#x27;0&#x27;;
+                                        this.operationField = global.getElementById(&#x27;operationField&#x27;);
+                                        this.operationField.value = &#x27;&#x27;;
+                                        return this;
+                                    } catch (error) {
+                                        console.log(error.message);
+                                        return error.message;
+                                    }
+                                },
+                        
+                                /**
+                                 * Parses string value into decimal integer number if possible, and then returns the result.
+                                 * @method myParseInt
+                                 * @param param param string value that should be a number.
+                                 * @return {Number} Returns decimal integer representation of given string value.
+                                 */
+                                myParseInt: function (param) {
+                                    return parseInt(param, 10);
+                                },
+                        
+                                /**
+                                 * Parses string value into decimal floating point number if possible, and then returns the result.
+                                 * @method myParseFloat
+                                 * @param param string value that should be a number.
+                                 * @return {Number} Returns decimal floating point representation of given string value.
+                                 */
+                                myParseFloat: function (param) {
+                                    return parseFloat(param, 10);
+                                }
+                            };
+                            }(window.document));
+                        
+                        window.document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {&#x27;use strict&#x27;;
+                            window.APP.init({&quot;event&quot;: event});
+                            });
+                        
+                        /**
+                         * Main calculator class. Contains all necessary Calculator related properties/methods.
+                         * @class Main
+                         * @module APP
+                         */
+                        window.APP.namespace(&#x27;Main&#x27;, (function () {&#x27;use strict&#x27;;
+                            var parent = window.APP;
+                            return {
+                                test: function () {
+                                    console.dir(parent);
+                                }
+                            };
+                            }()));
+                        
+                        /**
+                         * Arithmetic module. Contains all necessary properties/methods related to aritmetic operations. 
+                         * Like, addition, multiplication, division, etc... All aritmetic operations are binary operations, i.e need two
+                         * operands to work.
+                         * @module APP
+                         * @class Aritmetic
+                         */
+                        window.APP.namespace(&#x27;Aritmetic&#x27;, (function () {&#x27;use strict&#x27;;
+                            var parent = window.APP;
+                            return {
+                                /**
+                                 * Divide method. Divides &quot;result&quot; operand with the value in the display field. It also checks for division by zero.
+                                 * @method divide
+                                 */
+                                divide: function () {
+                                    if (parent.result === &#x27;&#x27;) {
+                                        parent.result = parent.dgField;
+                                    } else if (parent.dgField !== &#x27;0&#x27;) {
+                                        parent.result = parent.myParseFloat(parent.result) / parent.myParseFloat(parent.dgField);
+                                    } else {
+                                        parent.dgField = &quot;Cannot divide by zero&quot;;
+                                    }
+                                    parent.opField += parent.dgField + &quot; &quot; + parent.operation + &quot; &quot;;
+                                    parent.dgField = parent.result;
+                                },
+                        
+                                /**
+                                 * Multiply method. Multiplies &quot;result&quot; operand with the value in the display field.
+                                 * @method multiply
+                                 */
+                                multiply: function () {
+                                    if (parent.result === &#x27;&#x27;) {
+                                        parent.result = parent.dgField;
+                                    } else {
+                                        parent.result = parent.myParseFloat(parent.result) * parent.myParseFloat(parent.dgField);
+                                    }
+                                    parent.opField += parent.dgField + &quot; &quot; + parent.operation + &quot; &quot;;
+                                    parent.dgField = parent.result;
+                                },
+                        
+                                /**
+                                 * Add method. Adds &quot;result&quot; operand to the value in the display field.
+                                 * @method add
+                                 */
+                                add: function () {
+                                    if (parent.result === &#x27;&#x27;) {
+                                        parent.result = parent.dgField;
+                                    } else {
+                                        parent.result = parent.myParseFloat(parent.result) + parent.myParseFloat(parent.dgField);
+                                    }
+                                    parent.opField += parent.dgField + &quot; &quot; + parent.operation + &quot; &quot;;
+                                    parent.dgField = parent.result;
+                                },
+                        
+                                /**
+                                 * Subtract method. Subtracts the value in the display field from &quot;result&quot; operand.
+                                 * @method subtract
+                                 */
+                                subtract: function () {
+                                    if (parent.result === &#x27;&#x27;) {
+                                        parent.result = parent.dgField;
+                                    } else {
+                                        parent.result = parent.myParseFloat(parent.result) - parent.myParseFloat(parent.dgField);
+                                    }
+                                    parent.opField += parent.dgField + &quot; &quot; + parent.operation + &quot; &quot;;
+                                    parent.dgField = parent.result;
+                                },
+                        
+                                /**
+                                 * Percent method. It needs both &quot;result&quot; and display field values to be different than 0 to work. 
+                                 * Therefore an aritmetic operation must be used before you can calculate percents of a given value. 
+                                 * Example: Press number 555 and then press the plus(+) sign button. &quot;result&quot; operand now has the value of 555
+                                 * and the application waits for input for the second operand. Insert value of 33 and then press the percent(%) 
+                                 * button. The application finds there are two available operands so it calculates 33% of 555 which is 183.15 and
+                                 * sets the display field to this new percent value. If you press the equal(=) sign button, it will sum up 555 + 183.15 
+                                 * which is 738.15. This same set of tasks applies to all other binary operations so if we used division(/) instead of 
+                                 * adtion(+) the final result would be 3.030303 or (555 / (33% of 555)) = (555 / 183.15)
+                                 * @method percent
+                                 */
+                                percent: function () {
+                                    var sum = 0,
+                                        percent = 0,
+                                        outcome = 0,
+                                        operandString = &#x27;&#x27;;
+                        
+                                    if (parent.result === &#x27;&#x27;) {
+                                        parent.opField = &#x27;0&#x27;;
+                                        parent.dgField = &#x27;0&#x27;;
+                                    } else {
+                                        if (parent.dgField === &#x27;0&#x27; || parent.dgField === &#x27;0.&#x27;) {
+                                            if (parent.opField.substr(parent.opField.length - 1) !== &#x27;0&#x27;) {
+                                                parent.opField = parent.opField + &#x27;0&#x27;;
+                                            }
+                                            parent.dgField = &#x27;0&#x27;;
+                                            parent.printData();
+                                        } else {
+                                            sum = parent.myParseFloat(parent.result);
+                                            percent = parent.myParseFloat(parent.dgField);
+                                            outcome = percent * sum / 100;
+                                            operandString = parent.operand.toString();
+                                            if (parent.opField.indexOf(operandString) !== -1) {
+                                                parent.opField = parent.opField.substr(0, parent.opField.indexOf(operandString));
+                                            }
+                                            parent.opField += outcome;
+                                            parent.operand = outcome;
+                                            parent.dgField = outcome;
+                                        }
+                                    }
+                                }
+                            };
+                            }()));
+                        
+                        /**
+                         * Buttons class. Contains all necessary properties/methods related to the visible buttons.
+                         * @class Buttons
+                         * @module APP
+                         */
+                        window.APP.namespace(&#x27;Buttons&#x27;, (function () {&#x27;use strict&#x27;;
+                            var parent = window.APP;
+                            return {
+                                /**
+                                 * pressNumber method (called upon pressing one of 0, 1, 2, 3, 4, 5, 6, 7, 8 or 9 buttons) is a method that receives one parameter
+                                 * in string format from one of these &#x27;1&#x27;, &#x27;2&#x27;, ..., &#x27;9&#x27;. If eraseData key is true, digits field value is cleared and number param value is 
+                                 * concatenated to digits field, then eraseData is set to false. If eraseData is set to false then any new number button pressed concatenates
+                                 * its value to digits display field without clearing digits field previous value. 
+                                 * @method pressNumber
+                                 * @param number number value in string format. It may be some of these values &#x27;1&#x27;, &#x27;2&#x27;, ..., &#x27;9&#x27;
+                                 */
+                                pressNumber: function (number) {
+                                    parent.dgField = parent.digitsField.value;
+                                    if (number === &#x27;0&#x27;) {
+                                        if (parent.dgField === &#x27;0&#x27; || parent.eraseDigits) {
+                                            parent.dgField = &#x27;&#x27;;
+                                        }
+                                        parent.dgField += &#x27;0&#x27;;
+                                    } else {
+                                        if (parent.dgField === &#x27;0&#x27; || parent.eraseDigits) {
+                                            parent.dgField = &#x27;&#x27;;
+                                        }
+                                        parent.dgField += number;
+                                    }
+                                    parent.eraseDigits = false;
+                                    parent.digitsField.value = parent.dgField;
+                                },
+                        
+                                /**
+                                 * pressUnaryOperation method (called upon pressing one of square root(&#x27;sqrt&#x27;), reciproc(&#x27;1/x&#x27;) or negate(&#x27;+/-&#x27;) buttons)
+                                 * recieves some of these values: &#x27;sqrt&#x27;, &#x27;1/x&#x27;, &#x27;+/-&#x27;. It needs only one operand to work
+                                 * since the operations are unary. It also takes cleares the operations text field from uncessary rubbish text.
+                                 * @method pressUnaryOperation
+                                 * @param op operation value in string format. It may be some of these values &#x27;sqrt&#x27;(square root), &#x27;1/x&#x27;(reciproc), &#x27;+/-&#x27;(negate).
+                                 */
+                                pressUnaryOperation: function (op) {
+                                    var index = 0;
+                                    parent.opField = parent.operationField.value;
+                                    parent.dgField = parent.digitsField.value;
+                                    parent.operand = parent.myParseFloat(parent.dgField);
+                        
+                                    if (parent.operandStr !== &#x27;&#x27;) {
+                                        index = parent.opField.indexOf(parent.operandStr);
+                                        if (index !== -1) {
+                                            parent.opField = parent.opField.slice(0, index);
+                                        }
+                                    }
+                        
+                                    switch (op) {
+                                    case &#x27;sqrt&#x27;:
+                                        parent.operandStr = (parent.operandStr === &#x27;&#x27; ? &quot;sqrt(&quot; + parent.operand + &quot;)&quot; : &quot;sqrt(&quot; + parent.operandStr + &quot;)&quot;);
+                                        if (parent.operand &lt; 0) {
+                                            parent.dgField = &quot;invalid input&quot;;
+                                        } else {
+                                            parent.dgField = Math.sqrt(parent.operand);
+                                            parent.result = parent.dgField;
+                                        }
+                                        break;
+                                    case &#x27;1/x&#x27;:
+                                        parent.operandStr = (parent.operandStr === &#x27;&#x27; ? &quot;reciproc(&quot; + parent.operand + &quot;)&quot; : &quot;reciproc(&quot; + parent.operandStr + &quot;)&quot;);
+                                        if (parent.operand === 0) {
+                                            parent.dgField = &quot;Cannot divide by zero&quot;;
+                                        } else {
+                                            parent.dgField = 1 / parent.operand;
+                                            parent.result = parent.dgField;
+                                        }
+                                        break;
+                                    case &#x27;+/-&#x27;:
+                                        if (parent.result === &#x27;&#x27;) {
+                                            if (parent.dgField !== &#x27;0&#x27;) {
+                                                if (parent.dgField.indexOf(&#x27;-&#x27;) === -1) {
+                                                    parent.dgField = &#x27;-&#x27; + parent.dgField;
+                                                } else {
+                                                    parent.dgField = parent.dgField.substr(1);
+                                                }
+                                            }
+                                        } else {
+                                            if (parent.dgField !== &#x27;0&#x27;) {
+                                                if (parent.dgField.indexOf(&#x27;-&#x27;) === -1) {
+                                                    parent.dgField = &#x27;-&#x27; + parent.dgField;
+                                                } else {
+                                                    parent.dgField = parent.dgField.substr(1);
+                                                }
+                                                parent.operandStr = (parent.operandStr === &#x27;&#x27; ? &quot;negate(&quot; + parent.operand + &quot;)&quot; : &quot;negate(&quot; + parent.operandStr + &quot;)&quot;);
+                                            }
+                                        }
+                                        break;
+                                    }
+                        
+                                    parent.opField += parent.operandStr;
+                                    parent.operationField.value = parent.opField;
+                                    parent.digitsField.value = parent.dgField;
+                        
+                                    parent.printData();
+                                },
+                        
+                                /**
+                                 * pressBinaryOperation method (called upon pressing plus(&#x27;+&#x27;), minus(&#x27;-&#x27;), division(&#x27;/&#x27;), multiplication(&#x27;*&#x27;) or percent(&#x27;%&#x27;) buttons) 
+                                 * recieves one parameter in string format from these values: &#x27;+&#x27;, &#x27;-&#x27;, &#x27;/&#x27;, &#x27;*&#x27;, &#x27;%&#x27;. It therefore calculates the result and 
+                                 * displays it in the digits display field according to the given operation type.
+                                 * @method pressBinaryOperation
+                                 * @param op operation in string format from these values: &#x27;+&#x27;, &#x27;-&#x27;, &#x27;/&#x27;, &#x27;*&#x27;, &#x27;%&#x27;
+                                 */
+                                pressBinaryOperation: function (op) {
+                                    parent.dgField = parent.digitsField.value;
+                                    parent.opField = parent.operationField.value;
+                                    if (op !== &#x27;%&#x27;) {
+                                        parent.operation = op;
+                                    }
+                                    parent.eraseDigits = true;
+                        
+                                    switch (op) {
+                                    case &#x27;/&#x27;:
+                                        parent.Aritmetic.divide();
+                                        break;
+                                    case &#x27;*&#x27;:
+                                        parent.Aritmetic.multiply();
+                                        break;
+                                    case &#x27;+&#x27;:
+                                        parent.Aritmetic.add();
+                                        break;
+                                    case &#x27;-&#x27;:
+                                        parent.Aritmetic.subtract();
+                                        break;
+                                    case &#x27;%&#x27;:
+                                        parent.Aritmetic.percent();
+                                        break;
+                                    }
+                        
+                                    parent.digitsField.value = parent.dgField;
+                                    parent.operationField.value = parent.opField;
+                                    parent.printData();
+                                },
+                        
+                                /**
+                                 * pressComma method (called upon pressing comma(,) button)adds dot to the digits display field. 
+                                 * It there is already a dot it skips adding new one.
+                                 * @method pressComma
+                                 */
+                                pressComma: function () {
+                                    parent.dgField = parent.digitsField.value;
+                                    if (parent.dgField.indexOf(&#x27;.&#x27;) === -1) {
+                                        if (parent.dgField === &#x27;&#x27;) {
+                                            parent.dgField = &#x27;0.&#x27;;
+                                        } else {
+                                            parent.dgField += &#x27;.&#x27;;
+                                        }
+                                        parent.digitsField.value = parent.dgField;
+                                    }
+                                },
+                        
+                                /**
+                                 * pressUndo method (called upon pressing undo(&lt;-) button) removes one digit from the digits siplay field. 
+                                 * If the digits display field has only one digit, it is set to zero.
+                                 * @method pressUndo
+                                 */
+                                pressUndo: function () {
+                                    parent.dgField = parent.digitsField.value;
+                                    if (parent.dgField.length === 1) {
+                                        parent.dgField = &#x27;0&#x27;;
+                                    } else {
+                                        parent.dgField = parent.dgField.substring(0, parent.dgField.length - 1);
+                                    }
+                                    parent.digitsField.value = parent.dgField;
+                                },
+                        
+                                /**
+                                 * pressClearEntry method (called upon pressing clear entry(CE) button) clears the digits display field and sets it to zero. 
+                                 * It doesn&#x27;t however clear result, operation, memory, operand or operandStr.
+                                 * @method pressClearEntry
+                                 */
+                                pressClearEntry: function () {
+                                    parent.operand = 0;
+                                    parent.digitsField.value = &#x27;0&#x27;;
+                                },
+                        
+                                /**
+                                 * pressClear method (called upon pressing (C) button) clears all application state except for the memory property which is 
+                                 * used to memorize values that last even after we do many calculations.
+                                 * @method pressClear
+                                 */
+                                pressClear: function () {
+                                    parent.operation = &#x27;&#x27;;
+                                    parent.operand = 0;
+                                    parent.operandStr = &#x27;&#x27;;
+                                    parent.result = &#x27;&#x27;;
+                                    parent.digitsField.value = &#x27;0&#x27;;
+                                    parent.operationField.value = &#x27;&#x27;;
+                                },
+                        
+                                /**
+                                 * calculate method takes the value from digits field and sets result to it if result is empty. If result is not empty it takes
+                                 * the operation value and applies apropriate binary operation on &quot;result&quot; operand and digits display field value. It then empties result
+                                 * and operation properties.
+                                 * @method calculate
+                                 */
+                                calculate: function () {
+                                    parent.dgField = parent.digitsField.value;
+                        
+                                    if (parent.result !== &#x27;&#x27;) {
+                                        if (parent.operation === &#x27;+&#x27;) {
+                                            parent.Aritmetic.add();
+                                        } else if (parent.operation === &#x27;-&#x27;) {
+                                            parent.Aritmetic.subtract();
+                                        } else if (parent.operation === &#x27;*&#x27;) {
+                                            parent.Aritmetic.multiply();
+                                        } else if (parent.operation === &#x27;/&#x27;) {
+                                            parent.Aritmetic.divide();
+                                        }
+                                        parent.result = &#x27;&#x27;;
+                                        parent.printData();
+                                        parent.operation = &#x27;&#x27;;
+                                    } else {
+                                        parent.result = parent.dgField;
+                                    }
+                        
+                                    parent.digitsField.value = parent.dgField;
+                                },
+                        
+                                /**
+                                 * pressMemoryButton method (called upon pressing one of MC (Memory Clear), MR (Memory Recall), MS (Memory Save), M+ (Memory Add) or M- (Memory Subtract) * memory buttons) saves current digits field value into parent.memory property and shows M label in view, when MS button is pressed. 
+                                 * When MR button is pressed, digits field is filled with value from parent.memory property if available. When M+ or M- buttons are pressed, 
+                                 * digits field value is added or subtract from the current memory value (if set) and saved to parent.memory property. 
+                                 * MR button sets digits field value to zero if parent.memory is empty or to parent.memory value if not empty. 
+                                 * MC sets parent.memory property to empty string and hides M label from view.
+                                 * @method pressMemoryButton
+                                 * @param memoryStr string value which can be some these MC, MR, MS, M+, M-
+                                 */
+                                pressMemoryButton: function (memoryStr) {
+                                    parent.dgField = parent.digitsField.value;
+                                    switch (memoryStr) {
+                                    case &#x27;MC&#x27;:
+                                        parent.memoryLabelField.value = &#x27;&#x27;;
+                                        parent.memory = &#x27;&#x27;;
+                                        break;
+                                    case &#x27;MR&#x27;:
+                                        if (parent.memory === &#x27;&#x27;) {
+                                            parent.dgField = &#x27;0&#x27;;
+                                        } else {
+                                            parent.dgField = parent.memory;
+                                        }
+                                        parent.digitsField.value = parent.dgField;
+                                        parent.eraseDigits = true;
+                                        break;
+                                    case &#x27;MS&#x27;:
+                                        if (parent.dgField !== &#x27;0&#x27; || parent.dgField !== &#x27;0.&#x27;) {
+                                            parent.memory = parent.dgField;
+                                            parent.memoryLabelField.value = &#x27;M = &#x27; + parent.dgField;
+                                        } else {
+                                            parent.digitsField.value = &#x27;0&#x27;;
+                                        }
+                                        parent.eraseDigits = true;
+                                        break;
+                                    case &#x27;M+&#x27;:
+                                        if (parent.memory !== &#x27;&#x27;) {
+                                            parent.memory = parent.myParseFloat(parent.memory) + parent.myParseFloat(parent.dgField);
+                                            parent.memoryLabelField.value = &#x27;M = &#x27; + parent.memory;
+                                        }
+                                        break;
+                                    case &#x27;M-&#x27;:
+                                        if (parent.memory !== &#x27;&#x27;) {
+                                            parent.memory = parent.myParseFloat(parent.memory) - parent.myParseFloat(parent.dgField);
+                                            parent.memoryLabelField.value = &#x27;M = &#x27; + parent.memory;
+                                        }
+                                        break;
+                                    }
+                                },
+                        
+                                /**
+                                 * pressEqual method (called upon pressing equal(=) button)call calculate() method to do the calculation on &quot;result&quot; and 
+                                 * digits display value and resets operand to 0 and operation field value to empty string &#x27;&#x27;.
+                                 * @method pressEqual
+                                 */
+                                pressEqual: function () {
+                                    this.calculate();
+                                    parent.operationField.value = &#x27;&#x27;;
+                                    parent.operand = 0;
+                                }
+                            };
+                            }()));
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

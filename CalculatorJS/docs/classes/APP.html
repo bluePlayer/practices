@@ -39,10 +39,10 @@
                         <div id="api-tabview-panel">
                             <ul id="api-classes" class="apis classes">
                                 <li><a href="../classes/APP.html">APP</a></li>
+                                <li><a href="../classes/Aritmetic.html">Aritmetic</a></li>
+                                <li><a href="../classes/Buttons.html">Buttons</a></li>
                                 <li><a href="../classes/Constants.html">Constants</a></li>
                                 <li><a href="../classes/Main.html">Main</a></li>
-                                <li><a href="../classes/percent.html">percent</a></li>
-                                <li><a href="../classes/pressEqual.html">pressEqual</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -85,7 +85,7 @@
                         
                         
                                 <div class="foundat">
-                                    Defined in: <a href="../files/app.js.html#l230"><code>app.js:230</code></a>
+                                    Defined in: <a href="../files/calc.js.html#l147"><code>calc.js:147</code></a>
                                 </div>
                         
                                     Module: <a href="../modules/APP.html">APP</a>
@@ -94,7 +94,9 @@
                         
                         
                         <div class="box intro">
-                            <p>Parses string value into decimal floating point number if possible, and then returns the result.</p>
+                            <p>Creates objects and subobjects by using just a string in dotted notation. 
+                        Example namespace(&#39;my.new.namespace&#39;); will create object &#39;my&#39; that contains subobject &#39;new&#39;, which contains 
+                        subobject &#39;namespace&#39;.</p>
                         
                         </div>
                         
@@ -103,17 +105,351 @@
                             <ul class="api-class-tabs">
                                 <li class="api-class-tab index"><a href="#index">Index</a></li>
                         
+                                    <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
                             </ul>
                         
                             <div>
                                 <div id="index" class="api-class-tabpanel index">
                                     <h2 class="off-left">Item Index</h2>
                         
+                                        <div class="index-section methods">
+                                            <h3>Methods</h3>
+                        
+                                            <ul class="index-list methods">
+                                                    <li class="index-item method">
+                                                        <a href="#method_getName">getName</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_getVersion">getVersion</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_init">init</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_myParseFloat">myParseFloat</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_myParseInt">myParseInt</a>
+                        
+                                                    </li>
+                                                    <li class="index-item method">
+                                                        <a href="#method_printData">printData</a>
+                        
+                                                    </li>
+                                            </ul>
+                                        </div>
                         
                         
                         
                                 </div>
                         
+                                    <div id="methods" class="api-class-tabpanel">
+                                        <h2 class="off-left">Methods</h2>
+                        
+                                            <div id="method_getName" class="method item">
+                                                <h3 class="name"><code>getName</code></h3>
+                                            
+                                                    <span class="paren">()</span>
+                                            
+                                                    <span class="returns-inline">
+                                                        <span class="type">String</span>
+                                                    </span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l26"><code>calc.js:26</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Returns application&#39;s name as a string value.</p>
+                                            
+                                                </div>
+                                            
+                                            
+                                                    <div class="returns">
+                                                        <h4>Returns:</h4>
+                                            
+                                                        <div class="returns-description">
+                                                                    <span class="type">String</span>:
+                                                                <p>Returs the application&#39;s name in string format.</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            
+                                            </div>
+                                            <div id="method_getVersion" class="method item">
+                                                <h3 class="name"><code>getVersion</code></h3>
+                                            
+                                                    <span class="paren">()</span>
+                                            
+                                                    <span class="returns-inline">
+                                                        <span class="type">String</span>
+                                                    </span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l35"><code>calc.js:35</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Returns application&#39;s version as a string value.</p>
+                                            
+                                                </div>
+                                            
+                                            
+                                                    <div class="returns">
+                                                        <h4>Returns:</h4>
+                                            
+                                                        <div class="returns-description">
+                                                                    <span class="type">String</span>:
+                                                                <p>Returs the application&#39;s version in string format.</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            
+                                            </div>
+                                            <div id="method_init" class="method item">
+                                                <h3 class="name"><code>init</code></h3>
+                                            
+                                                    <span class="paren">()</span>
+                                            
+                                                    <span class="returns-inline">
+                                                        <span class="type">Object</span>
+                                                    </span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l193"><code>calc.js:193</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Creates new immutable constant of the main application object.</p>
+                                            
+                                                </div>
+                                            
+                                            
+                                                    <div class="returns">
+                                                        <h4>Returns:</h4>
+                                            
+                                                        <div class="returns-description">
+                                                                    <span class="type">Object</span>:
+                                                                <p>Returs the main APP object. false if the creation failed somehow. It is called upon page load, so
+                                            all necessary initializations which cannot be called befor page load should be called in this function.</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            
+                                            </div>
+                                            <div id="method_myParseFloat" class="method item">
+                                                <h3 class="name"><code>myParseFloat</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>param</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                                    <span class="returns-inline">
+                                                        <span class="type">Number</span>
+                                                    </span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l223"><code>calc.js:223</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Parses string value into decimal floating point number if possible, and then returns the result.</p>
+                                            
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type">Object</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>string value that should be a number.</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                                    <div class="returns">
+                                                        <h4>Returns:</h4>
+                                            
+                                                        <div class="returns-description">
+                                                                    <span class="type">Number</span>:
+                                                                <p>Returns decimal floating point representation of given string value.</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            
+                                            </div>
+                                            <div id="method_myParseInt" class="method item">
+                                                <h3 class="name"><code>myParseInt</code></h3>
+                                            
+                                                    <div class="args">
+                                                        <span class="paren">(</span><ul class="args-list inline commas">
+                                                            <li class="arg">
+                                                                    <code>param</code>
+                                                            </li>
+                                                        </ul><span class="paren">)</span>
+                                                    </div>
+                                            
+                                                    <span class="returns-inline">
+                                                        <span class="type">Number</span>
+                                                    </span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l213"><code>calc.js:213</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Parses string value into decimal integer number if possible, and then returns the result.</p>
+                                            
+                                                </div>
+                                            
+                                                    <div class="params">
+                                                        <h4>Parameters:</h4>
+                                            
+                                                        <ul class="params-list">
+                                                            <li class="param">
+                                                                    <code class="param-name">param</code>
+                                                                    <span class="type">Object</span>
+                                            
+                                            
+                                                                <div class="param-description">
+                                                                    <p>param string value that should be a number.</p>
+                                            
+                                                                </div>
+                                            
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                            
+                                                    <div class="returns">
+                                                        <h4>Returns:</h4>
+                                            
+                                                        <div class="returns-description">
+                                                                    <span class="type">Number</span>:
+                                                                <p>Returns decimal integer representation of given string value.</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            
+                                            </div>
+                                            <div id="method_printData" class="method item">
+                                                <h3 class="name"><code>printData</code></h3>
+                                            
+                                                    <span class="paren">()</span>
+                                            
+                                                    <span class="returns-inline">
+                                                        <span class="type">Object</span>
+                                                    </span>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                                <div class="meta">
+                                                            <p>
+                                                            Defined in
+                                                    <a href="../files/calc.js.html#l44"><code>calc.js:44</code></a>
+                                                    </p>
+                                            
+                                            
+                                            
+                                                </div>
+                                            
+                                                <div class="description">
+                                                    <p>Prints the application&#39;s internal state in console.</p>
+                                            
+                                                </div>
+                                            
+                                            
+                                                    <div class="returns">
+                                                        <h4>Returns:</h4>
+                                            
+                                                        <div class="returns-description">
+                                                                    <span class="type">Object</span>:
+                                                                <p>Returs the main APP object.</p>
+                                            
+                                                        </div>
+                                                    </div>
+                                            
+                                            </div>
+                                    </div>
                         
                         
                         

@@ -2,10 +2,10 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "APP",
+        "Aritmetic",
+        "Buttons",
         "Constants",
-        "Main",
-        "percent",
-        "pressEqual"
+        "Main"
     ],
     "modules": [
         "APP"
