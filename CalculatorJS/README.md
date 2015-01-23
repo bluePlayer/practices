@@ -9,9 +9,9 @@ the important namespace/module pattern from the book.
 
 The application works with all the features but it may still contain bugs or unfinished parts. I am planning to write automated JavaScript tests 
 in Jasmine.js or Prototype.js. 
-I removed history feature as it will take lot of time to develop. Probably in some of the nex releases. 
+I removed history feature as it will take lot of time to develop. Probably in some of the next releases. 
 
-Go ahead and test it for me if possible.
+Go ahead and test it for me if possible, at: http://calculator-blueplayer.rhcloud.com/
 
 Thanks, Vlado.
 
