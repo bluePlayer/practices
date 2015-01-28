@@ -90,10 +90,18 @@
                          * @module APP
                          * @class APP
                          */
-                        window.APP = window.APP || (function (global) {&#x27;use strict&#x27;;
+                        window.APP = window.APP || (function (windowDocumentObject) {&#x27;use strict&#x27;;
                         
-                            var name = &quot;Calculator&quot;,
-                                version = &quot;1.0.0&quot;;
+                            var version = &quot;1.0.0&quot;,
+                                config = {},
+                                APP_NAME = &quot;Calculator&quot;,
+                                CONST_MAP_STR = &quot;constMap&quot;,
+                                DOM_CONTENT_LOADED_EVENT_STR = &quot;DOMContentLoaded&quot;,
+                                MEMORY_LABEL = &quot;memoryLabel&quot;,
+                                DIGITS_FIELD = &quot;digitsField&quot;,
+                                OPERATION_FIELD = &quot;operationField&quot;,
+                                CANNOT_PARSE_PARAM_STR = &quot;Cannot parse parameter value. It must be in a string format!&quot;,
+                                CLASS_DO_NOT_CONTAIN_CONST_MAP = &quot;The given module does not contain constants map!&quot;;
                         
                             return {
                         
@@ -109,13 +117,43 @@
                                 opField: &#x27;&#x27;,
                                 eraseDigits: true,
                         
+                                constMap: {
+                        
+                                    /**
+                                     * Constant function. Returns &quot;constMap&quot; string
+                                     * @method CONST_MAP_STR
+                                     * @return {String} 
+                                     */
+                                    CONST_MAP_STR: function () {
+                                        return CONST_MAP_STR;
+                                    },
+                        
+                                    /**
+                                     * Constant function. Returns &quot;DOMContentLoaded&quot; string
+                                     * @method DOM_CONTENT_LOADED_EVENT_STR
+                                     * @return {String} 
+                                     */
+                                    DOM_CONTENT_LOADED_EVENT_STR: function () {
+                                        return DOM_CONTENT_LOADED_EVENT_STR;
+                                    },
+                        
+                                    /**
+                                     * Constant function. Returns application&#x27;s name as a string value.
+                                     * @method APP_NAME
+                                     * @return {String}
+                                     */
+                                    APP_NAME: function () {
+                                        return APP_NAME;
+                                    }
+                                },
+                        
                                 /**
-                                 * Returns application&#x27;s name as a string value.
-                                 * @method getName
-                                 * @return {String} Returs the application&#x27;s name in string format. 
+                                 * Returns application&#x27;s configuration in JavaScript object format.
+                                 * @method appConfiguration
+                                 * @return {Object} Returs the application&#x27;s version in string format. 
                                  */
-                                getName: function () {
-                                    return name;
+                                appConfiguration: function () {
+                                    return config;
                                 },
                         
                                 /**
@@ -128,9 +166,87 @@
                                 },
                         
                                 /**
-                                 * Prints the application&#x27;s internal state in console.
+                                 * arrayContains() is a function that returns true if a given element is present in the given array or false otherwise.
+                                 * @method arrayContains
+                                 * @param {Array} array An array object in which we search for a given element.
+                                 * @param {Object} element A given element that can be object, number or string. 
+                                 * @return {Boolean} True if the element is present in the array or false otherwise.
+                                 */
+                                arrayContains: function (array, element) {
+                                    var i = 0,
+                                        contains = false;
+                        
+                                    while (!contains) {
+                                        if (array[i] === element) {
+                                            contains = true;
+                                        } else {
+                                            i += 1;
+                                        }
+                                    }
+                        
+                                    return contains;
+                                },
+                        
+                                /**
+                                 * getConst() is a shortcut function for accessing a constant value. Example: Let just say APP.Math class has a constant PI with value of 3.14
+                                 * How would you access it, using getConst() shotcut function? You call APP.getConst(&#x27;APP.Math.constMap.PI&#x27;); So the parameter must be in string format
+                                 * and must contain the subkey &#x27;constMap&#x27;. When using APP.namespace() function the newly created subclass/subobject always contains constMap
+                                 * subobject with keys for each constant. So if you call APP.namespace(&#x27;Math&#x27;, {PI: 3.14}); if you search the DOM tree, Math will already contain
+                                 * constMap = {PI: &quot;PI&quot;}; 
+                                 * @method getConst
+                                 * @param {String} constName path of the contants in a given class or subclass.
+                                 * @return {Object} Returns the value of the required contant or string error if something went wrong.
+                                 */
+                                getConst: function (constName) {
+                                    var keysArray = [],
+                                        module = this,
+                                        i = 1,
+                                        result = {};
+                                    if (typeof constName === &#x27;string&#x27;) {
+                                        keysArray = constName.split(&#x27;.&#x27;);
+                                        if (this.arrayContains(keysArray, CONST_MAP_STR) !== false) {
+                                            while (keysArray[i] !== CONST_MAP_STR) {
+                                                module = module[keysArray[i]];
+                                                i += 1;
+                                            }
+                                            result = module.Constants.get(keysArray[keysArray.length - 1]);
+                                        } else {
+                                            result = CLASS_DO_NOT_CONTAIN_CONST_MAP;
+                                        }
+                                    } else {
+                                        result = CANNOT_PARSE_PARAM_STR;
+                                    }
+                                    return result;
+                                },
+                        
+                                /**
+                                 * listContants() prints all the contants in a given class. Example: APP.list(&#x27;APP.Math&#x27;); will list all constants like PI: 3.14, E: 2.17 etc...
+                                 * @method listContants
+                                 * @param {String} className Must be a string of keys separated by dot, like so: &#x27;APP.Math.Trigonometry&#x27;
+                                 * @return {Object} Returns true if the list of constants was generated or sends error message if the parameter was not in a string format.
+                                 */
+                                listContants: function (className) {
+                                    var keysArray = [],
+                                        module = this,
+                                        i = 1,
+                                        result = &#x27;&#x27;;
+                                    if (typeof className === &#x27;string&#x27;) {
+                                        keysArray = className.split(&#x27;.&#x27;);
+                                        for (i = 1; i &lt; keysArray.length; i += 1) {
+                                            module = module[keysArray[i]];
+                                        }
+                                        module.Constants.list();
+                                        result = true;
+                                    } else {
+                                        result = CANNOT_PARSE_PARAM_STR;
+                                    }
+                                    return result;
+                                },
+                        
+                                /**
+                                 * Prints the application&#x27;s internal state.
                                  * @method printData
-                                 * @return {Object} Returs the main APP object. 
+                                 * @return {Object} Returs object of all necessary variables for printing in console.
                                  */
                                 printData: function () {
                                     var props = {
@@ -144,8 +260,7 @@
                                         operationField: this.operationField,
                                         opField: this.opField
                                     };
-                                    console.dir(props);
-                                    return this;
+                                    return props;
                                 },
                         
                                 /**
@@ -154,10 +269,10 @@
                                  * that cannot be changed with Firebug or other debugging tool. 
                                  * @class Constants
                                  * @contructor Constants
-                                 * @param {Object} constMapObject
-                                 * @return {Object} Returs object with functions necessary to define new constant and prevent its change. 
+                                 * @param {Object} constMap
+                                 * @return {Object} Returns object with functions necessary to define new constant and prevent its change. 
                                  */
-                                Constants: function (constMapObject) {
+                                Constants: function (constMap) {
                                     var constants = {},
                                         ownProp = Object.prototype.hasOwnProperty,
                                         allowed = {
@@ -169,9 +284,13 @@
                         
                                     return {
                         
+                                        constMap: constMap,
+                        
                                         /**
-                                         * Creates new immuatble constant. 
+                                         * Creates new immutable constant. 
                                          * @method set
+                                         * @param {String} name
+                                         * @param {Object} value
                                          * @return {Boolean} Returs true if new constant is created or false otherwise.
                                          */
                                         set: function (name, value) {
@@ -183,15 +302,15 @@
                                             }
                         
                                             constants[prefix + name] = value;
-                                            /**
-                                             * @todo use constMapObject to create new constant key in the given constants map object. 
-                                             */
+                                            this.constMap[name] = name;
+                        
                                             return true;
                                         },
                         
                                         /**
                                          * Creates new immuatble constant. 
                                          * @method isDefined
+                                         * @param {String} name
                                          * @return {Boolean} Returs true if new constant is created or false otherwise.
                                          */
                                         isDefined: function (name) {
@@ -201,6 +320,7 @@
                                         /**
                                          * Returns the value of the required constant. 
                                          * @method get
+                                         * @param {String} name
                                          * @return {Object} Returns the value of the required constant. 
                                          */
                                         get: function (name) {
@@ -211,21 +331,24 @@
                                         },
                         
                                         /**
-                                         * Lists all constants with their values in array like format. Useful in JavaScript console. 
+                                         * Lists all constants with their values in array like format. Print the returned object in console. 
                                          * @method list
+                                         * @return {Object} list of constants with their names in JavaScript object format.
                                          */
                                         list: function () {
                                             var index = 0,
                                                 newStr = &quot;&quot;,
-                                                constant = &#x27;&#x27;;
+                                                constant = &#x27;&#x27;,
+                                                resultObject = {};
                         
                                             for (constant in constants) {
                                                 if (constants.hasOwnProperty(constant)) {
                                                     index = constant.indexOf(&#x27;_&#x27;);
                                                     newStr = constant.substr(index + 1);
-                                                    console.log(newStr + &quot;: &quot; + constants[constant]);
+                                                    resultObject[newStr] = constants[constant];
                                                 }
                                             }
+                                            return resultObject;
                                         }
                                     };
                                 },
@@ -236,9 +359,10 @@
                                  * subobject &#x27;namespace&#x27;. 
                                  * @class APP
                                  * @method namespace
-                                 * @param {String} String describing the namespace of objects separated by a dots. 
-                                 * @param {Object} And object to initialize each of the newly created subobject. If you add a property with all caps it will consider it as a
-                                 * constant and therefore use Constants object to create new constant that cannot be changed using Firebug and console. 
+                                 * @param {String} nsString String describing the namespace of objects separated by a dots. 
+                                 * @param {Object} newObjectDefinition And object to initialize each of the newly created subobject. If you add a property with all caps 
+                                 * it will consider it as a constant and therefore use Constants object to create new constant that cannot be changed using Firebug 
+                                 * or other browser debugging interface. 
                                  * @return {Object} Returns the new object that represents the new namespace of objects and subobjects, defined by the dots in the string
                                  * argument.
                                  */
@@ -249,10 +373,10 @@
                                         i = 0,
                                         property = {};
                         
-                                    newObject.Constants = new this.Constants();
                                     newObject.constMap = {};
+                                    newObject.Constants = new this.Constants(newObject.constMap);
                         
-                                    if (parts[0] === this.getName()) {
+                                    if (parts[0] === this.constMap.APP_NAME()) {
                                         parts = parts.slice(1);
                                     }
                         
@@ -261,8 +385,11 @@
                                             for (property in newObjectDefinition) {
                                                 if (newObjectDefinition.hasOwnProperty(property)) {
                                                     if (property === property.toUpperCase()) {
-                                                        newObject.Constants.set(property, newObjectDefinition[property]);
-                                                        newObject.constMap[property] = property;
+                                                        if (typeof newObjectDefinition[property] !== &#x27;function&#x27;) {
+                                                            newObject.Constants.set(property, newObjectDefinition[property]);
+                                                        } else {
+                                                            newObject.constMap[property] = newObjectDefinition[property];
+                                                        }
                                                     } else {
                                                         newObject[property] = newObjectDefinition[property];
                                                     }
@@ -277,29 +404,30 @@
                                 },
                         
                                 /**
-                                 * Creates new immutable constant of the main application object.
+                                 * Creates new immutable constant of the main application object. It is called upon page load, so
+                                 * all necessary initializations which cannot be called before page load should be called in this function. 
                                  * @method init
-                                 * @return {Object} Returs the main APP object. false if the creation failed somehow. It is called upon page load, so
-                                 * all necessary initializations which cannot be called befor page load should be called in this function. 
+                                 * @param {Object} configObject
+                                 * @return {Object} Returs the main APP object. Returns Error object if the creation failed somehow. 
                                  */
-                                init: function (config) {
+                                init: function (configObject) {
                                     try {
-                                        this.memoryLabelField = global.getElementById(&#x27;memoryLabel&#x27;);
-                                        this.digitsField = global.getElementById(&#x27;digitsField&#x27;);
+                                        config = configObject;
+                                        this.memoryLabelField = windowDocumentObject.getElementById(MEMORY_LABEL);
+                                        this.digitsField = windowDocumentObject.getElementById(DIGITS_FIELD);
                                         this.digitsField.value = &#x27;0&#x27;;
-                                        this.operationField = global.getElementById(&#x27;operationField&#x27;);
+                                        this.operationField = windowDocumentObject.getElementById(OPERATION_FIELD);
                                         this.operationField.value = &#x27;&#x27;;
                                         return this;
                                     } catch (error) {
-                                        console.log(error.message);
-                                        return error.message;
+                                        return error;
                                     }
                                 },
                         
                                 /**
                                  * Parses string value into decimal integer number if possible, and then returns the result.
                                  * @method myParseInt
-                                 * @param param param string value that should be a number.
+                                 * @param {String} param string value that should be a number.
                                  * @return {Number} Returns decimal integer representation of given string value.
                                  */
                                 myParseInt: function (param) {
@@ -309,7 +437,7 @@
                                 /**
                                  * Parses string value into decimal floating point number if possible, and then returns the result.
                                  * @method myParseFloat
-                                 * @param param string value that should be a number.
+                                 * @param {String} param string value that should be a number.
                                  * @return {Number} Returns decimal floating point representation of given string value.
                                  */
                                 myParseFloat: function (param) {
@@ -318,7 +446,7 @@
                             };
                             }(window.document));
                         
-                        window.document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {&#x27;use strict&#x27;;
+                        window.document.addEventListener(window.APP.constMap.DOM_CONTENT_LOADED_EVENT_STR(), function (event) {&#x27;use strict&#x27;;
                             window.APP.init({&quot;event&quot;: event});
                             });
                         
@@ -328,10 +456,28 @@
                          * @module APP
                          */
                         window.APP.namespace(&#x27;Main&#x27;, (function () {&#x27;use strict&#x27;;
-                            var parent = window.APP;
+                        
+                            var INVALID_INPUT_STR = &quot;Invalid input!&quot;,
+                                CANNOT_DIVIDE_BY_ZERO_STR = &quot;Cannot divide by zero!&quot;;
+                        
                             return {
-                                test: function () {
-                                    console.dir(parent);
+                        
+                                /**
+                                 * Constant function. Returns &quot;Invalid input!&quot; string.
+                                 * @method INVALID_INPUT_MESSAGE
+                                 * @return {String}
+                                 */
+                                INVALID_INPUT_MESSAGE: function () {
+                                    return INVALID_INPUT_STR;
+                                },
+                        
+                                /**
+                                 * Constant function. Returns &quot;Cannot divide by zero!&quot; string.
+                                 * @method CANNOT_DIVIDE_BY_ZERO_MESSAGE
+                                 * @return {String}
+                                 */
+                                CANNOT_DIVIDE_BY_ZERO_MESSAGE: function () {
+                                    return CANNOT_DIVIDE_BY_ZERO_STR;
                                 }
                             };
                             }()));
@@ -346,6 +492,7 @@
                         window.APP.namespace(&#x27;Aritmetic&#x27;, (function () {&#x27;use strict&#x27;;
                             var parent = window.APP;
                             return {
+                        
                                 /**
                                  * Divide method. Divides &quot;result&quot; operand with the value in the display field. It also checks for division by zero.
                                  * @method divide
@@ -356,7 +503,7 @@
                                     } else if (parent.dgField !== &#x27;0&#x27;) {
                                         parent.result = parent.myParseFloat(parent.result) / parent.myParseFloat(parent.dgField);
                                     } else {
-                                        parent.dgField = &quot;Cannot divide by zero&quot;;
+                                        parent.dgField = parent.Main.constMap.CANNOT_DIVIDE_BY_ZERO_MESSAGE();
                                     }
                                     parent.opField += parent.dgField + &quot; &quot; + parent.operation + &quot; &quot;;
                                     parent.dgField = parent.result;
@@ -430,7 +577,6 @@
                                                 parent.opField = parent.opField + &#x27;0&#x27;;
                                             }
                                             parent.dgField = &#x27;0&#x27;;
-                                            parent.printData();
                                         } else {
                                             sum = parent.myParseFloat(parent.result);
                                             percent = parent.myParseFloat(parent.dgField);
@@ -454,15 +600,30 @@
                          * @module APP
                          */
                         window.APP.namespace(&#x27;Buttons&#x27;, (function () {&#x27;use strict&#x27;;
-                            var parent = window.APP;
+                            var parent = window.APP,
+                                MC = &#x27;MC&#x27;,
+                                MR = &#x27;MR&#x27;,
+                                MS = &#x27;MS&#x27;,
+                                M_PLUS = &#x27;M+&#x27;,
+                                M_MINUS = &#x27;M-&#x27;,
+                                SQRT = &#x27;sqrt&#x27;,
+                                RECIPROC = &#x27;1/x&#x27;,
+                                NEGATE = &#x27;+/-&#x27;,
+                                PLUS = &#x27;+&#x27;,
+                                MINUS = &#x27;-&#x27;,
+                                MULTIPLY = &#x27;*&#x27;,
+                                DIVIDE = &#x27;/&#x27;,
+                                PERCENT = &#x27;%&#x27;;
+                        
                             return {
+                        
                                 /**
                                  * pressNumber method (called upon pressing one of 0, 1, 2, 3, 4, 5, 6, 7, 8 or 9 buttons) is a method that receives one parameter
                                  * in string format from one of these &#x27;1&#x27;, &#x27;2&#x27;, ..., &#x27;9&#x27;. If eraseData key is true, digits field value is cleared and number param value is 
                                  * concatenated to digits field, then eraseData is set to false. If eraseData is set to false then any new number button pressed concatenates
                                  * its value to digits display field without clearing digits field previous value. 
                                  * @method pressNumber
-                                 * @param number number value in string format. It may be some of these values &#x27;1&#x27;, &#x27;2&#x27;, ..., &#x27;9&#x27;
+                                 * @param {Number} number value in string format. It may be some of these values &#x27;1&#x27;, &#x27;2&#x27;, ..., &#x27;9&#x27;
                                  */
                                 pressNumber: function (number) {
                                     parent.dgField = parent.digitsField.value;
@@ -486,7 +647,7 @@
                                  * recieves some of these values: &#x27;sqrt&#x27;, &#x27;1/x&#x27;, &#x27;+/-&#x27;. It needs only one operand to work
                                  * since the operations are unary. It also takes cleares the operations text field from uncessary rubbish text.
                                  * @method pressUnaryOperation
-                                 * @param op operation value in string format. It may be some of these values &#x27;sqrt&#x27;(square root), &#x27;1/x&#x27;(reciproc), &#x27;+/-&#x27;(negate).
+                                 * @param {String} op operation value in string format. It may be some of these values &#x27;sqrt&#x27;(square root), &#x27;1/x&#x27;(reciproc), &#x27;+/-&#x27;(negate).
                                  */
                                 pressUnaryOperation: function (op) {
                                     var index = 0;
@@ -502,25 +663,25 @@
                                     }
                         
                                     switch (op) {
-                                    case &#x27;sqrt&#x27;:
+                                    case SQRT:
                                         parent.operandStr = (parent.operandStr === &#x27;&#x27; ? &quot;sqrt(&quot; + parent.operand + &quot;)&quot; : &quot;sqrt(&quot; + parent.operandStr + &quot;)&quot;);
                                         if (parent.operand &lt; 0) {
-                                            parent.dgField = &quot;invalid input&quot;;
+                                            parent.dgField = parent.constMap.INVALID_INPUT_MESSAGE();
                                         } else {
                                             parent.dgField = Math.sqrt(parent.operand);
                                             parent.result = parent.dgField;
                                         }
                                         break;
-                                    case &#x27;1/x&#x27;:
+                                    case RECIPROC:
                                         parent.operandStr = (parent.operandStr === &#x27;&#x27; ? &quot;reciproc(&quot; + parent.operand + &quot;)&quot; : &quot;reciproc(&quot; + parent.operandStr + &quot;)&quot;);
                                         if (parent.operand === 0) {
-                                            parent.dgField = &quot;Cannot divide by zero&quot;;
+                                            parent.dgField = parent.constMap.CANNOT_DIVIDE_BY_ZERO_MESSAGE();
                                         } else {
                                             parent.dgField = 1 / parent.operand;
                                             parent.result = parent.dgField;
                                         }
                                         break;
-                                    case &#x27;+/-&#x27;:
+                                    case NEGATE:
                                         if (parent.result === &#x27;&#x27;) {
                                             if (parent.dgField !== &#x27;0&#x27;) {
                                                 if (parent.dgField.indexOf(&#x27;-&#x27;) === -1) {
@@ -545,8 +706,6 @@
                                     parent.opField += parent.operandStr;
                                     parent.operationField.value = parent.opField;
                                     parent.digitsField.value = parent.dgField;
-                        
-                                    parent.printData();
                                 },
                         
                                 /**
@@ -554,37 +713,36 @@
                                  * recieves one parameter in string format from these values: &#x27;+&#x27;, &#x27;-&#x27;, &#x27;/&#x27;, &#x27;*&#x27;, &#x27;%&#x27;. It therefore calculates the result and 
                                  * displays it in the digits display field according to the given operation type.
                                  * @method pressBinaryOperation
-                                 * @param op operation in string format from these values: &#x27;+&#x27;, &#x27;-&#x27;, &#x27;/&#x27;, &#x27;*&#x27;, &#x27;%&#x27;
+                                 * @param {String} op operation in string format from these values: &#x27;+&#x27;, &#x27;-&#x27;, &#x27;/&#x27;, &#x27;*&#x27;, &#x27;%&#x27;
                                  */
                                 pressBinaryOperation: function (op) {
                                     parent.dgField = parent.digitsField.value;
                                     parent.opField = parent.operationField.value;
-                                    if (op !== &#x27;%&#x27;) {
+                                    if (op !== PERCENT) {
                                         parent.operation = op;
                                     }
                                     parent.eraseDigits = true;
                         
                                     switch (op) {
-                                    case &#x27;/&#x27;:
+                                    case DIVIDE:
                                         parent.Aritmetic.divide();
                                         break;
-                                    case &#x27;*&#x27;:
+                                    case MULTIPLY:
                                         parent.Aritmetic.multiply();
                                         break;
-                                    case &#x27;+&#x27;:
+                                    case PLUS:
                                         parent.Aritmetic.add();
                                         break;
-                                    case &#x27;-&#x27;:
+                                    case MINUS:
                                         parent.Aritmetic.subtract();
                                         break;
-                                    case &#x27;%&#x27;:
+                                    case PERCENT:
                                         parent.Aritmetic.percent();
                                         break;
                                     }
                         
                                     parent.digitsField.value = parent.dgField;
                                     parent.operationField.value = parent.opField;
-                                    parent.printData();
                                 },
                         
                                 /**
@@ -653,17 +811,16 @@
                                     parent.dgField = parent.digitsField.value;
                         
                                     if (parent.result !== &#x27;&#x27;) {
-                                        if (parent.operation === &#x27;+&#x27;) {
+                                        if (parent.operation === PLUS) {
                                             parent.Aritmetic.add();
-                                        } else if (parent.operation === &#x27;-&#x27;) {
+                                        } else if (parent.operation === MINUS) {
                                             parent.Aritmetic.subtract();
-                                        } else if (parent.operation === &#x27;*&#x27;) {
+                                        } else if (parent.operation === MULTIPLY) {
                                             parent.Aritmetic.multiply();
-                                        } else if (parent.operation === &#x27;/&#x27;) {
+                                        } else if (parent.operation === DIVIDE) {
                                             parent.Aritmetic.divide();
                                         }
                                         parent.result = &#x27;&#x27;;
-                                        parent.printData();
                                         parent.operation = &#x27;&#x27;;
                                     } else {
                                         parent.result = parent.dgField;
@@ -679,16 +836,16 @@
                                  * MR button sets digits field value to zero if parent.memory is empty or to parent.memory value if not empty. 
                                  * MC sets parent.memory property to empty string and hides M label from view.
                                  * @method pressMemoryButton
-                                 * @param memoryStr string value which can be some these MC, MR, MS, M+, M-
+                                 * @param {String} memoryStr string value which can be some these MC, MR, MS, M+, M-
                                  */
                                 pressMemoryButton: function (memoryStr) {
                                     parent.dgField = parent.digitsField.value;
                                     switch (memoryStr) {
-                                    case &#x27;MC&#x27;:
+                                    case MC:
                                         parent.memoryLabelField.value = &#x27;&#x27;;
                                         parent.memory = &#x27;&#x27;;
                                         break;
-                                    case &#x27;MR&#x27;:
+                                    case MR:
                                         if (parent.memory === &#x27;&#x27;) {
                                             parent.dgField = &#x27;0&#x27;;
                                         } else {
@@ -697,7 +854,7 @@
                                         parent.digitsField.value = parent.dgField;
                                         parent.eraseDigits = true;
                                         break;
-                                    case &#x27;MS&#x27;:
+                                    case MS:
                                         if (parent.dgField !== &#x27;0&#x27; || parent.dgField !== &#x27;0.&#x27;) {
                                             parent.memory = parent.dgField;
                                             parent.memoryLabelField.value = &#x27;M = &#x27; + parent.dgField;
@@ -706,13 +863,13 @@
                                         }
                                         parent.eraseDigits = true;
                                         break;
-                                    case &#x27;M+&#x27;:
+                                    case M_PLUS:
                                         if (parent.memory !== &#x27;&#x27;) {
                                             parent.memory = parent.myParseFloat(parent.memory) + parent.myParseFloat(parent.dgField);
                                             parent.memoryLabelField.value = &#x27;M = &#x27; + parent.memory;
                                         }
                                         break;
-                                    case &#x27;M-&#x27;:
+                                    case M_MINUS:
                                         if (parent.memory !== &#x27;&#x27;) {
                                             parent.memory = parent.myParseFloat(parent.memory) - parent.myParseFloat(parent.dgField);
                                             parent.memoryLabelField.value = &#x27;M = &#x27; + parent.memory;

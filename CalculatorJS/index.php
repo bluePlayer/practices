@@ -61,13 +61,6 @@
                 <td><input type="button" value="," class="button" onclick="APP.Buttons.pressComma();"/></td>
                 <td><input type="button" value="+" class="button" onclick="APP.Buttons.pressBinaryOperation('+');"/></td>
             </tr>
-            <!--<tr>
-                <td colspan = "5">
-                    <select name="history" size = "5" class = "textField">
-                        <option value="value1">this area will show history</option> 
-                    </select>
-                </td>
-            </tr>-->
         </table>
         <script type="text/javascript" src="js/calc.min.js"></script>
     </body>

@@ -2,11 +2,20 @@
  * Main application module that contains all necessary classes/objects,
  * methods and properties for the Calculator application.
  * @module APP
+ * @class APP
  */
-window.APP = window.APP || (function (global) {'use strict';
+window.APP = window.APP || (function (windowDocumentObject) {'use strict';
 
-    var name = "Calculator",
-        version = "1.0.0";
+    var version = "1.0.0",
+        config = {},
+        APP_NAME = "Calculator",
+        CONST_MAP_STR = "constMap",
+        DOM_CONTENT_LOADED_EVENT_STR = "DOMContentLoaded",
+        MEMORY_LABEL = "memoryLabel",
+        DIGITS_FIELD = "digitsField",
+        OPERATION_FIELD = "operationField",
+        CANNOT_PARSE_PARAM_STR = "Cannot parse parameter value. It must be in a string format!",
+        CLASS_DO_NOT_CONTAIN_CONST_MAP = "The given module does not contain constants map!";
 
     return {
 
@@ -22,19 +31,47 @@ window.APP = window.APP || (function (global) {'use strict';
         opField: '',
         eraseDigits: true,
 
+        constMap: {
+
+            /**
+             * Constant function. Returns "constMap" string
+             * @method CONST_MAP_STR
+             * @return {String} 
+             */
+            CONST_MAP_STR: function () {
+                return CONST_MAP_STR;
+            },
+
+            /**
+             * Constant function. Returns "DOMContentLoaded" string
+             * @method DOM_CONTENT_LOADED_EVENT_STR
+             * @return {String} 
+             */
+            DOM_CONTENT_LOADED_EVENT_STR: function () {
+                return DOM_CONTENT_LOADED_EVENT_STR;
+            },
+
+            /**
+             * Constant function. Returns application's name as a string value.
+             * @method APP_NAME
+             * @return {String}
+             */
+            APP_NAME: function () {
+                return APP_NAME;
+            }
+        },
+
         /**
-         * Returns application's name as a string value.
-         * @class APP
-         * @method getName
-         * @return {String} Returs the application's name in string format. 
+         * Returns application's configuration in JavaScript object format.
+         * @method appConfiguration
+         * @return {Object} Returs the application's version in string format. 
          */
-        getName: function () {
-            return name;
+        appConfiguration: function () {
+            return config;
         },
 
         /**
          * Returns application's version as a string value.
-         * @class APP
          * @method getVersion
          * @return {String} Returs the application's version in string format. 
          */
@@ -43,10 +80,87 @@ window.APP = window.APP || (function (global) {'use strict';
         },
 
         /**
-         * Prints the application's internal state in console.
-         * @class APP
+         * arrayContains() is a function that returns true if a given element is present in the given array or false otherwise.
+         * @method arrayContains
+         * @param {Array} array An array object in which we search for a given element.
+         * @param {Object} element A given element that can be object, number or string. 
+         * @return {Boolean} True if the element is present in the array or false otherwise.
+         */
+        arrayContains: function (array, element) {
+            var i = 0,
+                contains = false;
+
+            while (!contains) {
+                if (array[i] === element) {
+                    contains = true;
+                } else {
+                    i += 1;
+                }
+            }
+
+            return contains;
+        },
+
+        /**
+         * getConst() is a shortcut function for accessing a constant value. Example: Let just say APP.Math class has a constant PI with value of 3.14
+         * How would you access it, using getConst() shotcut function? You call APP.getConst('APP.Math.constMap.PI'); So the parameter must be in string format
+         * and must contain the subkey 'constMap'. When using APP.namespace() function the newly created subclass/subobject always contains constMap
+         * subobject with keys for each constant. So if you call APP.namespace('Math', {PI: 3.14}); if you search the DOM tree, Math will already contain
+         * constMap = {PI: "PI"}; 
+         * @method getConst
+         * @param {String} constName path of the contants in a given class or subclass.
+         * @return {Object} Returns the value of the required contant or string error if something went wrong.
+         */
+        getConst: function (constName) {
+            var keysArray = [],
+                module = this,
+                i = 1,
+                result = {};
+            if (typeof constName === 'string') {
+                keysArray = constName.split('.');
+                if (this.arrayContains(keysArray, CONST_MAP_STR) !== false) {
+                    while (keysArray[i] !== CONST_MAP_STR) {
+                        module = module[keysArray[i]];
+                        i += 1;
+                    }
+                    result = module.Constants.get(keysArray[keysArray.length - 1]);
+                } else {
+                    result = CLASS_DO_NOT_CONTAIN_CONST_MAP;
+                }
+            } else {
+                result = CANNOT_PARSE_PARAM_STR;
+            }
+            return result;
+        },
+
+        /**
+         * listContants() prints all the contants in a given class. Example: APP.list('APP.Math'); will list all constants like PI: 3.14, E: 2.17 etc...
+         * @method listContants
+         * @param {String} className Must be a string of keys separated by dot, like so: 'APP.Math.Trigonometry'
+         * @return {Object} Returns true if the list of constants was generated or sends error message if the parameter was not in a string format.
+         */
+        listContants: function (className) {
+            var keysArray = [],
+                module = this,
+                i = 1,
+                result = '';
+            if (typeof className === 'string') {
+                keysArray = className.split('.');
+                for (i = 1; i < keysArray.length; i += 1) {
+                    module = module[keysArray[i]];
+                }
+                module.Constants.list();
+                result = true;
+            } else {
+                result = CANNOT_PARSE_PARAM_STR;
+            }
+            return result;
+        },
+
+        /**
+         * Prints the application's internal state.
          * @method printData
-         * @return {Object} Returs the main APP object. 
+         * @return {Object} Returs object of all necessary variables for printing in console.
          */
         printData: function () {
             var props = {
@@ -60,19 +174,19 @@ window.APP = window.APP || (function (global) {'use strict';
                 operationField: this.operationField,
                 opField: this.opField
             };
-            console.dir(props);
-            return this;
+            return props;
         },
 
         /**
          * Constants is a contructor so it should be called with new keyword. Each object should have its own Constants object.
          * Creates object of four functions, set(), isDefined(), list() and get() which enable creation of new immutable constant
          * that cannot be changed with Firebug or other debugging tool. 
-         * @class APP
-         * @method Constants
-         * @return {Object} Returs object with functions necessary to define new constant and prevent its change. 
+         * @class Constants
+         * @contructor Constants
+         * @param {Object} constMap
+         * @return {Object} Returns object with functions necessary to define new constant and prevent its change. 
          */
-        Constants: function (constMapObject) {
+        Constants: function (constMap) {
             var constants = {},
                 ownProp = Object.prototype.hasOwnProperty,
                 allowed = {
@@ -84,10 +198,13 @@ window.APP = window.APP || (function (global) {'use strict';
 
             return {
 
+                constMap: constMap,
+
                 /**
-                 * Creates new immuatble constant. 
-                 * @class Constants
+                 * Creates new immutable constant. 
                  * @method set
+                 * @param {String} name
+                 * @param {Object} value
                  * @return {Boolean} Returs true if new constant is created or false otherwise.
                  */
                 set: function (name, value) {
@@ -99,16 +216,15 @@ window.APP = window.APP || (function (global) {'use strict';
                     }
 
                     constants[prefix + name] = value;
-                    /**
-                     * @todo use constMapObject to create new constant key in the given constants map object. 
-                     */
+                    this.constMap[name] = name;
+
                     return true;
                 },
 
                 /**
                  * Creates new immuatble constant. 
-                 * @class Constants
                  * @method isDefined
+                 * @param {String} name
                  * @return {Boolean} Returs true if new constant is created or false otherwise.
                  */
                 isDefined: function (name) {
@@ -117,8 +233,8 @@ window.APP = window.APP || (function (global) {'use strict';
 
                 /**
                  * Returns the value of the required constant. 
-                 * @class Constants
                  * @method get
+                 * @param {String} name
                  * @return {Object} Returns the value of the required constant. 
                  */
                 get: function (name) {
@@ -129,22 +245,24 @@ window.APP = window.APP || (function (global) {'use strict';
                 },
 
                 /**
-                 * Lists all constants with their values in array like format. Useful in JavaScript console. 
-                 * @class Constants
+                 * Lists all constants with their values in array like format. Print the returned object in console. 
                  * @method list
+                 * @return {Object} list of constants with their names in JavaScript object format.
                  */
                 list: function () {
                     var index = 0,
                         newStr = "",
-                        constant = '';
+                        constant = '',
+                        resultObject = {};
 
                     for (constant in constants) {
                         if (constants.hasOwnProperty(constant)) {
                             index = constant.indexOf('_');
                             newStr = constant.substr(index + 1);
-                            console.log(newStr + ": " + constants[constant]);
+                            resultObject[newStr] = constants[constant];
                         }
                     }
+                    return resultObject;
                 }
             };
         },
@@ -155,9 +273,10 @@ window.APP = window.APP || (function (global) {'use strict';
          * subobject 'namespace'. 
          * @class APP
          * @method namespace
-         * @param {String} String describing the namespace of objects separated by a dots. 
-         * @param {Object} And object to initialize each of the newly created subobject. If you add a property with all caps it will consider it as a
-         * constant and therefore use Constants object to create new constant that cannot be changed using Firebug and console. 
+         * @param {String} nsString String describing the namespace of objects separated by a dots. 
+         * @param {Object} newObjectDefinition And object to initialize each of the newly created subobject. If you add a property with all caps 
+         * it will consider it as a constant and therefore use Constants object to create new constant that cannot be changed using Firebug 
+         * or other browser debugging interface. 
          * @return {Object} Returns the new object that represents the new namespace of objects and subobjects, defined by the dots in the string
          * argument.
          */
@@ -168,10 +287,10 @@ window.APP = window.APP || (function (global) {'use strict';
                 i = 0,
                 property = {};
 
-            newObject.Constants = new this.Constants();
             newObject.constMap = {};
+            newObject.Constants = new this.Constants(newObject.constMap);
 
-            if (parts[0] === this.getName()) {
+            if (parts[0] === this.constMap.APP_NAME()) {
                 parts = parts.slice(1);
             }
 
@@ -180,8 +299,11 @@ window.APP = window.APP || (function (global) {'use strict';
                     for (property in newObjectDefinition) {
                         if (newObjectDefinition.hasOwnProperty(property)) {
                             if (property === property.toUpperCase()) {
-                                newObject.Constants.set(property, newObjectDefinition[property]);
-                                newObject.constMap[property] = property;
+                                if (typeof newObjectDefinition[property] !== 'function') {
+                                    newObject.Constants.set(property, newObjectDefinition[property]);
+                                } else {
+                                    newObject.constMap[property] = newObjectDefinition[property];
+                                }
                             } else {
                                 newObject[property] = newObjectDefinition[property];
                             }
@@ -196,31 +318,30 @@ window.APP = window.APP || (function (global) {'use strict';
         },
 
         /**
-         * Creates new immutable constant of the main application object.
-         * @class APP
+         * Creates new immutable constant of the main application object. It is called upon page load, so
+         * all necessary initializations which cannot be called before page load should be called in this function. 
          * @method init
-         * @return {Object} Returs the main APP object. false if the creation failed somehow. It is called upon page load, so
-         * all necessary initializations which cannot be called befor page load should be called in this function. 
+         * @param {Object} configObject
+         * @return {Object} Returs the main APP object. Returns Error object if the creation failed somehow. 
          */
-        init: function (config) {
+        init: function (configObject) {
             try {
-                this.memoryLabelField = global.getElementById('memoryLabel');
-                this.digitsField = global.getElementById('digitsField');
+                config = configObject;
+                this.memoryLabelField = windowDocumentObject.getElementById(MEMORY_LABEL);
+                this.digitsField = windowDocumentObject.getElementById(DIGITS_FIELD);
                 this.digitsField.value = '0';
-                this.operationField = global.getElementById('operationField');
+                this.operationField = windowDocumentObject.getElementById(OPERATION_FIELD);
                 this.operationField.value = '';
                 return this;
             } catch (error) {
-                console.log(error.message);
-                return error.message;
+                return error;
             }
         },
 
         /**
          * Parses string value into decimal integer number if possible, and then returns the result.
-         * @class APP
          * @method myParseInt
-         * @param param param string value that should be a number.
+         * @param {String} param string value that should be a number.
          * @return {Number} Returns decimal integer representation of given string value.
          */
         myParseInt: function (param) {
@@ -229,9 +350,8 @@ window.APP = window.APP || (function (global) {'use strict';
 
         /**
          * Parses string value into decimal floating point number if possible, and then returns the result.
-         * @class APP
          * @method myParseFloat
-         * @param param string value that should be a number.
+         * @param {String} param string value that should be a number.
          * @return {Number} Returns decimal floating point representation of given string value.
          */
         myParseFloat: function (param) {
@@ -240,7 +360,7 @@ window.APP = window.APP || (function (global) {'use strict';
     };
     }(window.document));
 
-window.document.addEventListener("DOMContentLoaded", function (event) {'use strict';
+window.document.addEventListener(window.APP.constMap.DOM_CONTENT_LOADED_EVENT_STR(), function (event) {'use strict';
     window.APP.init({"event": event});
     });
 
@@ -250,10 +370,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {'use stri
  * @module APP
  */
 window.APP.namespace('Main', (function () {'use strict';
-    var parent = window.APP;
+
+    var INVALID_INPUT_STR = "Invalid input!",
+        CANNOT_DIVIDE_BY_ZERO_STR = "Cannot divide by zero!";
+
     return {
-        test: function () {
-            console.dir(parent);
+
+        /**
+         * Constant function. Returns "Invalid input!" string.
+         * @method INVALID_INPUT_MESSAGE
+         * @return {String}
+         */
+        INVALID_INPUT_MESSAGE: function () {
+            return INVALID_INPUT_STR;
+        },
+
+        /**
+         * Constant function. Returns "Cannot divide by zero!" string.
+         * @method CANNOT_DIVIDE_BY_ZERO_MESSAGE
+         * @return {String}
+         */
+        CANNOT_DIVIDE_BY_ZERO_MESSAGE: function () {
+            return CANNOT_DIVIDE_BY_ZERO_STR;
         }
     };
     }()));
@@ -268,9 +406,9 @@ window.APP.namespace('Main', (function () {'use strict';
 window.APP.namespace('Aritmetic', (function () {'use strict';
     var parent = window.APP;
     return {
+
         /**
          * Divide method. Divides "result" operand with the value in the display field. It also checks for division by zero.
-         * @class Aritmetic 
          * @method divide
          */
         divide: function () {
@@ -279,7 +417,7 @@ window.APP.namespace('Aritmetic', (function () {'use strict';
             } else if (parent.dgField !== '0') {
                 parent.result = parent.myParseFloat(parent.result) / parent.myParseFloat(parent.dgField);
             } else {
-                parent.dgField = "Cannot divide by zero";
+                parent.dgField = parent.Main.constMap.CANNOT_DIVIDE_BY_ZERO_MESSAGE();
             }
             parent.opField += parent.dgField + " " + parent.operation + " ";
             parent.dgField = parent.result;
@@ -288,7 +426,6 @@ window.APP.namespace('Aritmetic', (function () {'use strict';
         /**
          * Multiply method. Multiplies "result" operand with the value in the display field.
          * @method multiply
-         * @class Aritmetic 
          */
         multiply: function () {
             if (parent.result === '') {
@@ -303,7 +440,6 @@ window.APP.namespace('Aritmetic', (function () {'use strict';
         /**
          * Add method. Adds "result" operand to the value in the display field.
          * @method add
-         * @class Aritmetic 
          */
         add: function () {
             if (parent.result === '') {
@@ -318,7 +454,6 @@ window.APP.namespace('Aritmetic', (function () {'use strict';
         /**
          * Subtract method. Subtracts the value in the display field from "result" operand.
          * @method subtract
-         * @class Aritmetic 
          */
         subtract: function () {
             if (parent.result === '') {
@@ -340,7 +475,6 @@ window.APP.namespace('Aritmetic', (function () {'use strict';
          * which is 738.15. This same set of tasks applies to all other binary operations so if we used division(/) instead of 
          * adtion(+) the final result would be 3.030303 or (555 / (33% of 555)) = (555 / 183.15)
          * @method percent
-         * @class Aritmetic 
          */
         percent: function () {
             var sum = 0,
@@ -357,7 +491,6 @@ window.APP.namespace('Aritmetic', (function () {'use strict';
                         parent.opField = parent.opField + '0';
                     }
                     parent.dgField = '0';
-                    parent.printData();
                 } else {
                     sum = parent.myParseFloat(parent.result);
                     percent = parent.myParseFloat(parent.dgField);
@@ -381,16 +514,30 @@ window.APP.namespace('Aritmetic', (function () {'use strict';
  * @module APP
  */
 window.APP.namespace('Buttons', (function () {'use strict';
-    var parent = window.APP;
+    var parent = window.APP,
+        MC = 'MC',
+        MR = 'MR',
+        MS = 'MS',
+        M_PLUS = 'M+',
+        M_MINUS = 'M-',
+        SQRT = 'sqrt',
+        RECIPROC = '1/x',
+        NEGATE = '+/-',
+        PLUS = '+',
+        MINUS = '-',
+        MULTIPLY = '*',
+        DIVIDE = '/',
+        PERCENT = '%';
+
     return {
+
         /**
          * pressNumber method (called upon pressing one of 0, 1, 2, 3, 4, 5, 6, 7, 8 or 9 buttons) is a method that receives one parameter
          * in string format from one of these '1', '2', ..., '9'. If eraseData key is true, digits field value is cleared and number param value is 
          * concatenated to digits field, then eraseData is set to false. If eraseData is set to false then any new number button pressed concatenates
          * its value to digits display field without clearing digits field previous value. 
          * @method pressNumber
-         * @param number number value in string format. It may be some of these values '1', '2', ..., '9'
-         * @class Buttons 
+         * @param {Number} number value in string format. It may be some of these values '1', '2', ..., '9'
          */
         pressNumber: function (number) {
             parent.dgField = parent.digitsField.value;
@@ -414,8 +561,7 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * recieves some of these values: 'sqrt', '1/x', '+/-'. It needs only one operand to work
          * since the operations are unary. It also takes cleares the operations text field from uncessary rubbish text.
          * @method pressUnaryOperation
-         * @param op operation value in string format. It may be some of these values 'sqrt'(square root), '1/x'(reciproc), '+/-'(negate).
-         * @class Buttons 
+         * @param {String} op operation value in string format. It may be some of these values 'sqrt'(square root), '1/x'(reciproc), '+/-'(negate).
          */
         pressUnaryOperation: function (op) {
             var index = 0;
@@ -431,25 +577,25 @@ window.APP.namespace('Buttons', (function () {'use strict';
             }
 
             switch (op) {
-            case 'sqrt':
+            case SQRT:
                 parent.operandStr = (parent.operandStr === '' ? "sqrt(" + parent.operand + ")" : "sqrt(" + parent.operandStr + ")");
                 if (parent.operand < 0) {
-                    parent.dgField = "invalid input";
+                    parent.dgField = parent.constMap.INVALID_INPUT_MESSAGE();
                 } else {
                     parent.dgField = Math.sqrt(parent.operand);
                     parent.result = parent.dgField;
                 }
                 break;
-            case '1/x':
+            case RECIPROC:
                 parent.operandStr = (parent.operandStr === '' ? "reciproc(" + parent.operand + ")" : "reciproc(" + parent.operandStr + ")");
                 if (parent.operand === 0) {
-                    parent.dgField = "Cannot divide by zero";
+                    parent.dgField = parent.constMap.CANNOT_DIVIDE_BY_ZERO_MESSAGE();
                 } else {
                     parent.dgField = 1 / parent.operand;
                     parent.result = parent.dgField;
                 }
                 break;
-            case '+/-':
+            case NEGATE:
                 if (parent.result === '') {
                     if (parent.dgField !== '0') {
                         if (parent.dgField.indexOf('-') === -1) {
@@ -474,8 +620,6 @@ window.APP.namespace('Buttons', (function () {'use strict';
             parent.opField += parent.operandStr;
             parent.operationField.value = parent.opField;
             parent.digitsField.value = parent.dgField;
-
-            parent.printData();
         },
 
         /**
@@ -483,45 +627,42 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * recieves one parameter in string format from these values: '+', '-', '/', '*', '%'. It therefore calculates the result and 
          * displays it in the digits display field according to the given operation type.
          * @method pressBinaryOperation
-         * @param op operation in string format from these values: '+', '-', '/', '*', '%'
-         * @class Buttons 
+         * @param {String} op operation in string format from these values: '+', '-', '/', '*', '%'
          */
         pressBinaryOperation: function (op) {
             parent.dgField = parent.digitsField.value;
             parent.opField = parent.operationField.value;
-            if (op !== '%') {
+            if (op !== PERCENT) {
                 parent.operation = op;
             }
             parent.eraseDigits = true;
 
             switch (op) {
-            case '/':
+            case DIVIDE:
                 parent.Aritmetic.divide();
                 break;
-            case '*':
+            case MULTIPLY:
                 parent.Aritmetic.multiply();
                 break;
-            case '+':
+            case PLUS:
                 parent.Aritmetic.add();
                 break;
-            case '-':
+            case MINUS:
                 parent.Aritmetic.subtract();
                 break;
-            case '%':
+            case PERCENT:
                 parent.Aritmetic.percent();
                 break;
             }
 
             parent.digitsField.value = parent.dgField;
             parent.operationField.value = parent.opField;
-            parent.printData();
         },
 
         /**
          * pressComma method (called upon pressing comma(,) button)adds dot to the digits display field. 
          * It there is already a dot it skips adding new one.
          * @method pressComma
-         * @class Buttons 
          */
         pressComma: function () {
             parent.dgField = parent.digitsField.value;
@@ -539,7 +680,6 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * pressUndo method (called upon pressing undo(<-) button) removes one digit from the digits siplay field. 
          * If the digits display field has only one digit, it is set to zero.
          * @method pressUndo
-         * @class Buttons 
          */
         pressUndo: function () {
             parent.dgField = parent.digitsField.value;
@@ -555,7 +695,6 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * pressClearEntry method (called upon pressing clear entry(CE) button) clears the digits display field and sets it to zero. 
          * It doesn't however clear result, operation, memory, operand or operandStr.
          * @method pressClearEntry
-         * @class Buttons 
          */
         pressClearEntry: function () {
             parent.operand = 0;
@@ -566,7 +705,6 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * pressClear method (called upon pressing (C) button) clears all application state except for the memory property which is 
          * used to memorize values that last even after we do many calculations.
          * @method pressClear
-         * @class Buttons 
          */
         pressClear: function () {
             parent.operation = '';
@@ -582,23 +720,21 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * the operation value and applies apropriate binary operation on "result" operand and digits display field value. It then empties result
          * and operation properties.
          * @method calculate
-         * @class Buttons 
          */
         calculate: function () {
             parent.dgField = parent.digitsField.value;
 
             if (parent.result !== '') {
-                if (parent.operation === '+') {
+                if (parent.operation === PLUS) {
                     parent.Aritmetic.add();
-                } else if (parent.operation === '-') {
+                } else if (parent.operation === MINUS) {
                     parent.Aritmetic.subtract();
-                } else if (parent.operation === '*') {
+                } else if (parent.operation === MULTIPLY) {
                     parent.Aritmetic.multiply();
-                } else if (parent.operation === '/') {
+                } else if (parent.operation === DIVIDE) {
                     parent.Aritmetic.divide();
                 }
                 parent.result = '';
-                parent.printData();
                 parent.operation = '';
             } else {
                 parent.result = parent.dgField;
@@ -614,17 +750,16 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * MR button sets digits field value to zero if parent.memory is empty or to parent.memory value if not empty. 
          * MC sets parent.memory property to empty string and hides M label from view.
          * @method pressMemoryButton
-         * @param memoryStr string value which can be some these MC, MR, MS, M+, M-
-         * @class Buttons 
+         * @param {String} memoryStr string value which can be some these MC, MR, MS, M+, M-
          */
         pressMemoryButton: function (memoryStr) {
             parent.dgField = parent.digitsField.value;
             switch (memoryStr) {
-            case 'MC':
+            case MC:
                 parent.memoryLabelField.value = '';
                 parent.memory = '';
                 break;
-            case 'MR':
+            case MR:
                 if (parent.memory === '') {
                     parent.dgField = '0';
                 } else {
@@ -633,7 +768,7 @@ window.APP.namespace('Buttons', (function () {'use strict';
                 parent.digitsField.value = parent.dgField;
                 parent.eraseDigits = true;
                 break;
-            case 'MS':
+            case MS:
                 if (parent.dgField !== '0' || parent.dgField !== '0.') {
                     parent.memory = parent.dgField;
                     parent.memoryLabelField.value = 'M = ' + parent.dgField;
@@ -642,13 +777,13 @@ window.APP.namespace('Buttons', (function () {'use strict';
                 }
                 parent.eraseDigits = true;
                 break;
-            case 'M+':
+            case M_PLUS:
                 if (parent.memory !== '') {
                     parent.memory = parent.myParseFloat(parent.memory) + parent.myParseFloat(parent.dgField);
                     parent.memoryLabelField.value = 'M = ' + parent.memory;
                 }
                 break;
-            case 'M-':
+            case M_MINUS:
                 if (parent.memory !== '') {
                     parent.memory = parent.myParseFloat(parent.memory) - parent.myParseFloat(parent.dgField);
                     parent.memoryLabelField.value = 'M = ' + parent.memory;
@@ -661,7 +796,6 @@ window.APP.namespace('Buttons', (function () {'use strict';
          * pressEqual method (called upon pressing equal(=) button)call calculate() method to do the calculation on "result" and 
          * digits display value and resets operand to 0 and operation field value to empty string ''.
          * @method pressEqual
-         * @class Buttons 
          */
         pressEqual: function () {
             this.calculate();

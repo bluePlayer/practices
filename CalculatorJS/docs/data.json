@@ -32,7 +32,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "calc.js",
-            "line": 365,
+            "line": 511,
             "description": "Main application module that contains all necessary classes/objects,\nmethods and properties for the Calculator application."
         }
     },
@@ -48,18 +48,18 @@
             "module": "APP",
             "namespace": "",
             "file": "calc.js",
-            "line": 147,
+            "line": 270,
             "description": "Creates objects and subobjects by using just a string in dotted notation. \nExample namespace('my.new.namespace'); will create object 'my' that contains subobject 'new', which contains \nsubobject 'namespace'.",
             "itemtype": "method",
             "params": [
                 {
-                    "name": "String",
-                    "description": "describing the namespace of objects separated by a dots.",
+                    "name": "nsString",
+                    "description": "String describing the namespace of objects separated by a dots.",
                     "type": "String"
                 },
                 {
-                    "name": "And",
-                    "description": "object to initialize each of the newly created subobject. If you add a property with all caps it will consider it as a\nconstant and therefore use Constants object to create new constant that cannot be changed using Firebug and console.",
+                    "name": "newObjectDefinition",
+                    "description": "And object to initialize each of the newly created subobject. If you add a property with all caps \nit will consider it as a constant and therefore use Constants object to create new constant that cannot be changed using Firebug \nor other browser debugging interface.",
                     "type": "Object"
                 }
             ],
@@ -79,18 +79,18 @@
             "module": "APP",
             "namespace": "",
             "file": "calc.js",
-            "line": 65,
+            "line": 180,
             "description": "Constants is a contructor so it should be called with new keyword. Each object should have its own Constants object.\nCreates object of four functions, set(), isDefined(), list() and get() which enable creation of new immutable constant\nthat cannot be changed with Firebug or other debugging tool.",
             "contructor": "Constants",
             "params": [
                 {
-                    "name": "constMapObject",
+                    "name": "constMap",
                     "description": "",
                     "type": "Object"
                 }
             ],
             "return": {
-                "description": "Returs object with functions necessary to define new constant and prevent its change.",
+                "description": "Returns object with functions necessary to define new constant and prevent its change.",
                 "type": "Object"
             }
         },
@@ -105,7 +105,7 @@
             "module": "APP",
             "namespace": "",
             "file": "calc.js",
-            "line": 239,
+            "line": 367,
             "description": "Main calculator class. Contains all necessary Calculator related properties/methods."
         },
         "Aritmetic": {
@@ -119,7 +119,7 @@
             "module": "APP",
             "namespace": "",
             "file": "calc.js",
-            "line": 253,
+            "line": 399,
             "description": "Arithmetic module. Contains all necessary properties/methods related to aritmetic operations. \nLike, addition, multiplication, division, etc... All aritmetic operations are binary operations, i.e need two\noperands to work."
         },
         "Buttons": {
@@ -133,19 +133,19 @@
             "module": "APP",
             "namespace": "",
             "file": "calc.js",
-            "line": 365,
+            "line": 511,
             "description": "Buttons class. Contains all necessary properties/methods related to the visible buttons."
         }
     },
     "classitems": [
         {
             "file": "calc.js",
-            "line": 26,
-            "description": "Returns application's name as a string value.",
+            "line": 36,
+            "description": "Constant function. Returns \"constMap\" string",
             "itemtype": "method",
-            "name": "getName",
+            "name": "CONST_MAP_STR",
             "return": {
-                "description": "Returs the application's name in string format.",
+                "description": "",
                 "type": "String"
             },
             "class": "APP",
@@ -153,7 +153,46 @@
         },
         {
             "file": "calc.js",
-            "line": 35,
+            "line": 45,
+            "description": "Constant function. Returns \"DOMContentLoaded\" string",
+            "itemtype": "method",
+            "name": "DOM_CONTENT_LOADED_EVENT_STR",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 54,
+            "description": "Constant function. Returns application's name as a string value.",
+            "itemtype": "method",
+            "name": "APP_NAME",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 64,
+            "description": "Returns application's configuration in JavaScript object format.",
+            "itemtype": "method",
+            "name": "appConfiguration",
+            "return": {
+                "description": "Returs the application's version in string format.",
+                "type": "Object"
+            },
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 73,
             "description": "Returns application's version as a string value.",
             "itemtype": "method",
             "name": "getVersion",
@@ -166,12 +205,44 @@
         },
         {
             "file": "calc.js",
-            "line": 44,
-            "description": "Prints the application's internal state in console.",
+            "line": 82,
+            "description": "arrayContains() is a function that returns true if a given element is present in the given array or false otherwise.",
             "itemtype": "method",
-            "name": "printData",
+            "name": "arrayContains",
+            "params": [
+                {
+                    "name": "array",
+                    "description": "An array object in which we search for a given element.",
+                    "type": "Array"
+                },
+                {
+                    "name": "element",
+                    "description": "A given element that can be object, number or string.",
+                    "type": "Object"
+                }
+            ],
             "return": {
-                "description": "Returs the main APP object.",
+                "description": "True if the element is present in the array or false otherwise.",
+                "type": "Boolean"
+            },
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 104,
+            "description": "getConst() is a shortcut function for accessing a constant value. Example: Let just say APP.Math class has a constant PI with value of 3.14\nHow would you access it, using getConst() shotcut function? You call APP.getConst('APP.Math.constMap.PI'); So the parameter must be in string format\nand must contain the subkey 'constMap'. When using APP.namespace() function the newly created subclass/subobject always contains constMap\nsubobject with keys for each constant. So if you call APP.namespace('Math', {PI: 3.14}); if you search the DOM tree, Math will already contain\nconstMap = {PI: \"PI\"};",
+            "itemtype": "method",
+            "name": "getConst",
+            "params": [
+                {
+                    "name": "constName",
+                    "description": "path of the contants in a given class or subclass.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns the value of the required contant or string error if something went wrong.",
                 "type": "Object"
             },
             "class": "APP",
@@ -179,10 +250,55 @@
         },
         {
             "file": "calc.js",
-            "line": 86,
-            "description": "Creates new immuatble constant.",
+            "line": 136,
+            "description": "listContants() prints all the contants in a given class. Example: APP.list('APP.Math'); will list all constants like PI: 3.14, E: 2.17 etc...",
+            "itemtype": "method",
+            "name": "listContants",
+            "params": [
+                {
+                    "name": "className",
+                    "description": "Must be a string of keys separated by dot, like so: 'APP.Math.Trigonometry'",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns true if the list of constants was generated or sends error message if the parameter was not in a string format.",
+                "type": "Object"
+            },
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 160,
+            "description": "Prints the application's internal state.",
+            "itemtype": "method",
+            "name": "printData",
+            "return": {
+                "description": "Returs object of all necessary variables for printing in console.",
+                "type": "Object"
+            },
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 203,
+            "description": "Creates new immutable constant.",
             "itemtype": "method",
             "name": "set",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
             "return": {
                 "description": "Returs true if new constant is created or false otherwise.",
                 "type": "Boolean"
@@ -192,19 +308,17 @@
         },
         {
             "file": "calc.js",
-            "line": 100,
-            "todo": [
-                "use constMapObject to create new constant key in the given constants map object."
-            ],
-            "class": "Constants",
-            "module": "APP"
-        },
-        {
-            "file": "calc.js",
-            "line": 106,
+            "line": 224,
             "description": "Creates new immuatble constant.",
             "itemtype": "method",
             "name": "isDefined",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
             "return": {
                 "description": "Returs true if new constant is created or false otherwise.",
                 "type": "Boolean"
@@ -214,10 +328,17 @@
         },
         {
             "file": "calc.js",
-            "line": 115,
+            "line": 234,
             "description": "Returns the value of the required constant.",
             "itemtype": "method",
             "name": "get",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
             "return": {
                 "description": "Returns the value of the required constant.",
                 "type": "Object"
@@ -227,21 +348,32 @@
         },
         {
             "file": "calc.js",
-            "line": 127,
-            "description": "Lists all constants with their values in array like format. Useful in JavaScript console.",
+            "line": 247,
+            "description": "Lists all constants with their values in array like format. Print the returned object in console.",
             "itemtype": "method",
             "name": "list",
+            "return": {
+                "description": "list of constants with their names in JavaScript object format.",
+                "type": "Object"
+            },
             "class": "Constants",
             "module": "APP"
         },
         {
             "file": "calc.js",
-            "line": 193,
-            "description": "Creates new immutable constant of the main application object.",
+            "line": 320,
+            "description": "Creates new immutable constant of the main application object. It is called upon page load, so\nall necessary initializations which cannot be called before page load should be called in this function.",
             "itemtype": "method",
             "name": "init",
+            "params": [
+                {
+                    "name": "configObject",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
             "return": {
-                "description": "Returs the main APP object. false if the creation failed somehow. It is called upon page load, so\nall necessary initializations which cannot be called befor page load should be called in this function.",
+                "description": "Returs the main APP object. Returns Error object if the creation failed somehow.",
                 "type": "Object"
             },
             "class": "APP",
@@ -249,14 +381,15 @@
         },
         {
             "file": "calc.js",
-            "line": 213,
+            "line": 341,
             "description": "Parses string value into decimal integer number if possible, and then returns the result.",
             "itemtype": "method",
             "name": "myParseInt",
             "params": [
                 {
                     "name": "param",
-                    "description": "param string value that should be a number."
+                    "description": "string value that should be a number.",
+                    "type": "String"
                 }
             ],
             "return": {
@@ -268,14 +401,15 @@
         },
         {
             "file": "calc.js",
-            "line": 223,
+            "line": 351,
             "description": "Parses string value into decimal floating point number if possible, and then returns the result.",
             "itemtype": "method",
             "name": "myParseFloat",
             "params": [
                 {
                     "name": "param",
-                    "description": "string value that should be a number."
+                    "description": "string value that should be a number.",
+                    "type": "String"
                 }
             ],
             "return": {
@@ -287,7 +421,33 @@
         },
         {
             "file": "calc.js",
-            "line": 263,
+            "line": 379,
+            "description": "Constant function. Returns \"Invalid input!\" string.",
+            "itemtype": "method",
+            "name": "INVALID_INPUT_MESSAGE",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Main",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 388,
+            "description": "Constant function. Returns \"Cannot divide by zero!\" string.",
+            "itemtype": "method",
+            "name": "CANNOT_DIVIDE_BY_ZERO_MESSAGE",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Main",
+            "module": "APP"
+        },
+        {
+            "file": "calc.js",
+            "line": 410,
             "description": "Divide method. Divides \"result\" operand with the value in the display field. It also checks for division by zero.",
             "itemtype": "method",
             "name": "divide",
@@ -296,7 +456,7 @@
         },
         {
             "file": "calc.js",
-            "line": 279,
+            "line": 426,
             "description": "Multiply method. Multiplies \"result\" operand with the value in the display field.",
             "itemtype": "method",
             "name": "multiply",
@@ -305,7 +465,7 @@
         },
         {
             "file": "calc.js",
-            "line": 293,
+            "line": 440,
             "description": "Add method. Adds \"result\" operand to the value in the display field.",
             "itemtype": "method",
             "name": "add",
@@ -314,7 +474,7 @@
         },
         {
             "file": "calc.js",
-            "line": 307,
+            "line": 454,
             "description": "Subtract method. Subtracts the value in the display field from \"result\" operand.",
             "itemtype": "method",
             "name": "subtract",
@@ -323,7 +483,7 @@
         },
         {
             "file": "calc.js",
-            "line": 321,
+            "line": 468,
             "description": "Percent method. It needs both \"result\" and display field values to be different than 0 to work. \nTherefore an aritmetic operation must be used before you can calculate percents of a given value. \nExample: Press number 555 and then press the plus(+) sign button. \"result\" operand now has the value of 555\nand the application waits for input for the second operand. Insert value of 33 and then press the percent(%) \nbutton. The application finds there are two available operands so it calculates 33% of 555 which is 183.15 and\nsets the display field to this new percent value. If you press the equal(=) sign button, it will sum up 555 + 183.15 \nwhich is 738.15. This same set of tasks applies to all other binary operations so if we used division(/) instead of \nadtion(+) the final result would be 3.030303 or (555 / (33% of 555)) = (555 / 183.15)",
             "itemtype": "method",
             "name": "percent",
@@ -332,14 +492,15 @@
         },
         {
             "file": "calc.js",
-            "line": 373,
+            "line": 534,
             "description": "pressNumber method (called upon pressing one of 0, 1, 2, 3, 4, 5, 6, 7, 8 or 9 buttons) is a method that receives one parameter\nin string format from one of these '1', '2', ..., '9'. If eraseData key is true, digits field value is cleared and number param value is \nconcatenated to digits field, then eraseData is set to false. If eraseData is set to false then any new number button pressed concatenates\nits value to digits display field without clearing digits field previous value.",
             "itemtype": "method",
             "name": "pressNumber",
             "params": [
                 {
                     "name": "number",
-                    "description": "number value in string format. It may be some of these values '1', '2', ..., '9'"
+                    "description": "value in string format. It may be some of these values '1', '2', ..., '9'",
+                    "type": "Number"
                 }
             ],
             "class": "Buttons",
@@ -347,14 +508,15 @@
         },
         {
             "file": "calc.js",
-            "line": 398,
+            "line": 559,
             "description": "pressUnaryOperation method (called upon pressing one of square root('sqrt'), reciproc('1/x') or negate('+/-') buttons)\nrecieves some of these values: 'sqrt', '1/x', '+/-'. It needs only one operand to work\nsince the operations are unary. It also takes cleares the operations text field from uncessary rubbish text.",
             "itemtype": "method",
             "name": "pressUnaryOperation",
             "params": [
                 {
                     "name": "op",
-                    "description": "operation value in string format. It may be some of these values 'sqrt'(square root), '1/x'(reciproc), '+/-'(negate)."
+                    "description": "operation value in string format. It may be some of these values 'sqrt'(square root), '1/x'(reciproc), '+/-'(negate).",
+                    "type": "String"
                 }
             ],
             "class": "Buttons",
@@ -362,14 +524,15 @@
         },
         {
             "file": "calc.js",
-            "line": 466,
+            "line": 625,
             "description": "pressBinaryOperation method (called upon pressing plus('+'), minus('-'), division('/'), multiplication('*') or percent('%') buttons) \nrecieves one parameter in string format from these values: '+', '-', '/', '*', '%'. It therefore calculates the result and \ndisplays it in the digits display field according to the given operation type.",
             "itemtype": "method",
             "name": "pressBinaryOperation",
             "params": [
                 {
                     "name": "op",
-                    "description": "operation in string format from these values: '+', '-', '/', '*', '%'"
+                    "description": "operation in string format from these values: '+', '-', '/', '*', '%'",
+                    "type": "String"
                 }
             ],
             "class": "Buttons",
@@ -377,7 +540,7 @@
         },
         {
             "file": "calc.js",
-            "line": 504,
+            "line": 662,
             "description": "pressComma method (called upon pressing comma(,) button)adds dot to the digits display field. \nIt there is already a dot it skips adding new one.",
             "itemtype": "method",
             "name": "pressComma",
@@ -386,7 +549,7 @@
         },
         {
             "file": "calc.js",
-            "line": 521,
+            "line": 679,
             "description": "pressUndo method (called upon pressing undo(<-) button) removes one digit from the digits siplay field. \nIf the digits display field has only one digit, it is set to zero.",
             "itemtype": "method",
             "name": "pressUndo",
@@ -395,7 +558,7 @@
         },
         {
             "file": "calc.js",
-            "line": 536,
+            "line": 694,
             "description": "pressClearEntry method (called upon pressing clear entry(CE) button) clears the digits display field and sets it to zero. \nIt doesn't however clear result, operation, memory, operand or operandStr.",
             "itemtype": "method",
             "name": "pressClearEntry",
@@ -404,7 +567,7 @@
         },
         {
             "file": "calc.js",
-            "line": 546,
+            "line": 704,
             "description": "pressClear method (called upon pressing (C) button) clears all application state except for the memory property which is \nused to memorize values that last even after we do many calculations.",
             "itemtype": "method",
             "name": "pressClear",
@@ -413,7 +576,7 @@
         },
         {
             "file": "calc.js",
-            "line": 560,
+            "line": 718,
             "description": "calculate method takes the value from digits field and sets result to it if result is empty. If result is not empty it takes\nthe operation value and applies apropriate binary operation on \"result\" operand and digits display field value. It then empties result\nand operation properties.",
             "itemtype": "method",
             "name": "calculate",
@@ -422,14 +585,15 @@
         },
         {
             "file": "calc.js",
-            "line": 589,
+            "line": 746,
             "description": "pressMemoryButton method (called upon pressing one of MC (Memory Clear), MR (Memory Recall), MS (Memory Save), M+ (Memory Add) or M- (Memory Subtract) * memory buttons) saves current digits field value into parent.memory property and shows M label in view, when MS button is pressed. \nWhen MR button is pressed, digits field is filled with value from parent.memory property if available. When M+ or M- buttons are pressed, \ndigits field value is added or subtract from the current memory value (if set) and saved to parent.memory property. \nMR button sets digits field value to zero if parent.memory is empty or to parent.memory value if not empty. \nMC sets parent.memory property to empty string and hides M label from view.",
             "itemtype": "method",
             "name": "pressMemoryButton",
             "params": [
                 {
                     "name": "memoryStr",
-                    "description": "string value which can be some these MC, MR, MS, M+, M-"
+                    "description": "string value which can be some these MC, MR, MS, M+, M-",
+                    "type": "String"
                 }
             ],
             "class": "Buttons",
@@ -437,7 +601,7 @@
         },
         {
             "file": "calc.js",
-            "line": 638,
+            "line": 795,
             "description": "pressEqual method (called upon pressing equal(=) button)call calculate() method to do the calculation on \"result\" and \ndigits display value and resets operand to 0 and operation field value to empty string ''.",
             "itemtype": "method",
             "name": "pressEqual",
@@ -448,11 +612,7 @@
     "warnings": [
         {
             "message": "unknown tag: contructor",
-            "line": " calc.js:65"
-        },
-        {
-            "message": "Missing item type",
-            "line": " calc.js:100"
+            "line": " calc.js:180"
         }
     ]
 }
