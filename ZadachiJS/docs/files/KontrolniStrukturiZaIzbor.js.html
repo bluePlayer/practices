@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>KontrolniStrukturiZaIzbor.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/IzborOdDveMozhnosti.html">IzborOdDveMozhnosti</a></li>
+                                <li><a href="../classes/IzborOdPovekjeMozhnosti.html">IzborOdPovekjeMozhnosti</a></li>
+                                <li><a href="../classes/Konstanti.html">Konstanti</a></li>
+                                <li><a href="../classes/RedoslendaKontrolnaStruktura.html">RedoslendaKontrolnaStruktura</a></li>
+                                <li><a href="../classes/TurboGjorgi.html">TurboGjorgi</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/KontrolniStrukturi.html">KontrolniStrukturi</a></li>
+                                <li><a href="../modules/KontrolniStrukturiZaIzbor.html">KontrolniStrukturiZaIzbor</a></li>
+                                <li><a href="../modules/TurboGjorgi.html">TurboGjorgi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: KontrolniStrukturiZaIzbor.js</h1>
+                        
+                        <div class="file">
+                            <pre class="code prettyprint linenums">
+                        /**
+                         * Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 2, Kontrolni Strukturi za izbor.
+                         * @module TurboGjorgi
+                         * @submodule KontrolniStrukturiZaIzbor
+                         */
+                        window.TurboGjorgi.napraviDrvo(&#x27;KontrolniStrukturiZaIzbor&#x27;, {});
+                        
+                        /**
+                         * IzborOdDveMozhnosti sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 2.1 Izbor od dve mozhnosti.
+                         * @class IzborOdDveMozhnosti
+                         * @uses TurboGjorgi
+                         * @uses Konstanti
+                         * @uses RedoslendaKontrolnaStruktura
+                         */
+                        window.TurboGjorgi.napraviDrvo(&#x27;KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti&#x27;, (function (turboG) {&#x27;use strict&#x27;;
+                        
+                            var
+                                /**
+                                 * Sodrzhi aplikaciska  konfiguracija. 
+                                 * @property config
+                                 * @type Object
+                                 * @default null
+                                 */
+                                config = null,
+                        
+                                /**
+                                 * turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
+                                 * @property turboGjorgi
+                                 * @type Object
+                                 * @default window.TurboGjorgi
+                                 */
+                                turboGjorgi = turboG,
+                        
+                                /**
+                                 * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+                                 * @property parent
+                                 * @type Object
+                                 * @default this
+                                 */
+                                parent = null,
+                        
+                                /**
+                                 * rks e drugo ime za tekovniot objektot turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura
+                                 * @property rks
+                                 * @type Object
+                                 * @default turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura
+                                 */
+                                rks = null;
+                        
+                            return {
+                        
+                                /**
+                                 * triBrojaStraniNaTriagolnik() funkcijata zema tri broevi a, b i c i proveruva dali tie pravat triagolnik. Za da pravat triagolnik
+                                 * mora da se ispolneti uslovite (a + b &gt;= c), (a + c &gt;= b) i (b + c &gt;= a) odnosno zbriot na bilo koi dve strani ne smee da bide pomal od 
+                                 * tretata.
+                                 * @method triBrojaStraniNaTriagolnik
+                                 * @param {Number} a
+                                 * @param {Number} b
+                                 * @param {Number} c
+                                 * @return {Boolean}
+                                 */
+                                triBrojaStraniNaTriagolnik: function (a, b, c) {
+                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+                                        var eTriagolnik = true,
+                                            aPlusB = a + b,
+                                            aPlusC = a + c,
+                                            bPlusC = b + c;
+                        
+                                        if (aPlusB &gt;= c &amp;&amp; aPlusC &gt;= b &amp;&amp; bPlusC &gt;= a) {
+                                            eTriagolnik = true;
+                                        } else {
+                                            eTriagolnik = false;
+                                        }
+                        
+                                        return eTriagolnik;
+                                    }, a, b, c);
+                                },
+                        
+                                /**
+                                 * prirodenBrojEParen() proveruva dali prirodniot broj n e paren. Prvo se proba dali e n priroden broj, i ako e togash
+                                 * se proveruva dali e paren.
+                                 * tretata.
+                                 * @method prirodenBrojEParen
+                                 * @param {Number} n
+                                 * @return {Boolean}
+                                 */
+                                prirodenBrojEParen: function (n) {
+                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+                                        var ishod = false;
+                                        if (turboGjorgi.ePrirodenBroj(n) &amp;&amp; turboGjorgi.eParenBroj(n)) {
+                                            ishod = true;
+                                        } else {
+                                            ishod = turboGjorgi.Konstanti.BROJOT_NE_E_PRIRODEN();
+                                        }
+                                        return ishod;
+                                    }, n);
+                                },
+                        
+                                /**
+                                 * podrediPoGolemina() funkcijata zema tri broevi a, b i c i gi podreduva po golemina vo opagjachki redosled.
+                                 * @method podrediPoGolemina
+                                 * @param {Number} a
+                                 * @param {Number} b
+                                 * @param {Number} c
+                                 * @return {Boolean}
+                                 */
+                                podrediPoGolemina: function (a, b, c) {
+                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+                                        var prv = 0,
+                                            vtor = 0,
+                                            tret = 0;
+                        
+                                        if (a &gt;= b) {
+                                            prv = a;
+                                            if (a &gt;= c) {
+                                                if (b &gt;= c) {
+                                                    vtor = b;
+                                                    tret = c;
+                                                } else {
+                                                    vtor = c;
+                                                    tret = b;
+                                                }
+                                            } else {
+                                                prv = c;
+                                                vtor = a;
+                                                tret = b;
+                                            }
+                                        } else {
+                                            prv = b;
+                                            if (b &gt;= c) {
+                                                if (a &gt;= c) {
+                                                    vtor = a;
+                                                    tret = c;
+                                                } else {
+                                                    vtor = c;
+                                                    tret = a;
+                                                }
+                                            } else {
+                                                prv = c;
+                                                vtor = b;
+                                                tret = a;
+                                            }
+                                        }
+                        
+                                        return [prv, vtor, tret];
+                                    }, a, b, c);
+                                },
+                        
+                                /**
+                                 * ravenkaAXPlusBEdnakvoNula() reshava ravenka so edna nepoznata, ax + b = 0. 
+                                 * @method ravenkaAXPlusBEdnakvoNula
+                                 * @param {Number} n
+                                 * @return {Boolean}
+                                 */
+                                ravenkaAXPlusBEdnakvoNula: function (a, b) {
+                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+                                        var ishod = 0;
+                                        if (a === 0) {
+                                            ishod = turboGjorgi.Konstanti.DELENJE_SO_NULA();
+                                        } else {
+                                            ishod = -(b / a);
+                                        }
+                                        return ishod;
+                                    }, a, b);
+                                },
+                        
+                                /**
+                                 * tricifrenBrojSumaKuboviNaCifri() proveruva dali prateniot broj e ednakov so zbirot na kubovite na negovite cifri.
+                                 * @method tricifrenBrojSumaKuboviNaCifri
+                                 * @param {Number} broj
+                                 * @return {Boolean}
+                                 */
+                                tricifrenBrojSumaKuboviNaCifri: function (broj) {
+                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+                                        var ishod = false,
+                                            brojStr = &#x27;&#x27;,
+                                            prvaCifra = 0,
+                                            vtoraCifra = 0,
+                                            tretaCifra = 0,
+                                            zbir = 0;
+                        
+                                        if (turboGjorgi.eCelBroj(broj)) {
+                                            if (turboGjorgi.eTricifrenBroj(broj)) {
+                                                brojStr = broj.toString();
+                                                prvaCifra = turboGjorgi.parsirajCelBroj(brojStr.charAt(0));
+                                                vtoraCifra = turboGjorgi.parsirajCelBroj(brojStr.charAt(1));
+                                                tretaCifra = turboGjorgi.parsirajCelBroj(brojStr.charAt(2));
+                                                prvaCifra = rks.kub(prvaCifra);
+                                                vtoraCifra = rks.kub(vtoraCifra);
+                                                tretaCifra = rks.kub(tretaCifra);
+                                                zbir = prvaCifra + vtoraCifra + tretaCifra;
+                        
+                                                if (zbir === broj) {
+                                                    ishod = true;
+                                                } else {
+                                                    ishod = false;
+                                                }
+                                            } else {
+                                                ishod = turboGjorgi.Konstanti.BROJOT_NE_E_TRICIFREN();
+                                            }
+                                        } else {
+                                            ishod = turboGjorgi.Konstanti.BROJOT_NE_E_CEL();
+                                        }
+                                        return ishod;
+                                    }, broj);
+                                },
+                        
+                                /**
+                                 * pronajdiTricifrenBrojEdnakovZbirKubovi() go naogja brojot izmegju 100 i 999 koj e ednakov na zbirot na kubovite na negovite cifri.
+                                 * Treba da vrati broj 407 &lt;=&gt; 4^3 + 7^3 = 64 + 343 = 407
+                                 * @method pronajdiTricifrenBrojEdnakovZbirKubovi
+                                 * @return {Number}
+                                 */
+                                pronajdiTricifrenBrojEdnakovZbirKubovi: function () {
+                                    var i = 0,
+                                        ishod = 0;
+                        
+                                    for (i = 100; i &lt; 1000; i += 1) {
+                                        if (parent.tricifrenBrojSumaKuboviNaCifri(i)) {
+                                            ishod = i;
+                                        }
+                                    }
+                        
+                                    return ishod;
+                                },
+                        
+                                /**
+                                 * init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, 
+                                 * odnosno so nastanot: &quot;DOMContentLoaded&quot;. Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj 
+                                 * sluchaj e window.TurboGjogi objektot.
+                                 * @method init
+                                 * @param {Object} configObject
+                                 */
+                                init: function (configObject) {
+                                    config = configObject;
+                                    parent = this;
+                                    rks = turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura;
+                                }
+                            };
+                            }(window.TurboGjorgi)));
+                        
+                        /**
+                         * IzborOdPovekjeMozhnosti sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 2.2 Izbor od povekje mozhnosti.
+                         * @class IzborOdPovekjeMozhnosti
+                         * @uses TurboGjorgi
+                         * @uses Konstanti
+                         */
+                        window.TurboGjorgi.napraviDrvo(&#x27;KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnosti&#x27;, (function (turboG) {&#x27;use strict&#x27;;
+                        
+                            var
+                                /**
+                                 * Sodrzhi aplikaciska  konfiguracija. 
+                                 * @property config
+                                 * @type Object
+                                 * @default null
+                                 */
+                                config = null,
+                        
+                                /**
+                                 * turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
+                                 * @property turboGjorgi
+                                 * @type Object
+                                 * @default window.TurboGjorgi
+                                 */
+                                turboGjorgi = turboG,
+                        
+                                /**
+                                 * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+                                 * @property parent
+                                 * @type Object
+                                 * @default this
+                                 */
+                                parent = null,
+                        
+                                /**
+                                 * Konstanta
+                                 * @property NE_E_PRAVILEN_REDEN_BROJ_MESEC
+                                 * @type String
+                                 * @default &quot;Ne e pravilen reden broj na mesec!&quot;
+                                 * @final
+                                 */
+                                NE_E_PRAVILEN_REDEN_BROJ_MESEC = &quot;Ne e pravilen reden broj na mesec!&quot;,
+                        
+                                /**
+                                 * Konstanta
+                                 * @property BROJOT_E_PAREN
+                                 * @type String
+                                 * @default &quot;Dozvolivi se samo vrednosti 0 ili 1!&quot;
+                                 * @final
+                                 */
+                                DOZVOLIVI_SE_SAMO_VREDNOSTI_0_ILI_1 = &quot;Dozvolivi se samo vrednosti 0 ili 1!&quot;;
+                        
+                            return {
+                        
+                                /**
+                                 * keypressNastan() funkcijata proveruva dali vnesenata bukva od tastaturata e golema ili mala. Se koristi JavaSkript 
+                                 * nastanot &#x27;keypress&#x27; bidejki samo toj mozhe da razdvoi mali od golemi bukvi. &#x27;keydown&#x27; i &#x27;keyup&#x27; ne dvojat mali od golemi bukvi,
+                                 * tie sekogash vrakjaat podatoci za golemi bukvi. &#x27;keypress&#x27; nastanot se sluchiva koga kje se pritisne kopche i toa vrakja nekakva
+                                 * bukva kako vrednost. Ostanatite specijalni znaci, borevi i sistemski kopchina se nebitni. Se koristi &#x27;charCode&#x27; poleto od event 
+                                 * objektot. Spored dokumentacija na Mozilla, &#x27;charCode&#x27; e zastareno i treba da se izbegnuva, iako site preslistuvachi go poddrzhuvaat.
+                                 * Kako zamena da se koristi poleto &#x27;key&#x27;, koe seushte ne e opshto prifateno i zatoa treba da se koristi &#x27;charCode&#x27; kade e &#x27;key&#x27; fali.
+                                 * @event keypressNastan:keypress
+                                 * @param {Object} event
+                                 */
+                                keypressNastan: function (event) {
+                                    var bukva = 0,
+                                        bukvaStr = &#x27;&#x27;,
+                                        ishod = &#x27;&#x27;;
+                        
+                                    if (event.hasOwnProperty(&#x27;key&#x27;)) {
+                                        bukva = event.key;
+                                    } else {
+                                        bukva = event.charCode;
+                                    }
+                        
+                                    bukvaStr = String.fromCharCode(bukva);
+                                    if (bukvaStr === bukvaStr.toUpperCase()) {
+                                        ishod = &quot;Bukvata e golema: &quot; + bukvaStr;
+                                    } else {
+                                        ishod = &quot;Bukvata e mala: &quot; + bukvaStr;
+                                    }
+                                    console.log(ishod);
+                                },
+                        
+                                /**
+                                 * vidNaAgol() funkcijata vrakja opis na agolot. Ako agol &gt; 0 i agol &lt; 90 togash e ostar. Ako agol = 90 togash e prav.
+                                 * Ako agol &gt; 90 i agol &lt; 180 togash e tap. Ako agol = 180 togash e ramen. Ako agol &gt; 180 i agol &lt; 360 togash e tap, i ako
+                                 * agol = 360 togash e poln.
+                                 * @method vidNaAgol
+                                 * @param {Number} agol
+                                 * @return {String}
+                                 */
+                                vidNaAgol: function (agol) {
+                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+                                        var ishod = &#x27;&#x27;;
+                                        if (agol &gt; 0 &amp;&amp; agol &lt; 90) {
+                                            ishod = &quot;Ostar: &quot; + agol;
+                                        } else if (agol === 90) {
+                                            ishod = &quot;Prav: &quot; + agol;
+                                        } else if (agol &gt; 90 &amp;&amp; agol &lt; 180) {
+                                            ishod = &quot;Tap: &quot; + agol;
+                                        } else if (agol === 180) {
+                                            ishod = &quot;Ramen: &quot; + agol;
+                                        } else if (agol &gt; 181 &amp;&amp; agol &lt; 360) {
+                                            ishod = &quot;Tap: &quot; + agol;
+                                        } else if (agol === 360) {
+                                            ishod = &quot;Poln: &quot; + agol;
+                                        }
+                                        return ishod;
+                                    }, agol);
+                                },
+                        
+                                /**
+                                 * svojstvaBroevi1Do10() funkcijata gi pechati svostvata na broevite od 1 do 10. Parnost/neparnost, prost/neprost broj.
+                                 * @method svojstvaBroevi1Do10
+                                 * @return {Object}
+                                 */
+                                svojstvaBroevi1Do10: function () {
+                                    var i = 0,
+                                        ishod = {};
+                                    for (i = 1; i &lt; 11; i += 1) {
+                                        ishod[i] = [];
+                                        if (turboGjorgi.eParenBroj(i)) {
+                                            ishod[i].push(turboGjorgi.Konstanti.BROJOT_E_PAREN());
+                                        } else {
+                                            ishod[i].push(turboGjorgi.Konstanti.BROJOT_NE_E_PAREN());
+                                        }
+                        
+                                        if (turboGjorgi.eProstBroj1Do10(i)) {
+                                            ishod[i].push(turboGjorgi.Konstanti.BROJOT_E_PROST());
+                                        } else {
+                                            ishod[i].push(turboGjorgi.Konstanti.BROJOT_NE_E_PROST());
+                                        }
+                                    }
+                                    return ishod;
+                                },
+                        
+                                /**
+                                 * brojDenoviVoMesec() funkcijata pechati broj na denovi vo izbran mesec. Se prakja i vrednost za preodna ili ne preodna godina i pritoa
+                                 * za vtor mesec se vrakja 28 denovi odnosno 29 denovi.
+                                 * @method brojDenoviVoMesec
+                                 * @param {Number} mesecBroj vrednost od 1 do 12
+                                 * @param {Number} preodnaGodina vrednosti 0 za ne preodna godina i 1 za preodna godina. Ako vrednost za ovoj parametar se izostavi
+                                 * togash osnovna vrednost e 0 ili ne preodna godina.
+                                 * @default 0
+                                 * @return {Number}
+                                 */
+                                brojDenoviVoMesec: function (mesecBroj, preodnaGodina) {
+                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+                                        var ishod = 0;
+                                        preodnaGodina = (preodnaGodina === undefined ? 0 : preodnaGodina);
+                                        if (turboGjorgi.eCelBroj(mesecBroj)) {
+                                            if (mesecBroj &lt; 1 || mesecBroj &gt; 12) {
+                                                ishod = NE_E_PRAVILEN_REDEN_BROJ_MESEC;
+                                            } else {
+                                                switch (mesecBroj) {
+                                                case 1:
+                                                    ishod = 31;
+                                                    break;
+                                                case 2:
+                                                    if (turboGjorgi.eCelBroj(preodnaGodina)) {
+                                                        if (preodnaGodina === 0) {
+                                                            ishod = 28;
+                                                        } else if (preodnaGodina === 1) {
+                                                            ishod = 29;
+                                                        } else {
+                                                            ishod = DOZVOLIVI_SE_SAMO_VREDNOSTI_0_ILI_1 + &quot;: preodnaGodina = &quot; + preodnaGodina;
+                                                        }
+                                                    } else {
+                                                        ishod = turboGjorgi.Konstanti.BROJOT_NE_E_CEL() + &quot;: preodnaGodina, &quot; + preodnaGodina;
+                                                    }
+                                                    break;
+                                                case 3:
+                                                    ishod = 31;
+                                                    break;
+                                                case 4:
+                                                    ishod = 30;
+                                                    break;
+                                                case 5:
+                                                    ishod = 31;
+                                                    break;
+                                                case 6:
+                                                    ishod = 30;
+                                                    break;
+                                                case 7:
+                                                    ishod = 31;
+                                                    break;
+                                                case 8:
+                                                    ishod = 31;
+                                                    break;
+                                                case 9:
+                                                    ishod = 30;
+                                                    break;
+                                                case 10:
+                                                    ishod = 31;
+                                                    break;
+                                                case 11:
+                                                    ishod = 30;
+                                                    break;
+                                                case 12:
+                                                    ishod = 31;
+                                                    break;
+                                                }
+                                            }
+                                        } else {
+                                            ishod = turboGjorgi.Konstanti.BROJOT_NE_E_CEL();
+                                        }
+                                        return ishod;
+                                    }, mesecBroj);
+                                },
+                        
+                                /**
+                                 * init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, 
+                                 * odnosno so nastanot: &quot;DOMContentLoaded&quot;. Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj 
+                                 * sluchaj e window.TurboGjogi objektot.
+                                 * @method init
+                                 * @param {Object} configObject
+                                 */
+                                init: function (configObject) {
+                                    config = configObject;
+                                    parent = this;
+                                }
+                            };
+                            }(window.TurboGjorgi)));
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

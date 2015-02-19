@@ -1,16 +1,37 @@
 {
     "project": {},
     "files": {
-        "TurboGjorgi.js": {
-            "name": "TurboGjorgi.js",
+        "KontrolniStrukturi.js": {
+            "name": "KontrolniStrukturi.js",
             "modules": {
-                "TurboGjorgi": 1,
                 "KontrolniStrukturi": 1
             },
             "classes": {
-                "TurboGjorgi": 1,
-                "konstanti": 1,
                 "RedoslendaKontrolnaStruktura": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "KontrolniStrukturiZaIzbor.js": {
+            "name": "KontrolniStrukturiZaIzbor.js",
+            "modules": {
+                "KontrolniStrukturiZaIzbor": 1
+            },
+            "classes": {
+                "IzborOdDveMozhnosti": 1,
+                "IzborOdPovekjeMozhnosti": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "TurboGjorgi.js": {
+            "name": "TurboGjorgi.js",
+            "modules": {
+                "TurboGjorgi": 1
+            },
+            "classes": {
+                "TurboGjorgi": 1,
+                "Konstanti": 1
             },
             "fors": {},
             "namespaces": {}
@@ -19,80 +40,58 @@
     "modules": {
         "TurboGjorgi": {
             "name": "TurboGjorgi",
-            "submodules": {},
+            "submodules": {
+                "KontrolniStrukturi": 1,
+                "KontrolniStrukturiZaIzbor": 1
+            },
             "classes": {
-                "konstanti": 1
+                "RedoslendaKontrolnaStruktura": 1,
+                "IzborOdDveMozhnosti": 1,
+                "IzborOdPovekjeMozhnosti": 1,
+                "TurboGjorgi": 1,
+                "Konstanti": 1
             },
             "fors": {},
             "namespaces": {},
-            "tag": "module",
+            "tag": "main",
             "file": "TurboGjorgi.js",
-            "line": 193,
+            "line": 248,
             "description": "Sodrzhi podmoduli so klasi i metodi koi se reshenia na zadachite od slednava kniga: Zbirka Algoritmi i Programi napishana od Gjogi Jovanchevski, \nBiljana Stojchevska i Nevena Ackovska, Gocmar 2005 godina. Se e napishano vo JavaSkript i klasite/ funkciite se prilagodeni na Makedonski jazik.",
-            "author": "Vladimir Z. aka bluePlayer. https://github.com/bluePlayer/practices"
+            "itemtype": "main"
         },
         "KontrolniStrukturi": {
             "name": "KontrolniStrukturi",
             "submodules": {},
             "classes": {
-                "TurboGjorgi": 1,
                 "RedoslendaKontrolnaStruktura": 1
             },
             "fors": {},
+            "is_submodule": 1,
             "namespaces": {},
-            "module": "KontrolniStrukturi",
-            "file": "TurboGjorgi.js",
-            "line": 489,
+            "module": "TurboGjorgi",
+            "namespace": "",
+            "file": "KontrolniStrukturi.js",
+            "line": 8,
             "description": "Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 1, Kontrolni Strukturi."
+        },
+        "KontrolniStrukturiZaIzbor": {
+            "name": "KontrolniStrukturiZaIzbor",
+            "submodules": {},
+            "classes": {
+                "IzborOdDveMozhnosti": 1,
+                "IzborOdPovekjeMozhnosti": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "TurboGjorgi",
+            "namespace": "",
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 242,
+            "description": "Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 2, Kontrolni Strukturi za izbor."
         }
     },
     "classes": {
-        "TurboGjorgi": {
-            "name": "TurboGjorgi",
-            "shortname": "TurboGjorgi",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "KontrolniStrukturi",
-            "namespace": "",
-            "file": "TurboGjorgi.js",
-            "line": 301,
-            "description": "Creates objects and subobjects by using just a string in dotted notation. \nExample namespace('my.new.namespace'); will create object 'my' that contains subobject 'new', which contains \nsubobject 'namespace'.",
-            "itemtype": "method",
-            "params": [
-                {
-                    "name": "nsString",
-                    "description": "String describing the namespace of objects separated by a dots.",
-                    "type": "String"
-                },
-                {
-                    "name": "newObjectDefinition",
-                    "description": "And object to initialize each of the newly created subobject. If you add a property with all caps \nit will consider it as a constant and therefore use Constants object to create new constant that cannot be changed using Firebug \nor other browser debugging interface.",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "Returns the new object that represents the new namespace of objects and subobjects, defined by the dots in the string\nargument.",
-                "type": "Object"
-            },
-            "submodule": "KontrolniStrukturi"
-        },
-        "konstanti": {
-            "name": "konstanti",
-            "shortname": "konstanti",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "TurboGjorgi",
-            "namespace": "",
-            "file": "TurboGjorgi.js",
-            "line": 193,
-            "description": "Sodrzhi funkcii-konstanti so koi se vrakja vrednost na dadena konstanta navedena pogore. JavaSkript nema konstanti\npa zatoa se koristat funkcii za da se zachuva vrednosta na dadena promenliva. Isto taka se koristi funkciski blok(scope)\nbidejkji promenliva definirana vo funkcija so var e nedostapna nadvor od nea."
-        },
         "RedoslendaKontrolnaStruktura": {
             "name": "RedoslendaKontrolnaStruktura",
             "shortname": "RedoslendaKontrolnaStruktura",
@@ -100,652 +99,216 @@
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
-            "extension_for": [],
-            "module": "KontrolniStrukturi",
+            "extension_for": [
+                "IzborOdDveMozhnosti"
+            ],
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi",
             "namespace": "",
+            "file": "KontrolniStrukturi.js",
+            "line": 8,
+            "description": "RedoslendaKontrolnaStruktura sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 1.1 Redoslenda kontrolna struktura.",
+            "uses": [
+                "TurboGjorgi",
+                "Konstanti"
+            ]
+        },
+        "IzborOdDveMozhnosti": {
+            "name": "IzborOdDveMozhnosti",
+            "shortname": "IzborOdDveMozhnosti",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor",
+            "namespace": "",
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 8,
+            "description": "IzborOdDveMozhnosti sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 2.1 Izbor od dve mozhnosti.",
+            "uses": [
+                "TurboGjorgi",
+                "Konstanti",
+                "RedoslendaKontrolnaStruktura"
+            ]
+        },
+        "IzborOdPovekjeMozhnosti": {
+            "name": "IzborOdPovekjeMozhnosti",
+            "shortname": "IzborOdPovekjeMozhnosti",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor",
+            "namespace": "",
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 242,
+            "description": "IzborOdPovekjeMozhnosti sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 2.2 Izbor od povekje mozhnosti.",
+            "uses": [
+                "TurboGjorgi",
+                "Konstanti"
+            ]
+        },
+        "TurboGjorgi": {
+            "name": "TurboGjorgi",
+            "shortname": "TurboGjorgi",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "RedoslendaKontrolnaStruktura",
+                "IzborOdDveMozhnosti",
+                "IzborOdPovekjeMozhnosti"
+            ],
+            "module": "TurboGjorgi",
+            "namespace": "",
             "file": "TurboGjorgi.js",
-            "line": 489,
-            "description": "RedoslendaKontrolnaStruktura sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 1.1 Redoslenda kontrolna struktura."
+            "line": 410,
+            "description": "Sodrzhi podmoduli so klasi i metodi koi se reshenia na zadachite od slednava kniga: Zbirka Algoritmi i Programi napishana od Gjogi Jovanchevski, \nBiljana Stojchevska i Nevena Ackovska, Gocmar 2005 godina. Se e napishano vo JavaSkript i klasite/ funkciite se prilagodeni na Makedonski jazik."
+        },
+        "Konstanti": {
+            "name": "Konstanti",
+            "shortname": "Konstanti",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "RedoslendaKontrolnaStruktura",
+                "IzborOdDveMozhnosti",
+                "IzborOdPovekjeMozhnosti"
+            ],
+            "module": "TurboGjorgi",
+            "namespace": "",
+            "file": "TurboGjorgi.js",
+            "line": 248,
+            "description": "Sodrzhi funkcii-konstanti so koi se vrakja vrednost na dadena konstanta navedena pogore. JavaSkript nema konstanti\npa zatoa se koristat funkcii za da se zachuva vrednosta na dadena promenliva. Isto taka se koristi funkciski blok(scope)\nbidejkji promenliva definirana vo funkcija so var e nedostapna nadvor od nea."
         }
     },
     "classitems": [
         {
-            "file": "TurboGjorgi.js",
-            "line": 11,
-            "description": "documentObject e drugo ime za window.document objektot koj se prakja kako parametar na funkcijata zadolzhena za sozdavanje na\nTurboGjorgi objektot.",
-            "itemtype": "property",
-            "name": "documentObject",
-            "type": "Object",
-            "default": "window.document",
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 20,
-            "description": "Sodrzhi aplikaciska  konfiguracija.",
-            "itemtype": "property",
-            "name": "config",
-            "type": "Object",
-            "default": "null",
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 28,
-            "description": "parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.",
-            "itemtype": "property",
-            "name": "parent",
-            "type": "Object",
-            "default": "null",
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 36,
-            "description": "initApp() e nastan-funkcija koja se koristi za inicijaliziranje na celata aplikacija. Se povikuva koga kje se vchita celoto drvo na\naplikacijata. Taa e rekurzivna i go posetuva sekoj podobjekt od drvoto na nekojObjekt. Ako tekovniot objekt sodrzhi init() funkcija vo sebe, \ntaa kje se povika i pritoa se prakja parametarot config.",
-            "itemtype": "event",
-            "name": "initApp",
-            "params": [
-                {
-                    "name": "nekojObjekt",
-                    "description": "",
-                    "type": "Object"
-                },
-                {
-                    "name": "config",
-                    "description": "",
-                    "type": "Object"
-                }
-            ],
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 56,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "IME_APLIKACIJA",
-            "type": "String",
-            "default": "\"TurboGjorgi\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 65,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "EDEN_OD_PARAMETRITE_NE_E_BROJ",
-            "type": "String",
-            "default": "\"Eden od parametrite ne e od tip broj!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 74,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "DELENJE_SO_NULA",
-            "type": "String",
-            "default": "\"Ne e dozvoleno delenje so nula!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 83,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NE_E_TRICIFREN",
-            "type": "String",
-            "default": "\"Brojot ne e tricifren!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 92,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
-            "type": "String",
-            "default": "\"Eden od broevite ne e tricifren!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 101,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NA_PARAMETRI_E_NULA",
-            "type": "String",
-            "default": "\"Brojot na prametri e nula!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 110,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
-            "type": "String",
-            "default": "\"Ne se vadi koren od negativen broj!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 119,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "MORA_DA_IMA_BAREM_DVA_PARAMETRI",
-            "type": "String",
-            "default": "\"Mora da ima barem dva parametri!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 128,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "PARAMETAROT_NE_E_FUNKCIJA",
-            "type": "String",
-            "default": "\"Parametarot ne e funkcija!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 137,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_E_POMAL_OD_NULA",
-            "type": "String",
-            "default": "\"Brojot e pomal od nula!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 146,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
-            "type": "String",
-            "default": "\"Brojot e pomal ili ednakov na nula!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 155,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "NE_KUCNAVTE_BROEVI",
-            "type": "String",
-            "default": "\"Ne kucnavte ni eden broj!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 164,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
-            "type": "String",
-            "default": "\"Treba da kucnete barem dve bukvi!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 173,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
-            "type": "String",
-            "default": "\"Mora da kucnete bukva ili broj!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 182,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "EDEN_OD_PARAM_NE_E_BOOL",
-            "type": "String",
-            "default": "\"Eden od parametrite ne e od tip Boolean!\"",
-            "final": 1,
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 201,
-            "description": "Funkcija-konstanta, vrakja ime na aplikacijata.",
-            "itemtype": "method",
-            "name": "IME_APLIKACIJA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 210,
-            "description": "Funkcija-konstanta, vrakja poraka za zabraneto delenje so nula.",
-            "itemtype": "method",
-            "name": "DELENJE_SO_NULA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 219,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e tricifren.",
-            "itemtype": "method",
-            "name": "BROJOT_NE_E_TRICIFREN",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 228,
-            "description": "Funkcija-konstanta, vrakja poraka deka eden od broevite ne e tricifren.",
-            "itemtype": "method",
-            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 237,
-            "description": "Funkcija-konstanta, vrakja poraka ne se vadi koren od negativen broj.",
-            "itemtype": "method",
-            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 246,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal od nula.",
-            "itemtype": "method",
-            "name": "BROJOT_E_POMAL_OD_NULA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 255,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal ili ednakov na nula.",
-            "itemtype": "method",
-            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 264,
-            "description": "Funkcija-konstanta, vrakja poraka deka ne e kucnat ni eden broj od tastatura.",
-            "itemtype": "method",
-            "name": "NE_KUCNAVTE_BROEVI",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 273,
-            "description": "Funkcija-konstanta, vrakja poraka deka treba da se kucnat barem dve bukvi od tastatura.",
-            "itemtype": "method",
-            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 282,
-            "description": "Funkcija-konstanta, vrakja poraka deka mora da se kucne bukva ili broj od tastatura.",
-            "itemtype": "method",
-            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 291,
-            "description": "Funkcija-konstanta, vrakja poraka deka eden od parametrite ne e od tip Boolean.",
-            "itemtype": "method",
-            "name": "EDEN_OD_PARAM_NE_E_BOOL",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "konstanti",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 339,
-            "description": "Sekogash vrakja dekaden oblik na prateniot parametar. Za istata namena mozhe da se koristi parseFloat(param, 10), no vtoriot \nparametar mozhe da bide zaboraven pa zatoa e napraven ovaa funkcija.",
-            "itemtype": "method",
-            "name": "parsirajDrobenBroj",
-            "params": [
-                {
-                    "name": "param",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Number"
-            },
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 350,
-            "description": "Proveruva dali parametarot e od tip broj. Se koristi funkcija parseFloat() shto vrakja NaN ako prviot parametar ne e od tip\nbroj. Potoa se koristi funkcija isNaN() za da se potvrdi dali e ili ne e broj.",
-            "itemtype": "method",
-            "name": "eBroj",
-            "params": [
-                {
-                    "name": "param",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 367,
-            "description": "Proveruva dali parametarot e od tip niza. Vo JavaSkript sekoja niza e voedno i objekt pa e malku teshko da se razlikuva.\nZatoa se koristat povekje proverki, prvo dali parametarot e objekt, potoa dali ima pole length i dali e od tip broj.\nSledat ushte dve proverki, dali poleto splice e funkcija i dali length ne e nabroivo odnosno dali ne mozhe da se pristapi do\nnego vo for(var myProp in myObject) lupa.",
-            "itemtype": "method",
-            "name": "eNiza",
-            "params": [
-                {
-                    "name": "param",
-                    "description": "",
-                    "type": "Array"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 384,
-            "description": "Proveruva dali dadenata niza go sodrzhi dadeniot element i vrakja soodveten odgovor so true ili false.",
-            "itemtype": "method",
-            "name": "nizaSodrzhi",
-            "params": [
-                {
-                    "name": "niza",
-                    "description": "",
-                    "type": "Array"
-                },
-                {
-                    "name": "element",
-                    "description": "",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 402,
-            "description": "Proveruva dali parametarot e tricifren broj, odnosno izmegju 99 i 1000. Ovaa funkcija ne proveruva tip, zatoa treba da se \nkoristat drugi funkcii ili kodovi.",
-            "itemtype": "method",
-            "name": "eTricifrenBroj",
-            "params": [
-                {
-                    "name": "param",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 417,
-            "description": "Potrebno e da se pratat najmalce dva prametri od koi prviot mora da bide funkcija, a vtoriot kje bide od tip broj. Slednite parametri\nmora da bidat od tip broj. Ovaa funkcija e vazhna za proverka na parametrite dali se borevi i ako ovoj uslov e tochen, na dadenite broevi\nse izhvirshuva funkcijata koja shto e pratena kako prv parametar. Ovaa funkcija e napravena so cel da se zashtedi na povtoruvanje na istite proverki\nvo povekje funkcii koi imaat slichna namena. Na primer zoshto da pishuvame proverka vo funkcija kub(n) i istata proverka vo funkcija kvadrat(n).\nNa nekoj nachin ovde se koristi Dekorator shablonot, ovaa funkcija ja dekorirame(ukrasuvame) so funkcijata pratena kako prv parametar.\nPrimer: funkcijaOdPovekjeBroevi(zbirNaSredniCifri(a, b), a, b); Ako a i b se broevi, togash kje se izhvrshi zbirNaSredniCifri na a i b.",
-            "itemtype": "method",
-            "name": "funkcijaOdPovekjeBroevi",
-            "params": [
-                {
-                    "name": "presmetajFunkcija",
-                    "description": "",
-                    "type": "Function"
-                },
-                {
-                    "name": "param1",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Object"
-            },
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 467,
-            "description": "init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, \nodnosno so nastanot: \"DOMContentLoaded\". Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj \nsluchaj e window.TurboGjogi objektot.",
-            "itemtype": "method",
-            "name": "init",
-            "params": [
-                {
-                    "name": "configObject",
-                    "description": "",
-                    "type": "Object"
-                }
-            ],
-            "class": "TurboGjorgi",
-            "module": "TurboGjorgi"
-        },
-        {
-            "file": "TurboGjorgi.js",
-            "line": 496,
+            "file": "KontrolniStrukturi.js",
+            "line": 17,
             "description": "Sodrzhi aplikaciska  konfiguracija.",
             "itemtype": "property",
             "name": "config",
             "type": "Object",
             "default": "null",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 504,
+            "file": "KontrolniStrukturi.js",
+            "line": 25,
             "description": "turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...",
             "itemtype": "property",
             "name": "turboGjorgi",
             "type": "Object",
             "default": "window.TurboGjorgi",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 512,
+            "file": "KontrolniStrukturi.js",
+            "line": 33,
             "description": "parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.",
             "itemtype": "property",
             "name": "parent",
             "type": "Object",
             "default": "this",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 520,
-            "description": "brojStr e string za pamtenje na vnesenite broevi od tastatura i nivno pretvarane potoa vo cel broj. Primer:\nvneseni se broevi 4, 5, 6 edno po drugo od tastatura i potoa e pritisnato kopcheto Enter. brojStr = '456' koj potoa se \npretvora vo broj 456 i se pravat soodvetni presmetki. Vidi napraviTasterOdgovorObjekt() i vnesiCelBrojSoKopchinja().",
+            "file": "KontrolniStrukturi.js",
+            "line": 41,
+            "description": "brojStr e string za pamtenje na vnesenite broevi od tastatura i nivno pretvarane potoa vo cel broj.",
+            "example": [
+                "\n     kucnati se broevi 4, 5, 6 edno po drugo i potoa e pritisnato kopcheto Enter. brojStr = '456' koj potoa se pretvora vo broj 456 i se pravat soodvetni presmetki. \nVidi napraviTasterOdgovorObjekt() i vnesiCelBrojSoKopchinja()."
+            ],
             "itemtype": "property",
             "name": "brojStr",
             "type": "String",
             "default": "''",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 530,
+            "file": "KontrolniStrukturi.js",
+            "line": 52,
             "description": "prvaBukva e pole za prvata vnesena bukva od tastatura. Se pamti dekadniot zapis na bukvata ili event.keyCode.",
             "itemtype": "property",
             "name": "prvaBukva",
             "type": "Integer",
             "default": "null",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 538,
+            "file": "KontrolniStrukturi.js",
+            "line": 60,
             "description": "vtoraBukva e pole za vtorata vnesena bukva od tastatura. Se pamti dekadniot zapis na bukvata ili event.keyCode.",
             "itemtype": "property",
             "name": "vtoraBukva",
             "type": "Integer",
             "default": "null",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 546,
+            "file": "KontrolniStrukturi.js",
+            "line": 68,
             "description": "bukvaBrojach sluzhi kako flip-flop za vnes i pamtenje na dve posledovatelni bukvi od tastatura. Ako bukvaBrojach e 1 se zapishuva \nvo poleto prvaBukva i bukvaBrojach se zgolemuva za eden. Ako bukvaBrojach e 2 se zapishuva vo poleto vtoraBukva i bukvaBrojach \nse namaluva za eden.",
             "itemtype": "property",
             "name": "bukvaBrojach",
             "type": "Integer",
             "default": "1",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 556,
-            "description": "napraviTasterOdgovorObjekt() sozdava objekt koj gi sorzhi site potrebni podelementi za rabota so tastatura. Se pravi objekt so\nslednava gradba: {ishod: {funkciiOdCelBroj: {}, funkciiOdBukvi: {}}, greshki: []}. funkciiOdCelBroj podobjektot sodrzhi: vrednost na x, \nsledbenik na x, prethodnik na x, x^2, sqrt(x), e^x, cos(x), ln(x). funkciiOdBukvi sodrzhi: poslednata bukva vnesena od tastarura, \nprethodnik na dadenata bukva, sledbenik na dadenata bukva i golemiot zapis na dadenata bukva. Isto taka sorzhi i kluch bukviRazlika shto\npretstavuva razlika na dekadnite zapisi na poslednite dve vneseni bukvi od tastatura. Podobjektot sodrzhi niza od greshki koi se napraveni\nza vreme na povekje pritiskanja se dodeka ne se pritisne Enter. Koga kje se prititsne Enter tasterOdgovor objekto se prebrishuva i \nse pravi nov prazen objekt so ista gradba so pomosh na napraviTasterOdgovorObjekt() funkcijata.",
+            "file": "KontrolniStrukturi.js",
+            "line": 78,
+            "description": "napraviTasterOdgovorObjekt() sozdava objekt koj gi sorzhi site potrebni podelementi za rabota so tastatura. Se pravi objekt so\nslednava gradba:",
+            "example": [
+                "\n    {ishod: { funkciiOdCelBroj: {}, funkciiOdBukvi: {} }, greshki: [] }\nfunkciiOdCelBroj podobjektot sodrzhi: vrednost na x, \nsledbenik na x, prethodnik na x, x^2, sqrt(x), e^x, cos(x), ln(x). funkciiOdBukvi sodrzhi: poslednata bukva vnesena od tastarura, \nprethodnik na dadenata bukva, sledbenik na dadenata bukva i golemiot zapis na dadenata bukva. Isto taka sorzhi i kluch bukviRazlika shto\npretstavuva razlika na dekadnite zapisi na poslednite dve vneseni bukvi od tastatura. Podobjektot sodrzhi niza od greshki koi se napraveni\nza vreme na povekje pritiskanja se dodeka ne se pritisne Enter. Koga kje se prititsne Enter tasterOdgovor objektot se prebrishuva i \nse pravi nov prazen objekt so ista gradba so pomosh na napraviTasterOdgovorObjekt() funkcijata."
+            ],
             "itemtype": "method",
             "name": "napraviTasterOdgovorObjekt",
             "return": {
-                "description": "",
+                "description": "vrakja prazen objekt so gradbata: {ishod: { funkciiOdCelBroj: {}, funkciiOdBukvi: {} }, greshki: [] }",
                 "type": "Object"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 577,
+            "file": "KontrolniStrukturi.js",
+            "line": 102,
             "description": "Sodrzhi podatoci vo objektna struktura povrzani so vnes od tastatura. Pogledni napraviTasterOdgovorObjekt() i vnesiCelBrojSoKopchinja().",
             "itemtype": "property",
             "name": "tasterOdgovor",
             "type": "Object",
             "default": "{\n               ishod: {\n                   funkciiOdCelBroj: {},\n                   funkciiOdBukvi: {}\n               },\n               greshki: []\n           }",
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 593,
+            "file": "KontrolniStrukturi.js",
+            "line": 118,
             "description": "Go vrakja kvadratot na brojot n, n^2",
             "itemtype": "method",
             "name": "kvadrat",
@@ -761,12 +324,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 605,
+            "file": "KontrolniStrukturi.js",
+            "line": 130,
             "description": "Go vrakja kubot na brojot n, n^3",
             "itemtype": "method",
             "name": "kub",
@@ -782,12 +345,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 617,
+            "file": "KontrolniStrukturi.js",
+            "line": 142,
             "description": "Ja vrakja dolzhinata na kruzhnicata so daden radius.",
             "itemtype": "method",
             "name": "dolzhinaNaKruzhnica",
@@ -803,12 +366,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 629,
+            "file": "KontrolniStrukturi.js",
+            "line": 154,
             "description": "Ja vrakja ploshtinata na kruzhnicata so daden radius.",
             "itemtype": "method",
             "name": "ploshtinaNaKruzhinca",
@@ -824,12 +387,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 641,
+            "file": "KontrolniStrukturi.js",
+            "line": 166,
             "description": "Go vrakja zbirot na parametrite a i b.",
             "itemtype": "method",
             "name": "zbirOdDva",
@@ -850,12 +413,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 654,
+            "file": "KontrolniStrukturi.js",
+            "line": 179,
             "description": "Ja vrakja razlikata na parametrite a i b.",
             "itemtype": "method",
             "name": "razlikaOdDva",
@@ -876,12 +439,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 667,
+            "file": "KontrolniStrukturi.js",
+            "line": 192,
             "description": "Go vrakja proizvodot na parametrite a i b.",
             "itemtype": "method",
             "name": "proizvodOdDva",
@@ -902,12 +465,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 680,
+            "file": "KontrolniStrukturi.js",
+            "line": 205,
             "description": "Go vrakja kolichnikot na parametrite a i b. Isto taka proveruva dali b e nula, i ako e vrakja poraka DELENJE_SO_NULA.",
             "itemtype": "method",
             "name": "kolichnikOdDva",
@@ -928,12 +491,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 699,
+            "file": "KontrolniStrukturi.js",
+            "line": 224,
             "description": "Proveruva dali brojot e tricifren, i ako e ja vrakja srednata cifra. Ako brojot ne e tricifren, vrakja poraka BROJOT_NE_E_TRICIFREN.",
             "itemtype": "method",
             "name": "srednaCifraTricifrenBroj",
@@ -949,12 +512,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 719,
+            "file": "KontrolniStrukturi.js",
+            "line": 244,
             "description": "Proveruva dali dvata parametri a i b se tricifreni, i ako se vrakja zbir na srednite cifri. Ako barem eden od borevite ne e tricifren,\nfunkcijata vrakja poraka EDEN_OD_BROEVITE_NE_E_TRICIFREN.",
             "itemtype": "method",
             "name": "zbirNaSredniCifri",
@@ -975,12 +538,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 739,
+            "file": "KontrolniStrukturi.js",
+            "line": 264,
             "description": "Vrakja rastojanie izmegju dve tochki postaveni vo 3D prostor. Ako vo presmetkata ispod korenot se najde negativen broj se vrakja poraka:\nNE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ.",
             "itemtype": "method",
             "name": "rastojanieDve3DTochki",
@@ -1021,12 +584,12 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 763,
+            "file": "KontrolniStrukturi.js",
+            "line": 288,
             "description": "Reshava sistem od dve linearni ravenki so dve nepoznati: ax + by = c, dx + ey = f, i vrakja objekt so dve polinja: {x: vrX, y: vrY}",
             "itemtype": "method",
             "name": "sistemRavenkiSoDveNepoznati",
@@ -1067,15 +630,18 @@
                 "type": "Number"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 789,
-            "description": "vnesiCelBrojSoKopchinja() e nastan-funkcija koja pechati objekt koga kje se vnesat povekje broevi ili najmalce dve bukvi od tastatura posle \npritiskanje na Enter kopcheto. Se pechati objekt so slednava gradba {ishod: {funkciiOdCelBroj: {}, funkciiOdBukvi: {}}, greshki: []}.\nfunkciiOdCelBroj podobjektot sodrzhi: vrednost na x, sledbenik na x, prethodnik na x, x^2, sqrt(x), e^x, cos(x), ln(x). \nfunkciiOdBukvi sodrzhi: poslednata bukva vnesena od tastarura, prethodnik na dadenata bukva, sledbenik na dadenata bukva i \ngolemiot zapis na dadenata bukva. Isto taka sorzhi i kluch bukviRazlika shto pretstavuva razlika na dekadnite zapisi na poslednite \ndve vneseni bukvi od tastatura. Podobjektot sodrzhi niza od greshki koi se napraveni za vreme na povekje pritiskanja se dodeka ne \nse pritisne Enter. Koga kje se prititsne Enter, tasterOdgovor objektot se prebrishuva i se pravi nov prazen objekt so ista gradba \nso pomosh na napraviTasterOdgovorObjekt() funkcijata.",
+            "file": "KontrolniStrukturi.js",
+            "line": 314,
+            "description": "vnesiCelBrojSoKopchinja() e nastan-funkcija koja pechati objekt koga kje se vnesat povekje broevi ili najmalce dve bukvi od tastatura posle \npritiskanje na Enter kopcheto. Se pechati objekt so slednava gradba",
+            "example": [
+                "\n     {ishod: { funkciiOdCelBroj: {}, funkciiOdBukvi: {} }, greshki: [] }.\nfunkciiOdCelBroj podobjektot sodrzhi: vrednost na x, sledbenik na x, prethodnik na x, x^2, sqrt(x), e^x, cos(x), ln(x). \nfunkciiOdBukvi sodrzhi: poslednata bukva vnesena od tastarura, prethodnik na dadenata bukva, sledbenik na dadenata bukva i \ngolemiot zapis na dadenata bukva. Isto taka sorzhi i kluch bukviRazlika shto pretstavuva razlika na dekadnite zapisi na poslednite \ndve vneseni bukvi od tastatura. Podobjektot sodrzhi niza od greshki koi se napraveni za vreme na povekje pritiskanja se dodeka ne \nse pritisne Enter. Koga kje se prititsne Enter, tasterOdgovor objektot se prebrishuva i se pravi nov prazen objekt so ista gradba \nso pomosh na napraviTasterOdgovorObjekt() funkcijata."
+            ],
             "itemtype": "event",
-            "name": "vnesiCelBrojSoKopchinja",
+            "name": "vnesiCelBrojSoKopchinja:keydown",
             "params": [
                 {
                     "name": "event",
@@ -1084,12 +650,12 @@
                 }
             ],
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 854,
+            "file": "KontrolniStrukturi.js",
+            "line": 379,
             "description": "logichkiOperaciiOdAiB() vrakja objekt se slednava gradba: {AiB: a && b, AlilB: a || b, neA: !a, neB: !b, AiskluchivoIliB: a != b} ili \ngreshka EDEN_OD_PARAM_NE_E_BOOL ako eden od a ili b ne e od tip Boolean.",
             "itemtype": "method",
             "name": "logichkiOperaciiOdAiB",
@@ -1110,12 +676,12 @@
                 "type": "Object"
             },
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
         },
         {
-            "file": "TurboGjorgi.js",
-            "line": 878,
+            "file": "KontrolniStrukturi.js",
+            "line": 403,
             "description": "init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, \nodnosno so nastanot: \"DOMContentLoaded\". Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj \nsluchaj e window.TurboGjogi objektot.",
             "itemtype": "method",
             "name": "init",
@@ -1127,8 +693,1175 @@
                 }
             ],
             "class": "RedoslendaKontrolnaStruktura",
-            "module": "KontrolniStrukturi",
+            "module": "TurboGjorgi",
             "submodule": "KontrolniStrukturi"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 18,
+            "description": "Sodrzhi aplikaciska  konfiguracija.",
+            "itemtype": "property",
+            "name": "config",
+            "type": "Object",
+            "default": "null",
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 26,
+            "description": "turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...",
+            "itemtype": "property",
+            "name": "turboGjorgi",
+            "type": "Object",
+            "default": "window.TurboGjorgi",
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 34,
+            "description": "parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.",
+            "itemtype": "property",
+            "name": "parent",
+            "type": "Object",
+            "default": "this",
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 42,
+            "description": "rks e drugo ime za tekovniot objektot turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura",
+            "itemtype": "property",
+            "name": "rks",
+            "type": "Object",
+            "default": "turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura",
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 52,
+            "description": "triBrojaStraniNaTriagolnik() funkcijata zema tri broevi a, b i c i proveruva dali tie pravat triagolnik. Za da pravat triagolnik\nmora da se ispolneti uslovite (a + b >= c), (a + c >= b) i (b + c >= a) odnosno zbriot na bilo koi dve strani ne smee da bide pomal od \ntretata.",
+            "itemtype": "method",
+            "name": "triBrojaStraniNaTriagolnik",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "c",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 79,
+            "description": "prirodenBrojEParen() proveruva dali prirodniot broj n e paren. Prvo se proba dali e n priroden broj, i ako e togash\nse proveruva dali e paren.\ntretata.",
+            "itemtype": "method",
+            "name": "prirodenBrojEParen",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 99,
+            "description": "podrediPoGolemina() funkcijata zema tri broevi a, b i c i gi podreduva po golemina vo opagjachki redosled.",
+            "itemtype": "method",
+            "name": "podrediPoGolemina",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "c",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 149,
+            "description": "ravenkaAXPlusBEdnakvoNula() reshava ravenka so edna nepoznata, ax + b = 0.",
+            "itemtype": "method",
+            "name": "ravenkaAXPlusBEdnakvoNula",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 167,
+            "description": "tricifrenBrojSumaKuboviNaCifri() proveruva dali prateniot broj e ednakov so zbirot na kubovite na negovite cifri.",
+            "itemtype": "method",
+            "name": "tricifrenBrojSumaKuboviNaCifri",
+            "params": [
+                {
+                    "name": "broj",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 208,
+            "description": "pronajdiTricifrenBrojEdnakovZbirKubovi() go naogja brojot izmegju 100 i 999 koj e ednakov na zbirot na kubovite na negovite cifri.\nTreba da vrati broj 407 <=> 4^3 + 7^3 = 64 + 343 = 407",
+            "itemtype": "method",
+            "name": "pronajdiTricifrenBrojEdnakovZbirKubovi",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 227,
+            "description": "init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, \nodnosno so nastanot: \"DOMContentLoaded\". Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj \nsluchaj e window.TurboGjogi objektot.",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "configObject",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "IzborOdDveMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 251,
+            "description": "Sodrzhi aplikaciska  konfiguracija.",
+            "itemtype": "property",
+            "name": "config",
+            "type": "Object",
+            "default": "null",
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 259,
+            "description": "turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...",
+            "itemtype": "property",
+            "name": "turboGjorgi",
+            "type": "Object",
+            "default": "window.TurboGjorgi",
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 267,
+            "description": "parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.",
+            "itemtype": "property",
+            "name": "parent",
+            "type": "Object",
+            "default": "this",
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 275,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "NE_E_PRAVILEN_REDEN_BROJ_MESEC",
+            "type": "String",
+            "default": "\"Ne e pravilen reden broj na mesec!\"",
+            "final": 1,
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 284,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_PAREN",
+            "type": "String",
+            "default": "\"Dozvolivi se samo vrednosti 0 ili 1!\"",
+            "final": 1,
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 295,
+            "description": "keypressNastan() funkcijata proveruva dali vnesenata bukva od tastaturata e golema ili mala. Se koristi JavaSkript \nnastanot 'keypress' bidejki samo toj mozhe da razdvoi mali od golemi bukvi. 'keydown' i 'keyup' ne dvojat mali od golemi bukvi,\ntie sekogash vrakjaat podatoci za golemi bukvi. 'keypress' nastanot se sluchiva koga kje se pritisne kopche i toa vrakja nekakva\nbukva kako vrednost. Ostanatite specijalni znaci, borevi i sistemski kopchina se nebitni. Se koristi 'charCode' poleto od event \nobjektot. Spored dokumentacija na Mozilla, 'charCode' e zastareno i treba da se izbegnuva, iako site preslistuvachi go poddrzhuvaat.\nKako zamena da se koristi poleto 'key', koe seushte ne e opshto prifateno i zatoa treba da se koristi 'charCode' kade e 'key' fali.",
+            "itemtype": "event",
+            "name": "keypressNastan:keypress",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 325,
+            "description": "vidNaAgol() funkcijata vrakja opis na agolot. Ako agol > 0 i agol < 90 togash e ostar. Ako agol = 90 togash e prav.\nAko agol > 90 i agol < 180 togash e tap. Ako agol = 180 togash e ramen. Ako agol > 180 i agol < 360 togash e tap, i ako\nagol = 360 togash e poln.",
+            "itemtype": "method",
+            "name": "vidNaAgol",
+            "params": [
+                {
+                    "name": "agol",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 353,
+            "description": "svojstvaBroevi1Do10() funkcijata gi pechati svostvata na broevite od 1 do 10. Parnost/neparnost, prost/neprost broj.",
+            "itemtype": "method",
+            "name": "svojstvaBroevi1Do10",
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 378,
+            "description": "brojDenoviVoMesec() funkcijata pechati broj na denovi vo izbran mesec. Se prakja i vrednost za preodna ili ne preodna godina i pritoa\nza vtor mesec se vrakja 28 denovi odnosno 29 denovi.",
+            "itemtype": "method",
+            "name": "brojDenoviVoMesec",
+            "params": [
+                {
+                    "name": "mesecBroj",
+                    "description": "vrednost od 1 do 12",
+                    "type": "Number"
+                },
+                {
+                    "name": "preodnaGodina",
+                    "description": "vrednosti 0 za ne preodna godina i 1 za preodna godina. Ako vrednost za ovoj parametar se izostavi\ntogash osnovna vrednost e 0 ili ne preodna godina.",
+                    "type": "Number"
+                }
+            ],
+            "default": "0",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "KontrolniStrukturiZaIzbor.js",
+            "line": 452,
+            "description": "init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, \nodnosno so nastanot: \"DOMContentLoaded\". Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj \nsluchaj e window.TurboGjogi objektot.",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "configObject",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "IzborOdPovekjeMozhnosti",
+            "module": "TurboGjorgi",
+            "submodule": "KontrolniStrukturiZaIzbor"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 12,
+            "description": "documentObject e drugo ime za window.document objektot koj se prakja kako parametar na funkcijata zadolzhena za sozdavanje na\nTurboGjorgi objektot.",
+            "itemtype": "property",
+            "name": "documentObject",
+            "type": "Object",
+            "default": "window.document",
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 21,
+            "description": "Sodrzhi aplikaciska  konfiguracija.",
+            "itemtype": "property",
+            "name": "config",
+            "type": "Object",
+            "default": "null",
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 29,
+            "description": "parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.",
+            "itemtype": "property",
+            "name": "parent",
+            "type": "Object",
+            "default": "null",
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 37,
+            "description": "initApp() e funkcija koja se koristi za inicijaliziranje na celata aplikacija. Se povikuva koga kje se vchita celoto drvo na\naplikacijata. Taa e rekurzivna i go posetuva sekoj podobjekt od drvoto na nekojObjekt. Ako tekovniot objekt sodrzhi init() funkcija vo sebe, \ntaa kje se povika i pritoa se prakja parametarot config.",
+            "itemtype": "method",
+            "name": "initApp",
+            "params": [
+                {
+                    "name": "nekojObjekt",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "config",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 57,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "IME_APLIKACIJA",
+            "type": "String",
+            "default": "\"TurboGjorgi\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 66,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_PRIRODEN",
+            "type": "String",
+            "default": "\"Vneseniot broj ne e priroden!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 75,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_CEL",
+            "type": "String",
+            "default": "\"Vneseniot broj ne e cel!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 84,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_PAREN",
+            "type": "String",
+            "default": "\"Brojot e paren!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 93,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_PAREN",
+            "type": "String",
+            "default": "\"Brojot ne e paren!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 102,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "EDEN_OD_PARAMETRITE_NE_E_BROJ",
+            "type": "String",
+            "default": "\"Eden od parametrite ne e od tip broj!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 111,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "DELENJE_SO_NULA",
+            "type": "String",
+            "default": "\"Ne e dozvoleno delenje so nula!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 120,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_TRICIFREN",
+            "type": "String",
+            "default": "\"Brojot ne e tricifren!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 129,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
+            "type": "String",
+            "default": "\"Eden od broevite ne e tricifren!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 138,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NA_PARAMETRI_E_NULA",
+            "type": "String",
+            "default": "\"Brojot na prametri e nula!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 147,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
+            "type": "String",
+            "default": "\"Ne se vadi koren od negativen broj!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 156,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "MORA_DA_IMA_BAREM_DVA_PARAMETRI",
+            "type": "String",
+            "default": "\"Mora da ima barem dva parametri!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 165,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "PARAMETAROT_NE_E_FUNKCIJA",
+            "type": "String",
+            "default": "\"Parametarot ne e funkcija!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 174,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_POMAL_OD_NULA",
+            "type": "String",
+            "default": "\"Brojot e pomal od nula!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 183,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
+            "type": "String",
+            "default": "\"Brojot e pomal ili ednakov na nula!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 192,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "NE_KUCNAVTE_BROEVI",
+            "type": "String",
+            "default": "\"Ne kucnavte ni eden broj!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 201,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
+            "type": "String",
+            "default": "\"Treba da kucnete barem dve bukvi!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 210,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
+            "type": "String",
+            "default": "\"Mora da kucnete bukva ili broj!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 219,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "EDEN_OD_PARAM_NE_E_BOOL",
+            "type": "String",
+            "default": "\"Eden od parametrite ne e od tip Boolean!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 228,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_PROST",
+            "type": "String",
+            "default": "\"Brojot e prost!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 237,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_PROST",
+            "type": "String",
+            "default": "\"Brojot ne e prost!\"",
+            "final": 1,
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 256,
+            "description": "Funkcija-konstanta, vrakja ime na aplikacijata.",
+            "itemtype": "method",
+            "name": "IME_APLIKACIJA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 265,
+            "description": "Funkcija-konstanta, vrakja poraka deka vneseniot broj ne e priroden.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_PRIRODEN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 274,
+            "description": "Funkcija-konstanta, vrakja poraka deka vneseniot broj ne e cel.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_CEL",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 283,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot e paren.",
+            "itemtype": "method",
+            "name": "BROJOT_E_PAREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 292,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e paren.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_PAREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 301,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot prost.",
+            "itemtype": "method",
+            "name": "BROJOT_E_PROST",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 310,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e prost.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_PROST",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 319,
+            "description": "Funkcija-konstanta, vrakja poraka za zabraneto delenje so nula.",
+            "itemtype": "method",
+            "name": "DELENJE_SO_NULA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 328,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e tricifren.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_TRICIFREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 337,
+            "description": "Funkcija-konstanta, vrakja poraka deka eden od broevite ne e tricifren.",
+            "itemtype": "method",
+            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 346,
+            "description": "Funkcija-konstanta, vrakja poraka ne se vadi koren od negativen broj.",
+            "itemtype": "method",
+            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 355,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal od nula.",
+            "itemtype": "method",
+            "name": "BROJOT_E_POMAL_OD_NULA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 364,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal ili ednakov na nula.",
+            "itemtype": "method",
+            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 373,
+            "description": "Funkcija-konstanta, vrakja poraka deka ne e kucnat ni eden broj od tastatura.",
+            "itemtype": "method",
+            "name": "NE_KUCNAVTE_BROEVI",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 382,
+            "description": "Funkcija-konstanta, vrakja poraka deka treba da se kucnat barem dve bukvi od tastatura.",
+            "itemtype": "method",
+            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 391,
+            "description": "Funkcija-konstanta, vrakja poraka deka mora da se kucne bukva ili broj od tastatura.",
+            "itemtype": "method",
+            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 400,
+            "description": "Funkcija-konstanta, vrakja poraka deka eden od parametrite ne e od tip Boolean.",
+            "itemtype": "method",
+            "name": "EDEN_OD_PARAM_NE_E_BOOL",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Konstanti",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 414,
+            "description": "napraviDrvo() pravi drvo od objekti i podobjekti so naveduvanje na string razdvoen so tochki.",
+            "example": [
+                "\n     napraviDrvo('moj.nov.podobjekt'); Kje napravi objekt 'moj' so podobjekt 'nov' koj sodrzhi pod objekt 'podobjekt'"
+            ],
+            "itemtype": "method",
+            "name": "napraviDrvo",
+            "params": [
+                {
+                    "name": "drvoString",
+                    "description": "String koj go opishuva drvoto shto treba da se napravi razdvoeno so tochi. Primer: 'moj.nov.podobjekt'",
+                    "type": "String"
+                },
+                {
+                    "name": "novObjekt",
+                    "description": "Ovoj objekt gi sodrzhi site polinja i metodi goi treba da postojat vo objektot moj.nov.podobjekt",
+                    "type": "Object"
+                }
+            ],
+            "chainable": 1,
+            "return": {
+                "description": "Noviot objekt 'podobjekt' koj se sodrzhi sodrzhi vo 'moj.nov' objektot.",
+                "type": "Object"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 449,
+            "description": "Sekogash vrakja dekaden oblik na prateniot parametar. Za istata namena mozhe da se koristi parseFloat(param, 10), no vtoriot \nparametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.",
+            "itemtype": "method",
+            "name": "parsirajDrobenBroj",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 460,
+            "description": "Sekogash vrakja dekaden cel oblik na prateniot parametar. Za istata namena mozhe da se koristi parseInt(param, 10), no vtoriot \nparametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.",
+            "itemtype": "method",
+            "name": "parsirajCelBroj",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 471,
+            "description": "eParenBroj(broj) proveruva dali broj e cel broj i ako e togash proveruva dali e paren. Se vrakja soodvetno Boolean vrednost.",
+            "itemtype": "method",
+            "name": "eParenBroj",
+            "params": [
+                {
+                    "name": "broj",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 493,
+            "description": "eProstBroj1Do10() funkcijata proveruva dali daden broj od 1 do 10 e prost ili ne prost broj i soodvetno vrakja Boolean vrednost.",
+            "itemtype": "method",
+            "name": "eProstBroj1Do10",
+            "params": [
+                {
+                    "name": "broj",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 538,
+            "description": "Proveruva dali parametarot e cel broj.",
+            "itemtype": "method",
+            "name": "eCelBroj",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 554,
+            "description": "Proveruva dali parametarot e priroden broj. Se sostoi od dve proverki: prvo se proba dali n e pogolem od nula i ako e \ntogash se proveruva dali e cel broj.",
+            "itemtype": "method",
+            "name": "ePrirodenBroj",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 571,
+            "description": "Proveruva dali parametarot e od tip broj. Se koristi funkcija parseFloat() shto vrakja NaN ako prviot parametar ne e od tip\nbroj. Potoa se koristi funkcija isNaN() za da se potvrdi dali e ili ne e broj.",
+            "itemtype": "method",
+            "name": "eBroj",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 588,
+            "description": "Proveruva dali parametarot e od tip niza. Vo JavaSkript sekoja niza e voedno i objekt pa e malku teshko da se razlikuva.\nZatoa se koristat povekje proverki, prvo dali parametarot e objekt, potoa dali ima pole length i dali e od tip broj.\nSledat ushte dve proverki, dali poleto splice e funkcija i dali length ne e nabroivo odnosno dali ne mozhe da se pristapi do\nnego vo for(var myProp in myObject) lupa.",
+            "itemtype": "method",
+            "name": "eNiza",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 605,
+            "description": "Proveruva dali dadenata niza go sodrzhi dadeniot element i vrakja soodveten odgovor so true ili false.",
+            "itemtype": "method",
+            "name": "nizaSodrzhi",
+            "params": [
+                {
+                    "name": "niza",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "element",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 623,
+            "description": "Proveruva dali parametarot e tricifren broj, odnosno izmegju 99 i 1000. Ovaa funkcija ne proveruva tip, zatoa treba da se \nkoristat drugi funkcii ili kodovi.",
+            "itemtype": "method",
+            "name": "eTricifrenBroj",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 638,
+            "description": "Potrebno e da se pratat najmalce dva prametri od koi prviot mora da bide funkcija, a vtoriot kje bide od tip broj. Slednite parametri\nmora da bidat od tip broj. Ovaa funkcija e vazhna za proverka na parametrite dali se borevi i ako ovoj uslov e tochen, na dadenite broevi\nse izhvirshuva funkcijata koja shto e pratena kako prv parametar. Ovaa funkcija e napravena so cel da se zashtedi na povtoruvanje na istite proverki\nvo povekje funkcii koi imaat slichna namena. Na primer zoshto da pishuvame proverka vo funkcija kub(n) i istata proverka vo funkcija kvadrat(n).\nNa nekoj nachin ovde se koristi Dekorator shablonot, ovaa funkcija ja dekorirame(ukrasuvame) so funkcijata pratena kako prv parametar.",
+            "example": [
+                "\n     funkcijaOdPovekjeBroevi(zbirNaSredniCifri(), a, b); Ako a i b se broevi, togash kje se izhvrshi zbirNaSredniCifri() na a i b."
+            ],
+            "itemtype": "method",
+            "name": "funkcijaOdPovekjeBroevi",
+            "params": [
+                {
+                    "name": "presmetajFunkcija",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "param1",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
+        },
+        {
+            "file": "TurboGjorgi.js",
+            "line": 689,
+            "description": "init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, \nodnosno so nastanot: \"DOMContentLoaded\". Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj \nsluchaj e window.TurboGjogi objektot.",
+            "itemtype": "event",
+            "name": "init",
+            "params": [
+                {
+                    "name": "configObject",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "TurboGjorgi",
+            "module": "TurboGjorgi"
         }
     ],
     "warnings": []

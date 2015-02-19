@@ -1,12 +1,15 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "IzborOdDveMozhnosti",
+        "IzborOdPovekjeMozhnosti",
+        "Konstanti",
         "RedoslendaKontrolnaStruktura",
-        "TurboGjorgi",
-        "konstanti"
+        "TurboGjorgi"
     ],
     "modules": [
         "KontrolniStrukturi",
+        "KontrolniStrukturiZaIzbor",
         "TurboGjorgi"
     ],
     "allModules": [
@@ -14,6 +17,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "KontrolniStrukturi",
             "name": "KontrolniStrukturi",
             "description": "Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 1, Kontrolni Strukturi."
+        },
+        {
+            "displayName": "KontrolniStrukturiZaIzbor",
+            "name": "KontrolniStrukturiZaIzbor",
+            "description": "Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 2, Kontrolni Strukturi za izbor."
         },
         {
             "displayName": "TurboGjorgi",
