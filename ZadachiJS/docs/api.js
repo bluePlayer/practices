@@ -5,12 +5,12 @@ YUI.add("yuidoc-meta", function(Y) {
         "IzborOdPovekjeMozhnosti",
         "Konstanti",
         "RedoslendaKontrolnaStruktura",
-        "TurboGjorgi"
+        "Zadachi"
     ],
     "modules": [
         "KontrolniStrukturi",
         "KontrolniStrukturiZaIzbor",
-        "TurboGjorgi"
+        "Zadachi"
     ],
     "allModules": [
         {
@@ -24,8 +24,8 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 2, Kontrolni Strukturi za izbor."
         },
         {
-            "displayName": "TurboGjorgi",
-            "name": "TurboGjorgi",
+            "displayName": "Zadachi",
+            "name": "Zadachi",
             "description": "Sodrzhi podmoduli so klasi i metodi koi se reshenia na zadachite od slednava kniga: Zbirka Algoritmi i Programi napishana od Gjogi Jovanchevski, \nBiljana Stojchevska i Nevena Ackovska, Gocmar 2005 godina. Se e napishano vo JavaSkript i klasite/ funkciite se prilagodeni na Makedonski jazik."
         }
     ]

@@ -1,18 +1,18 @@
 /**
  * Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 2, Kontrolni Strukturi za izbor.
- * @module TurboGjorgi
+ * @module Zadachi
  * @submodule KontrolniStrukturiZaIzbor
  */
-window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor', {});
+window.Zadachi.napraviDrvo('KontrolniStrukturiZaIzbor', {});
 
 /**
  * IzborOdDveMozhnosti sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 2.1 Izbor od dve mozhnosti.
  * @class IzborOdDveMozhnosti
- * @uses TurboGjorgi
+ * @uses Zadachi
  * @uses Konstanti
  * @uses RedoslendaKontrolnaStruktura
  */
-window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', (function (turboG) {'use strict';
+window.Zadachi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', (function (zadachiObj) {'use strict';
 
     var
         /**
@@ -24,15 +24,15 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
         config = null,
 
         /**
-         * turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
-         * @property turboGjorgi
+         * zadachi e drugo ime za tekovniot objekt window.Zadachi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
+         * @property zadachi
          * @type Object
-         * @default window.TurboGjorgi
+         * @default window.Zadachi
          */
-        turboGjorgi = turboG,
+        zadachi = zadachiObj,
 
         /**
-         * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+         * parent e drugo ime za tekovniot objekt i gradba na Zadachi ili this.
          * @property parent
          * @type Object
          * @default this
@@ -40,10 +40,10 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
         parent = null,
 
         /**
-         * rks e drugo ime za tekovniot objektot turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura
+         * rks e drugo ime za tekovniot objektot zadachi.KontrolniStrukturi.RedoslendaKontrolnaStruktura
          * @property rks
          * @type Object
-         * @default turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura
+         * @default zadachi.KontrolniStrukturi.RedoslendaKontrolnaStruktura
          */
         rks = null;
 
@@ -60,7 +60,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
          * @return {Boolean}
          */
         triBrojaStraniNaTriagolnik: function (a, b, c) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
                 var eTriagolnik = true,
                     aPlusB = a + b,
                     aPlusC = a + c,
@@ -85,12 +85,12 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
          * @return {Boolean}
          */
         prirodenBrojEParen: function (n) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
                 var ishod = false;
-                if (turboGjorgi.ePrirodenBroj(n) && turboGjorgi.eParenBroj(n)) {
+                if (zadachi.ePrirodenBroj(n) && zadachi.eParenBroj(n)) {
                     ishod = true;
                 } else {
-                    ishod = turboGjorgi.Konstanti.BROJOT_NE_E_PRIRODEN();
+                    ishod = zadachi.Konstanti.BROJOT_NE_E_PRIRODEN();
                 }
                 return ishod;
             }, n);
@@ -105,7 +105,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
          * @return {Boolean}
          */
         podrediPoGolemina: function (a, b, c) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
                 var prv = 0,
                     vtor = 0,
                     tret = 0;
@@ -153,10 +153,10 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
          * @return {Boolean}
          */
         ravenkaAXPlusBEdnakvoNula: function (a, b) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
                 var ishod = 0;
                 if (a === 0) {
-                    ishod = turboGjorgi.Konstanti.DELENJE_SO_NULA();
+                    ishod = zadachi.Konstanti.DELENJE_SO_NULA();
                 } else {
                     ishod = -(b / a);
                 }
@@ -171,7 +171,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
          * @return {Boolean}
          */
         tricifrenBrojSumaKuboviNaCifri: function (broj) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
                 var ishod = false,
                     brojStr = '',
                     prvaCifra = 0,
@@ -179,12 +179,12 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
                     tretaCifra = 0,
                     zbir = 0;
 
-                if (turboGjorgi.eCelBroj(broj)) {
-                    if (turboGjorgi.eTricifrenBroj(broj)) {
+                if (zadachi.eCelBroj(broj)) {
+                    if (zadachi.eTricifrenBroj(broj)) {
                         brojStr = broj.toString();
-                        prvaCifra = turboGjorgi.parsirajCelBroj(brojStr.charAt(0));
-                        vtoraCifra = turboGjorgi.parsirajCelBroj(brojStr.charAt(1));
-                        tretaCifra = turboGjorgi.parsirajCelBroj(brojStr.charAt(2));
+                        prvaCifra = zadachi.parsirajCelBroj(brojStr.charAt(0));
+                        vtoraCifra = zadachi.parsirajCelBroj(brojStr.charAt(1));
+                        tretaCifra = zadachi.parsirajCelBroj(brojStr.charAt(2));
                         prvaCifra = rks.kub(prvaCifra);
                         vtoraCifra = rks.kub(vtoraCifra);
                         tretaCifra = rks.kub(tretaCifra);
@@ -196,10 +196,10 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
                             ishod = false;
                         }
                     } else {
-                        ishod = turboGjorgi.Konstanti.BROJOT_NE_E_TRICIFREN();
+                        ishod = zadachi.Konstanti.BROJOT_NE_E_TRICIFREN();
                     }
                 } else {
-                    ishod = turboGjorgi.Konstanti.BROJOT_NE_E_CEL();
+                    ishod = zadachi.Konstanti.BROJOT_NE_E_CEL();
                 }
                 return ishod;
             }, broj);
@@ -234,18 +234,18 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti', 
         init: function (configObject) {
             config = configObject;
             parent = this;
-            rks = turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura;
+            rks = zadachi.KontrolniStrukturi.RedoslendaKontrolnaStruktura;
         }
     };
-    }(window.TurboGjorgi)));
+    }(window.Zadachi)));
 
 /**
  * IzborOdPovekjeMozhnosti sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 2.2 Izbor od povekje mozhnosti.
  * @class IzborOdPovekjeMozhnosti
- * @uses TurboGjorgi
+ * @uses Zadachi
  * @uses Konstanti
  */
-window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnosti', (function (turboG) {'use strict';
+window.Zadachi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnosti', (function (zadachiObj) {'use strict';
 
     var
         /**
@@ -257,15 +257,15 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
         config = null,
 
         /**
-         * turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
-         * @property turboGjorgi
+         * zadachi e drugo ime za tekovniot objekt window.Zadachi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
+         * @property zadachi
          * @type Object
-         * @default window.TurboGjorgi
+         * @default window.Zadachi
          */
-        turboGjorgi = turboG,
+        zadachi = zadachiObj,
 
         /**
-         * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+         * parent e drugo ime za tekovniot objekt i gradba na Zadachi ili this.
          * @property parent
          * @type Object
          * @default this
@@ -331,7 +331,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
          * @return {String}
          */
         vidNaAgol: function (agol) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
                 var ishod = '';
                 if (agol > 0 && agol < 90) {
                     ishod = "Ostar: " + agol;
@@ -360,16 +360,16 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
                 ishod = {};
             for (i = 1; i < 11; i += 1) {
                 ishod[i] = [];
-                if (turboGjorgi.eParenBroj(i)) {
-                    ishod[i].push(turboGjorgi.Konstanti.BROJOT_E_PAREN());
+                if (zadachi.eParenBroj(i)) {
+                    ishod[i].push(zadachi.Konstanti.BROJOT_E_PAREN());
                 } else {
-                    ishod[i].push(turboGjorgi.Konstanti.BROJOT_NE_E_PAREN());
+                    ishod[i].push(zadachi.Konstanti.BROJOT_NE_E_PAREN());
                 }
 
-                if (turboGjorgi.eProstBroj1Do10(i)) {
-                    ishod[i].push(turboGjorgi.Konstanti.BROJOT_E_PROST());
+                if (zadachi.eProstBroj1Do10(i)) {
+                    ishod[i].push(zadachi.Konstanti.BROJOT_E_PROST());
                 } else {
-                    ishod[i].push(turboGjorgi.Konstanti.BROJOT_NE_E_PROST());
+                    ishod[i].push(zadachi.Konstanti.BROJOT_NE_E_PROST());
                 }
             }
             return ishod;
@@ -386,10 +386,10 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
          * @return {Number}
          */
         brojDenoviVoMesec: function (mesecBroj, preodnaGodina) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function () {
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
                 var ishod = 0;
                 preodnaGodina = (preodnaGodina === undefined ? 0 : preodnaGodina);
-                if (turboGjorgi.eCelBroj(mesecBroj)) {
+                if (zadachi.eCelBroj(mesecBroj)) {
                     if (mesecBroj < 1 || mesecBroj > 12) {
                         ishod = NE_E_PRAVILEN_REDEN_BROJ_MESEC;
                     } else {
@@ -398,7 +398,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
                             ishod = 31;
                             break;
                         case 2:
-                            if (turboGjorgi.eCelBroj(preodnaGodina)) {
+                            if (zadachi.eCelBroj(preodnaGodina)) {
                                 if (preodnaGodina === 0) {
                                     ishod = 28;
                                 } else if (preodnaGodina === 1) {
@@ -407,7 +407,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
                                     ishod = DOZVOLIVI_SE_SAMO_VREDNOSTI_0_ILI_1 + ": preodnaGodina = " + preodnaGodina;
                                 }
                             } else {
-                                ishod = turboGjorgi.Konstanti.BROJOT_NE_E_CEL() + ": preodnaGodina, " + preodnaGodina;
+                                ishod = zadachi.Konstanti.BROJOT_NE_E_CEL() + ": preodnaGodina, " + preodnaGodina;
                             }
                             break;
                         case 3:
@@ -443,7 +443,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
                         }
                     }
                 } else {
-                    ishod = turboGjorgi.Konstanti.BROJOT_NE_E_CEL();
+                    ishod = zadachi.Konstanti.BROJOT_NE_E_CEL();
                 }
                 return ishod;
             }, mesecBroj);
@@ -461,4 +461,4 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnost
             parent = this;
         }
     };
-    }(window.TurboGjorgi)));
+    }(window.Zadachi)));

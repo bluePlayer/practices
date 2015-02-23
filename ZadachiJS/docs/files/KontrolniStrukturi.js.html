@@ -42,13 +42,13 @@
                                 <li><a href="../classes/IzborOdPovekjeMozhnosti.html">IzborOdPovekjeMozhnosti</a></li>
                                 <li><a href="../classes/Konstanti.html">Konstanti</a></li>
                                 <li><a href="../classes/RedoslendaKontrolnaStruktura.html">RedoslendaKontrolnaStruktura</a></li>
-                                <li><a href="../classes/TurboGjorgi.html">TurboGjorgi</a></li>
+                                <li><a href="../classes/Zadachi.html">Zadachi</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/KontrolniStrukturi.html">KontrolniStrukturi</a></li>
                                 <li><a href="../modules/KontrolniStrukturiZaIzbor.html">KontrolniStrukturiZaIzbor</a></li>
-                                <li><a href="../modules/TurboGjorgi.html">TurboGjorgi</a></li>
+                                <li><a href="../modules/Zadachi.html">Zadachi</a></li>
                             </ul>
                         </div>
                     </div>
@@ -88,18 +88,18 @@
                             <pre class="code prettyprint linenums">
                         /**
                          * Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 1, Kontrolni Strukturi.
-                         * @module TurboGjorgi
+                         * @module Zadachi
                          * @submodule KontrolniStrukturi
                          */
-                        window.TurboGjorgi.napraviDrvo(&#x27;KontrolniStrukturi&#x27;, {});
+                        window.Zadachi.napraviDrvo(&#x27;KontrolniStrukturi&#x27;, {});
                         
                         /**
                          * RedoslendaKontrolnaStruktura sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 1.1 Redoslenda kontrolna struktura.
                          * @class RedoslendaKontrolnaStruktura
-                         * @uses TurboGjorgi
+                         * @uses Zadachi
                          * @uses Konstanti
                          */
-                        window.TurboGjorgi.napraviDrvo(&#x27;KontrolniStrukturi.RedoslendaKontrolnaStruktura&#x27;, (function (turboG) {&#x27;use strict&#x27;;
+                        window.Zadachi.napraviDrvo(&#x27;KontrolniStrukturi.RedoslendaKontrolnaStruktura&#x27;, (function (zadachiObj) {&#x27;use strict&#x27;;
                         
                             var
                                 /**
@@ -111,15 +111,15 @@
                                 config = null,
                         
                                 /**
-                                 * turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
-                                 * @property turboGjorgi
+                                 * zadachi e drugo ime za tekovniot objekt window.Zadachi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
+                                 * @property zadachi
                                  * @type Object
-                                 * @default window.TurboGjorgi
+                                 * @default window.Zadachi
                                  */
-                                turboGjorgi = turboG,
+                                zadachi = zadachiObj,
                         
                                 /**
-                                 * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+                                 * parent e drugo ime za tekovniot objekt i gradba na Zadachi ili this.
                                  * @property parent
                                  * @type Object
                                  * @default this
@@ -210,7 +210,7 @@
                                  * @return {Number}
                                  */
                                 kvadrat: function (n) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (n) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (n) {
                                         return n * n;
                                     }, n);
                                 },
@@ -222,7 +222,7 @@
                                  * @return {Number}
                                  */
                                 kub: function (n) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (n) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (n) {
                                         return n * n * n;
                                     }, n);
                                 },
@@ -234,7 +234,7 @@
                                  * @return {Number}
                                  */
                                 dolzhinaNaKruzhnica: function (radius) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (radius) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (radius) {
                                         return 2 * Math.PI * radius;
                                     }, radius);
                                 },
@@ -246,7 +246,7 @@
                                  * @return {Number}
                                  */
                                 ploshtinaNaKruzhinca: function (radius) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (radius) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (radius) {
                                         return Math.PI * parent.kvadrat(radius);
                                     }, radius);
                                 },
@@ -259,7 +259,7 @@
                                  * @return {Number}
                                  */
                                 zbirOdDva: function (a, b) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                                         return a + b;
                                     }, a, b);
                                 },
@@ -272,7 +272,7 @@
                                  * @return {Number}
                                  */
                                 razlikaOdDva: function (a, b) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                                         return a - b;
                                     }, a, b);
                                 },
@@ -285,7 +285,7 @@
                                  * @return {Number}
                                  */
                                 proizvodOdDva: function (a, b) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                                         return a * b;
                                     }, a, b);
                                 },
@@ -298,10 +298,10 @@
                                  * @return {Number}
                                  */
                                 kolichnikOdDva: function (a, b) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                                         var ishod = null;
                                         if (b === 0) {
-                                            ishod = turboGjorgi.Konstanti.DELENJE_SO_NULA();
+                                            ishod = zadachi.Konstanti.DELENJE_SO_NULA();
                                         } else {
                                             ishod = a / b;
                                         }
@@ -316,14 +316,14 @@
                                  * @return {Number}
                                  */
                                 srednaCifraTricifrenBroj: function (broj) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (broj) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (broj) {
                                         var pomosh = 0,
                                             ishod = null;
-                                        if (turboGjorgi.eTricifrenBroj(broj)) {
+                                        if (zadachi.eTricifrenBroj(broj)) {
                                             pomosh = broj % 100;
                                             ishod = (pomosh - pomosh % 10) / 10;
                                         } else {
-                                            ishod = turboGjorgi.Konstanti.BROJOT_NE_E_TRICIFREN();
+                                            ishod = zadachi.Konstanti.BROJOT_NE_E_TRICIFREN();
                                         }
                                         return ishod;
                                     }, broj);
@@ -338,12 +338,12 @@
                                  * @return {Number}
                                  */
                                 zbirNaSredniCifri: function (a, b) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                                         var ishod = null;
-                                        if (turboGjorgi.eTricifrenBroj(a) &amp;&amp; turboGjorgi.eTricifrenBroj(b)) {
+                                        if (zadachi.eTricifrenBroj(a) &amp;&amp; zadachi.eTricifrenBroj(b)) {
                                             ishod = parent.srednaCifraTricifrenBroj(a) + parent.srednaCifraTricifrenBroj(b);
                                         } else {
-                                            ishod = turboGjorgi.Konstanti.EDEN_OD_BROEVITE_NE_E_TRICIFREN();
+                                            ishod = zadachi.Konstanti.EDEN_OD_BROEVITE_NE_E_TRICIFREN();
                                         }
                                         return ishod;
                                     }, a, b);
@@ -362,10 +362,10 @@
                                  * @return {Number}
                                  */
                                 rastojanieDve3DTochki: function (x1, y1, z1, x2, y2, z2) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (x1, y1, z1, x2, y2, z2) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (x1, y1, z1, x2, y2, z2) {
                                         var ishod = parent.kvadrat(x2 - x1) + parent.kvadrat(y2 - y1) + parent.kvadrat(z2 - z1);
                                         if (ishod &lt; 0) {
-                                            ishod = turboGjorgi.Konstanti.NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ();
+                                            ishod = zadachi.Konstanti.NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ();
                                         } else {
                                             ishod = Math.sqrt(ishod);
                                         }
@@ -385,7 +385,7 @@
                                  * @return {Number}
                                  */
                                 sistemRavenkiSoDveNepoznati: function (a, b, c, d, e, f) {
-                                    return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b, c, d, e, f) {
+                                    return zadachi.funkcijaOdPovekjeBroevi(function (a, b, c, d, e, f) {
                                         var x = 0,
                                             y = 0;
                         
@@ -417,7 +417,7 @@
                                     var x = null;
                                     if (event.keyCode === 13) {
                                         if (brojStr === &#x27;&#x27;) {
-                                            tasterOdgovor.greshki.push(turboGjorgi.Konstanti.NE_KUCNAVTE_BROEVI());
+                                            tasterOdgovor.greshki.push(zadachi.Konstanti.NE_KUCNAVTE_BROEVI());
                                         } else {
                                             x = parseInt(brojStr, 10);
                                             tasterOdgovor.ishod.funkciiOdCelBroj = {
@@ -425,10 +425,10 @@
                                                 prethodnik: x - 1,
                                                 sledbenik: x + 1,
                                                 kvadrat: parent.kvadrat(x),
-                                                koren: (x &lt; 0 ? turboGjorgi.Konstanti.BROJOT_E_POMAL_OD_NULA() : Math.sqrt(x)),
+                                                koren: (x &lt; 0 ? zadachi.Konstanti.BROJOT_E_POMAL_OD_NULA() : Math.sqrt(x)),
                                                 eNaStepenX: Math.exp(x),
                                                 cosinus: Math.cos(x),
-                                                logaritamOdX: (x &lt;= 0 ? turboGjorgi.Konstanti.BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA() : Math.log(x))
+                                                logaritamOdX: (x &lt;= 0 ? zadachi.Konstanti.BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA() : Math.log(x))
                                             };
                                             brojStr = &#x27;&#x27;;
                                         }
@@ -455,12 +455,12 @@
                                             bukvaBrojach -= 1;
                                         }
                                         if (prvaBukva === null || vtoraBukva === null) {
-                                            tasterOdgovor.greshki.push(turboGjorgi.Konstanti.TREBA_DA_KUCNETE_BAREM_DVE_BUKVI());
+                                            tasterOdgovor.greshki.push(zadachi.Konstanti.TREBA_DA_KUCNETE_BAREM_DVE_BUKVI());
                                         } else {
                                             tasterOdgovor.ishod.funkciiOdBukvi.bukviRazlika = prvaBukva - vtoraBukva;
                                         }
                                     } else {
-                                        tasterOdgovor.greshki.push(turboGjorgi.Konstanti.MORA_DA_KUCNETE_BUKVA_ILI_BROJ());
+                                        tasterOdgovor.greshki.push(zadachi.Konstanti.MORA_DA_KUCNETE_BUKVA_ILI_BROJ());
                                     }
                                 },
                         
@@ -475,7 +475,7 @@
                                 logichkiOperaciiOdAiB: function (a, b) {
                                     var ishod = null;
                                     if (typeof a !== &#x27;boolean&#x27; || typeof b !== &#x27;boolean&#x27;) {
-                                        ishod = turboGjorgi.Konstanti.EDEN_OD_PARAM_NE_E_BOOL();
+                                        ishod = zadachi.Konstanti.EDEN_OD_PARAM_NE_E_BOOL();
                                     } else {
                                         ishod = {
                                             AiB: a &amp;&amp; b,
@@ -500,7 +500,7 @@
                                     parent = this;
                                 }
                             };
-                            }(window.TurboGjorgi)));
+                            }(window.Zadachi)));
                             </pre>
                         </div>
                     </div>

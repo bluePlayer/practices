@@ -1,17 +1,17 @@
 /**
  * Sodrzhi podmoduli so klasi i metodi koi se reshenia na zadachite od slednava kniga: Zbirka Algoritmi i Programi napishana od Gjogi Jovanchevski, 
  * Biljana Stojchevska i Nevena Ackovska, Gocmar 2005 godina. Se e napishano vo JavaSkript i klasite/ funkciite se prilagodeni na Makedonski jazik.
- * @module TurboGjorgi
- * @class TurboGjorgi
- * @main TurboGjorgi
+ * @module Zadachi
+ * @class Zadachi
+ * @main Zadachi
  * @author Vladimir Z. aka bluePlayer. https://github.com/bluePlayer/practices
  */
-window.TurboGjorgi = window.TurboGjorgi || (function (windowDocumentObject) {'use strict';
+window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict';
 
     var
         /**
          * documentObject e drugo ime za window.document objektot koj se prakja kako parametar na funkcijata zadolzhena za sozdavanje na
-         * TurboGjorgi objektot.
+         * Zadachi objektot.
          * @property documentObject
          * @type Object
          * @default window.document
@@ -27,7 +27,7 @@ window.TurboGjorgi = window.TurboGjorgi || (function (windowDocumentObject) {'us
         config = null,
 
         /**
-         * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+         * parent e drugo ime za tekovniot objekt i gradba na Zadachi ili this.
          * @property parent
          * @type Object
          * @default null
@@ -58,10 +58,10 @@ window.TurboGjorgi = window.TurboGjorgi || (function (windowDocumentObject) {'us
          * Konstanta
          * @property IME_APLIKACIJA
          * @type String
-         * @default "TurboGjorgi"
+         * @default "Zadachi"
          * @final
          */
-        IME_APLIKACIJA = "TurboGjorgi",
+        IME_APLIKACIJA = "Zadachi",
 
         /**
          * Konstanta
@@ -408,7 +408,7 @@ window.TurboGjorgi = window.TurboGjorgi || (function (windowDocumentObject) {'us
         },
 
         /**
-         * @class TurboGjorgi
+         * @class Zadachi
          */
 
         /**
@@ -424,26 +424,26 @@ window.TurboGjorgi = window.TurboGjorgi || (function (windowDocumentObject) {'us
         napraviDrvo: function (drvoString, novObjekt) {
             var delovi = drvoString.split('.'),
                 pomObjekt = {},
-                turboGjorgi = this,
+                zadachi = this,
                 i = 0,
                 pole = {};
 
-            if (delovi[0] === turboGjorgi.Konstanti.IME_APLIKACIJA()) {
+            if (delovi[0] === zadachi.Konstanti.IME_APLIKACIJA()) {
                 delovi = delovi.slice(1);
             }
 
             for (i = 0; i < delovi.length; i += 1) {
-                if (turboGjorgi[delovi[i]] === undefined) {
+                if (zadachi[delovi[i]] === undefined) {
                     for (pole in novObjekt) {
                         if (novObjekt.hasOwnProperty(pole)) {
                             pomObjekt[pole] = novObjekt[pole];
                         }
                     }
-                    turboGjorgi[delovi[i]] = pomObjekt;
+                    zadachi[delovi[i]] = pomObjekt;
                 }
-                turboGjorgi = turboGjorgi[delovi[i]];
+                zadachi = zadachi[delovi[i]];
             }
-            return turboGjorgi;
+            return zadachi;
         },
 
         /**
@@ -703,13 +703,13 @@ window.TurboGjorgi = window.TurboGjorgi || (function (windowDocumentObject) {'us
 
 window.document.addEventListener("DOMContentLoaded", function (event) {'use strict';
 
-    var turboGjorgi = window.TurboGjorgi,
-        rks = turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura,
-        iodm = turboGjorgi.KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti,
-        iodpm = turboGjorgi.KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnosti,
+    var zadachi = window.Zadachi,
+        rks = zadachi.KontrolniStrukturi.RedoslendaKontrolnaStruktura,
+        iodm = zadachi.KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti,
+        iodpm = zadachi.KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnosti,
         config = {"event": event};
 
-    turboGjorgi.init(config);
+    zadachi.init(config);
     window.document.addEventListener('keydown', rks.vnesiCelBrojSoKopchinja);
     window.document.addEventListener('keypress', iodpm.keypressNastan);
 

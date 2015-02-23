@@ -1,17 +1,17 @@
 /**
  * Sodrzhi klasi so metodi koi se reshenia na zadachite povrzani so glava 1, Kontrolni Strukturi.
- * @module TurboGjorgi
+ * @module Zadachi
  * @submodule KontrolniStrukturi
  */
-window.TurboGjorgi.napraviDrvo('KontrolniStrukturi', {});
+window.Zadachi.napraviDrvo('KontrolniStrukturi', {});
 
 /**
  * RedoslendaKontrolnaStruktura sodrzhi metodi koi se reshenia na zadachite povrzani so podglava 1.1 Redoslenda kontrolna struktura.
  * @class RedoslendaKontrolnaStruktura
- * @uses TurboGjorgi
+ * @uses Zadachi
  * @uses Konstanti
  */
-window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura', (function (turboG) {'use strict';
+window.Zadachi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura', (function (zadachiObj) {'use strict';
 
     var
         /**
@@ -23,15 +23,15 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
         config = null,
 
         /**
-         * turboGjorgi e drugo ime za tekovniot objekt window.TurboGjorgi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
-         * @property turboGjorgi
+         * zadachi e drugo ime za tekovniot objekt window.Zadachi. TurboGjogi klasata ima korisni funkcii kako, eNiza, eBroj itn...
+         * @property zadachi
          * @type Object
-         * @default window.TurboGjorgi
+         * @default window.Zadachi
          */
-        turboGjorgi = turboG,
+        zadachi = zadachiObj,
 
         /**
-         * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+         * parent e drugo ime za tekovniot objekt i gradba na Zadachi ili this.
          * @property parent
          * @type Object
          * @default this
@@ -122,7 +122,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         kvadrat: function (n) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (n) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (n) {
                 return n * n;
             }, n);
         },
@@ -134,7 +134,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         kub: function (n) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (n) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (n) {
                 return n * n * n;
             }, n);
         },
@@ -146,7 +146,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         dolzhinaNaKruzhnica: function (radius) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (radius) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (radius) {
                 return 2 * Math.PI * radius;
             }, radius);
         },
@@ -158,7 +158,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         ploshtinaNaKruzhinca: function (radius) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (radius) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (radius) {
                 return Math.PI * parent.kvadrat(radius);
             }, radius);
         },
@@ -171,7 +171,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         zbirOdDva: function (a, b) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                 return a + b;
             }, a, b);
         },
@@ -184,7 +184,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         razlikaOdDva: function (a, b) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                 return a - b;
             }, a, b);
         },
@@ -197,7 +197,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         proizvodOdDva: function (a, b) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                 return a * b;
             }, a, b);
         },
@@ -210,10 +210,10 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         kolichnikOdDva: function (a, b) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                 var ishod = null;
                 if (b === 0) {
-                    ishod = turboGjorgi.Konstanti.DELENJE_SO_NULA();
+                    ishod = zadachi.Konstanti.DELENJE_SO_NULA();
                 } else {
                     ishod = a / b;
                 }
@@ -228,14 +228,14 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         srednaCifraTricifrenBroj: function (broj) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (broj) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (broj) {
                 var pomosh = 0,
                     ishod = null;
-                if (turboGjorgi.eTricifrenBroj(broj)) {
+                if (zadachi.eTricifrenBroj(broj)) {
                     pomosh = broj % 100;
                     ishod = (pomosh - pomosh % 10) / 10;
                 } else {
-                    ishod = turboGjorgi.Konstanti.BROJOT_NE_E_TRICIFREN();
+                    ishod = zadachi.Konstanti.BROJOT_NE_E_TRICIFREN();
                 }
                 return ishod;
             }, broj);
@@ -250,12 +250,12 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         zbirNaSredniCifri: function (a, b) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
                 var ishod = null;
-                if (turboGjorgi.eTricifrenBroj(a) && turboGjorgi.eTricifrenBroj(b)) {
+                if (zadachi.eTricifrenBroj(a) && zadachi.eTricifrenBroj(b)) {
                     ishod = parent.srednaCifraTricifrenBroj(a) + parent.srednaCifraTricifrenBroj(b);
                 } else {
-                    ishod = turboGjorgi.Konstanti.EDEN_OD_BROEVITE_NE_E_TRICIFREN();
+                    ishod = zadachi.Konstanti.EDEN_OD_BROEVITE_NE_E_TRICIFREN();
                 }
                 return ishod;
             }, a, b);
@@ -274,10 +274,10 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         rastojanieDve3DTochki: function (x1, y1, z1, x2, y2, z2) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (x1, y1, z1, x2, y2, z2) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (x1, y1, z1, x2, y2, z2) {
                 var ishod = parent.kvadrat(x2 - x1) + parent.kvadrat(y2 - y1) + parent.kvadrat(z2 - z1);
                 if (ishod < 0) {
-                    ishod = turboGjorgi.Konstanti.NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ();
+                    ishod = zadachi.Konstanti.NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ();
                 } else {
                     ishod = Math.sqrt(ishod);
                 }
@@ -297,7 +297,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
          * @return {Number}
          */
         sistemRavenkiSoDveNepoznati: function (a, b, c, d, e, f) {
-            return turboGjorgi.funkcijaOdPovekjeBroevi(function (a, b, c, d, e, f) {
+            return zadachi.funkcijaOdPovekjeBroevi(function (a, b, c, d, e, f) {
                 var x = 0,
                     y = 0;
 
@@ -329,7 +329,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
             var x = null;
             if (event.keyCode === 13) {
                 if (brojStr === '') {
-                    tasterOdgovor.greshki.push(turboGjorgi.Konstanti.NE_KUCNAVTE_BROEVI());
+                    tasterOdgovor.greshki.push(zadachi.Konstanti.NE_KUCNAVTE_BROEVI());
                 } else {
                     x = parseInt(brojStr, 10);
                     tasterOdgovor.ishod.funkciiOdCelBroj = {
@@ -337,10 +337,10 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
                         prethodnik: x - 1,
                         sledbenik: x + 1,
                         kvadrat: parent.kvadrat(x),
-                        koren: (x < 0 ? turboGjorgi.Konstanti.BROJOT_E_POMAL_OD_NULA() : Math.sqrt(x)),
+                        koren: (x < 0 ? zadachi.Konstanti.BROJOT_E_POMAL_OD_NULA() : Math.sqrt(x)),
                         eNaStepenX: Math.exp(x),
                         cosinus: Math.cos(x),
-                        logaritamOdX: (x <= 0 ? turboGjorgi.Konstanti.BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA() : Math.log(x))
+                        logaritamOdX: (x <= 0 ? zadachi.Konstanti.BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA() : Math.log(x))
                     };
                     brojStr = '';
                 }
@@ -367,12 +367,12 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
                     bukvaBrojach -= 1;
                 }
                 if (prvaBukva === null || vtoraBukva === null) {
-                    tasterOdgovor.greshki.push(turboGjorgi.Konstanti.TREBA_DA_KUCNETE_BAREM_DVE_BUKVI());
+                    tasterOdgovor.greshki.push(zadachi.Konstanti.TREBA_DA_KUCNETE_BAREM_DVE_BUKVI());
                 } else {
                     tasterOdgovor.ishod.funkciiOdBukvi.bukviRazlika = prvaBukva - vtoraBukva;
                 }
             } else {
-                tasterOdgovor.greshki.push(turboGjorgi.Konstanti.MORA_DA_KUCNETE_BUKVA_ILI_BROJ());
+                tasterOdgovor.greshki.push(zadachi.Konstanti.MORA_DA_KUCNETE_BUKVA_ILI_BROJ());
             }
         },
 
@@ -387,7 +387,7 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
         logichkiOperaciiOdAiB: function (a, b) {
             var ishod = null;
             if (typeof a !== 'boolean' || typeof b !== 'boolean') {
-                ishod = turboGjorgi.Konstanti.EDEN_OD_PARAM_NE_E_BOOL();
+                ishod = zadachi.Konstanti.EDEN_OD_PARAM_NE_E_BOOL();
             } else {
                 ishod = {
                     AiB: a && b,
@@ -412,4 +412,4 @@ window.TurboGjorgi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura'
             parent = this;
         }
     };
-    }(window.TurboGjorgi)));
+    }(window.Zadachi)));

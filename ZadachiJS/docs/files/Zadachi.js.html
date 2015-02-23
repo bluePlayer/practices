@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TurboGjorgi.js</title>
+    <title>Zadachi.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -42,13 +42,13 @@
                                 <li><a href="../classes/IzborOdPovekjeMozhnosti.html">IzborOdPovekjeMozhnosti</a></li>
                                 <li><a href="../classes/Konstanti.html">Konstanti</a></li>
                                 <li><a href="../classes/RedoslendaKontrolnaStruktura.html">RedoslendaKontrolnaStruktura</a></li>
-                                <li><a href="../classes/TurboGjorgi.html">TurboGjorgi</a></li>
+                                <li><a href="../classes/Zadachi.html">Zadachi</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/KontrolniStrukturi.html">KontrolniStrukturi</a></li>
                                 <li><a href="../modules/KontrolniStrukturiZaIzbor.html">KontrolniStrukturiZaIzbor</a></li>
-                                <li><a href="../modules/TurboGjorgi.html">TurboGjorgi</a></li>
+                                <li><a href="../modules/Zadachi.html">Zadachi</a></li>
                             </ul>
                         </div>
                     </div>
@@ -82,24 +82,24 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: TurboGjorgi.js</h1>
+                        <h1 class="file-heading">File: Zadachi.js</h1>
                         
                         <div class="file">
                             <pre class="code prettyprint linenums">
                         /**
                          * Sodrzhi podmoduli so klasi i metodi koi se reshenia na zadachite od slednava kniga: Zbirka Algoritmi i Programi napishana od Gjogi Jovanchevski, 
                          * Biljana Stojchevska i Nevena Ackovska, Gocmar 2005 godina. Se e napishano vo JavaSkript i klasite/ funkciite se prilagodeni na Makedonski jazik.
-                         * @module TurboGjorgi
-                         * @class TurboGjorgi
-                         * @main TurboGjorgi
+                         * @module Zadachi
+                         * @class Zadachi
+                         * @main Zadachi
                          * @author Vladimir Z. aka bluePlayer. https://github.com/bluePlayer/practices
                          */
-                        window.TurboGjorgi = window.TurboGjorgi || (function (windowDocumentObject) {&#x27;use strict&#x27;;
+                        window.Zadachi = window.Zadachi || (function (windowDocumentObject) {&#x27;use strict&#x27;;
                         
                             var
                                 /**
                                  * documentObject e drugo ime za window.document objektot koj se prakja kako parametar na funkcijata zadolzhena za sozdavanje na
-                                 * TurboGjorgi objektot.
+                                 * Zadachi objektot.
                                  * @property documentObject
                                  * @type Object
                                  * @default window.document
@@ -115,7 +115,7 @@
                                 config = null,
                         
                                 /**
-                                 * parent e drugo ime za tekovniot objekt i gradba na TurboGjorgi ili this.
+                                 * parent e drugo ime za tekovniot objekt i gradba na Zadachi ili this.
                                  * @property parent
                                  * @type Object
                                  * @default null
@@ -146,10 +146,10 @@
                                  * Konstanta
                                  * @property IME_APLIKACIJA
                                  * @type String
-                                 * @default &quot;TurboGjorgi&quot;
+                                 * @default &quot;Zadachi&quot;
                                  * @final
                                  */
-                                IME_APLIKACIJA = &quot;TurboGjorgi&quot;,
+                                IME_APLIKACIJA = &quot;Zadachi&quot;,
                         
                                 /**
                                  * Konstanta
@@ -496,7 +496,7 @@
                                 },
                         
                                 /**
-                                 * @class TurboGjorgi
+                                 * @class Zadachi
                                  */
                         
                                 /**
@@ -512,26 +512,26 @@
                                 napraviDrvo: function (drvoString, novObjekt) {
                                     var delovi = drvoString.split(&#x27;.&#x27;),
                                         pomObjekt = {},
-                                        turboGjorgi = this,
+                                        zadachi = this,
                                         i = 0,
                                         pole = {};
                         
-                                    if (delovi[0] === turboGjorgi.Konstanti.IME_APLIKACIJA()) {
+                                    if (delovi[0] === zadachi.Konstanti.IME_APLIKACIJA()) {
                                         delovi = delovi.slice(1);
                                     }
                         
                                     for (i = 0; i &lt; delovi.length; i += 1) {
-                                        if (turboGjorgi[delovi[i]] === undefined) {
+                                        if (zadachi[delovi[i]] === undefined) {
                                             for (pole in novObjekt) {
                                                 if (novObjekt.hasOwnProperty(pole)) {
                                                     pomObjekt[pole] = novObjekt[pole];
                                                 }
                                             }
-                                            turboGjorgi[delovi[i]] = pomObjekt;
+                                            zadachi[delovi[i]] = pomObjekt;
                                         }
-                                        turboGjorgi = turboGjorgi[delovi[i]];
+                                        zadachi = zadachi[delovi[i]];
                                     }
-                                    return turboGjorgi;
+                                    return zadachi;
                                 },
                         
                                 /**
@@ -791,13 +791,13 @@
                         
                         window.document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {&#x27;use strict&#x27;;
                         
-                            var turboGjorgi = window.TurboGjorgi,
-                                rks = turboGjorgi.KontrolniStrukturi.RedoslendaKontrolnaStruktura,
-                                iodm = turboGjorgi.KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti,
-                                iodpm = turboGjorgi.KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnosti,
+                            var zadachi = window.Zadachi,
+                                rks = zadachi.KontrolniStrukturi.RedoslendaKontrolnaStruktura,
+                                iodm = zadachi.KontrolniStrukturiZaIzbor.IzborOdDveMozhnosti,
+                                iodpm = zadachi.KontrolniStrukturiZaIzbor.IzborOdPovekjeMozhnosti,
                                 config = {&quot;event&quot;: event};
                         
-                            turboGjorgi.init(config);
+                            zadachi.init(config);
                             window.document.addEventListener(&#x27;keydown&#x27;, rks.vnesiCelBrojSoKopchinja);
                             window.document.addEventListener(&#x27;keypress&#x27;, iodpm.keypressNastan);
                         
