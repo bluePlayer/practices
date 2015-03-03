@@ -1,0 +1,646 @@
+{
+    "project": {},
+    "files": {
+        "AppStructure.js": {
+            "name": "AppStructure.js",
+            "modules": {
+                "APP": 1
+            },
+            "classes": {
+                "APP": 1,
+                "APP.Exceptions": 1,
+                "APP.Constants": 1,
+                "APP.Events": 1,
+                "MySubObject.MySubObject": 1,
+                "MySubObject.Exceptions": 1,
+                "MySubObject.Constants": 1,
+                "MySubObject.Events": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "APP": 1,
+                "MySubObject": 1
+            }
+        }
+    },
+    "modules": {
+        "APP": {
+            "name": "APP",
+            "submodules": {},
+            "classes": {
+                "APP": 1,
+                "APP.Exceptions": 1,
+                "APP.Constants": 1,
+                "APP.Events": 1,
+                "MySubObject.MySubObject": 1,
+                "MySubObject.Exceptions": 1,
+                "MySubObject.Constants": 1,
+                "MySubObject.Events": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "APP": 1,
+                "MySubObject": 1
+            },
+            "tag": "module",
+            "file": "AppStructure.js",
+            "line": 386
+        }
+    },
+    "classes": {
+        "APP": {
+            "name": "APP",
+            "shortname": "APP",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "APP",
+            "file": "AppStructure.js",
+            "line": 176,
+            "description": "Class APP",
+            "author": "Vladimir Zakar aka bluePlayer. https://github.com/bluePlayer/practices"
+        },
+        "APP.Exceptions": {
+            "name": "APP.Exceptions",
+            "shortname": "APP.Exceptions",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "APP",
+            "file": "AppStructure.js",
+            "line": 94,
+            "description": "Class exceptions contains custom exceptions for your application"
+        },
+        "APP.Constants": {
+            "name": "APP.Constants",
+            "shortname": "Constants",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "APP",
+            "file": "AppStructure.js",
+            "line": 115,
+            "description": "Class exceptions contains custom exceptions for your application. Using capitalized accessor method that do nothing more \nthan returning a single value prevents its change inside your app but also from outside. There are other solutions to \ncreate immutable \"Constants\" using patterns natural to JavaScript but it is overkill to implement and also to use afterwards."
+        },
+        "APP.Events": {
+            "name": "APP.Events",
+            "shortname": "Events",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "APP",
+            "file": "AppStructure.js",
+            "line": 142,
+            "description": "Class Events contains your custom events for your application."
+        },
+        "MySubObject.MySubObject": {
+            "name": "MySubObject.MySubObject",
+            "shortname": "MySubObject",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "MySubObject",
+            "file": "AppStructure.js",
+            "line": 402,
+            "description": "Class Events"
+        },
+        "MySubObject.Exceptions": {
+            "name": "MySubObject.Exceptions",
+            "shortname": "MySubObject.Exceptions",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "MySubObject",
+            "file": "AppStructure.js",
+            "line": 348,
+            "description": "Class exceptions contains custom exceptions for your application"
+        },
+        "MySubObject.Constants": {
+            "name": "MySubObject.Constants",
+            "shortname": "Constants",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "MySubObject",
+            "file": "AppStructure.js",
+            "line": 368,
+            "description": "Class exceptions contains custom exceptions for your application. Using capitalized accessor method that do nothing more \nthan returning a single value prevents its change inside your app but also from outside. There are other solutions to \ncreate immutable \"Constants\" using patterns natural to JavaScript but it is overkill to implement and also to use afterwards."
+        },
+        "MySubObject.Events": {
+            "name": "MySubObject.Events",
+            "shortname": "Events",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "APP",
+            "namespace": "MySubObject",
+            "file": "AppStructure.js",
+            "line": 386,
+            "description": "Class Events"
+        }
+    },
+    "classitems": [
+        {
+            "file": "AppStructure.js",
+            "line": 14,
+            "description": "Version of the current application object",
+            "itemtype": "property",
+            "name": "version",
+            "type": "String",
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 21,
+            "description": "Configuration object for the current application object",
+            "itemtype": "property",
+            "name": "config",
+            "type": "Object",
+            "default": "{}",
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 29,
+            "description": "Reference for the current application object, for easier internal use.",
+            "itemtype": "property",
+            "name": "parent",
+            "type": "Object",
+            "default": "null",
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 37,
+            "description": "Reference for jquery external library.",
+            "itemtype": "property",
+            "name": "jqueryObj",
+            "type": "Object",
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 44,
+            "description": "Reference for extJs external library.",
+            "itemtype": "property",
+            "name": "extJSObj",
+            "type": "Object",
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 51,
+            "description": "Reference for expressJs external library.",
+            "itemtype": "property",
+            "name": "expressJsObj",
+            "type": "Object",
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 58,
+            "description": "Reference for window.document object.",
+            "itemtype": "property",
+            "name": "windowDocumentObject",
+            "type": "Object",
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 65,
+            "description": "Constant",
+            "itemtype": "property",
+            "name": "MY_APP_NAME",
+            "type": "String",
+            "default": "\"MyJSApplication\"",
+            "final": 1,
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 74,
+            "description": "Constant",
+            "itemtype": "property",
+            "name": "MY_EXCEPTION_MESSAGE",
+            "type": "String",
+            "default": "\"My exception message\"",
+            "final": 1,
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 83,
+            "description": "Constant",
+            "itemtype": "property",
+            "name": "MY_APP_CONSTANT",
+            "type": "String",
+            "default": "\"some message\"",
+            "final": 1,
+            "class": "APP",
+            "module": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 101,
+            "description": "This is my first custom exception. For more add new constuctor function inside Exceptions class with similar sturcture as this \nexception.",
+            "itemtype": "method",
+            "name": "MyFirstException",
+            "return": {
+                "description": "contains message and name of the exception",
+                "type": "Object"
+            },
+            "class": "APP.Exceptions",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 123,
+            "description": "Function-Constant, returns the name of the application",
+            "itemtype": "method",
+            "name": "MY_APP_NAME",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "APP.Constants",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 132,
+            "description": "Function-Constant, returns the value of your first constant",
+            "itemtype": "method",
+            "name": "MY_APP_CONSTANT",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "APP.Constants",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 148,
+            "description": "do some stuff when some key is pressed down on 'keydown' event.",
+            "itemtype": "event",
+            "name": "keyDownEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "APP.Events",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 157,
+            "description": "do some stuff when some key is released on 'keyup' event",
+            "itemtype": "event",
+            "name": "keyUpEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "APP.Events",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 166,
+            "description": "do some stuff when 'keypress' event was detected",
+            "itemtype": "event",
+            "name": "keyPressEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "APP.Events",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 181,
+            "description": "initApp() is a function that is used to initialize the whole application. It is called when the whole DOM tree is fetched with\n\"DOMContentLoaded\" event. Its a recursive function and traverses the whole JS application tree searching for subobject that has\nits own init() function and send config object to it.",
+            "itemtype": "method",
+            "name": "initApp",
+            "params": [
+                {
+                    "name": "someObject",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "config",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "APP",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 202,
+            "description": "Creates objects and subobjects by using just a string in dotted notation. \nExample namespace('my.new.namespace'); will create object 'my' that contains subobject 'new', which contains \nsubobject 'namespace'.",
+            "itemtype": "method",
+            "name": "namespace",
+            "params": [
+                {
+                    "name": "nsString",
+                    "description": "String describing the namespace of objects separated by a dots.",
+                    "type": "String"
+                },
+                {
+                    "name": "newObjectDefinition",
+                    "description": "And object to initialize each of the newly created subobject. If you add a property with all caps \nit will consider it as a constant and therefore use Constants object to create new constant that cannot be changed using Firebug \nor other browser debugging interface.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Returns the new object that represents the new namespace of objects and subobjects, defined by the dots in the string\nargument.",
+                "type": "Object"
+            },
+            "class": "APP",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 239,
+            "description": "your custom function",
+            "itemtype": "method",
+            "name": "customFunction",
+            "throws": {
+                "description": "if b < 0 throws and error",
+                "type": "MyFirstException"
+            },
+            "params": [
+                {
+                    "name": "a",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "b",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Returs true if new constant is created or false otherwise.",
+                "type": "Number"
+            },
+            "class": "APP",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 255,
+            "description": "do some stuff with jquery",
+            "itemtype": "method",
+            "name": "doSomeStuffWithJquery",
+            "params": [
+                {
+                    "name": "someUrl",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "APP",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 269,
+            "description": "do some stuff with extJs",
+            "itemtype": "method",
+            "name": "doSomeStuffWithExtJS",
+            "class": "APP",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 277,
+            "description": "do some stuff with expressJS",
+            "itemtype": "method",
+            "name": "doSomeStuffWithExpressJS",
+            "class": "APP",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 285,
+            "description": "initialize the app",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "configObject",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "APP",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 305,
+            "description": "configuration object for MySubObject",
+            "itemtype": "property",
+            "name": "config",
+            "type": "Object",
+            "default": "{}",
+            "class": "APP.MySubObject",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 313,
+            "description": "contains reference for MySubObject for easy using inside MySubObject",
+            "itemtype": "property",
+            "name": "parent",
+            "type": "Object",
+            "default": "null",
+            "class": "APP.MySubObject",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 321,
+            "description": "someLibrary is internal reference for some external library so that you don't have to use dots or reall library name.",
+            "itemtype": "property",
+            "name": "someLibrary",
+            "type": "Object",
+            "class": "APP.MySubObject",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 328,
+            "description": "Constant",
+            "itemtype": "property",
+            "name": "MY_CONSTANT",
+            "type": "String",
+            "default": "\"my constant\"",
+            "final": 1,
+            "class": "APP.MySubObject",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 337,
+            "description": "Constant",
+            "itemtype": "property",
+            "name": "MY_EXCEPTION",
+            "type": "String",
+            "default": "\"my exception\"",
+            "final": 1,
+            "class": "APP.MySubObject",
+            "module": "APP",
+            "namespace": "APP"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 355,
+            "description": "MyNewException() constructor. For more add new constuctor function inside Exceptions class with similar sturcture as this exception.",
+            "itemtype": "method",
+            "name": "MyNewException",
+            "return": {
+                "description": "contains message and name of the exception",
+                "type": "Object"
+            },
+            "class": "MySubObject.Exceptions",
+            "module": "APP",
+            "namespace": "MySubObject"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 376,
+            "description": "Function-Constant, returns the value of MY_CONSTANT",
+            "itemtype": "method",
+            "name": "MY_CONSTANT",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "MySubObject.Constants",
+            "module": "APP",
+            "namespace": "MySubObject"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 392,
+            "description": "myNewEvent",
+            "itemtype": "event",
+            "name": "myNewEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "MySubObject.Events",
+            "module": "APP",
+            "namespace": "MySubObject"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 407,
+            "description": "Name of the current application object",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "default": "\"MySubObject\"",
+            "class": "MySubObject.MySubObject",
+            "module": "APP",
+            "namespace": "MySubObject"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 415,
+            "description": "your custom function",
+            "itemtype": "method",
+            "name": "myCustomFunction",
+            "class": "MySubObject.MySubObject",
+            "module": "APP",
+            "namespace": "MySubObject"
+        },
+        {
+            "file": "AppStructure.js",
+            "line": 423,
+            "description": "initialize this object, MySubObject",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "configObj",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "class": "MySubObject.MySubObject",
+            "module": "APP",
+            "namespace": "MySubObject"
+        }
+    ],
+    "warnings": []
+}
