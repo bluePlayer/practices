@@ -194,7 +194,7 @@ window.APP = window.APP || (function (wdo, lib1, lib2, lib3) {'use strict';
                     if (someObject[i].hasOwnProperty('init')) {
                         someObject[i].init(config);
                     }
-                    parent.initApp(someObject[i]);
+                    parent.initApp(someObject[i], config);
                 }
             }
         },
