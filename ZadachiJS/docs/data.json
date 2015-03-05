@@ -31,10 +31,13 @@
             },
             "classes": {
                 "Zadachi": 1,
-                "Konstanti": 1
+                "Zadachi.Iskluchoci": 1,
+                "Zadachi.Konstanti": 1
             },
             "fors": {},
-            "namespaces": {}
+            "namespaces": {
+                "Zadachi": 1
+            }
         }
     },
     "modules": {
@@ -49,13 +52,16 @@
                 "IzborOdDveMozhnosti": 1,
                 "IzborOdPovekjeMozhnosti": 1,
                 "Zadachi": 1,
-                "Konstanti": 1
+                "Zadachi.Iskluchoci": 1,
+                "Zadachi.Konstanti": 1
             },
             "fors": {},
-            "namespaces": {},
+            "namespaces": {
+                "Zadachi": 1
+            },
             "tag": "main",
             "file": "Zadachi.js",
-            "line": 248,
+            "line": 386,
             "description": "Sodrzhi podmoduli so klasi i metodi koi se reshenia na zadachite od slednava kniga: Zbirka Algoritmi i Programi napishana od Gjogi Jovanchevski, \nBiljana Stojchevska i Nevena Ackovska, Gocmar 2005 godina. Se e napishano vo JavaSkript i klasite/ funkciite se prilagodeni na Makedonski jazik.",
             "itemtype": "main"
         },
@@ -165,27 +171,37 @@
                 "IzborOdPovekjeMozhnosti"
             ],
             "module": "Zadachi",
-            "namespace": "",
+            "namespace": "Zadachi",
             "file": "Zadachi.js",
-            "line": 410,
+            "line": 548,
             "description": "Sodrzhi podmoduli so klasi i metodi koi se reshenia na zadachite od slednava kniga: Zbirka Algoritmi i Programi napishana od Gjogi Jovanchevski, \nBiljana Stojchevska i Nevena Ackovska, Gocmar 2005 godina. Se e napishano vo JavaSkript i klasite/ funkciite se prilagodeni na Makedonski jazik."
         },
-        "Konstanti": {
-            "name": "Konstanti",
+        "Zadachi.Iskluchoci": {
+            "name": "Zadachi.Iskluchoci",
+            "shortname": "Zadachi.Iskluchoci",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Zadachi",
+            "namespace": "Zadachi",
+            "file": "Zadachi.js",
+            "line": 246,
+            "description": "Sodrzhi iskluchoci za rabota so greshki"
+        },
+        "Zadachi.Konstanti": {
+            "name": "Zadachi.Konstanti",
             "shortname": "Konstanti",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
-            "extension_for": [
-                "RedoslendaKontrolnaStruktura",
-                "IzborOdDveMozhnosti",
-                "IzborOdPovekjeMozhnosti"
-            ],
+            "extension_for": [],
             "module": "Zadachi",
-            "namespace": "",
+            "namespace": "Zadachi",
             "file": "Zadachi.js",
-            "line": 248,
+            "line": 386,
             "description": "Sodrzhi funkcii-konstanti so koi se vrakja vrednost na dadena konstanta navedena pogore. JavaSkript nema konstanti\npa zatoa se koristat funkcii za da se zachuva vrednosta na dadena promenliva. Isto taka se koristi funkciski blok(scope)\nbidejkji promenliva definirana vo funkcija so var e nedostapna nadvor od nea."
         }
     },
@@ -371,7 +387,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 154,
+            "line": 160,
             "description": "Ja vrakja ploshtinata na kruzhnicata so daden radius.",
             "itemtype": "method",
             "name": "ploshtinaNaKruzhinca",
@@ -392,7 +408,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 166,
+            "line": 172,
             "description": "Go vrakja zbirot na parametrite a i b.",
             "itemtype": "method",
             "name": "zbirOdDva",
@@ -418,7 +434,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 179,
+            "line": 185,
             "description": "Ja vrakja razlikata na parametrite a i b.",
             "itemtype": "method",
             "name": "razlikaOdDva",
@@ -444,7 +460,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 192,
+            "line": 198,
             "description": "Go vrakja proizvodot na parametrite a i b.",
             "itemtype": "method",
             "name": "proizvodOdDva",
@@ -470,7 +486,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 205,
+            "line": 211,
             "description": "Go vrakja kolichnikot na parametrite a i b. Isto taka proveruva dali b e nula, i ako e vrakja poraka DELENJE_SO_NULA.",
             "itemtype": "method",
             "name": "kolichnikOdDva",
@@ -496,7 +512,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 224,
+            "line": 233,
             "description": "Proveruva dali brojot e tricifren, i ako e ja vrakja srednata cifra. Ako brojot ne e tricifren, vrakja poraka BROJOT_NE_E_TRICIFREN.",
             "itemtype": "method",
             "name": "srednaCifraTricifrenBroj",
@@ -517,7 +533,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 244,
+            "line": 255,
             "description": "Proveruva dali dvata parametri a i b se tricifreni, i ako se vrakja zbir na srednite cifri. Ako barem eden od borevite ne e tricifren,\nfunkcijata vrakja poraka EDEN_OD_BROEVITE_NE_E_TRICIFREN.",
             "itemtype": "method",
             "name": "zbirNaSredniCifri",
@@ -543,7 +559,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 264,
+            "line": 273,
             "description": "Vrakja rastojanie izmegju dve tochki postaveni vo 3D prostor. Ako vo presmetkata ispod korenot se najde negativen broj se vrakja poraka:\nNE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ.",
             "itemtype": "method",
             "name": "rastojanieDve3DTochki",
@@ -589,7 +605,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 288,
+            "line": 297,
             "description": "Reshava sistem od dve linearni ravenki so dve nepoznati: ax + by = c, dx + ey = f, i vrakja objekt so dve polinja: {x: vrX, y: vrY}",
             "itemtype": "method",
             "name": "sistemRavenkiSoDveNepoznati",
@@ -635,7 +651,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 314,
+            "line": 323,
             "description": "vnesiCelBrojSoKopchinja() e nastan-funkcija koja pechati objekt koga kje se vnesat povekje broevi ili najmalce dve bukvi od tastatura posle \npritiskanje na Enter kopcheto. Se pechati objekt so slednava gradba",
             "example": [
                 "\n     {ishod: { funkciiOdCelBroj: {}, funkciiOdBukvi: {} }, greshki: [] }.\nfunkciiOdCelBroj podobjektot sodrzhi: vrednost na x, sledbenik na x, prethodnik na x, x^2, sqrt(x), e^x, cos(x), ln(x). \nfunkciiOdBukvi sodrzhi: poslednata bukva vnesena od tastarura, prethodnik na dadenata bukva, sledbenik na dadenata bukva i \ngolemiot zapis na dadenata bukva. Isto taka sorzhi i kluch bukviRazlika shto pretstavuva razlika na dekadnite zapisi na poslednite \ndve vneseni bukvi od tastatura. Podobjektot sodrzhi niza od greshki koi se napraveni za vreme na povekje pritiskanja se dodeka ne \nse pritisne Enter. Koga kje se prititsne Enter, tasterOdgovor objektot se prebrishuva i se pravi nov prazen objekt so ista gradba \nso pomosh na napraviTasterOdgovorObjekt() funkcijata."
@@ -655,7 +671,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 379,
+            "line": 388,
             "description": "logichkiOperaciiOdAiB() vrakja objekt se slednava gradba: {AiB: a && b, AlilB: a || b, neA: !a, neB: !b, AiskluchivoIliB: a != b} ili \ngreshka EDEN_OD_PARAM_NE_E_BOOL ako eden od a ili b ne e od tip Boolean.",
             "itemtype": "method",
             "name": "logichkiOperaciiOdAiB",
@@ -681,7 +697,7 @@
         },
         {
             "file": "KontrolniStrukturi.js",
-            "line": 403,
+            "line": 412,
             "description": "init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, \nodnosno so nastanot: \"DOMContentLoaded\". Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj \nsluchaj e window.TurboGjogi objektot.",
             "itemtype": "method",
             "name": "init",
@@ -1094,6 +1110,674 @@
         {
             "file": "Zadachi.js",
             "line": 37,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "IME_APLIKACIJA",
+            "type": "String",
+            "default": "\"Zadachi\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 46,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_PRIRODEN",
+            "type": "String",
+            "default": "\"Vneseniot broj ne e priroden!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 55,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_CEL",
+            "type": "String",
+            "default": "\"Vneseniot broj ne e cel!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 64,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_PAREN",
+            "type": "String",
+            "default": "\"Brojot e paren!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 73,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_PAREN",
+            "type": "String",
+            "default": "\"Brojot ne e paren!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 82,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "EDEN_OD_PARAMETRITE_NE_E_BROJ",
+            "type": "String",
+            "default": "\"Eden od parametrite ne e od tip broj!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 91,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "DELENJE_SO_NULA",
+            "type": "String",
+            "default": "\"Ne e dozvoleno delenje so nula!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 100,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_TRICIFREN",
+            "type": "String",
+            "default": "\"Brojot ne e tricifren!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 109,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
+            "type": "String",
+            "default": "\"Eden od broevite ne e tricifren!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 118,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NA_PARAMETRI_E_NULA",
+            "type": "String",
+            "default": "\"Brojot na prametri e nula!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 127,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
+            "type": "String",
+            "default": "\"Ne se vadi koren od negativen broj!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 136,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "MORA_DA_IMA_BAREM_DVA_PARAMETRI",
+            "type": "String",
+            "default": "\"Mora da ima barem dva parametri!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 145,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "PARAMETAROT_NE_E_FUNKCIJA",
+            "type": "String",
+            "default": "\"Parametarot ne e funkcija!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 154,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_POMAL_OD_NULA",
+            "type": "String",
+            "default": "\"Brojot e pomal od nula!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 163,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
+            "type": "String",
+            "default": "\"Brojot e pomal ili ednakov na nula!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 172,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "NE_KUCNAVTE_BROEVI",
+            "type": "String",
+            "default": "\"Ne kucnavte ni eden broj!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 181,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
+            "type": "String",
+            "default": "\"Treba da kucnete barem dve bukvi!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 190,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
+            "type": "String",
+            "default": "\"Mora da kucnete bukva ili broj!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 199,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "EDEN_OD_PARAM_NE_E_BOOL",
+            "type": "String",
+            "default": "\"Eden od parametrite ne e od tip Boolean!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 208,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_E_PROST",
+            "type": "String",
+            "default": "\"Brojot e prost!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 217,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "PARAM_NE_E_OD_TIP_ARRAY",
+            "type": "String",
+            "default": "\"Parametarot ne e od tip Array!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 226,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "PARAM_NE_E_DEFINIRAN",
+            "type": "String",
+            "default": "\"Parametarot ne e definiran, ili e null ili NaN!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 235,
+            "description": "Konstanta",
+            "itemtype": "property",
+            "name": "BROJOT_NE_E_PROST",
+            "type": "String",
+            "default": "\"Brojot ne e prost!\"",
+            "final": 1,
+            "class": "Zadachi",
+            "module": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 253,
+            "description": "Iskluchok, brojot e pomal od nula",
+            "itemtype": "method",
+            "name": "IskBrojPomalOnNula",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 265,
+            "description": "Iskluchok, delenje so nula",
+            "itemtype": "method",
+            "name": "IskDelenjeSoNula",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 277,
+            "description": "Iskluchok, brojot ne e tricifren",
+            "itemtype": "method",
+            "name": "IskBrojotNeETricifren",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 289,
+            "description": "Iskluchok, eden od broevite ne e tricifren.",
+            "itemtype": "method",
+            "name": "IskEdenOdBroeviteNeETricifren",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 301,
+            "description": "Iskluchok, brojot ne e cel",
+            "itemtype": "method",
+            "name": "IskBrojotNeETricifren",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 313,
+            "description": "Iskluchok, brojot ne e priroden",
+            "itemtype": "method",
+            "name": "IskBrojotNeEPriroden",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 325,
+            "description": "Iskluchok, parametarot ne e od tip funkcija",
+            "itemtype": "method",
+            "name": "IskParamNeEFunkcija",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 337,
+            "description": "Iskluchok, funkcijata mora da dobie najmalce dva parametri",
+            "itemtype": "method",
+            "name": "IskMoraNajmalceDvaParam",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 349,
+            "description": "Iskluchok, eden od parametrite ne e od tip broj",
+            "itemtype": "method",
+            "name": "IskEdenOdParamNeEBroj",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 361,
+            "description": "Iskluchok, parametarot ne e definiran, ili e null ili NaN.",
+            "itemtype": "method",
+            "name": "IskParamNeEDefiniran",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 373,
+            "description": "Iskluchok, parametarot ne e od tip Array.",
+            "itemtype": "method",
+            "name": "IskParamNeEOdTipArray",
+            "return": {
+                "description": "struktura na iskluchok, sodrzhi samo poraka i ime.",
+                "type": "Object"
+            },
+            "class": "Zadachi.Iskluchoci",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 394,
+            "description": "Funkcija-konstanta, vrakja ime na aplikacijata.",
+            "itemtype": "method",
+            "name": "IME_APLIKACIJA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 403,
+            "description": "Funkcija-konstanta, vrakja poraka deka vneseniot broj ne e priroden.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_PRIRODEN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 412,
+            "description": "Funkcija-konstanta, vrakja poraka deka vneseniot broj ne e cel.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_CEL",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 421,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot e paren.",
+            "itemtype": "method",
+            "name": "BROJOT_E_PAREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 430,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e paren.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_PAREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 439,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot prost.",
+            "itemtype": "method",
+            "name": "BROJOT_E_PROST",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 448,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e prost.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_PROST",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 457,
+            "description": "Funkcija-konstanta, vrakja poraka za zabraneto delenje so nula.",
+            "itemtype": "method",
+            "name": "DELENJE_SO_NULA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 466,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e tricifren.",
+            "itemtype": "method",
+            "name": "BROJOT_NE_E_TRICIFREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 475,
+            "description": "Funkcija-konstanta, vrakja poraka deka eden od broevite ne e tricifren.",
+            "itemtype": "method",
+            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 484,
+            "description": "Funkcija-konstanta, vrakja poraka ne se vadi koren od negativen broj.",
+            "itemtype": "method",
+            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 493,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal od nula.",
+            "itemtype": "method",
+            "name": "BROJOT_E_POMAL_OD_NULA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 502,
+            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal ili ednakov na nula.",
+            "itemtype": "method",
+            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 511,
+            "description": "Funkcija-konstanta, vrakja poraka deka ne e kucnat ni eden broj od tastatura.",
+            "itemtype": "method",
+            "name": "NE_KUCNAVTE_BROEVI",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 520,
+            "description": "Funkcija-konstanta, vrakja poraka deka treba da se kucnat barem dve bukvi od tastatura.",
+            "itemtype": "method",
+            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 529,
+            "description": "Funkcija-konstanta, vrakja poraka deka mora da se kucne bukva ili broj od tastatura.",
+            "itemtype": "method",
+            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 538,
+            "description": "Funkcija-konstanta, vrakja poraka deka eden od parametrite ne e od tip Boolean.",
+            "itemtype": "method",
+            "name": "EDEN_OD_PARAM_NE_E_BOOL",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Zadachi.Konstanti",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 552,
             "description": "initApp() e funkcija koja se koristi za inicijaliziranje na celata aplikacija. Se povikuva koga kje se vchita celoto drvo na\naplikacijata. Taa e rekurzivna i go posetuva sekoj podobjekt od drvoto na nekojObjekt. Ako tekovniot objekt sodrzhi init() funkcija vo sebe, \ntaa kje se povika i pritoa se prakja parametarot config.",
             "itemtype": "method",
             "name": "initApp",
@@ -1110,484 +1794,12 @@
                 }
             ],
             "class": "Zadachi",
-            "module": "Zadachi"
+            "module": "Zadachi",
+            "namespace": "Zadachi"
         },
         {
             "file": "Zadachi.js",
-            "line": 57,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "IME_APLIKACIJA",
-            "type": "String",
-            "default": "\"Zadachi\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 66,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NE_E_PRIRODEN",
-            "type": "String",
-            "default": "\"Vneseniot broj ne e priroden!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 75,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NE_E_CEL",
-            "type": "String",
-            "default": "\"Vneseniot broj ne e cel!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 84,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_E_PAREN",
-            "type": "String",
-            "default": "\"Brojot e paren!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 93,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NE_E_PAREN",
-            "type": "String",
-            "default": "\"Brojot ne e paren!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 102,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "EDEN_OD_PARAMETRITE_NE_E_BROJ",
-            "type": "String",
-            "default": "\"Eden od parametrite ne e od tip broj!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 111,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "DELENJE_SO_NULA",
-            "type": "String",
-            "default": "\"Ne e dozvoleno delenje so nula!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 120,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NE_E_TRICIFREN",
-            "type": "String",
-            "default": "\"Brojot ne e tricifren!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 129,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
-            "type": "String",
-            "default": "\"Eden od broevite ne e tricifren!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 138,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NA_PARAMETRI_E_NULA",
-            "type": "String",
-            "default": "\"Brojot na prametri e nula!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 147,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
-            "type": "String",
-            "default": "\"Ne se vadi koren od negativen broj!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 156,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "MORA_DA_IMA_BAREM_DVA_PARAMETRI",
-            "type": "String",
-            "default": "\"Mora da ima barem dva parametri!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 165,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "PARAMETAROT_NE_E_FUNKCIJA",
-            "type": "String",
-            "default": "\"Parametarot ne e funkcija!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 174,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_E_POMAL_OD_NULA",
-            "type": "String",
-            "default": "\"Brojot e pomal od nula!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 183,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
-            "type": "String",
-            "default": "\"Brojot e pomal ili ednakov na nula!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 192,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "NE_KUCNAVTE_BROEVI",
-            "type": "String",
-            "default": "\"Ne kucnavte ni eden broj!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 201,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
-            "type": "String",
-            "default": "\"Treba da kucnete barem dve bukvi!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 210,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
-            "type": "String",
-            "default": "\"Mora da kucnete bukva ili broj!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 219,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "EDEN_OD_PARAM_NE_E_BOOL",
-            "type": "String",
-            "default": "\"Eden od parametrite ne e od tip Boolean!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 228,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_E_PROST",
-            "type": "String",
-            "default": "\"Brojot e prost!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 237,
-            "description": "Konstanta",
-            "itemtype": "property",
-            "name": "BROJOT_NE_E_PROST",
-            "type": "String",
-            "default": "\"Brojot ne e prost!\"",
-            "final": 1,
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 256,
-            "description": "Funkcija-konstanta, vrakja ime na aplikacijata.",
-            "itemtype": "method",
-            "name": "IME_APLIKACIJA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 265,
-            "description": "Funkcija-konstanta, vrakja poraka deka vneseniot broj ne e priroden.",
-            "itemtype": "method",
-            "name": "BROJOT_NE_E_PRIRODEN",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 274,
-            "description": "Funkcija-konstanta, vrakja poraka deka vneseniot broj ne e cel.",
-            "itemtype": "method",
-            "name": "BROJOT_NE_E_CEL",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 283,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot e paren.",
-            "itemtype": "method",
-            "name": "BROJOT_E_PAREN",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 292,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e paren.",
-            "itemtype": "method",
-            "name": "BROJOT_NE_E_PAREN",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 301,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot prost.",
-            "itemtype": "method",
-            "name": "BROJOT_E_PROST",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 310,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e prost.",
-            "itemtype": "method",
-            "name": "BROJOT_NE_E_PROST",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 319,
-            "description": "Funkcija-konstanta, vrakja poraka za zabraneto delenje so nula.",
-            "itemtype": "method",
-            "name": "DELENJE_SO_NULA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 328,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot ne e tricifren.",
-            "itemtype": "method",
-            "name": "BROJOT_NE_E_TRICIFREN",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 337,
-            "description": "Funkcija-konstanta, vrakja poraka deka eden od broevite ne e tricifren.",
-            "itemtype": "method",
-            "name": "EDEN_OD_BROEVITE_NE_E_TRICIFREN",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 346,
-            "description": "Funkcija-konstanta, vrakja poraka ne se vadi koren od negativen broj.",
-            "itemtype": "method",
-            "name": "NE_SE_VADI_KOREN_OD_NEGATIVEN_BROJ",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 355,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal od nula.",
-            "itemtype": "method",
-            "name": "BROJOT_E_POMAL_OD_NULA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 364,
-            "description": "Funkcija-konstanta, vrakja poraka deka brojot e pomal ili ednakov na nula.",
-            "itemtype": "method",
-            "name": "BROJOT_E_POMAL_ILI_EDNAKOV_NA_NULA",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 373,
-            "description": "Funkcija-konstanta, vrakja poraka deka ne e kucnat ni eden broj od tastatura.",
-            "itemtype": "method",
-            "name": "NE_KUCNAVTE_BROEVI",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 382,
-            "description": "Funkcija-konstanta, vrakja poraka deka treba da se kucnat barem dve bukvi od tastatura.",
-            "itemtype": "method",
-            "name": "TREBA_DA_KUCNETE_BAREM_DVE_BUKVI",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 391,
-            "description": "Funkcija-konstanta, vrakja poraka deka mora da se kucne bukva ili broj od tastatura.",
-            "itemtype": "method",
-            "name": "MORA_DA_KUCNETE_BUKVA_ILI_BROJ",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 400,
-            "description": "Funkcija-konstanta, vrakja poraka deka eden od parametrite ne e od tip Boolean.",
-            "itemtype": "method",
-            "name": "EDEN_OD_PARAM_NE_E_BOOL",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "class": "Konstanti",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 414,
+            "line": 572,
             "description": "napraviDrvo() pravi drvo od objekti i podobjekti so naveduvanje na string razdvoen so tochki.",
             "example": [
                 "\n     napraviDrvo('moj.nov.podobjekt'); Kje napravi objekt 'moj' so podobjekt 'nov' koj sodrzhi pod objekt 'podobjekt'"
@@ -1612,59 +1824,20 @@
                 "type": "Object"
             },
             "class": "Zadachi",
-            "module": "Zadachi"
+            "module": "Zadachi",
+            "namespace": "Zadachi"
         },
         {
             "file": "Zadachi.js",
-            "line": 449,
-            "description": "Sekogash vrakja dekaden oblik na prateniot parametar. Za istata namena mozhe da se koristi parseFloat(param, 10), no vtoriot \nparametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.",
+            "line": 607,
+            "description": "Proveruva dali parametarot ima vrednost, odnosno dali e razlichen od null, undefined, ili NaN",
             "itemtype": "method",
-            "name": "parsirajDrobenBroj",
+            "name": "imaVrednost",
             "params": [
                 {
-                    "name": "param",
+                    "name": "pole",
                     "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Number"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 460,
-            "description": "Sekogash vrakja dekaden cel oblik na prateniot parametar. Za istata namena mozhe da se koristi parseInt(param, 10), no vtoriot \nparametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.",
-            "itemtype": "method",
-            "name": "parsirajCelBroj",
-            "params": [
-                {
-                    "name": "param",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Number"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 471,
-            "description": "eParenBroj(broj) proveruva dali broj e cel broj i ako e togash proveruva dali e paren. Se vrakja soodvetno Boolean vrednost.",
-            "itemtype": "method",
-            "name": "eParenBroj",
-            "params": [
-                {
-                    "name": "broj",
-                    "description": "",
-                    "type": "Number"
+                    "type": "Object"
                 }
             ],
             "return": {
@@ -1672,71 +1845,12 @@
                 "type": "Boolean"
             },
             "class": "Zadachi",
-            "module": "Zadachi"
+            "module": "Zadachi",
+            "namespace": "Zadachi"
         },
         {
             "file": "Zadachi.js",
-            "line": 493,
-            "description": "eProstBroj1Do10() funkcijata proveruva dali daden broj od 1 do 10 e prost ili ne prost broj i soodvetno vrakja Boolean vrednost.",
-            "itemtype": "method",
-            "name": "eProstBroj1Do10",
-            "params": [
-                {
-                    "name": "broj",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 538,
-            "description": "Proveruva dali parametarot e cel broj.",
-            "itemtype": "method",
-            "name": "eCelBroj",
-            "params": [
-                {
-                    "name": "n",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 554,
-            "description": "Proveruva dali parametarot e priroden broj. Se sostoi od dve proverki: prvo se proba dali n e pogolem od nula i ako e \ntogash se proveruva dali e cel broj.",
-            "itemtype": "method",
-            "name": "ePrirodenBroj",
-            "params": [
-                {
-                    "name": "n",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 571,
+            "line": 628,
             "description": "Proveruva dali parametarot e od tip broj. Se koristi funkcija parseFloat() shto vrakja NaN ako prviot parametar ne e od tip\nbroj. Potoa se koristi funkcija isNaN() za da se potvrdi dali e ili ne e broj.",
             "itemtype": "method",
             "name": "eBroj",
@@ -1752,76 +1866,12 @@
                 "type": "Boolean"
             },
             "class": "Zadachi",
-            "module": "Zadachi"
+            "module": "Zadachi",
+            "namespace": "Zadachi"
         },
         {
             "file": "Zadachi.js",
-            "line": 588,
-            "description": "Proveruva dali parametarot e od tip niza. Vo JavaSkript sekoja niza e voedno i objekt pa e malku teshko da se razlikuva.\nZatoa se koristat povekje proverki, prvo dali parametarot e objekt, potoa dali ima pole length i dali e od tip broj.\nSledat ushte dve proverki, dali poleto splice e funkcija i dali length ne e nabroivo odnosno dali ne mozhe da se pristapi do\nnego vo for(var myProp in myObject) lupa.",
-            "itemtype": "method",
-            "name": "eNiza",
-            "params": [
-                {
-                    "name": "param",
-                    "description": "",
-                    "type": "Array"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 605,
-            "description": "Proveruva dali dadenata niza go sodrzhi dadeniot element i vrakja soodveten odgovor so true ili false.",
-            "itemtype": "method",
-            "name": "nizaSodrzhi",
-            "params": [
-                {
-                    "name": "niza",
-                    "description": "",
-                    "type": "Array"
-                },
-                {
-                    "name": "element",
-                    "description": "",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 623,
-            "description": "Proveruva dali parametarot e tricifren broj, odnosno izmegju 99 i 1000. Ovaa funkcija ne proveruva tip, zatoa treba da se \nkoristat drugi funkcii ili kodovi.",
-            "itemtype": "method",
-            "name": "eTricifrenBroj",
-            "params": [
-                {
-                    "name": "param",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Boolean"
-            },
-            "class": "Zadachi",
-            "module": "Zadachi"
-        },
-        {
-            "file": "Zadachi.js",
-            "line": 638,
+            "line": 645,
             "description": "Potrebno e da se pratat najmalce dva prametri od koi prviot mora da bide funkcija, a vtoriot kje bide od tip broj. Slednite parametri\nmora da bidat od tip broj. Ovaa funkcija e vazhna za proverka na parametrite dali se borevi i ako ovoj uslov e tochen, na dadenite broevi\nse izhvirshuva funkcijata koja shto e pratena kako prv parametar. Ovaa funkcija e napravena so cel da se zashtedi na povtoruvanje na istite proverki\nvo povekje funkcii koi imaat slichna namena. Na primer zoshto da pishuvame proverka vo funkcija kub(n) i istata proverka vo funkcija kvadrat(n).\nNa nekoj nachin ovde se koristi Dekorator shablonot, ovaa funkcija ja dekorirame(ukrasuvame) so funkcijata pratena kako prv parametar.",
             "example": [
                 "\n     funkcijaOdPovekjeBroevi(zbirNaSredniCifri(), a, b); Ako a i b se broevi, togash kje se izhvrshi zbirNaSredniCifri() na a i b."
@@ -1845,11 +1895,206 @@
                 "type": "Object"
             },
             "class": "Zadachi",
-            "module": "Zadachi"
+            "module": "Zadachi",
+            "namespace": "Zadachi"
         },
         {
             "file": "Zadachi.js",
             "line": 689,
+            "description": "Proveruva dali parametarot e od tip niza. Vo JavaSkript sekoja niza e voedno i objekt pa e malku teshko da se razlikuva.\nZatoa se koristat povekje proverki, prvo dali parametarot e objekt, potoa dali ima pole length i dali e od tip broj.\nSledat ushte dve proverki, dali poleto splice e funkcija i dali length ne e nabroivo odnosno dali ne mozhe da se pristapi do\nnego vo for(var myProp in myObject) lupa.",
+            "itemtype": "method",
+            "name": "eNiza",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 706,
+            "description": "Proveruva dali dadenata niza go sodrzhi dadeniot element i vrakja soodveten odgovor so true ili false.",
+            "itemtype": "method",
+            "name": "nizaSodrzhi",
+            "params": [
+                {
+                    "name": "niza",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "element",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 732,
+            "description": "Sekogash vrakja dekaden oblik na prateniot parametar. Za istata namena mozhe da se koristi parseFloat(param, 10), no vtoriot \nparametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.",
+            "itemtype": "method",
+            "name": "parsirajDrobenBroj",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 743,
+            "description": "Sekogash vrakja dekaden cel oblik na prateniot parametar. Za istata namena mozhe da se koristi parseInt(param, 10), no vtoriot \nparametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.",
+            "itemtype": "method",
+            "name": "parsirajCelBroj",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 754,
+            "description": "eParenBroj(broj) proveruva dali broj e cel broj i ako e togash proveruva dali e paren. Se vrakja soodvetno Boolean vrednost.",
+            "itemtype": "method",
+            "name": "eParenBroj",
+            "params": [
+                {
+                    "name": "broj",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 778,
+            "description": "eProstBroj1Do10() funkcijata proveruva dali daden broj od 1 do 10 e prost ili ne prost broj i soodvetno vrakja Boolean vrednost.",
+            "itemtype": "method",
+            "name": "eProstBroj1Do10",
+            "params": [
+                {
+                    "name": "broj",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 827,
+            "description": "Proveruva dali parametarot e cel broj.",
+            "itemtype": "method",
+            "name": "eCelBroj",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 843,
+            "description": "Proveruva dali parametarot e priroden broj. Se sostoi od dve proverki: prvo se proba dali n e pogolem od nula i ako e \ntogash se proveruva dali e cel broj.",
+            "itemtype": "method",
+            "name": "ePrirodenBroj",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 860,
+            "description": "Proveruva dali parametarot e tricifren broj, odnosno izmegju 99 i 1000. Ovaa funkcija ne proveruva tip, zatoa treba da se \nkoristat drugi funkcii ili kodovi.",
+            "itemtype": "method",
+            "name": "eTricifrenBroj",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Zadachi",
+            "module": "Zadachi",
+            "namespace": "Zadachi"
+        },
+        {
+            "file": "Zadachi.js",
+            "line": 877,
             "description": "init() funkcijata sluzhi za da se inicijaliziraat nekoi vnatreshni polinja, i se izhvrshuva otkako kje se vchita sodrzhinata na DOM drvoto, \nodnosno so nastanot: \"DOMContentLoaded\". Vo celata aplikacija se koristi poleto parent koe shto e postaveno na vrednost this, shto vo ovoj \nsluchaj e window.TurboGjogi objektot.",
             "itemtype": "event",
             "name": "init",
@@ -1861,7 +2106,8 @@
                 }
             ],
             "class": "Zadachi",
-            "module": "Zadachi"
+            "module": "Zadachi",
+            "namespace": "Zadachi"
         }
     ],
     "warnings": []

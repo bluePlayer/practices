@@ -4,7 +4,7 @@
  * @module Zadachi
  * @class Zadachi
  * @main Zadachi
- * @author Vladimir Z. aka bluePlayer. https://github.com/bluePlayer/practices
+ * @author Vladimir Zakar aka bluePlayer. https://github.com/bluePlayer/practices
  */
 window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict';
 
@@ -33,26 +33,6 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
          * @default null
          */
         parent = null,
-
-        /**
-         * initApp() e funkcija koja se koristi za inicijaliziranje na celata aplikacija. Se povikuva koga kje se vchita celoto drvo na
-         * aplikacijata. Taa e rekurzivna i go posetuva sekoj podobjekt od drvoto na nekojObjekt. Ako tekovniot objekt sodrzhi init() funkcija vo sebe, 
-         * taa kje se povika i pritoa se prakja parametarot config. 
-         * @method initApp
-         * @param {Object} nekojObjekt
-         * @param {Object} config
-         */
-        initApp = function (nekojObjekt, config) {
-            var i;
-            for (i in nekojObjekt) {
-                if (nekojObjekt[i] !== null && typeof nekojObjekt[i] === 'object') {
-                    if (nekojObjekt[i].hasOwnProperty('init')) {
-                        nekojObjekt[i].init(config);
-                    }
-                    initApp(nekojObjekt[i]);
-                }
-            }
-        },
 
         /**
          * Konstanta
@@ -236,6 +216,24 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
 
         /**
          * Konstanta
+         * @property PARAM_NE_E_OD_TIP_ARRAY
+         * @type String
+         * @default "Parametarot ne e od tip Array!"
+         * @final
+         */
+        PARAM_NE_E_OD_TIP_ARRAY = "Parametarot ne e od tip Array!",
+
+        /**
+         * Konstanta
+         * @property PARAM_NE_E_DEFINIRAN
+         * @type String
+         * @default "Parametarot ne e definiran, ili e null ili NaN!"
+         * @final
+         */
+        PARAM_NE_E_DEFINIRAN = "Parametarot ne e definiran, ili e null ili NaN!",
+
+        /**
+         * Konstanta
          * @property BROJOT_NE_E_PROST
          * @type String
          * @default "Brojot ne e prost!"
@@ -244,6 +242,146 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
         BROJOT_NE_E_PROST = "Brojot ne e prost!";
 
     return {
+
+        /**
+         * Sodrzhi iskluchoci za rabota so greshki
+         * @namespace Zadachi
+         * @class Iskluchoci 
+         */
+        Iskluchoci: {
+
+            /**
+             * Iskluchok, brojot e pomal od nula
+             * @method IskBrojPomalOnNula 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskBrojPomalOnNula: function () {
+                return {
+                    message: BROJOT_E_POMAL_OD_NULA,
+                    name: "IskBrojPomalOnNula"
+                }
+            },
+            
+            /**
+             * Iskluchok, delenje so nula
+             * @method IskDelenjeSoNula 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskDelenjeSoNula: function () {
+                return {
+                    message: DELENJE_SO_NULA,
+                    name: "IskDelenjeSoNula"
+                }
+            },
+
+            /**
+             * Iskluchok, brojot ne e tricifren
+             * @method IskBrojotNeETricifren 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskBrojotNeETricifren: function () {
+                return {
+                    message: BROJOT_NE_E_TRICIFREN,
+                    name: "IskBrojotNeETricifren"
+                }
+            },
+
+            /**
+             * Iskluchok, eden od broevite ne e tricifren.
+             * @method IskEdenOdBroeviteNeETricifren 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskEdenOdBroeviteNeETricifren: function () {
+                return {
+                    message: EDEN_OD_BROEVITE_NE_E_TRICIFREN,
+                    name: "IskEdenOdBroeviteNeETricifren"
+                }
+            },
+
+            /**
+             * Iskluchok, brojot ne e cel
+             * @method IskBrojotNeETricifren 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskBrojotNeECel: function () {
+                return {
+                    message: BROJOT_NE_E_CEL,
+                    name: "IskBrojotNeECel"
+                }
+            },
+            
+            /**
+             * Iskluchok, brojot ne e priroden
+             * @method IskBrojotNeEPriroden 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskBrojotNeEPriroden: function () {
+                return {
+                    message: BROJOT_NE_E_PRIRODEN,
+                    name: "IskBrojotNeEPriroden"
+                }
+            },
+
+            /**
+             * Iskluchok, parametarot ne e od tip funkcija
+             * @method IskParamNeEFunkcija 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskParamNeEFunkcija: function () {
+                return {
+                    message: PARAMETAROT_NE_E_FUNKCIJA,
+                    name: "IskParamNeEFunkcija"
+                }
+            },
+
+            /**
+             * Iskluchok, funkcijata mora da dobie najmalce dva parametri
+             * @method IskMoraNajmalceDvaParam 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskMoraNajmalceDvaParam: function () {
+                return {
+                    message: MORA_DA_IMA_BAREM_DVA_PARAMETRI,
+                    name: "IskMoraNajmalceDvaParam"
+                }
+            },
+
+            /**
+             * Iskluchok, eden od parametrite ne e od tip broj
+             * @method IskEdenOdParamNeEBroj 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskEdenOdParamNeEBroj: function () {
+                return {
+                    message: EDEN_OD_PARAMETRITE_NE_E_BROJ,
+                    name: "IskEdenOdParamNeEBroj"
+                }
+            },
+
+            /**
+             * Iskluchok, parametarot ne e definiran, ili e null ili NaN.
+             * @method IskParamNeEDefiniran 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskParamNeEDefiniran: function () {
+                return {
+                    message: PARAM_NE_E_DEFINIRAN,
+                    name: "IskParamNeEDefiniran"
+                }
+            },
+
+            /**
+             * Iskluchok, parametarot ne e od tip Array.
+             * @method IskParamNeEOdTipArray 
+             * @return {Object} struktura na iskluchok, sodrzhi samo poraka i ime.
+             */
+            IskParamNeEOdTipArray: function () {
+                return {
+                    message: PARAM_NE_E_OD_TIP_ARRAY,
+                    name: "IskParamNeEOdTipArray"
+                }
+            }
+        },
 
         /**
          * Sodrzhi funkcii-konstanti so koi se vrakja vrednost na dadena konstanta navedena pogore. JavaSkript nema konstanti
@@ -411,6 +549,26 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
          * @class Zadachi
          */
 
+         /**
+          * initApp() e funkcija koja se koristi za inicijaliziranje na celata aplikacija. Se povikuva koga kje se vchita celoto drvo na
+          * aplikacijata. Taa e rekurzivna i go posetuva sekoj podobjekt od drvoto na nekojObjekt. Ako tekovniot objekt sodrzhi init() funkcija vo sebe, 
+          * taa kje se povika i pritoa se prakja parametarot config. 
+          * @method initApp
+          * @param {Object} nekojObjekt
+          * @param {Object} config
+          */
+         initApp: function (nekojObjekt, config) {
+            var i;
+            for (i in nekojObjekt) {
+                if (nekojObjekt[i] !== null && typeof nekojObjekt[i] === 'object') {
+                    if (nekojObjekt[i].hasOwnProperty('init')) {
+                        nekojObjekt[i].init(config);
+                    }
+                    this.initApp(nekojObjekt[i], config);
+                }
+            }
+        },
+
         /**
          * napraviDrvo() pravi drvo od objekti i podobjekti so naveduvanje na string razdvoen so tochki.
          * @example
@@ -447,125 +605,24 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
         },
 
         /**
-         * Sekogash vrakja dekaden oblik na prateniot parametar. Za istata namena mozhe da se koristi parseFloat(param, 10), no vtoriot 
-         * parametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.
-         * @method parsirajDrobenBroj
-         * @param {Number} param
-         * @return {Number}
-         */
-        parsirajDrobenBroj: function (param) {
-            return parseFloat(param, 10);
-        },
-
-        /**
-         * Sekogash vrakja dekaden cel oblik na prateniot parametar. Za istata namena mozhe da se koristi parseInt(param, 10), no vtoriot 
-         * parametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.
-         * @method parsirajCelBroj
-         * @param {Number} param
-         * @return {Number}
-         */
-        parsirajCelBroj: function (param) {
-            return parseInt(param, 10);
-        },
-
-        /**
-         * eParenBroj(broj) proveruva dali broj e cel broj i ako e togash proveruva dali e paren. Se vrakja soodvetno Boolean vrednost. 
-         * @method eParenBroj
-         * @param {Number} broj
+         * Proveruva dali parametarot ima vrednost, odnosno dali e razlichen od null, undefined, ili NaN
+         * @method imaVrednost
+         * @param {Object} pole
          * @return {Boolean}
          */
-        eParenBroj: function (broj) {
-            return parent.funkcijaOdPovekjeBroevi(function () {
-                var ishod = false;
-                if (parent.eCelBroj(broj)) {
-                    if (broj % 2 === 0) {
-                        ishod = true;
-                    } else {
-                        ishod = false;
-                    }
+        imaVrednost: function (pole) {
+            //if (typeof pole === 'number') {
+             //   if (isNaN(pole)) {
+            //        return false;
+            //    }
+           // } else {
+                if (pole !== null &&
+                    pole !== undefined) {
+                    return true;
                 } else {
-                    ishod = BROJOT_NE_E_CEL;
+                    return false;
                 }
-                return ishod;
-            }, broj);
-        },
-
-        /**
-         * eProstBroj1Do10() funkcijata proveruva dali daden broj od 1 do 10 e prost ili ne prost broj i soodvetno vrakja Boolean vrednost.
-         * @method eProstBroj1Do10
-         * @param {Number} broj
-         * @return {Boolean}
-         */
-        eProstBroj1Do10: function (broj) {
-            return parent.funkcijaOdPovekjeBroevi(function () {
-                var ishod = '';
-                switch (broj) {
-                case 1:
-                    ishod = true;
-                    break;
-                case 2:
-                    ishod = true;
-                    break;
-                case 3:
-                    ishod = true;
-                    break;
-                case 4:
-                    ishod = false;
-                    break;
-                case 5:
-                    ishod = true;
-                    break;
-                case 6:
-                    ishod = false;
-                    break;
-                case 7:
-                    ishod = true;
-                    break;
-                case 8:
-                    ishod = false;
-                    break;
-                case 9:
-                    ishod = false;
-                    break;
-                case 10:
-                    ishod = false;
-                    break;
-                }
-                return ishod;
-            }, broj);
-        },
-
-        /**
-         * Proveruva dali parametarot e cel broj.
-         * @method eCelBroj
-         * @param {Number} n
-         * @return {Boolean}
-         */
-        eCelBroj: function (n) {
-            return parent.funkcijaOdPovekjeBroevi(function () {
-                var ishod = false;
-                if (n % 1 === 0) {
-                    ishod = true;
-                }
-                return ishod;
-            }, n);
-        },
-
-        /**
-         * Proveruva dali parametarot e priroden broj. Se sostoi od dve proverki: prvo se proba dali n e pogolem od nula i ako e 
-         * togash se proveruva dali e cel broj. 
-         * @method ePrirodenBroj
-         * @param {Number} n
-         * @return {Boolean}
-         */
-        ePrirodenBroj: function (n) {
-            return parent.funkcijaOdPovekjeBroevi(function () {
-                var ishod = false;
-                if (n >= 0 && parent.eCelBroj(n)) {
-                    ishod = true;
-                }
-                return ishod;
-            }, n);
+            //}
         },
 
         /**
@@ -583,6 +640,50 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
                 ishod = true;
             }
             return ishod;
+        },
+
+        /**
+         * Potrebno e da se pratat najmalce dva prametri od koi prviot mora da bide funkcija, a vtoriot kje bide od tip broj. Slednite parametri
+         * mora da bidat od tip broj. Ovaa funkcija e vazhna za proverka na parametrite dali se borevi i ako ovoj uslov e tochen, na dadenite broevi
+         * se izhvirshuva funkcijata koja shto e pratena kako prv parametar. Ovaa funkcija e napravena so cel da se zashtedi na povtoruvanje na istite proverki
+         * vo povekje funkcii koi imaat slichna namena. Na primer zoshto da pishuvame proverka vo funkcija kub(n) i istata proverka vo funkcija kvadrat(n).
+         * Na nekoj nachin ovde se koristi Dekorator shablonot, ovaa funkcija ja dekorirame(ukrasuvame) so funkcijata pratena kako prv parametar.
+         * @example
+         *      funkcijaOdPovekjeBroevi(zbirNaSredniCifri(), a, b); Ako a i b se broevi, togash kje se izhvrshi zbirNaSredniCifri() na a i b.
+         * @method funkcijaOdPovekjeBroevi
+         * @param {Function} presmetajFunkcija
+         * @param {Number} param1
+         * @return {Object}
+         */
+        funkcijaOdPovekjeBroevi: function (presmetajFunkcija) {
+            var i = 1,
+                ishod = null,
+                siteSeBroevi = true,
+                parametri = [],
+                funkcija = null;
+
+            if (arguments.length < 2) {
+                throw new parent.Iskluchoci.IskMoraNajmalceDvaParam();
+            } else {
+                funkcija = presmetajFunkcija;
+                if (typeof funkcija !== 'function') {
+                    throw new parent.Iskluchoci.IskParamNeEFunkcija();
+                } else {
+                    for (i = 1; i < arguments.length; i += 1) {
+                        if (!this.eBroj(arguments[i])) {
+                            siteSeBroevi = false;
+                        } else {
+                            parametri.push(arguments[i]);
+                        }
+                    }
+
+                    if (siteSeBroevi) {
+                        return funkcija.apply(presmetajFunkcija, parametri);
+                    } else {
+                        throw new parent.Iskluchoci.IskEdenOdParamNeEBroj();
+                    }
+                }
+            }
         },
 
         /**
@@ -612,12 +713,148 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
         nizaSodrzhi: function (niza, element) {
             var i = 0,
                 sodrzhi = false;
-            for (i = 0; i < niza.length; i += 0) {
+
+            if (!parent.eNiza(niza)) {
+                throw new parent.Iskluchoci.IskParamNeEOdTipArray();
+            }
+
+            if (!parent.imaVrednost(element)) {
+                throw new parent.Iskluchoci.IskParamNeEDefiniran();
+            }
+
+            for (i = 0; i < niza.length; i += 1) {
                 if (niza[i] === element) {
                     sodrzhi = true;
                 }
             }
             return sodrzhi;
+        },
+        /**
+         * Sekogash vrakja dekaden oblik na prateniot parametar. Za istata namena mozhe da se koristi parseFloat(param, 10), no vtoriot 
+         * parametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.
+         * @method parsirajDrobenBroj
+         * @param {Number} param
+         * @return {Number}
+         */
+        parsirajDrobenBroj: function (param) {
+            return parseFloat(param, 10);
+        },
+
+        /**
+         * Sekogash vrakja dekaden cel oblik na prateniot parametar. Za istata namena mozhe da se koristi parseInt(param, 10), no vtoriot 
+         * parametar mozhe da bide zaboraven pa zatoa e napravena ovaa funkcija.
+         * @method parsirajCelBroj
+         * @param {Number} param
+         * @return {Number}
+         */
+        parsirajCelBroj: function (param) {
+            return parseInt(param, 10);
+        },
+
+        /**
+         * eParenBroj(broj) proveruva dali broj e cel broj i ako e togash proveruva dali e paren. Se vrakja soodvetno Boolean vrednost. 
+         * @method eParenBroj
+         * @param {Number} broj
+         * @return {Boolean}
+         */
+        eParenBroj: function (broj) {
+            return parent.funkcijaOdPovekjeBroevi(function () {
+                var ishod = false,
+                    bezOstatokBroj = broj - (broj % 1);
+
+                if (parent.eCelBroj(broj)) {
+                    if (broj % 2 === 0) {
+                        ishod = true;
+                    } else {
+                        ishod = false;
+                    }
+                } else {
+                    throw new parent.Iskluchoci.IskBrojotNeECel();
+                }
+                return ishod;
+            }, broj);
+        },
+
+        /**
+         * eProstBroj1Do10() funkcijata proveruva dali daden broj od 1 do 10 e prost ili ne prost broj i soodvetno vrakja Boolean vrednost.
+         * @method eProstBroj1Do10
+         * @param {Number} broj
+         * @return {Boolean}
+         */
+        eProstBroj1Do10: function (broj) {
+            return parent.funkcijaOdPovekjeBroevi(function () {
+                var ishod = false;
+                if (parent.ePrirodenBroj(broj)) {
+                    switch (broj) {
+                    case 1:
+                        ishod = true;
+                        break;
+                    case 2:
+                        ishod = true;
+                        break;
+                    case 3:
+                        ishod = true;
+                        break;
+                    case 4:
+                        ishod = false;
+                        break;
+                    case 5:
+                        ishod = true;
+                        break;
+                    case 6:
+                        ishod = false;
+                        break;
+                    case 7:
+                        ishod = true;
+                        break;
+                    case 8:
+                        ishod = false;
+                        break;
+                    case 9:
+                        ishod = false;
+                        break;
+                    case 10:
+                        ishod = false;
+                        break;
+                    }
+                    return ishod;
+                } else {
+                    throw new parent.Iskluchoci.IskBrojotNeEPriroden();
+                }
+            }, broj);
+        },
+
+        /**
+         * Proveruva dali parametarot e cel broj.
+         * @method eCelBroj
+         * @param {Number} n
+         * @return {Boolean}
+         */
+        eCelBroj: function (n) {
+            return parent.funkcijaOdPovekjeBroevi(function () {
+                var ishod = false;
+                if (n % 1 === 0) {
+                    ishod = true;
+                }
+                return ishod;
+            }, n);
+        },
+
+        /**
+         * Proveruva dali parametarot e priroden broj. Se sostoi od dve proverki: prvo se proba dali n e pogolem od nula i ako e 
+         * togash se proveruva dali e cel broj. 
+         * @method ePrirodenBroj
+         * @param {Number} n
+         * @return {Boolean}
+         */
+        ePrirodenBroj: function (n) {
+            return parent.funkcijaOdPovekjeBroevi(function () {
+                var ishod = false;
+                if (n > 0 && parent.eCelBroj(n)) {
+                    ishod = true;
+                }
+                return ishod;
+            }, n);
         },
 
         /**
@@ -628,60 +865,11 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
          * @return {Boolean}
          */
         eTricifrenBroj: function (param) {
-            var ishod = false;
-            if (param > 99 && param < 1000) {
+            var ishod = false,
+                arg = Math.abs(param - (param % 1));
+                
+            if (arg > 99 && arg < 1000) {
                 ishod = true;
-            }
-            return ishod;
-        },
-
-         /**
-         * Potrebno e da se pratat najmalce dva prametri od koi prviot mora da bide funkcija, a vtoriot kje bide od tip broj. Slednite parametri
-         * mora da bidat od tip broj. Ovaa funkcija e vazhna za proverka na parametrite dali se borevi i ako ovoj uslov e tochen, na dadenite broevi
-         * se izhvirshuva funkcijata koja shto e pratena kako prv parametar. Ovaa funkcija e napravena so cel da se zashtedi na povtoruvanje na istite proverki
-         * vo povekje funkcii koi imaat slichna namena. Na primer zoshto da pishuvame proverka vo funkcija kub(n) i istata proverka vo funkcija kvadrat(n).
-         * Na nekoj nachin ovde se koristi Dekorator shablonot, ovaa funkcija ja dekorirame(ukrasuvame) so funkcijata pratena kako prv parametar.
-         * @example
-         *      funkcijaOdPovekjeBroevi(zbirNaSredniCifri(), a, b); Ako a i b se broevi, togash kje se izhvrshi zbirNaSredniCifri() na a i b.
-         * @method funkcijaOdPovekjeBroevi
-         * @param {Function} presmetajFunkcija
-         * @param {Number} param1
-         * @return {Object}
-         */
-        funkcijaOdPovekjeBroevi: function (presmetajFunkcija) {
-            var i = 1,
-                ishod = null,
-                siteSeBroevi = true,
-                parametri = [],
-                funkcija = null;
-
-            if (arguments.length !== 0) {
-                funkcija = presmetajFunkcija;
-
-                if (arguments.length < 2) {
-                    ishod = MORA_DA_IMA_BAREM_DVA_PARAMETRI;
-                } else {
-
-                    if (typeof funkcija !== 'function') {
-                        ishod = PARAMETAROT_NE_E_FUNKCIJA;
-                    } else {
-                        for (i = 1; i < arguments.length; i += 1) {
-                            if (!this.eBroj(arguments[i])) {
-                                siteSeBroevi = false;
-                            } else {
-                                parametri.push(arguments[i]);
-                            }
-                        }
-
-                        if (siteSeBroevi) {
-                            ishod = funkcija.apply(presmetajFunkcija, parametri);
-                        } else {
-                            ishod = EDEN_OD_PARAMETRITE_NE_E_BROJ;
-                        }
-                    }
-                }
-            } else {
-                ishod = BROJOT_NA_PARAMETRI_E_NULA;
             }
             return ishod;
         },
@@ -696,7 +884,7 @@ window.Zadachi = window.Zadachi || (function (windowDocumentObject) {'use strict
         init: function (configObject) {
             config = configObject;
             parent = this;
-            initApp(parent, config);
+            parent.initApp(parent, config);
         }
     };
     }(window.document));
@@ -712,7 +900,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {'use stri
     zadachi.init(config);
     window.document.addEventListener('keydown', rks.vnesiCelBrojSoKopchinja);
     window.document.addEventListener('keypress', iodpm.keypressNastan);
-
+    /*
     console.log(rks.kvadrat(5.8));
     console.log(rks.kvadrat("zdravo"));
     console.log(rks.kub(5.8));
@@ -764,6 +952,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {'use stri
     console.log(iodpm.brojDenoviVoMesec(2, 10));
     console.log(iodpm.brojDenoviVoMesec(13));
     console.log(iodpm.brojDenoviVoMesec(19.9));
+    */
     });
 
 

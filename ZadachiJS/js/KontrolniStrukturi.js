@@ -146,8 +146,14 @@ window.Zadachi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura', (f
          * @return {Number}
          */
         dolzhinaNaKruzhnica: function (radius) {
-            return zadachi.funkcijaOdPovekjeBroevi(function (radius) {
-                return 2 * Math.PI * radius;
+            return zadachi.funkcijaOdPovekjeBroevi(function () {
+                var ishod = zadachi.Konstanti.BROJOT_E_POMAL_OD_NULA();
+                if (radius < 0) {
+                    throw new zadachi.Iskluchoci.IskBrojPomalOnNula();
+                } else {
+                    ishod = 2 * Math.PI * radius;
+                }
+                return ishod
             }, radius);
         },
 
@@ -211,13 +217,16 @@ window.Zadachi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura', (f
          */
         kolichnikOdDva: function (a, b) {
             return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
-                var ishod = null;
-                if (b === 0) {
-                    ishod = zadachi.Konstanti.DELENJE_SO_NULA();
-                } else {
-                    ishod = a / b;
+                try {
+                    if (b === 0) {
+                        throw new zadachi.Iskluchoci.IskDelenjeSoNula();
+                    } else {
+                        return a / b;
+                    }
+                } catch (greshka) {
+                    console.log(greshka);
+                    return Infinity;
                 }
-                return ishod;
             }, a, b);
         },
 
@@ -229,13 +238,15 @@ window.Zadachi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura', (f
          */
         srednaCifraTricifrenBroj: function (broj) {
             return zadachi.funkcijaOdPovekjeBroevi(function (broj) {
-                var pomosh = 0,
-                    ishod = null;
-                if (zadachi.eTricifrenBroj(broj)) {
-                    pomosh = broj % 100;
+                var absBroj = Math.abs(broj - (broj % 1)),
+                    ishod = zadachi.Konstanti.BROJOT_NE_E_TRICIFREN(),
+                    pomosh = 0;
+
+                if (zadachi.eTricifrenBroj(absBroj)) {
+                    pomosh = absBroj % 100;
                     ishod = (pomosh - pomosh % 10) / 10;
                 } else {
-                    ishod = zadachi.Konstanti.BROJOT_NE_E_TRICIFREN();
+                    throw new zadachi.Iskluchoci.IskBrojotNeETricifren();
                 }
                 return ishod;
             }, broj);
@@ -251,13 +262,11 @@ window.Zadachi.napraviDrvo('KontrolniStrukturi.RedoslendaKontrolnaStruktura', (f
          */
         zbirNaSredniCifri: function (a, b) {
             return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
-                var ishod = null;
                 if (zadachi.eTricifrenBroj(a) && zadachi.eTricifrenBroj(b)) {
-                    ishod = parent.srednaCifraTricifrenBroj(a) + parent.srednaCifraTricifrenBroj(b);
+                    return parent.srednaCifraTricifrenBroj(a) + parent.srednaCifraTricifrenBroj(b);
                 } else {
-                    ishod = zadachi.Konstanti.EDEN_OD_BROEVITE_NE_E_TRICIFREN();
+                    throw new zadachi.Iskluchoci.IskEdenOdBroeviteNeETricifren();
                 }
-                return ishod;
             }, a, b);
         },
 

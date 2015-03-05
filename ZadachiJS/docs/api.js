@@ -3,9 +3,10 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "IzborOdDveMozhnosti",
         "IzborOdPovekjeMozhnosti",
-        "Konstanti",
         "RedoslendaKontrolnaStruktura",
-        "Zadachi"
+        "Zadachi",
+        "Zadachi.Iskluchoci",
+        "Zadachi.Konstanti"
     ],
     "modules": [
         "KontrolniStrukturi",

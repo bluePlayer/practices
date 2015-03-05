@@ -16,6 +16,7 @@
 
 Демото е достапно на Интернет преку адресата: http://jspractices-blueplayer.rhcloud.com/Zadachi/ 
 и документацијата на: http://jspractices-blueplayer.rhcloud.com/Zadachi/docs/
+тестовите се достапни на: http://jspractices-blueplayer.rhcloud.com/Zadachi/SpecRunner.html
 
 Владимир Закар
 

@@ -40,9 +40,10 @@
                             <ul id="api-classes" class="apis classes">
                                 <li><a href="../classes/IzborOdDveMozhnosti.html">IzborOdDveMozhnosti</a></li>
                                 <li><a href="../classes/IzborOdPovekjeMozhnosti.html">IzborOdPovekjeMozhnosti</a></li>
-                                <li><a href="../classes/Konstanti.html">Konstanti</a></li>
                                 <li><a href="../classes/RedoslendaKontrolnaStruktura.html">RedoslendaKontrolnaStruktura</a></li>
                                 <li><a href="../classes/Zadachi.html">Zadachi</a></li>
+                                <li><a href="../classes/Zadachi.Iskluchoci.html">Zadachi.Iskluchoci</a></li>
+                                <li><a href="../classes/Zadachi.Konstanti.html">Zadachi.Konstanti</a></li>
                             </ul>
                 
                             <ul id="api-modules" class="apis modules">
@@ -234,8 +235,14 @@
                                  * @return {Number}
                                  */
                                 dolzhinaNaKruzhnica: function (radius) {
-                                    return zadachi.funkcijaOdPovekjeBroevi(function (radius) {
-                                        return 2 * Math.PI * radius;
+                                    return zadachi.funkcijaOdPovekjeBroevi(function () {
+                                        var ishod = zadachi.Konstanti.BROJOT_E_POMAL_OD_NULA();
+                                        if (radius &lt; 0) {
+                                            throw new zadachi.Iskluchoci.IskBrojPomalOnNula();
+                                        } else {
+                                            ishod = 2 * Math.PI * radius;
+                                        }
+                                        return ishod
                                     }, radius);
                                 },
                         
@@ -299,13 +306,16 @@
                                  */
                                 kolichnikOdDva: function (a, b) {
                                     return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
-                                        var ishod = null;
-                                        if (b === 0) {
-                                            ishod = zadachi.Konstanti.DELENJE_SO_NULA();
-                                        } else {
-                                            ishod = a / b;
+                                        try {
+                                            if (b === 0) {
+                                                throw new zadachi.Iskluchoci.IskDelenjeSoNula();
+                                            } else {
+                                                return a / b;
+                                            }
+                                        } catch (greshka) {
+                                            console.log(greshka);
+                                            return Infinity;
                                         }
-                                        return ishod;
                                     }, a, b);
                                 },
                         
@@ -317,13 +327,15 @@
                                  */
                                 srednaCifraTricifrenBroj: function (broj) {
                                     return zadachi.funkcijaOdPovekjeBroevi(function (broj) {
-                                        var pomosh = 0,
-                                            ishod = null;
-                                        if (zadachi.eTricifrenBroj(broj)) {
-                                            pomosh = broj % 100;
+                                        var absBroj = Math.abs(broj - (broj % 1)),
+                                            ishod = zadachi.Konstanti.BROJOT_NE_E_TRICIFREN(),
+                                            pomosh = 0;
+                        
+                                        if (zadachi.eTricifrenBroj(absBroj)) {
+                                            pomosh = absBroj % 100;
                                             ishod = (pomosh - pomosh % 10) / 10;
                                         } else {
-                                            ishod = zadachi.Konstanti.BROJOT_NE_E_TRICIFREN();
+                                            throw new zadachi.Iskluchoci.IskBrojotNeETricifren();
                                         }
                                         return ishod;
                                     }, broj);
@@ -339,13 +351,11 @@
                                  */
                                 zbirNaSredniCifri: function (a, b) {
                                     return zadachi.funkcijaOdPovekjeBroevi(function (a, b) {
-                                        var ishod = null;
                                         if (zadachi.eTricifrenBroj(a) &amp;&amp; zadachi.eTricifrenBroj(b)) {
-                                            ishod = parent.srednaCifraTricifrenBroj(a) + parent.srednaCifraTricifrenBroj(b);
+                                            return parent.srednaCifraTricifrenBroj(a) + parent.srednaCifraTricifrenBroj(b);
                                         } else {
-                                            ishod = zadachi.Konstanti.EDEN_OD_BROEVITE_NE_E_TRICIFREN();
+                                            throw new zadachi.Iskluchoci.IskEdenOdBroeviteNeETricifren();
                                         }
-                                        return ishod;
                                     }, a, b);
                                 },
                         
