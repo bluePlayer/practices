@@ -1,10 +1,10 @@
-window.MyGame.namespace('Boot', window.WML.State, (function (wml) {'use strict';
+window.MyGame.namespace('Boot', window.MyGame.State, (function (game) {'use strict';
     var gameObject = null;
 
     return {
 
         init: function () {
-            gameObject = wml.gameObject;
+            gameObject = game.gameObject;
             gameObject.input.maxPointers = 1;
             gameObject.stage.disableVisibilityChange = true;
 
@@ -12,19 +12,19 @@ window.MyGame.namespace('Boot', window.WML.State, (function (wml) {'use strict';
                 gameObject.scale.pageAlignHorizontally = true;
             } else {
                 gameObject.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-                gameObject.scale.setMinMax(wml.Const.STAGE_HEIGHT, wml.Const.STAGE_HEIGHT, wml.Const.STAGE_WIDTH, wml.Const.STAGE_HEIGHT);
+                gameObject.scale.setMinMax(game.Const.STAGE_HEIGHT, game.Const.STAGE_HEIGHT, game.Const.STAGE_WIDTH, game.Const.STAGE_HEIGHT);
                 gameObject.scale.forceLandscape = true;
                 gameObject.scale.pageAlignHorizontally = true;
             }
         },
 
         preload: function () {
-            gameObject.stage.backgroundColor = wml.Const.BACKGROUND_COLOR;
-            wml.loadAtlasJSONHash('GUI_ATLAS', null, 'assets/images/UI/guiAtlas.png', 'assets/settings/guiAtlas.json');
+            gameObject.stage.backgroundColor = game.Const.BACKGROUND_COLOR;
+            game.loadAtlasJSONHash('GUI_ATLAS', null, 'assets/images/UI/guiAtlas.png', 'assets/settings/guiAtlas.json');
         },
 
         create: function () {
-            gameObject.state.start(wml.Preloader.KEY);
+            gameObject.state.start(game.Preloader.KEY);
             gameObject.state.clearCurrentState();
         },
 
@@ -32,4 +32,4 @@ window.MyGame.namespace('Boot', window.WML.State, (function (wml) {'use strict';
             gameObject = null;
         }
     };
-    }(window.WML)));
+    }(window.MyGame)));
