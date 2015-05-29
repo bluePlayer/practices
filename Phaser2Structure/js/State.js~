@@ -1,0 +1,7 @@
+window.WML.namespace('State', {}, (function (wml) {'use strict';
+    var gameObject = wml.gameObject;
+
+    return {
+
+    };
+    }(window.WML)));

@@ -1,0 +1,10 @@
+window.MyGame.namespace('Screen', window.MyGame.State, (function (game) {'use strict';
+    var gameObject = wml.gameObject;
+
+    return {
+        screenObjects: null,
+        clearScreenState: function () {
+            this.screenObjects = null;
+        }
+    };
+    }(window.MyGame)));

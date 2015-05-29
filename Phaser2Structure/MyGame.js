@@ -1,6 +1,7 @@
 window.MyGame = window.MyGame || (function(wmlWindowObject) {'use strict';
     var windowObject = wmlWindowObject,
         thisObject = null,
+	debugmode = true,
         score = 0,
         currentLevel = 1,
         gameProgress = 1,
@@ -18,6 +19,10 @@ window.MyGame = window.MyGame || (function(wmlWindowObject) {'use strict';
         Const: {},
 
         Events: {},
+
+	debugMode: function () {
+	    return debugMode;	
+	},
 
         gameObject = new Phaser.Game(STAGE_WIDTH, STAGE_HEIGHT, Phaser.AUTO, HTML_CONTAINER),
 

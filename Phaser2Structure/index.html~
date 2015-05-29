@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>MyGame</title>
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style>
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+	{
+		display: block;
+	}
+	</style>
+</head>
+<body>
+    <h2>MyGame</h2>
+    <table>
+        <tr>
+            <td width='30%'>
+                <p>
+                Having the latest version of your browser is always recommended. 
+                To play this game your browser must support HTML5 features. 
+                If you cannot view the game or it doesn't work, refer to this list of supported browsers:
+                </p>
+                <ul>
+                    <li>Google Chrome, latest version(it installs updates automatically)</li>
+                    <li>Firefox 34 or better</li>
+                    <li>Opera 26 or better</li>
+                    <li>Safari 5 or better(doesn't play HTML5 audio if there is no QuickTime installed on the client computer)</li>
+                    <li>Internet Explorer 9 or better</li>
+                </ul>
+            </td>
+            <td>
+                <div id="gameContainer"></div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="js/phaser.min.js"></script>
+    <script src="js/MyGame.js"></script>
+    <script src="js/utils/Utility.js"></script>
+    <script src="js/State.js"></script>
+    <script src="js/Screens/Boot.js"></script>
+    <script src="js/UI/GameButton.js"></script>
+    <script src="js/Screens/Screen.js"></script>
+    <script src="js/Screens/Preloader.js"></script>
+    <script src="js/Screens/OptionsScreen.js"></script>
+    <script src="js/Screens/BreakPointScreen.js"></script>
+    <script src="js/Screens/GameOverScreen.js"></script>
+    <script src="js/Screens/GameScreen.js"></script>
+    <script src="js/Screens/HelpScreen.js"></script>
+    <script src="js/Screens/MainMenuScreen.js"></script>
+    <script src="js/Screens/LevelsScreen.js"></script>
+    <script src="js/Screens/TestScreen.js"></script>
+    
+</body>
+</html>

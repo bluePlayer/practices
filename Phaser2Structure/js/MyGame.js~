@@ -1,7 +1,6 @@
 window.MyGame = window.MyGame || (function(wmlWindowObject) {'use strict';
     var windowObject = wmlWindowObject,
         thisObject = null,
-	debugmode = true,
         score = 0,
         currentLevel = 1,
         gameProgress = 1,
@@ -19,10 +18,6 @@ window.MyGame = window.MyGame || (function(wmlWindowObject) {'use strict';
         Const: {},
 
         Events: {},
-
-	debugMode: function () {
-		return debugMode;	
-	},
 
         gameObject = new Phaser.Game(STAGE_WIDTH, STAGE_HEIGHT, Phaser.AUTO, HTML_CONTAINER),
 
@@ -174,7 +169,7 @@ window.MyGame = window.MyGame || (function(wmlWindowObject) {'use strict';
         namespace: function (namespaceStr, inheritObject, newObject) {
             var parts = namespaceStr.split('.'),
                 helpObject = Object.create(inheritObject),
-                wmlObject = this,
+                myGameObject = this,
                 i = 0,
                 prop = {};
 
@@ -182,22 +177,22 @@ window.MyGame = window.MyGame || (function(wmlWindowObject) {'use strict';
                 inheritObject = {};
             }
 
-            if (parts[0] === wmlObject.Const.GAME_NAME) {
+            if (parts[0] === myGameObject.Const.GAME_NAME) {
                 parts = parts.slice(1);
             }
 
             for (i = 0; i < parts.length; i += 1) {
-                if (wmlObject[parts[i]] === undefined) {
+                if (myGameObject[parts[i]] === undefined) {
                     for (prop in newObject) {
                         if (newObject.hasOwnProperty(prop)) {
                             helpObject[prop] = newObject[prop];
                         }
                     }
-                    wmlObject[parts[i]] = helpObject;
+                    myGameObject[parts[i]] = helpObject;
                 }
-                wmlObject = wmlObject[parts[i]];
+                myGameObject = myGameObject[parts[i]];
             }
-            return wmlObject;
+            return myGameObject;
         },
 
         loadStorageData: function () {
@@ -294,3 +289,34 @@ window.MyGame = window.MyGame || (function(wmlWindowObject) {'use strict';
         }
     };
 }(window));
+
+window.document.addEventListener("DOMContentLoaded", function (event) {'use strict';
+    var game = window.MyGame,
+        config = {"event": event};
+
+    game.init(config);
+    });
+
+window.document.addEventListener('deviceready', function (event) {'use strict';
+    //console.log("deviceready " + event);
+});
+
+window.document.addEventListener('backbutton', function (event) {
+    //console.log("back button " + event);
+}, false);
+
+window.document.addEventListener('pause', function (event) {
+    //console.log("pause " + event);
+}, false);
+
+window.document.addEventListener('resume', function (event) {
+    //console.log("resume " + event);
+}, false);
+
+window.addEventListener('orientationchange', function(event) {
+    //console.log('orientationchange ' + event);
+}, false);
+
+window.addEventListener('resize', function(event) {
+	//console.log('resize ' + event);
+}, false);
