@@ -1,0 +1,50 @@
+
+make console app
+use any programming language with standard input stream.
+
+format:
+$CLASS {
+    $VARIABLE $VALUE
+}
+
+app should ask for: $CLASS, $VARIABLE, $VALUE
+with given variables, it should [change/create new] for each given $CLASS
+
+general flow:
+    - get user input
+    - read from disk the given file(slate.nk)
+    - perform operation [replace/add]
+    - write the new file to disk.
+
+example:
+read from disk:
+starting:
+...
+    Merge2 {
+        name Merge4
+    }
+
+    Merge2 {
+        operation copy
+        name Merge3
+    }
+...
+
+input: $CLASS=Merge2, $VARIABLE=operation, $VALUE=over
+
+output to disk:
+...
+    Merge2 {
+        name Merge4
+        operation over
+    }
+
+    Merge2 {
+        operation over
+        name Merge3
+    }
+...
+
+the above example 
+adds "operation over", to "Merge4"                      // was nonexistent
+changes "operation" from "copy" to "over in "Merge3"    // changes operation to new $VALUE

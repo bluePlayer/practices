@@ -1,0 +1,474 @@
+
+Root {
+ inputs 0
+ frame 1057
+ first_frame 1057
+ last_frame 1119
+ lock_range true
+ format "2048 1152 0 0 2048 1152 1 SEAM_2k"
+ proxy_type scale
+ proxy_format "1024 576 0 0 1024 576 1 "
+}
+Read {
+ inputs 0
+ format "1920 1080 0 0 1920 1080 1 HD1080"
+ first 1057
+ before black
+ last 1119
+ after black
+ origfirst 1057
+ origlast 1119
+ origset true
+ on_error black
+ name Read1
+ xpos 224
+ ypos -153
+ postage_stamp_frame 1001
+}
+Group {
+ name VIEWER_INPUT
+ xpos 224
+ ypos 43
+ addUserKnob {20 User}
+ addUserKnob {4 LUT M {Day Night}}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 269
+  ypos 18
+ }
+ Colorspace {
+  colorspace_out AlexaV3LogC
+  name Colorspace2
+  selected true
+  xpos 269
+  ypos 70
+ }
+set N4df7440 [stack 0]
+ Vectorfield {
+  version 12
+  file_type cube
+  name Vectorfield2
+  xpos 333
+  ypos 128
+ }
+push $N4df7440
+ Vectorfield {
+  version 11
+  file_type cube
+  name Vectorfield1
+  xpos 196
+  ypos 129
+ }
+ Switch {
+  inputs 2
+  which {{parent.LUT}}
+  name Switch1
+  xpos 268
+  ypos 218
+ }
+ Output {
+  name Output1
+  xpos 268
+  ypos 316
+ }
+end_group
+Group {
+ name Group3
+ xpos 224
+ ypos 107
+ addUserKnob {20 User}
+ addUserKnob {41 shot T Shot.shot}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 413
+  ypos 146
+ }
+ NoOp {
+  name Shot
+  xpos 413
+  ypos 186
+  addUserKnob {20 User}
+  addUserKnob {1 shot}
+  shot RR_0821_0050_comp_v01
+ }
+set N622aca0 [stack 0]
+ Group {
+  name Group1
+  label SLATE
+  xpos 588
+  ypos 277
+  addUserKnob {20 User}
+  addUserKnob {41 first_frame l "first frame" T FrameHold1.first_frame}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos 237
+   ypos 150
+  }
+  Dot {
+   name Dot1
+   xpos 271
+   ypos 190
+  }
+  Reformat {
+   format "1920 1080 0 0 1920 1080 1 HD1080"
+   black_outside true
+   name Reformat1
+   xpos 237
+   ypos 227
+  }
+set N62426e0 [stack 0]
+  Transform {
+   translate {440 -150}
+   scale 0.45
+   center {1024 576}
+   name Transform1
+   xpos 237
+   ypos 265
+  }
+  FrameHold {
+   first_frame 1057
+   name FrameHold1
+   xpos 237
+   ypos 396
+  }
+  Dot {
+   name Dot2
+   xpos 271
+   ypos 600
+  }
+  Rectangle {
+   inputs 0
+   area {0 910 1920 960}
+   name Rectangle1
+   xpos 98
+   ypos 476
+  }
+  ColorBars {
+   inputs 0
+   format "1920 1080 0 0 1920 1080 1 HD1080"
+   barintensity 1
+   name ColorBars1
+   xpos -226
+   ypos 453
+  }
+  Rectangle {
+   inputs 0
+   area {0 80 1920 130}
+   name Rectangle2
+   xpos 98
+   ypos 452
+  }
+  Ramp {
+   inputs 0
+   p0 {0 500}
+   p1 {1920 500}
+   color {1 1 1 1}
+   name Ramp1
+   xpos -122
+   ypos 452
+  }
+  Read {
+   inputs 0
+   format "1024 1024 0 0 1024 1024 1 square1K"
+   origset true
+   name Read1
+   xpos 98
+   ypos 279
+  }
+  Transform {
+   translate {-422 508}
+   scale 0.098
+   center {512 512}
+   name Transform2
+   xpos 98
+   ypos 380
+  }
+push $N62426e0
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle1
+   xpos -12
+   ypos 233
+  }
+  FrameHold {
+   first_frame {{input.first_frame}}
+   name FrameHold2
+   xpos -12
+   ypos 273
+  }
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle2
+   label "\[value in] --> \[value out]"
+   xpos -12
+   ypos 326
+  }
+  Merge2 {
+   inputs 2
+   name Merge1
+   xpos -12
+   ypos 380
+  }
+  Merge2 {
+   inputs 2+1
+   operation copy
+   name Merge2
+   xpos -12
+   ypos 452
+  }
+  Merge2 {
+   inputs 2+1
+   operation copy
+   name Merge3
+   xpos -12
+   ypos 476
+  }
+  Merge2 {
+   inputs 2
+   name Merge4
+   label "bbox: \[value bbox]"
+   xpos -12
+   ypos 590
+  }
+  Text {
+   opacity 0.72
+   font /usr/share/fonts/bitstream-vera/Vera.ttf
+   leading 0.4
+   yjustify bottom
+   Transform 1
+   box {40 200 1920 500}
+   center {1024 576}
+   name Text1
+   xpos -12
+   ypos 642
+  }
+  Text {
+   opacity 0.72
+   message int6
+   font /usr/share/fonts/bitstream-vera/Vera.ttf
+   size 240
+   leading 0.4
+   yjustify bottom
+   Transform 1
+   box {40 530 1920 900}
+   center {1024 576}
+   name Text3
+   xpos -12
+   ypos 668
+  }
+  Text {
+   message "RGB | Rec709"
+   size 20
+   xjustify right
+   yjustify center
+   Transform 1
+   box {0 979 1900 1080}
+   center {1024 576}
+   name Text2
+   xpos -12
+   ypos 716
+  }
+  Output {
+   name Output1
+   xpos -12
+   ypos 742
+  }
+ end_group
+set N622fc60 [stack 0]
+ Viewer {
+  frame 1057
+  frame_range 1057-1119
+  overscan 300
+  center_fstop 0
+  name Viewer1
+  xpos 588
+  ypos 315
+ }
+push $N622fc60
+push $N622aca0
+ Group {
+  name Group2
+  label OVERLAY
+  xpos 413
+  ypos 281
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos -505
+   ypos 97
+  }
+  Reformat {
+   format "1920 1080 0 0 1920 1080 1 HD_1080"
+   black_outside true
+   name Reformat1
+   xpos -505
+   ypos 186
+  }
+set N704e250 [stack 0]
+  Shuffle {
+   red black
+   green black
+   blue black
+   alpha black
+   name Shuffle1
+   xpos -395
+   ypos 192
+  }
+  Text {
+   message FX3X
+   font /usr/share/fonts/bitstream-vera/Vera.ttf
+   size 20
+   yjustify top
+   Transform 1
+   box {50 50 1870 1030}
+   center {1024 576}
+   name Text1
+   xpos -395
+   ypos 214
+  }
+  Text {
+   message "\[value Shot.shot]"
+   font /usr/share/fonts/bitstream-vera/Vera.ttf
+   size 40
+   xjustify center
+   yjustify top
+   Transform 1
+   box {50 50 1870 1030}
+   center {1024 576}
+   name Text2
+   selected true
+   xpos -395
+   ypos 238
+  }
+  Text {
+   message "\[date %a], \[date %d.%m.%Y]"
+   font /usr/share/fonts/bitstream-vera/Vera.ttf
+   size 20
+   xjustify right
+   yjustify top
+   Transform 1
+   box {50 50 1870 1030}
+   center {1024 576}
+   name Text3
+   xpos -395
+   ypos 264
+  }
+  Text {
+   message "frame: \[frame]"
+   font /usr/share/fonts/bitstream-vera/Vera.ttf
+   size 20
+   xjustify right
+   yjustify bottom
+   Transform 1
+   box {50 50 1870 1030}
+   center {1024 576}
+   name Text4
+   xpos -395
+   ypos 290
+  }
+  Dot {
+   name Dot1
+   xpos -361
+   ypos 373
+  }
+set N70b8630 [stack 0]
+  Dot {
+   name Dot2
+   xpos -251
+   ypos 373
+  }
+  Dot {
+   name Dot3
+   xpos -251
+   ypos 460
+  }
+push $N70b8630
+  Transform {
+   translate {1.5 -1.5}
+   center {1024 576}
+   name Transform1
+   xpos -395
+   ypos 408
+  }
+push $N704e250
+  Grade {
+   inputs 1+1
+   add -0.39
+   white_clamp true
+   name Grade1
+   xpos -505
+   ypos 408
+  }
+  Merge2 {
+   inputs 2
+   name Merge1
+   xpos -505
+   ypos 456
+  }
+  Output {
+   name Output1
+   xpos -505
+   ypos 555
+  }
+  Viewer {
+   frame_range 1001-1114
+   viewerProcess rec709
+   name Viewer1
+   xpos -505
+   ypos 581
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{frame<input0.first_frame}}
+  name Switch1
+  label "SWITCH plate/slate"
+  xpos 413
+  ypos 364
+ }
+ Output {
+  name Output1
+  selected true
+  xpos 413
+  ypos 464
+ }
+end_group
+Write {
+ raw true
+ file_type jpeg
+ _jpeg_quality 1
+ _jpeg_sub_sampling 4:4:4
+ checkHashOnRead false
+ version 6
+ name Write1
+ selected true
+ xpos 224
+ ypos 149
+}
+set N6331500 [stack 0]
+push $N6331500
+Viewer {
+ inputs 2
+ frame 1057
+ frame_range 1057-1119
+ overscan 300
+ center_fstop 0
+ viewerProcess None
+ input_process false
+ name Viewer1
+ xpos -40
+ ypos -10
+}
