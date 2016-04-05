@@ -84,10 +84,15 @@
 
 <NamespaceName> ::= {<Namespace> "."} <Namespace>
 <Namespace> ::= "namespace" <NamespaceName> "{" {<Namespace>} {<Class>} {<Interface>} {<Struct>} {<Enum>} {<Delegate>} "}"
+<GenericType> ::= ["<" ( <ValueType> | "T" ) ">"]
+<NewOperator> ::= "new"
 
-<DeclarationStatement> ::=
-<ExpressionStatement> ::=
-<SelectionStatement> ::=
+<DeclarationStatement> ::= ( <Field> | <Field> "=" <Literal> ) ";"
+<ExpressionStatement> ::= ( <identifier> "=" ["-"] <Literal> {( "*" | "/" | "+" | "-" ) <Literal>} ";" | 
+                            <Namespace> {"." <Namespace> } "." <Method> | 
+                            <Namespace> {"." <Namespace> } "." <Property> <GenericType> "=" 
+                                [<NewOperator>] <Namespace> {"." <Namespace> } "." ( <Property> | <Method> ) )
+<SelectionStatement> ::= 
 <IterationStatement> ::=
 <JumpStatement> ::=
 <ExceptionHandlingStatement> ::=
@@ -103,7 +108,7 @@
                 <ExceptionHandlingStatement> | <CheckedUncheckedStatement> | <AwaitStatement> | <YieldReturnStatement> | <FixedStatement> |
                 <LockStatement> | <LabelStatement> | <EmptyStatement> | <EmbededStatement> )
 <Params> ::= "params" [<ValueType> "[]" <Identifier>]
-<MethodParamsList> ::= ["<" ( <ValueType> | "T" ) ">"]"(" ( [<Field>]{"," <Field>} | <Params> ) ")"
+<MethodParamsList> ::= <GenericType> "(" ( [<Field>]{"," <Field>} | <Params> ) ")"
 <Constructor> ::= <FieldAccessModifier> ["static"] <Identifier> <MethodParamsList> "{" {<Statement>} "}"
 <Destructor> ::= "~" <Identifier> "()" "{" {<Statement>} "}"
 <Constant> ::= <FieldAccessModifier> "const" <ValueType> <Identifier> "=" <Literal> ";"

@@ -1,0 +1,15 @@
+<ImportRules> ::= <HelperRules.*>
+
+<AccountManagement> ::= "Account Management" | "CREATE USER" | "DROP USER" | "GRANT" | "RENAME USER" | "REVOKE" | "SET PASSWORD"
+
+<CreateUser> ::= "CREATE USER" <userSpecification> {", " <userSpecification>}
+<DropUser> ::= "DROP USER" <user> [", " <user>]
+<Grant> ::= "GRANT" <privType> [<columnList>] {", " <privType> [<columnList>]} "ON" [<objectType>] <privLevel> "TO" 
+            <userSpecification> {", " <userSpecification>}
+            ["REQUIRE" ( "NONE" | <sslOption> {["AND"] <sslOption>} )] ["WITH" <withOption> {", " <withOption>}]
+<RenameUser> ::= "RENAME USER" ( <oldUser> "TO" <newUser> ) {", " ( <oldUser> "TO" <newUser> )}
+<Revoke> ::= "REVOKE" ( ( <privType> [<columnList>] { ", " <privType> [<columnList>]} "ON" [<objectType>] <privLevel> "FROM" 
+                <user> {", " <user>} ) | 
+                ( "ALL PRIVILEGES GRANT OPTION FROM" <user> {", " <user>} ) | 
+                ( "PROXY ON" <user> "FROM" <user> {", " <user> } ) )
+<setPassword> ::= "SET PASSWORD" ["FOR" <user>] "=" ( "PASSWORD(" <password> ")" | "OLD_PASSWORD(" <password> ")" | "encrypted password" )

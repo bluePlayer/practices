@@ -1,0 +1,50 @@
+<ImportRules> ::= (
+                    <HelpAccountManagement.AccountManagement> 
+                    <HelpAdministration.Administration> 
+                    <HelpCompoundStatements.CompoundStatements>
+                    <HelperRules.*>
+                    )
+
+<mysqlcmd> ::= "mysql>" [<command> | <statement>] ";"
+<command> ::= <?> | <clear> | <connect> | <delimiter> | <ego> | <exit> | <go> | <help> | <notee> | <print> | <prompt> | <quit> | <rehash> | 
+                <source> | <status> | <tee> | <use> | <charset> | <warnings> | <nowarning>
+<statement> ::= <TODO>
+<?> ::= "?" | <help>
+<help> ::= ( "help" | "\h" ) [ <command> | <statement> | ( "Contents" | "contents" ) | <helpItem> ]
+<helpItem> ::= ( <AccountManagement> | <Administration> | <CompoundStatements> | <DataDefinition> | <DataManipulation> | <DataType> | 
+                <Functions> | <FunctionsModifiersForUseWithGroupBy> | <GeographicFeatures> | <HelpMetadata> | <LanguageStructure> | 
+                <Plugins> | <TableMaintenance> | <Transactions> | <UserDefinedFunctions> | <Utility> )
+
+<DataDefinition> ::= <TODO>
+<DataManipulation> ::= <TODO>
+<DataType> ::= <TODO>
+<Functions> ::= <TODO>
+<FunctionsModifiersForUseWithGroupBy> ::= <TODO>
+<GeographicFeatures> ::= <TODO>
+<HelpMetadata> ::= <TODO>
+<LanguageStructure> ::= <TODO>
+<Plugins> ::= <TODO>
+<TableMaintenance> ::= <TODO>
+<Transactions> ::= <TODO>
+<UserDefinedFunctions> ::= <TODO>
+<Utility> ::= <TODO>
+
+<exit> ::= "exit" | <quit> | <TODO>
+<use> ::= ( "use" | "\u" ) <dbname> 
+<clear> ::= "clear" | "\c"
+<connect> ::= ( "connect" | "\r" ) "host" <host> ["db" <database>] | <TODO>
+<quit> ::= "quit" | "\q"
+<delimiter> ::= ( "delimiter" | "\d" ) ( <Identifier> | <TODO> )
+<ego> ::= ( "ego" | "\G" ) <command>
+<go> ::= "go" | "\g"
+<notee> ::= "notee" | "\t"
+<print> ::= "print" | "\p"
+<prompt> ::= ( "prompt" | "\R" ) ( <Identifier> | <TODO> )
+<rehash> ::= ( "rehash" | "\#" ) <TODO>
+<source> ::= ( "source" | "\." ) <fileName>
+<status> ::= "status" | "\s"
+<tee> ::= ( "tee" | "\T" ) <fileName>
+<charset> ::= ( "charset" | "\C" ) <charset>
+<warnings> ::= "warnings" | "\W"
+<nowarning> ::= "nowarning" | "\w"
+

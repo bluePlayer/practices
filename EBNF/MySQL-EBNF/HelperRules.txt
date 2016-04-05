@@ -1,0 +1,71 @@
+<TODO> ::= "Finish the rule"
+<Literal> ::= ( <DECIMAL_LITERAL> | 
+                <HEX_INTEGER_LITERAL> | 
+                <STRING_LITERAL> | 
+                <BOOLEAN_LITERAL> | 
+                <NULL_LITERAL> | 
+                <REGULAR_EXPRESSION_LITERAL> )
+<Identifier> ::= <IDENTIFIER_NAME> | <TODO>
+<dbName> ::= <Identifier>
+<fileName> ::= <Identifier>
+<user> ::= ( <Identifier> "@" <host> ) | ( <Identifier> "@%" ) | <TODO>
+<userSpecification> ::= <user> [ ( "IDENTIFIED BY" ["PASSWORD"] <password> ) | ( "IDENTIFIED WITH" <authPlugin> ["AS" <authString>] ) ]
+<logName> ::= <TODO>
+<pos> ::= <TODO>
+<offset> ::= <TODO>
+<rowCount> ::= <TODO>
+<likeOrWhere> ::= ( "LIKE" <pattern> ) | ( "WHERE" <expression> )
+<pattern> ::= <TODO>
+<expression> ::= <TODO>
+<tableName> ::= <TODO>
+<eventName> ::= <TODO>
+<functionName> ::= <TODO>
+<procName> ::= <TODO>
+<triggerName> ::= <TODO>
+<viewName> ::= <TODO>
+<types> ::= <TODO>
+<query> ::= <TODO>
+<limit> ::= <TODO> 
+<dbName> ::= <Identifier>
+<engineName> ::= <TODO>
+<charset> ::= <TODO>
+<userDefinedPort> ::= <TODO>
+<oldUser> ::= <user>
+<newUser> ::= <user>
+<sslOption> ::= <TODO>
+<withOption> ::= <TODO>
+<privType> ::= <TODO>
+<columnList> ::= <TODO> 
+<objectType> ::= <TODO>
+<privLevel> ::= <TODO>
+<password> ::= <Literal> | <TODO>
+<authPlugin> ::= <TODO>
+<authString> ::= <TODO>
+<indexName> ::= <TODO>
+<partitionName> ::= <TODO>
+<host> ::= <hostAddress> [":" <portNumber>]
+<portNumber> ::= "3306" | <userDefinedPort> | <TODO>
+<EightBitDecimalNumber> ::= 0 | 1 | .. | 255
+<hostAddress> ::= <ipv4Adress> | <ipv6Address>
+<loopbackAddr> = "127.0.0.1" | "localhost"
+<ipv4Address> ::= ( ( <EightBitDecimalNumber> "." <EightBitDecimalNumber> "." <EightBitDecimalNumber> "." <EightBitDecimalNumber> ) | 
+                    <loopbackAddr> | <serverName> )
+<serverName> ::= <TODO>
+<ipv6Address> ::= <TODO>
+<base64EncodedString> ::= <TODO>
+<tableIndexList> ::= <tableName> ( 
+                                    [ ["INDEX" | "KEY"] <indexName> {", " <indexName>} ] |
+                                    [ "PARTITION" ( <partitionList> | "ALL") ] |
+                                    [ "IGNORE LEAVES" ]
+                                  )
+<partitionList> ::= <partitionName> {", " <partitionName>}
+<keyCacheName> ::= <TODO>
+<threadId> ::= <TODO>
+<resetOption> ::= <TODO>
+<userVarName> ::= <TODO>
+<variableAssignment> ::= ( <userVarName> "=" <expression> ) |
+                            ( ["GLOBAL" | "SESSION"] <systemVarName> "=" <expression> ) |
+                            ( ["@@global" | "@@session" | "@@"] <systemVarName> "=" <expression> )
+<statementList> ::= <TODO>
+
+<MySQLErrorCode> ::= <TODO>

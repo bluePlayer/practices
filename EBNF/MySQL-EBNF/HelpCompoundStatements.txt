@@ -1,0 +1,55 @@
+<ImportRules> ::= <HelperRules.*>
+
+<beginLabel> ::= <TODO>
+<endLabel> ::= <TODO>
+<CompoundStatements> ::= ( 
+                            "BEGIN END" | 
+                            "CASE STATEMENT" | 
+                            "CLOSE" | 
+                            ( 
+                                "DECLARE" 
+                                ( 
+                                    "CONDITION" | 
+                                    "CURSOR" |
+                                    "HANDLER" | 
+                                    "VARIABLE"
+                                ) 
+                            ) |
+                            "FETCH" |
+                            "IF STATEMENT" | 
+                            "ITERATE" | 
+                            "LABELS" | 
+                            "LEAVE" | 
+                            "LOOP" |
+                            "OPEN" | 
+                            "REPEAT LOOP" |
+                            "RESIGNAL" | 
+                            "RETURN" |
+                            "SIGNAL" | 
+                            "WHILE"
+                        )
+<beginEnd> ::= [<beginLabel> ":"] "BEGIN" [<statementList>] "END" [<endLabel>]     
+<caseValue> ::= <TODO>
+<whenValue> ::= <TODO>
+<searchCondition> ::= <TODO>
+<caseStatement> ::= "CASE"
+                        ( <caseValue> 
+                            "WHEN" <whenValue> "THEN" <statmentList> 
+                            {"WHEN" <whenValue> "THEN" <statmentList>} 
+                            "ELSE" <statementList> 
+                            "END CASE" 
+                        ) |  
+                        ( 
+                            "WHEN" <searchCondition> "THEN" <statmentList>
+                            {"WHEN" <searchCondition> "THEN" <statmentList>}
+                            "ELSE" <statementList>
+                            "END CASE"
+                        ) 
+<cursorName> ::= <TODO>
+<closeStatement> ::= "CLOSE" <cursorName>
+<conditionName> ::= <TODO>
+<sqlStateValue> ::= <TODO>
+<conditionValue> ::= <MySQLErrorCode> | "SQLSTATE" [<value>] <sqlStateValue>
+<declareCondition> ::= "DECLARE" <conditionName> "CONDITION FOR" <conditionValue>
+<selectStatement> ::= <TODO>
+<declareCursor> ::= "DEClARE" <cursorName> "CURSOR FOR" <selectStatement> 
