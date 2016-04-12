@@ -7,8 +7,7 @@
 
 <mysqlcmd> ::= "mysql>" [<command> | <statement>] ";"
 <command> ::= <?> | <clear> | <connect> | <delimiter> | <ego> | <exit> | <go> | <help> | <notee> | <print> | <prompt> | <quit> | <rehash> | 
-                <source> | <status> | <tee> | <use> | <charset> | <warnings> | <nowarning>
-<statement> ::= <TODO>
+                <source> | <status> | <tee> | <use> | <charset> | <warnings> | <nowarning>s
 <?> ::= "?" | <help>
 <help> ::= ( "help" | "\h" ) [ <command> | <statement> | ( "Contents" | "contents" ) | <helpItem> ]
 <helpItem> ::= ( <AccountManagement> | <Administration> | <CompoundStatements> | <DataDefinition> | <DataManipulation> | <DataType> | 

@@ -1,6 +1,9 @@
 <ImportRules> ::= <HelperRules.*>
 
-<AccountManagement> ::= "Account Management" | "CREATE USER" | "DROP USER" | "GRANT" | "RENAME USER" | "REVOKE" | "SET PASSWORD"
+<AccountManagementList> ::= "Account Management" | "CREATE USER" | "DROP USER" | "GRANT" | "RENAME USER" | "REVOKE" | "SET PASSWORD"
+<AccountManagement> ::= <CreateUser> | <DropUser> | <Grant> | <RenameUser> | <Revoke> | <setPassword>
+
+(* ------------------------- Account management rules -------------------------- *)
 
 <CreateUser> ::= "CREATE USER" <userSpecification> {", " <userSpecification>}
 <DropUser> ::= "DROP USER" <user> [", " <user>]

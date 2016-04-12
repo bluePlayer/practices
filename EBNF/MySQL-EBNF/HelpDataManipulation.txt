@@ -1,0 +1,33 @@
+<ImportRules> ::= <HelperRules.*>
+
+<tableReferences>  ::= <TODO>
+<selectExpression> ::= <TODO>
+<whereCondition> ::= <TODO>
+<colName> ::= <TODO>
+<expression> ::= <TODO>
+<position> ::= <TODO>
+<argumentList> ::= <TODO>
+<procedureName> ::= <TODO>
+<charsetName> ::= <TODO>
+<exportOptions> ::= <TODO>
+<selectStatement> ::= ["ALL" | "DISTINCT" | "DISTINCTROW"] ["HIGH_PRIORITY"] ["STRAIGHT_JOIN"] ["SQL_SMALL_RESULT"] ["SQL_BIG_RESULT"]
+                        ["SQL_BUFFER_RESULT"] ["SQL_CACHE" | "SQL_NO_CACHE"] ["SQL_CALC_FOUND_ROWS"] 
+                        <selectExpression> {", "} <selectExpression>
+                        ["FROM" <tableReferences> 
+                            ["WHERE" <whereCondition>]
+                            ["GROUP BY" ( <colName> | <expression> | <position> ) ["ACS" | "DSC"], ... ["WITH ROLLUP"] ]
+                            ["HAVING" <whereCondition>]
+                            ["ORDER BY" ( <colName> | <expression> | <position> ) ["ACS" | "DSC"], ... ]
+                            ["LIMIT" ( [<offset> ", "] <rowCount> | <rowCount> "OFFSET" <offset> ) ]
+                            ["PROCEDURE" <procedureName> "(" <argumentList> ")" ]
+                            ["INTO" 
+                                (
+                                    "OUTFILE" <fileName> ["CHARACTER SET" <charsetName>] <exportOptions> |
+                                    "DUMPFILE" <fileName> |
+                                    <varName> {", " <varName>}
+                                )
+                            ]
+                            ["FOR UPDATE" | "LOCK IN SHARE MODE"]
+                        ]
+                        
+                        

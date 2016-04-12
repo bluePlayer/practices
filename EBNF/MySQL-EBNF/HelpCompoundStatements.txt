@@ -1,8 +1,7 @@
-<ImportRules> ::= <HelperRules.*>
-
-<beginLabel> ::= <TODO>
-<endLabel> ::= <TODO>
-<CompoundStatements> ::= ( 
+<ImportRules> ::= <HelperRules.*> 
+                    <HelpDataManipulation.selectStatement>
+                    
+<CompoundStatementsList> ::= ( 
                             "BEGIN END" | 
                             "CASE STATEMENT" | 
                             "CLOSE" | 
@@ -28,10 +27,45 @@
                             "SIGNAL" | 
                             "WHILE"
                         )
-<beginEnd> ::= [<beginLabel> ":"] "BEGIN" [<statementList>] "END" [<endLabel>]     
+<CompoundStatements> ::= <beginEnd> | <caseStatement> | <declareCondition> | <declareCursor> | <declareHandler> | <declareVariable> |
+                        <fetch> | <ifStatement> | <iterate> | <leave> | <loop> | <open> | <repeatLoop> | <resignal> | <return> | <signal> |
+                        <while> 
+                        
+(* ------------------------- Compound statement helper rules -------------------------- *)
+
+<beginLabel> ::= <label> ":"
+<endLabel> ::= <label>
 <caseValue> ::= <TODO>
 <whenValue> ::= <TODO>
 <searchCondition> ::= <TODO>
+<cursorName> ::= <TODO>
+<sqlStateValue> ::= <TODO>
+<conditionName> ::= <TODO>
+<handlerAction> ::= "CONTINUE" | "EXIT" | "UNDO"
+<conditionValue> ::= <MySQLErrorCode> | 
+                    <signalConditionValue> 
+                    "SQLWARNING" | 
+                    "NOT FOUND" | 
+                    "SQLEXCEPTION"
+<signalConditionValue> ::= ( "SQLSTATE" [<value>] <sqlStateValue> ) | <conditionName> 
+<simpleValueSpecification> ::= <TODO>
+<conditionInformationItemName> ::= "CLASS_ORIGIN" |
+                                    "SUBCLASS_ORIGIN" |
+                                    "MESSAGE_TEXT" |
+                                    "MYSQL_ERRNO" |
+                                    "CONSTRAINT_CATALOG" |
+                                    "CONSTRAINT_SCHEMA" |
+                                    "CONSTRAINT_NAME" |
+                                    "CATALOG_NAME" |
+                                    "SCHEMA_NAME" |
+                                    "TABLE_NAME" |
+                                    "COLUMN_NAME" |
+                                    "CURSOR_NAME"
+<signalInformationItem> ::= <conditionInformationItemName> "=" <simpleValueSpecification>
+
+(* ------------------------- Compound statements rules -------------------------- *)
+                    
+<beginEnd> ::= [<beginLabel>] "BEGIN" [<statementList>] "END" [<endLabel>]
 <caseStatement> ::= "CASE"
                         ( <caseValue> 
                             "WHEN" <whenValue> "THEN" <statmentList> 
@@ -45,11 +79,22 @@
                             "ELSE" <statementList>
                             "END CASE"
                         ) 
-<cursorName> ::= <TODO>
 <closeStatement> ::= "CLOSE" <cursorName>
-<conditionName> ::= <TODO>
-<sqlStateValue> ::= <TODO>
-<conditionValue> ::= <MySQLErrorCode> | "SQLSTATE" [<value>] <sqlStateValue>
 <declareCondition> ::= "DECLARE" <conditionName> "CONDITION FOR" <conditionValue>
-<selectStatement> ::= <TODO>
 <declareCursor> ::= "DEClARE" <cursorName> "CURSOR FOR" <selectStatement> 
+<declareHandler> ::= "DECLARE" <handlerAction> "HANDLER" "FOR" <conditionValue> {", " <conditionValue>} <statement> 
+<declareVariable> ::= "DECLARE" <varName> {", " <varName>} <type> ["DEFAULT" <value>]
+<fetch> ::= "FETCH" <cursorName> "INTO" <varName> {", " <varName>}
+<ifStatement> ::= "IF" <searchCondition> "THEN" <statementList> 
+                    ["ELSEIF" <searchCondition> "THEN" <statementList>]
+                    ["ELSE" <statementList>]
+                  "END IF"
+<iterate> ::= "ITERATE" <label> 
+<leave> ::= "LEAVE" <label> 
+<loop> ::= [<beginLabel>] "LOOP" <statementList> "END LOOP" [<endLabel>]
+<open> ::= "OPEN" <cursorName> 
+<repeatLoop> ::= [<beginLabel>] "REPEAT" <statementList> "UNTIL" <searchCondition> "END REPEAT" [<endLabel>]
+<resignal> ::= "RESIGNAL" <signalConditionValue> ["SET" <signalInformationItem> {", " <signalInformationItem>} ]
+<return> ::= "RETURN" <expression> 
+<signal> ::= "SIGNAL" <signalConditionValue> ["SET" <signalInformationItem> {", " <signalInformationItem>} ]
+<while> ::= [<beginLabel>] "WHILE" <searchCondition> "DO" <statementList> "END WHILE" [<endLabel>]

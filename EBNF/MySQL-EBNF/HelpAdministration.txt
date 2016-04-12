@@ -1,12 +1,18 @@
 ﻿<ImportRules> ::= <HelperRules.*>
 
-<Administration> ::= "BINLOG" | "CACHE INDEX" | "FLUSH" | "HELP COMMAND" | "KILL" | "LOAD INDEX" | "RESET" |
-                    "SET" | <show>
+<AdministrationList> ::= "BINLOG" | "CACHE INDEX" | "FLUSH" | "HELP COMMAND" | "KILL" | "LOAD INDEX" | "RESET" |
+                    "SET" | "SHOW"
+<Administration> ::= <BinLog> | <CacheIndex> | <Flush> | <HelpCommand> | <Kill> | <LoadIndex> | <Reset> | <Set> | <show>
+
+(* ------------------------- Administration helper rules -------------------------- *)
+
 <logType> ::= "BINARY" | "ENGINE" | "ERROR" | "GENERAL" | "RELAY" | "SLOW"            
 <flushOption> ::= ( "DES_KEY_FILE" | "HOSTS" | ( [<logType>] "LOGS" ) | "MASTER" | "PRIVILEGES" | "QUERY CACHE" | "SLAVE" | "STATUS" |
                     ( "TABLES" <TODO> ) | "USER_RESOURCES" ) <TODO>
-                    
 <searchString> ::= "contents" | "logs" | "SHOW BINARY LOGS" | "SHOW MASTER LOGS"
+
+(* ------------------------- Administration rules -------------------------- *)
+
 <BinLog> ::= "BINLOG" <base64EncodedString>
 <CacheIndex> ::= "CACHE INDEX" <tableIndexList> {", " <tableIndexList>} ["PARTITION" ( <partitionList> | "ALL" )] "IN" <keyCacheName>
 <Flush> ::= "FLUSH" ["NO_WRITE_TO_BIN_LOG" | "LOCAL"] <flushOption> {", " <flushOption>}
