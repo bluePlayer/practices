@@ -1,6 +1,6 @@
 ﻿<ImportRules> ::= <HelperRules.*>
 
-<AdministrationList> ::= "BINLOG" | "CACHE INDEX" | "FLUSH" | "HELP COMMAND" | "KILL" | "LOAD INDEX" | "RESET" |
+<AdministrationHelp> ::= "BINLOG" | "CACHE INDEX" | "FLUSH" | "HELP COMMAND" | "KILL" | "LOAD INDEX" | "RESET" |
                     "SET" | "SHOW"
 <Administration> ::= <BinLog> | <CacheIndex> | <Flush> | <HelpCommand> | <Kill> | <LoadIndex> | <Reset> | <Set> | <show>
 
@@ -58,7 +58,7 @@
                     "PROFILES" | 
                     ( "SLAVE" ( "HOSTS" | "STATUS") ) |
                     ( ( "GLOBAL" | "SESSION" ) "STATUS" [<likeOrWhere>] ) |
-                    ( "TBALE STATUS" ["FROM" <dbName>] [<likeOrWhere>] ) |
+                    ( "TABLE STATUS" ["FROM" <dbName>] [<likeOrWhere>] ) |
                     ( ["FULL"] "TABLES" ["FROM" <dbName>] [<likeOrWhere>] ) |
                     ( "TRIGGERS" ["FROM" <dbName>] [<likeOrWhere>] ) |
                     ( ( "GLOBAL" | "SESSION" ) "VARIABLES" [<likeOrWhere>] ) |

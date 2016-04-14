@@ -1,0 +1,194 @@
+<ImportRules> ::= <HelperRules.*> 
+
+<DataDefinitionHelp> ::= "ALTER" ( 
+                                    "DATABASE" | 
+                                    "EVENT" |
+                                    "FUNCTION" |
+                                    "LOGFILE GROUP" |
+                                    "PROCEDURE" |
+                                    "SERVER" |
+                                    "TABLE" |
+                                    "TABLESPACE" |
+                                    "VIEW"
+                                 ) |
+                         "CONSTRAINT" |
+                         "CREATE" (
+                                    "DATABASE" |
+                                    "EVENT" |
+                                    "FUNCTION" |
+                                    "INDEX" |
+                                    "PROCEDURE" |
+                                    "SERVER" |
+                                    "TABLE" |
+                                    "TABLESPACE" |
+                                    "TRIGGER" |
+                                    "VIEW"
+                                  ) |
+                         "DROP" (
+                                    "DATABASE" |
+                                    "EVENT" |
+                                    "FUNCTION" |
+                                    "INDEX" |
+                                    "PROCEDURE" |
+                                    "SERVER" |
+                                    "TABLE" |
+                                    "TABLESPACE" |
+                                    "TRIGGER" |
+                                    "VIEW"
+                                ) |
+                         "MERGE" |
+                         "RENAME TABLE" |
+                         "TRUNCATE TABLE"
+<DataDefinition> ::= <alterDatabaseSchema> | <alterEvent> | <alterFunction> | <alterLogFileGroup> | <alterProcedure> |
+                        <alterServer> | <alterTable> | <alterTablespace> | <alterView> | <constraint> | <createDatabase> |
+                        <createEvent> | <createFunction> | <createIndex> | <TODO>    
+
+(* ------------------ Data Definition helper rules --------------------- *)
+
+<alterSpecification> ::= ( ["DEFAULT"] "CHARACTER SET" ["="] <charsetName> ) |
+                        ( ["DEFAULT"] "COLLATE" ["="] <collationName> )
+<collationName> ::= <TODO>
+<definer> ::= <TODO>
+<newEventName> ::= <TODO>
+<comment> ::= <STRING_LITERAL>
+<functionName> ::= <STRING_LITERAL>
+<characteristic> ::= ( "CONTAINS SQL" | "NO SQL" | "READS SQL DATA" | "MODIFIES SQL DATA" ) |
+                      ( "SQL SECURITY" ( "DEFINER" | "INVOKER" ) ) |
+                      "COMMENT" <comment>
+<logfileGroup> ::= <TODO>
+<option> ::= <TODO>
+<serverName> ::= <STRING_LITERAL> | <TODO>
+<colName> ::= <STRING_LITERAL> | <TODO>
+<columnDefinition> ::= <TODO>
+<parserName> ::= <TODO>
+<tableOption> ::= <TODO>
+<indexColName> ::= <colName> ["(" <length> ")"] ["ASC" | "DSC"]
+<indexType> ::= "USING" ( "BTREE" | "HASH" )
+<indexOption> ::= "KEY_BLOCK_SIZE" ["="] <value> |
+                    <indexType> |
+                    "WITH PARSER" <parserName> |
+                    <comment>
+<tableOptions> ::= <tableOption> {", " <tableOption>}
+<oldColName> ::= <STRING_LITERAL> 
+<newColName> ::= <STRING_LITERAL>
+<fkSymbol> ::= <TODO>
+<partitionNames> ::= <TODO>
+<newTableName> ::= <TODO>
+<number> ::= <TODO>
+<partitionDefinitions> ::= <TODO>
+<partitionOptions> ::= <TODO>
+<partitioningExpression> ::= <TODO>
+<indexName> ::= <TODO>
+<symbol> ::= <TODO>
+<alterSpecification> ::= <tableOptions> |
+                            "ADD" (
+                                    ["COLUMN"] <colName> <columnDefinition> [( "FIRST" | "AFTER" ) <colName>] |
+                                    ["COLUMN"] <colName> <columnDefinition> {", " ["COLUMN"] <colName> <columnDefinition>} |
+                                    ( "INDEX" | "KEY" ) [<indexName>] [<indexType>] 
+                                        ( <indexColName> {", " <indexColName>} ) [ <indexOption> {", " <indexOption>} ] |
+                                    ["CONSTRAINT" [<symbol>]] "PRIMARY KEY" [<indexType>] 
+                                        ( <indexColName> {", " <indexColName>} ) [ <indexOption> {", " <indexOption>} ] | 
+                                    ["CONSTRAINT" [<symbol>]] "UNIQUE" ["INDEX" | "KEY"] [<indexName>] [<indexType>] 
+                                        ( <indexColName> {", " <indexColName>} ) [ <indexOption> {", " <indexOption>} ] |
+                                    "FULLTEXT" ["INDEX" | "KEY"] [<indexName>] 
+                                        ( <indexColName> {", " <indexColName>} ) [ <indexOption> {", " <indexOption>} ] |
+                                    "SPATIAL" ["INDEX" | "KEY"] [<indexName>] 
+                                        ( <indexColName> {", " <indexColName>} ) [ <indexOption> {", " <indexOption>} ] |
+                                    ["CONSTRAINT" [<symbol>]] "FOREING KEY" [<indexName>]
+                                        ( <indexColName> {", " <indexColName>} ) <referenceDefinition> |
+                                    "PARTITION" <partitionDefinition>
+                                  ) |
+                             "ALTER" ["COLUMN"] <colName> ( "SET DEFAULT" <literal> | "DROP DEFAULT" ) |
+                             "CHANGE" ["COLUMN"] <oldColName> <newColName> <columnDefinition> [ ( "FIRST" | "AFTER" ) <colName> ] |
+                             "MODIFY" ["COLUMN"] <colName> <columnDefinition> [ ( "FIRST" | "AFTER" ) <colName> ] |
+                             "DROP" (
+                                       ["COLUMN"] <colName> |
+                                       "PRIMARY KEY" |
+                                       ( "INDEX" | "KEY" ) <indexName> |
+                                       "FOREIGN KEY" <fkSymbol> |
+                                       "PARTITION" <partitionNames>
+                                     ) |
+                             "MAX_ROWS" "=" <rows> |
+                             "RENAME" ["TO"] <newTableName> |
+                             "ORDER BY" <colName> {", " <colName>} | 
+                             "CONVERT TO CHARACTER SET" <charsetName> ["COLLATE" <collationName>] | 
+                             ["DEFAULT"] "CHARACTER SET" ["="] <charsetName> ["COLLATE" <collationName>] | 
+                             "DISCARD TABLESPACE" |
+                             "IMPORT TABLESPACE" |
+                             "FORCE" |
+                             "TRUNCATE PARTITION" ( <partitionNames> | "ALL" ) |
+                             "COALESCE PARTITION" <number> |
+                             "REORGANIZE PARTITION" <partitionNames> "INTO" "(" <partitionDefinitions> ")"|
+                             "ANALYZE PARTITION" ( <partitionNames> | "ALL" ) |
+                             "CHECK PARTITION" ( <partitionNames> | "ALL" ) |
+                             "OPTIMIZE PARTITION" ( <partitionNames> | "ALL" ) |
+                             "REBUILD PARTITION" ( <partitionNames> | "ALL" ) |
+                             "REPAIR PARTITION" ( <partitionNames> | "ALL" ) |
+                             "PARTITION BY" <partitioningExpression> |
+                             "REMOVE PARTITIONING"
+<tablespaceName> ::= <TODO>
+<size> ::= <TODO>
+<viewName> ::= <TODO>
+<columnList> ::= <TODO>
+<referenceOption> ::= "RESTRICT" | "CASCADE" | "SET NULL" | "NO ACTION"
+<createSpecification> ::= ["DEFAULT"] ( "CHARACTER SET" ["="] <charsetName> | "COLLATE" ["="] <collationName> )
+<eventName> ::= <identifier>
+<interval> ::= "quantity" ( "YEAR" | "QUARTER" | "MONTH" | "DAY" | "HOUR" | "MINUTE" | "WEEK" | "SECOND" | "YEAR_MONTH" |
+                            "DAY_HOUR" | "DAY_MINUTE" | "DAY_SECOND" | "HOUR_MINUTE" | "HOUR_SECOND" | "MINUTE_SECOND"
+                          )
+<schedule> ::= ( "AT" <timestamp> ["+ INTERVAL" <interval>] ) |
+                "EVERY" <interval> ["STARTS" <timestamp> ["+ INTERVAL" <interval>] {", " "STARTS" <timestamp> ["+ INTERVAL" <interval>]} ]
+                                    ["ENDS" <timestamp> ["+ INTERVAL" <interval>] {", " "STARTS" <timestamp> ["+ INTERVAL" <interval>]} ]
+                                    
+(* ------------------ Data Definition rules ------------------- *)
+
+<alterDatabaseSchema> ::= "ALTER" ( "DATABASE" | "SCHEMA" ) [<dbName>] <alterSpecification> "ALTER" ( "DATABASE" | "SCHEMA" ) <dbName>    
+            "UPGRADE DATA DIRECTORY NAME" 
+<alterEvent> ::= [<definer> "=" ( <user> | "CURRENT_USER" ) ] 
+                    "EVENT" <eventName> 
+                    ["ON SCHEDULE" <schedule>]
+                    ["ON COMPLETION" ["NOT"] "PRESERVE"]
+                    ["RENAME TO" <newEventName>]
+                    ["ENABLE" | "DISABLE" | "DISABLE ON SLAVE"]
+                    ["COMMENT" <comment>]
+                    ["DO" <eventBody>]
+<alterFunction> ::= "ALTER FUNCTION" <functionName> <characteristic> 
+<alterLogFileGroup> ::= "ALTER LOGFILE GROUP" <logfileGroup> "ADD UNDOFILE" <fileName> 
+                        ["INITIAL SIZE" ["="] <size>]
+                        ["WAIT"]
+                        "ENGINE" ["="] <engineName>
+<alterProcedure> ::= "ALTER PROCEDURE" <procedureName> <characteristic> 
+<alterServer> ::= "ALTER SERVER" <serverName> "OPTIONS" <option> {", " <option>}
+<alterTable> ::= "ALTER" ["ONLINE" | "OFFLINE"] ["IGNORE"] "TABLE" <tableName> 
+                [<alterSpecification> {", " <alterSpecification>}]
+                [<partitionOptions>]
+<alterTablespace> ::= "ALTER TABLESPACE" <tablespaceName> ( "ADD" | "DROP" ) "DATAFILE" <fileName> 
+                        ["INITIAL_SIZE" ["="] <size>] ["WAIT"] "ENGINE" ["="] <engineName> 
+<alterView> ::= "ALTER" 
+                ["ALGORITHM" "=" ( "UNDEFINED" | "MERGE" | "TEMPTABLE" )]
+                ["DEFINER" "=" ( <user> | "CURRENT_USER")]
+                ["SQL SECURITY" ( "DEFINER" | "INVOKER" )]
+                "VIEW" <viewName> ["(" <columnList> ")"]
+                "AS" <selectStatement> 
+                ["WITH" ["CASCADED" | "LOCAL"] "CHECK OPTION"]
+<constraint> ::= ["CONSTRAINT" [<symbol>]] "FOREIGN KEY" 
+                    [<indexName>] ( <indexColName> {", " <indexColName>})
+                    "REFERENCES" <tableName> ( <indexColName> {", " <indexColName>})
+                    ["ON DELETE" <referenceOption>]
+                    ["ON UPDATE" <referenceOption>]
+<createDatabase> ::= "CREATE" ( "DATABASE" | "SCHEMA" ) ["IF NOT EXISTS"] <dbName> [<createSpecification>]
+<createEvent> ::= "CREATE" 
+                    ["DEFINER" "=" ( <user> | "CURRENT_USER" )]
+                    "EVENT" ["IF NOT EXISTS"]
+                    <eventName> 
+                    "ON SCHEDULE" <schedule>
+                    ["ON COMPLETION" ["NOT"] "PRESERVE"]
+                    ["ENABLE" | "DISABLE" | "DISABLE ON SLAVE"]
+                    ["COMMENT" <comment>]
+                    "DO" <eventBody>
+<createFunction> ::= "CREATE" ["AGGREGATE"] "FUNCTION" <functionName> "RETURNS" ( "STRING" | "INTEGER" | "REAL" | "DECIMAL" )
+                        "SONAME" <sharedLibraryName> 
+<createIndex> ::= "CREATE" ["ONLINE" | "OFFLINE"] ["UNIQUE" | "FULLTEXT" | "SPATIAL"] "INDEX" <indexName> 
+                    [<indexType>] "ON" <tableName> "(" <indexColName> {", " <indexColName>} ")"
+                    [<indexOption> {", " <indexOption>}]
+<createProcedure> ::= <TODO> 

@@ -13,7 +13,7 @@
 <helpItem> ::= ( <AccountManagement> | <Administration> | <CompoundStatements> | <DataDefinition> | <DataManipulation> | <DataType> | 
                 <Functions> | <FunctionsModifiersForUseWithGroupBy> | <GeographicFeatures> | <HelpMetadata> | <LanguageStructure> | 
                 <Plugins> | <TableMaintenance> | <Transactions> | <UserDefinedFunctions> | <Utility> )
-
+(*
 <DataDefinition> ::= <TODO>
 <DataManipulation> ::= <TODO>
 <DataType> ::= <TODO>
@@ -27,7 +27,7 @@
 <Transactions> ::= <TODO>
 <UserDefinedFunctions> ::= <TODO>
 <Utility> ::= <TODO>
-
+*)
 <exit> ::= "exit" | <quit> | <TODO>
 <use> ::= ( "use" | "\u" ) <dbname> 
 <clear> ::= "clear" | "\c"

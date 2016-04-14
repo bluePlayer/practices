@@ -1,7 +1,7 @@
 <ImportRules> ::= <HelperRules.*> 
                     <HelpDataManipulation.selectStatement>
                     
-<CompoundStatementsList> ::= ( 
+<CompoundStatementsHelp> ::= ( 
                             "BEGIN END" | 
                             "CASE STATEMENT" | 
                             "CLOSE" | 
