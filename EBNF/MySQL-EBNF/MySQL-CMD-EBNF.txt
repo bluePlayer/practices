@@ -1,8 +1,13 @@
 <ImportRules> ::= (
-                    <HelpAccountManagement.AccountManagement> 
-                    <HelpAdministration.Administration> 
-                    <HelpCompoundStatements.CompoundStatements>
-                    <HelperRules.*>
+                    <MySQL-AccountManagement.AccountManagement> 
+                    <MySQL-AccountManagement.AccountManagementHelp>
+                    <MySQL-Administration.Administration> 
+                    <MySQL-Administration.AdministrationHelp> 
+                    <MySQL-CompoundStatements.CompoundStatements>
+                    <MySQL-CompoundStatements.CompoundStatementsHelp>
+                    <MySQL-DataDefinition.DataDefinition>
+                    <MySQL-DataDefinition.DataDefinitionHelp>
+                    <MySQL-HelperRules.*>
                     )
 
 <mysqlcmd> ::= "mysql>" [<command> | <statement>] ";"
@@ -10,13 +15,15 @@
                 <source> | <status> | <tee> | <use> | <charset> | <warnings> | <nowarning>s
 <?> ::= "?" | <help>
 <help> ::= ( "help" | "\h" ) [ <command> | <statement> | ( "Contents" | "contents" ) | <helpItem> ]
-<helpItem> ::= ( <AccountManagement> | <Administration> | <CompoundStatements> | <DataDefinition> | <DataManipulation> | <DataType> | 
-                <Functions> | <FunctionsModifiersForUseWithGroupBy> | <GeographicFeatures> | <HelpMetadata> | <LanguageStructure> | 
-                <Plugins> | <TableMaintenance> | <Transactions> | <UserDefinedFunctions> | <Utility> )
+<helpItem> ::= ( 
+                <AccountManagementHelp> | <AdministrationHelp> | <CompoundStatementsHelp> | <DataDefinitionHelp> | <DataManipulationHelp> | 
+                <DataTypesHelp> | <FunctionsHelp> | <FunctionsModifiersForUseWithGroupByHelp> | <GeographicFeaturesHelp> | 
+                <HelpMetadataHelp> | <LanguageStructureHelp> | <PluginsHelp> | <TableMaintenanceHelp> | <TransactionsHelp> | 
+                <UserDefinedFunctionsHelp> | <UtilityHelp> 
+               )
 (*
-<DataDefinition> ::= <TODO>
 <DataManipulation> ::= <TODO>
-<DataType> ::= <TODO>
+<DataTypes> ::= <TODO>
 <Functions> ::= <TODO>
 <FunctionsModifiersForUseWithGroupBy> ::= <TODO>
 <GeographicFeatures> ::= <TODO>

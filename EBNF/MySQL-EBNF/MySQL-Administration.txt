@@ -1,4 +1,4 @@
-﻿<ImportRules> ::= <HelperRules.*>
+﻿<ImportRules> ::= <MySQL-HelperRules.*>
 
 <AdministrationHelp> ::= "BINLOG" | "CACHE INDEX" | "FLUSH" | "HELP COMMAND" | "KILL" | "LOAD INDEX" | "RESET" |
                     "SET" | "SHOW"
@@ -54,7 +54,7 @@
                     ( "PROCEDURE STATUS" [<likeOrWhere>] ) |
                     "PRIVILEGES" |
                     ( ["FULL"] "PROCESSLIST" ) |
-                    ( "PROFILE" [<types>] ["FOR QUERY" <query>] ["OFFSET" <offset>] ["LIMIT" <limit>] ) |
+                    ( "PROFILE" [<type>] ["FOR QUERY" <query>] ["OFFSET" <offset>] ["LIMIT" <limit>] ) |
                     "PROFILES" | 
                     ( "SLAVE" ( "HOSTS" | "STATUS") ) |
                     ( ( "GLOBAL" | "SESSION" ) "STATUS" [<likeOrWhere>] ) |

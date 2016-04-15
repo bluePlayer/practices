@@ -39,7 +39,7 @@
 <procName> ::= <TODO>
 <triggerName> ::= <TODO>
 <viewName> ::= <TODO>
-<types> ::= <TODO>
+<type> ::= <TODO>
 <query> ::= <TODO>
 <limit> ::= <TODO> 
 <dbName> ::= <Identifier>

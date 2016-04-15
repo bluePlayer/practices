@@ -1,4 +1,5 @@
-<ImportRules> ::= <HelperRules.*> 
+<ImportRules> ::= <MySQL-HelperRules.*>
+                    <MySQL-DataManipulation.selectStatement>
 
 <DataDefinitionHelp> ::= "ALTER" ( 
                                     "DATABASE" | 
@@ -41,7 +42,8 @@
                          "TRUNCATE TABLE"
 <DataDefinition> ::= <alterDatabaseSchema> | <alterEvent> | <alterFunction> | <alterLogFileGroup> | <alterProcedure> |
                         <alterServer> | <alterTable> | <alterTablespace> | <alterView> | <constraint> | <createDatabase> |
-                        <createEvent> | <createFunction> | <createIndex> | <TODO>    
+                        <createEvent> | <createFunction> | <createIndex> | <createProcedure> | <createServer> | <createTable> |
+                        <createTablespace> | <createTrigger> | <createView> | <dropDatabase> | <TODO>    
 
 (* ------------------ Data Definition helper rules --------------------- *)
 
@@ -55,8 +57,21 @@
 <characteristic> ::= ( "CONTAINS SQL" | "NO SQL" | "READS SQL DATA" | "MODIFIES SQL DATA" ) |
                       ( "SQL SECURITY" ( "DEFINER" | "INVOKER" ) ) |
                       "COMMENT" <comment>
+<procCharacteristic> ::= <characteristic> |
+                            "LANGUAGE SQL" |
+                            ["NOT"] "DETERMINISTIC"
 <logfileGroup> ::= <TODO>
-<option> ::= <TODO>
+<characterLiteral> ::= <TODO>
+<numericLiteral> ::= <TODO>
+<option> ::= ( 
+                "HOST" <characterLiteral> |
+                "DATABASE" <characterLiteral> |
+                "USER" <characterLiteral> |
+                "PASSWORD" <characterLiteral> |
+                "SOCKET" <characterLiteral> |
+                "OWNER" <characterLiteral> |
+                "PORT" <numericLiteral>
+             )
 <serverName> ::= <STRING_LITERAL> | <TODO>
 <colName> ::= <STRING_LITERAL> | <TODO>
 <columnDefinition> ::= <TODO>
@@ -139,7 +154,22 @@
 <schedule> ::= ( "AT" <timestamp> ["+ INTERVAL" <interval>] ) |
                 "EVERY" <interval> ["STARTS" <timestamp> ["+ INTERVAL" <interval>] {", " "STARTS" <timestamp> ["+ INTERVAL" <interval>]} ]
                                     ["ENDS" <timestamp> ["+ INTERVAL" <interval>] {", " "STARTS" <timestamp> ["+ INTERVAL" <interval>]} ]
-                                    
+<spName> ::= <TODO>
+<procParam> ::= ["IN" | "OUT" | "INOUT"] <paramName> <type>
+<funcParam> ::= <paramName> <type>
+<routineBody> ::= <statement>
+<extentSize> ::= <TODO> (* default: 1M, minimum: 32K, maximum: 2G *)
+<initialSize> ::= <TODO> (* default: 128M, on 32-bit system, maxmum value is 4G, bug: #29186 *)
+<autoextendSize> ::= <TODO>
+<maxSize> ::= <TODO>
+<nodeGroupId> ::= <TODO>
+<triggerName> ::= <TODO>
+<triggerTime> ::= ( "BEFORE" | "AFTER" )
+<triggerEvent> ::= ( "INSERT" | "UPDATE" | "DELETE" ) 
+<triggerBody> ::= <statement>
+<viewName> ::= <TODO>
+
+                                   
 (* ------------------ Data Definition rules ------------------- *)
 
 <alterDatabaseSchema> ::= "ALTER" ( "DATABASE" | "SCHEMA" ) [<dbName>] <alterSpecification> "ALTER" ( "DATABASE" | "SCHEMA" ) <dbName>    
@@ -191,4 +221,40 @@
 <createIndex> ::= "CREATE" ["ONLINE" | "OFFLINE"] ["UNIQUE" | "FULLTEXT" | "SPATIAL"] "INDEX" <indexName> 
                     [<indexType>] "ON" <tableName> "(" <indexColName> {", " <indexColName>} ")"
                     [<indexOption> {", " <indexOption>}]
-<createProcedure> ::= <TODO> 
+<createProcedure> ::= "CREATE" 
+                        ( ["DEFINER" "=" ( <user> | "CURRENT_USER")] 
+                            "PROCEDURE" <spName> "(" [<procParam> {", " <procParam>}] ")"
+                            [<procCharacteristic> {", " <procCharacteristic>}] <routineBody>
+                        ) |
+                        ( ["DEFINER" "=" ( <user> | "CURRENT_USER")] 
+                            "FUNCTION" <spName> "(" [<funcParam> {", " <funcParam>}] ")"
+                            "RETURNS" <type>
+                            [<procCharacteristic> {", " <procCharacteristic>}] <routineBody>
+                        )
+<createServer> ::= "CREATE SERVER" <serverName> "FOREIGN DATA WRAPPER" <wrapperName>
+                    "OPTIONS" "(" <option> {", " <option>} ")"
+<createTable> ::= <TODO> 
+<createTablespace> ::= "CREATE TABLESPACE" <tablespaceName> 
+                        "ADD DATAFILE" <fileName>
+                        "USE LOGFILE GROUP" <logfileGroup>
+                        ["EXTENT_SIZE" ["="] <extentSize>]
+                        ["INITIAL_SIZE" ["="] <initialSize>]
+                        ["AUTOEXTEND_SIZE" ["="] <autoextendSize>]
+                        ["MAX_SIZE" ["="] <maxSize>]
+                        ["NODEGROUP" ["="] <nodeGroupId>]
+                        ["WAIT"]
+                        ["COMMENT" ["="] <comment>]
+                        "ENGINE" ["="] <engineName>
+<createTrigger> ::= "CREATE"
+                    ["DEFINER" "=" ( <user> | "CURRENT_USER")]
+                    "TRIGGER" <triggerName> <triggerTime> <triggerEvent>
+                    "ON" <tableName> "FOR EACH ROW" <triggerBody>
+<createView> ::= "CREATE"
+                    ["ON REPLACE"]
+                    ["ALGORITHM =" ( "UNDEFINED" | "MERGE" | "TEMPTABLE")]
+                    ["DEFINER" "=" ( <user> | "CURRENT_USER")]
+                    ["SQL SECURITY" ( "DEFINER" | "INVOKER" )]
+                    "VIEW" <viewName> ["(" <columnList> ")"]
+                    "AS" <selectStatement>
+                    ["WITH" ["CASCADED" | "LOCAL"] "CHECK OPTION"]
+<dropDatabase> ::= <TODO> 

@@ -1,5 +1,5 @@
-<ImportRules> ::= <HelperRules.*> 
-                    <HelpDataManipulation.selectStatement>
+<ImportRules> ::= <MySQL-HelperRules.*> 
+                  <MySQL-DataManipulation.selectStatement>
                     
 <CompoundStatementsHelp> ::= ( 
                             "BEGIN END" | 

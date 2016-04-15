@@ -1,4 +1,4 @@
-<ImportRules> ::= <HelperRules.*>
+<ImportRules> ::= <MySQL-HelperRules.*>
 
 <AccountManagementHelp> ::= "Account Management" | "CREATE USER" | "DROP USER" | "GRANT" | "RENAME USER" | "REVOKE" | "SET PASSWORD"
 <AccountManagement> ::= <CreateUser> | <DropUser> | <Grant> | <RenameUser> | <Revoke> | <setPassword>

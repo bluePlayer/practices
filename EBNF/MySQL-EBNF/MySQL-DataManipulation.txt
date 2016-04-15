@@ -1,4 +1,4 @@
-<ImportRules> ::= <HelperRules.*>
+<ImportRules> ::= <MySQL-HelperRules.*>
 
 <tableReferences>  ::= <TODO>
 <selectExpression> ::= <TODO>
