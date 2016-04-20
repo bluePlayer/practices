@@ -377,6 +377,6 @@
 <dropTablespace> ::= "DROP TABLESPACE" <tablespaceName> "ENGINE" ["="] <engineName> 
 <dropTrigger> ::= "DROP TRIGGER" ["IF EXISTS"] [<schemaName> "."] <triggerName>
 <dropView> ::= "DROP VIEW" ["IF EXISTS"] <viewName> {", " <viewName>} ["RESTRICT" | "CASCADE"]
-<merge> ::= "Storage engine, MRHG_MyISAM, is a collection of identical MyISAM tables that can be used as one."
+<merge> ::= "Storage engine, MRG_MyISAM, is a collection of identical MyISAM tables that can be used as one."
 <renameTable> ::= "RENAME TABLE" <tableName> "TO" <newTableName> {", " <tableName> "TO" <newTableName>}
 <truncateTable> ::= "TRUNCATE" ["TABLE"] <tableName> 
