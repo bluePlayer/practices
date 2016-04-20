@@ -74,15 +74,85 @@
              )
 <serverName> ::= <STRING_LITERAL> | <TODO>
 <colName> ::= <STRING_LITERAL> | <TODO>
-<columnDefinition> ::= <TODO>
+<dataType> ::= <TODO>
+<defaultValue> ::= <TODO>
+<string> ::= <TODO>
+<length> ::= <TODO>
+<decimals> ::= <TODO>
+<columnDefinition> ::= <dataType> ["NOT NULL" | "NULL"] 
+                                    ["DEFAULT VALUE" <defaultValue>]
+                                    ["AUTO_INCREMENT"] ["UNIQUE " ["KEY"] | ["PRIMARY"] "KEY" ] 
+                                    ["COMMENT" <string>]
+                                    ["COLUMN_FORMAT" ( "FIXED" | "DYNAMIC" | "DEFAULT" ) ]
+                                    ["STORAGE" ( "DISK" | "MEMORY" | "DEFAULT" ) ]
+                                    [<referenceDefinition>]
+<referenceDefinition> ::= "REFERENCES" <tableName> "(" <indexColName> { ", " <indexColName> } ")"
+                           ["MATCH" ( "FULL" | "PARTIAL" | "SIMPLE" )]
+                           ["ON DELETE" <referenceOption>]
+                           ["ON UPDATE" <referenceOption>]
+<spatialType> ::= <TODO>
+<dataType> ::= "BIT" ["(" <length> ")"] |
+                "TINYINT" ["(" <length> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "SMALLINT" ["(" <length> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "MEDIUMINT" ["(" <length> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "INT" ["(" <length> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "INTEGER" ["(" <length> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "BIGINT" ["(" <length> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "REAL" ["(" <length> ", " <decimals> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "DOUBLE" ["(" <length> ", " <decimals> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "FLOAT" ["(" <length> ", " <decimals> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "DECIMAL" ["(" <length> ", " <decimals> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "NUMERIC" ["(" <length> ", " <decimals> ")"] ["UNSIGNED"] ["ZEROFILL"] |
+                "DATE" |
+                "TIME" |
+                "TIMESTAMP" |
+                "DATETIME" |
+                "YEAR" |
+                "CHAR" ["(" <length> ")"] ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |
+                "VARCHAR(" <length> ")" ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |
+                "BINARY" ["(" <length> ")"] |
+                "VARBINARY(" <length> ")" |
+                "TINYBLOB" |
+                "BLOB" |
+                "MEDIUMBLOB" |
+                "LONGBLOB" |
+                "TINYTEXT" ["BINARY"] ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |
+                "TEXT" ["BINARY"] ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |
+                "MEDIUMTEXT" ["BINARY"] ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |
+                "LONGTEXT" ["BINARY"] ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |
+                "ENUM(" <literal> { ", " <literal> } ")" ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |
+                "SET(" <literal> { ", " <literal> } ")" ["CHARACTER SET" <charsetName>] ["COLLATE" <collationName>] |4
+                <spatialType>
 <parserName> ::= <TODO>
-<tableOption> ::= <TODO>
+<value> ::= <TODO>
+<connectionString> ::= <TODO>
+<absolutePathToDirectory> ::= <TODO>
+<tableOption> ::= "ENGINE" ["="] <engineName> |
+                    "AUTO_INCREMENT" ["="] <value> |
+                    "AVG_ROW_LENGTH" ["="] <value> |
+                    ["DEFAULT"] "CHARACTER SET" ["="] <charsetName> |
+                    "CHECKSUM" ["="] ( "0" | "1" ) |
+                    ["DEFAULT"] "COLLATE" ["="] <collationName> | 
+                    "COMMENT" ["="] <comment> |
+                    "CONNECTION" ["="] <connectionString> |
+                    "DATA DIRECTORY" ["="] <absolutePathToDirectory> |
+                    "DELAY_KEY_WRITE" ["="] ( "0" | "1" ) |
+                    "INDEX DIRECTORY" ["="] <absolutePathToDirectory> |
+                    "INSERT_METHOD" ["="] ( "NO" | "FIRST" | "LAST" ) |
+                    "KEY_BLOCK_SIZE" ["="] <value> |
+                    "MAX_ROWS" ["="] <value> |
+                    "MIN_ROWS" ["="] <value> |
+                    "PACK_KEYS" ["="] ( "0" | "1" | "DEFAULT" ) |
+                    "PASSWORD" ["="] <string>
+                    "ROW_FORMAT" ["="] ( "DEFAULT" | "DYNAMIC" | "FIXED" | "COMPRESSED" | "REDUNDANT" | "COMPACT" ) |
+                    "TABLESPACE" <tablespaceName> ["STORAGE" | "MEMORY" | "DEFAULT"] |
+                    "UNION" ["="] "(" <tableName> {", " <tableName> } ")"
 <indexColName> ::= <colName> ["(" <length> ")"] ["ASC" | "DSC"]
 <indexType> ::= "USING" ( "BTREE" | "HASH" )
 <indexOption> ::= "KEY_BLOCK_SIZE" ["="] <value> |
                     <indexType> |
                     "WITH PARSER" <parserName> |
-                    <comment>
+                    "COMMENT" <comment>
 <tableOptions> ::= <tableOption> {", " <tableOption>}
 <oldColName> ::= <STRING_LITERAL> 
 <newColName> ::= <STRING_LITERAL>
@@ -90,7 +160,35 @@
 <partitionNames> ::= <TODO>
 <newTableName> ::= <TODO>
 <number> ::= <TODO>
-<partitionDefinitions> ::= <TODO>
+<valueList> ::= <TODO>
+<dataDir> ::= <TODO>
+<indexDir> ::= <TODO>
+<maxNumberOfRows> ::= <TODO>
+<minNumberOrRows> ::= <TODO>
+<nodeGroupID> ::= <TODO>
+<logicalName> ::= <TODO>
+<partitionDefinition> ::= "PARTITION" <partitionName> 
+                            ["VALUES" ( "LEST THAN" ( "(" <Expression> | <valueList> ")" | "MAXVALUE" ) | "IN" <valueList> ) ]
+                            [["STORAGE"] "ENGINE" ["="] <engineName>] 
+                            ["COMMENT" ["="] <comment>]
+                            ["DATA DIRECTORY" ["="] <dataDir>]
+                            ["INDEX DIRECTORY" ["="] <indexDir>]
+                            ["MAX_ROWS" ["="] <maxNumberOfRows>]
+                            ["MIN_ROWS" ["="] <minNumberOrRows>]
+                            ["TABLESPACE" ["="] <tablespaceName>]
+                            ["NODEGROUP" ["="] <nodeGroupID>]
+                            ["(" <subpartitionDefinition> { ", " <subpartitionDefinition> } ")"]
+<subpartitionDefinition> ::= "SUBPARTITION" <logicalName>
+                                [["STORAGE"] "ENGINE" ["="] <engineName>] 
+                                ["COMMENT" ["="] <comment>]
+                                ["DATA DIRECTORY" ["="] <dataDir>]
+                                ["INDEX DIRECTORY" ["="] <indexDir>]
+                                ["MAX_ROWS" ["="] <maxNumberOfRows>]
+                                ["MIN_ROWS" ["="] <minNumberOrRows>]
+                                ["TABLESPACE" ["="] <tablespaceName>]
+                                ["NODEGROUP" ["="] <nodeGroupID>]
+<selectTableStatement> ::= ( ["IGNORE" | "REPLACE"] ["AS"] <selectStatement> ) | <TODO>
+<partitionDefinitions> ::= <partitionDefinition> { ", " <partitionDefinition> }
 <partitionOptions> ::= <TODO>
 <partitioningExpression> ::= <TODO>
 <indexName> ::= <TODO>
@@ -168,8 +266,17 @@
 <triggerEvent> ::= ( "INSERT" | "UPDATE" | "DELETE" ) 
 <triggerBody> ::= <statement>
 <viewName> ::= <TODO>
-
-                                   
+<Expression> ::= <TODO>
+<symbol> ::= <TODO>
+<schemaName> ::= <TODO>
+<createDefinition> ::= ( <colName> <columnDefinition> ) | 
+			( ["CONSTRAINT" [<symbol>]] "PRIMARY KEY" [<indexType>] "(" <indexColName> { ", " <indexColName> } ")" [<indexOption>] {", " [<indexOption>]} ) | 
+			( ( "INDEX" | "KEY" ) [<indexName>] [<indexType>] "(" <indexColName> { ", " <indexColName> } ")" [<indexOption>] {", " [<indexOption>]} ) | 
+			( ["CONSTRAINT" [<symbol>]] "UNIQUE" ["INDEX" | "KEY"] [<indexName>] [<indexType>] "(" <indexColName> { ", " <indexColName> }")" [<indexOption>] {", " [<indexOption>]} ) | 
+			( ( "FULLTEXT" | "SPATIAL") ["INDEX" | "KEY"] [<indexName>] "(" <indexColName> { ", " <indexColName> }")" [<indexOption>] {", " [<indexOption>]} ) | 
+			( ["CONSTRAINT" [<symbol>]] "FOREIGN KEY" [<indexName>] "(" <indexColName> { ", " <indexColName> }")" <referenceDefinition> ) | 
+			( "CHECK" "(" <Expression> ")" ) 
+            
 (* ------------------ Data Definition rules ------------------- *)
 
 <alterDatabaseSchema> ::= "ALTER" ( "DATABASE" | "SCHEMA" ) [<dbName>] <alterSpecification> "ALTER" ( "DATABASE" | "SCHEMA" ) <dbName>    
@@ -233,7 +340,10 @@
                         )
 <createServer> ::= "CREATE SERVER" <serverName> "FOREIGN DATA WRAPPER" <wrapperName>
                     "OPTIONS" "(" <option> {", " <option>} ")"
-<createTable> ::= <TODO> 
+<createTable> ::= "CREATE" ["TEMPORARY"] "TABLE" ["IF NOT EXISTS"] <tableName> 
+                    ( "(" <createDefinition>  {", " <createDefinition> } ")" [<tableOptions>] [<partitionOptions>] ) | 
+                    ( ["(" <createDefinition> { ", " <createDefinition> } ")"] [<tableOptions>] [<partitionOptions>] <selectTableStatement> ) | 
+                    ( ["("] "LIKE" <oldTableName> [")"] )
 <createTablespace> ::= "CREATE TABLESPACE" <tablespaceName> 
                         "ADD DATAFILE" <fileName>
                         "USE LOGFILE GROUP" <logfileGroup>
@@ -257,4 +367,16 @@
                     "VIEW" <viewName> ["(" <columnList> ")"]
                     "AS" <selectStatement>
                     ["WITH" ["CASCADED" | "LOCAL"] "CHECK OPTION"]
-<dropDatabase> ::= <TODO> 
+<dropDatabase> ::= "DROP" ( "DATABASE" | "SCHEMA" ) ["IF EXISTS"] <dbName>
+<dropEvent> ::= "DROP" "EVENT" ["IF EXISTS"] <eventName> 
+<dropFunction> ::= "DROP FUNCTION" <functionName> 
+<dropIndex> ::= "DROP" ["ONLINE" | "OFFLINE"] "INDEX" ( <indexName> | "PRIMARY" ) "ON" <tableName>
+<dropProcedure> ::= "DROP" ( "PROCEDURE" | "FUNCTION" ) ["IF EXISTS"] <spName> 
+<dropServer> ::= "DROP SERVER" ["IF EXISTS"] <serverName> 
+<dropTable> ::= "DROP" ["TEMPORARY"] "TABLE" ["IF EXISTS"] <tableName> {", " <tableName>} ["RESTRICT" | "CASCADE"]
+<dropTablespace> ::= "DROP TABLESPACE" <tablespaceName> "ENGINE" ["="] <engineName> 
+<dropTrigger> ::= "DROP TRIGGER" ["IF EXISTS"] [<schemaName> "."] <triggerName>
+<dropView> ::= "DROP VIEW" ["IF EXISTS"] <viewName> {", " <viewName>} ["RESTRICT" | "CASCADE"]
+<merge> ::= "Storage engine, MRHG_MyISAM, is a collection of identical MyISAM tables that can be used as one."
+<renameTable> ::= "RENAME TABLE" <tableName> "TO" <newTableName> {", " <tableName> "TO" <newTableName>}
+<truncateTable> ::= "TRUNCATE" ["TABLE"] <tableName> 

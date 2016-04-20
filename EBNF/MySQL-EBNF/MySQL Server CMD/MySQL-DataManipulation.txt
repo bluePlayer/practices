@@ -1,5 +1,7 @@
 <ImportRules> ::= <MySQL-HelperRules.*>
 
+(* ------------------ Data Manipulation helper rules --------------------- *)
+
 <tableReferences>  ::= <TODO>
 <selectExpression> ::= <TODO>
 <whereCondition> ::= <TODO>
@@ -10,6 +12,10 @@
 <procedureName> ::= <TODO>
 <charsetName> ::= <TODO>
 <exportOptions> ::= <TODO>
+<parameter> ::= <TODO>
+
+(* ------------------ Data Manipulation rules ------------------- *)
+<call> ::= "CALL" <spName> "(" [<parameter>] {", " <parameter>}")"
 <selectStatement> ::= ["ALL" | "DISTINCT" | "DISTINCTROW"] ["HIGH_PRIORITY"] ["STRAIGHT_JOIN"] ["SQL_SMALL_RESULT"] ["SQL_BIG_RESULT"]
                         ["SQL_BUFFER_RESULT"] ["SQL_CACHE" | "SQL_NO_CACHE"] ["SQL_CALC_FOUND_ROWS"] 
                         <selectExpression> {", "} <selectExpression>
