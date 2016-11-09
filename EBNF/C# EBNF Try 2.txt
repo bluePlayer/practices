@@ -1,0 +1,145 @@
+<Literal> ::= ( <DECIMAL_LITERAL> | 
+                <HEX_INTEGER_LITERAL> | 
+                <STRING_LITERAL> | 
+                <BOOLEAN_LITERAL> | 
+                <NULL_LITERAL> | 
+                <REGULAR_EXPRESSION_LITERAL> )
+                
+(* A contextual keyword can be used as identifier if the
+ specific keyword context is not applied in the program being developed *)
+<Identifier> ::= <IDENTIFIER_NAME> | "@"<Keyword> | <ContextualKeyword>
+
+<PostfixOperator> ::= ( "++" | "--" )
+<UnaryOperator> ::= ( "delete" | "void" | "typeof" | "++" | "--" | "+" | "-" | "~" | "!" )
+<MultiplicativeOperator> ::= ( "*" | <SLASH> | "%" )
+<ShiftOperator> ::= ( "<<" | ">>" | ">>>" )
+<RelationalOperator> ::= ( "<" | ">" | "<=" | ">=" | "instanceof" | "in" )
+<RelationalNoInOperator> ::= ( "<" | ">" | "<=" | ">=" | "instanceof" )
+<EqualityOperator> ::= ( "==" | "!=" | "===" | "!==" )
+<BitwiseANDOperator> ::= "&"
+<BitwiseXOROperator> ::= "^"
+<BitwiseOROperator> ::= "|"
+<LogicalANDOperator> ::= "&&"
+<LogicalOROperator> ::= "||"
+<AssignmentOperator> ::= ( "=" | "*=" | <SLASHASSIGN> | "%=" | "+=" | "-=" | "<<=" | ">>=" | ">>>=" | "&=" | "^=" | "|=" )
+<EmptyStatement> ::= ";"
+<Name> ::= <IDENTIFIER_NAME> { "." <IDENTIFIER_NAME> }
+<Elision> ::= ( "," )+
+
+(* --------------------------------- Keywords section ------------------------------------ *)
+
+<Keyword> ::= "abstract" | "as" | "base" | "bool" | "break" | "byte" | "case" | "catch" | "char" | "cheked" | 
+                "class" | "const" | "continue" | "decimal" | "default" | "delegate" | "do" | "double" | "else" |
+                "enum" | "event" | "explicit" | "extern" | "false" | "finally" | "fixed" | "float" | "for" | "foreach"
+                "goto" | "if" | "implicit" | "in" | "in(generic modifier)" | "int" | "interface" | "internal" | "is" |
+                "lock" | "long" | "namespace" | "new" | "null" | "object" | "operator" | "out" | "out(generic modifier)" |
+                "override" | "params" | "private" | "protected" | "public" | "readonly" | "ref" | "return" | "sbyte" |
+                "sealed" | "short" | "sizeof" | "stackalloc" | "static" | "string" | "struct" | "switch" | "this" | 
+                "throw" | "true" | "try" | "typeof" | "uint" | "ulong" | "unchecked" | "unsafe" | "ushort" | "using" |
+                "virtual" | "void" | "volatile" | "while"
+
+<ContextualKeyword> ::= "add" | "alias" | "ascending" | "async" | "await" | "descending" | "dynamic" | "from" | "get" | 
+                        "global" | "group" | "into" | "join" | "let" | "orderby" | "partial(type)" | "partial(method)" | 
+                        "remove" | "select" | "set" | "value" | "var" | "where(generic type constraint)" | "where(query clause)" | 
+                        "yield"
+
+<Comment> ::= "/*" <STRING_LITERAL> "*/" | "//" <STRING_LITERAL>
+
+(* --------------------------------- Access Modifiers section ------------------------------------*)
+
+<ProtectedInternal> ::= "protected" "internal"
+<StructAccessModifier> ::= "public" | "private"
+<ClassAccessModifier> ::= <StructAccessModifier> | "protected" | "internal"
+<FieldAccessModifier> ::= <ClassAccessModifier> | <ProtectedInternal>
+<PropertyAccessModifier> ::= <FieldAccessModifier>
+
+(* --------------------------------- Quality Modifiers section ------------------------------------*)
+
+<StaticReadonly> ::= "static" "readonly"
+<QualityModifier> ::= "abstract" | "virtual" | "readonly" | "override" | "const" | "static" | 
+                        "unsafe" | "volatile" | "implicit" | "explicit" | "extern" | "delegate" | 
+                        "operator"
+<ClassQualityModifier> ::= "abstract" | "virtual" | "static" | "sealed"
+<MethodQualityModifier> ::= <ClassQualityModifier> | "override" | "async"
+<FieldQualityModifier> ::= "readonly" | "const" | "static" | <StaticReadonly>
+<PropertyQualityModifier> ::= <ClassQualityModifier>
+
+(* --------------------------------- Types and type modifiers section ------------------------------------ *)
+
+<System> ::= "System."
+<Void> ::= <System> "Void" | "void"
+<Object> ::= [<System>] "Object" | "object"
+<ValueType> ::= [<System>] "ValueType"
+<Enum> ::= [<System>] "Enum" | "enum"
+<Array> ::= [<System>] "Array"
+<String> ::= [<System>] "String" | "string"
+
+<ValueType> ::= "struct" | "int" | "Int32" | "Single" | "Double" | "unit" | "short" | "ushort" | "bool" | "float" | "ulong" | 
+                    "byte" | "sbyte" | "long" | "decimal" | <Struct> | "char"
+<ReferenceType> ::= <Object> | <ValueType> | <String> | <Array> | "delegate" | <Class> | <Enum> | "interface" |
+                    <interface>
+<CSharpTypes> ::= "class" | "interface" | "struct" | "enum" | <ValueType> | <ReferenceType>
+
+<PointerType> ::= 
+
+<NamespaceName> ::= {<Namespace> "."} <Namespace>
+<Namespace> ::= "namespace" <NamespaceName> "{" {<Namespace>} {<Class>} {<Interface>} {<Struct>} {<Enum>} {<Delegate>} "}"
+<GenericType> ::= ["<" ( <ValueType> | "T" ) ">"]
+<NewOperator> ::= "new"
+
+<DeclarationStatement> ::= ( <Field> | <Field> "=" <Literal> ) ";"
+<ExpressionStatement> ::= ( <identifier> "=" ["-"] <Literal> {( "*" | "/" | "+" | "-" ) <Literal>} ";" | 
+                            <Namespace> {"." <Namespace> } "." <Method> | 
+                            <Namespace> {"." <Namespace> } "." <Property> <GenericType> "=" 
+                                [<NewOperator>] <Namespace> {"." <Namespace> } "." ( <Property> | <Method> ) )
+<SelectionStatement> ::= 
+<IterationStatement> ::=
+<JumpStatement> ::=
+<ExceptionHandlingStatement> ::=
+<CheckedUncheckedStatement> ::=
+<AwaitStatement> ::=
+<YieldReturnStatement> ::=
+<FixedStatement> ::=
+<LockStatement> ::=
+<LabelStatement> ::=
+<EmptyStatement> ::=
+<EmbededStatement> ::=
+<Statement> ::= ( <DeclarationStatement> | <ExpressionStatement> | <SelectionStatement> | <IterationStatement> | <JumpStatement> |
+                <ExceptionHandlingStatement> | <CheckedUncheckedStatement> | <AwaitStatement> | <YieldReturnStatement> | <FixedStatement> |
+                <LockStatement> | <LabelStatement> | <EmptyStatement> | <EmbededStatement> )
+<Params> ::= "params" [<ValueType> "[]" <Identifier>]
+<MethodParamsList> ::= <GenericType> "(" ( [<Field>]{"," <Field>} | <Params> ) ")"
+<Constructor> ::= <FieldAccessModifier> ["static"] <Identifier> <MethodParamsList> "{" {<Statement>} "}"
+<Destructor> ::= "~" <Identifier> "()" "{" {<Statement>} "}"
+<Constant> ::= <FieldAccessModifier> "const" <ValueType> <Identifier> "=" <Literal> ";"
+
+(* Check for access in fields, methods of structs, classes, interfaces etc... *)
+<Field> ::= [<FieldAccessModifier>] [<FieldQualityModifier>] <CSharpTypes> <Identifier> 
+            ["=" ( <Literal> | <Namespace>{"." <Namespace>} <CSharpTypes> {"." <CSharpTypes> } "." <MethodName> <MethodParamsList> ) ] [";"]
+<MethodName> ::= <Identifier>
+<Method> ::= <FieldQualityModifier> <MethodQualityModifier> ( "void" | <ValueType>["[]"] ) <MethodName> <MethodParamsList> "{" {<Statement>} "}"
+<Property> ::= 
+<Indexer> ::= ""
+<Operator> ::= 
+<Event> ::= "" 
+<Delegate> ::= 
+<Interface> ::= 
+<Struct> ::= 
+
+<ClassName> ::= <Identifier>
+<ClassBlock> ::= "{" {<Constant> ";"} {<Field> ";"} {<Property> ";"} {<Indexer> ";"} {<Event> ";"} {<Delegate> ";"} 
+                    {<Method>} {<Interface> ";"} {<Struct> ";"} {<Operator> ";"} {<Constructor> ";"} [<Destructor> ";"] "}"
+
+<Class> ::= [<AccessModifier>] [<ClassQualityModifier>] "class" <ClassName>
+            [":" ( <Class> | <Interface>{"," <Interface>} | ( <Class> "," <Interface>{"," <Interface>} ) )]
+            <ClassBlock>
+
+<PreProcessorDirective> ::= "#if" | "#else" | "#elif" | "#endif" | "#define" | "#undef" | "#warning" | "#error" | "#line" | "#region" |
+                                "#endregion" | "#pragma" | "#pragma warning" | "#pragma checksum"
+<NamespaceAlias> ::= <Identifier>
+<UsingDirective> ::= "using" ( ["static"] | <NamespaceAlias> "=" ) <NamespaceName> ["." <Class> ["<" <ValueType> ">"]]";"
+
+<UsingStatement> ::= 
+
+<CSharpDataStructure> ::= <Class> | <Struct> | <Interface> | <Indexer> | <Event> | <Property>
+<CSharpDocument> ::= [<PreProcessorDirective>] [<UsingDirective>] [<Namespace>]

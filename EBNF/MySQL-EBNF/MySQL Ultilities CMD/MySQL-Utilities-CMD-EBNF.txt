@@ -1,0 +1,56 @@
+<ImportRules> ::= (
+                    <MySQL-AccountManagement.AccountManagement> 
+                    <MySQL-AccountManagement.AccountManagementHelp>
+                    <MySQL-Administration.Administration> 
+                    <MySQL-Administration.AdministrationHelp> 
+                    <MySQL-CompoundStatements.CompoundStatements>
+                    <MySQL-CompoundStatements.CompoundStatementsHelp>
+                    <MySQL-DataDefinition.DataDefinition>
+                    <MySQL-DataDefinition.DataDefinitionHelp>
+                    <MySQL-HelperRules.*>
+                    )
+
+<mysqlcmd> ::= "mysql>" [<command> | <statement>] ";"
+<command> ::= <?> | <clear> | <connect> | <delimiter> | <ego> | <exit> | <go> | <help> | <notee> | <print> | <prompt> | <quit> | <rehash> | 
+                <source> | <status> | <tee> | <use> | <charset> | <warnings> | <nowarning>s
+<?> ::= "?" | <help>
+<help> ::= ( "help" | "\h" ) [ <command> | <statement> | ( "Contents" | "contents" ) | <helpItem> ]
+<helpItem> ::= ( 
+                <AccountManagementHelp> | <AdministrationHelp> | <CompoundStatementsHelp> | <DataDefinitionHelp> | <DataManipulationHelp> | 
+                <DataTypesHelp> | <FunctionsHelp> | <FunctionsModifiersForUseWithGroupByHelp> | <GeographicFeaturesHelp> | 
+                <HelpMetadataHelp> | <LanguageStructureHelp> | <PluginsHelp> | <TableMaintenanceHelp> | <TransactionsHelp> | 
+                <UserDefinedFunctionsHelp> | <UtilityHelp> 
+               )
+(*
+<DataManipulation> ::= <TODO>
+<DataTypes> ::= <TODO>
+<Functions> ::= <TODO>
+<FunctionsModifiersForUseWithGroupBy> ::= <TODO>
+<GeographicFeatures> ::= <TODO>
+<HelpMetadata> ::= <TODO>
+<LanguageStructure> ::= <TODO>
+<Plugins> ::= <TODO>
+<TableMaintenance> ::= <TODO>
+<Transactions> ::= <TODO>
+<UserDefinedFunctions> ::= <TODO>
+<Utility> ::= <TODO>
+*)
+<exit> ::= "exit" | <quit> | <TODO>
+<use> ::= ( "use" | "\u" ) <dbname> 
+<clear> ::= "clear" | "\c"
+<connect> ::= ( "connect" | "\r" ) "host" <host> ["db" <database>] | <TODO>
+<quit> ::= "quit" | "\q"
+<delimiter> ::= ( "delimiter" | "\d" ) ( <Identifier> | <TODO> )
+<ego> ::= ( "ego" | "\G" ) <command>
+<go> ::= "go" | "\g"
+<notee> ::= "notee" | "\t"
+<print> ::= "print" | "\p"
+<prompt> ::= ( "prompt" | "\R" ) ( <Identifier> | <TODO> )
+<rehash> ::= ( "rehash" | "\#" ) <TODO>
+<source> ::= ( "source" | "\." ) <fileName>
+<status> ::= "status" | "\s"
+<tee> ::= ( "tee" | "\T" ) <fileName>
+<charset> ::= ( "charset" | "\C" ) <charset>
+<warnings> ::= "warnings" | "\W"
+<nowarning> ::= "nowarning" | "\w"
+

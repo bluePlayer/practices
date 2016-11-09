@@ -1,0 +1,66 @@
+﻿<ImportRules> ::= <MySQL-HelperRules.*>
+
+<AdministrationHelp> ::= "BINLOG" | "CACHE INDEX" | "FLUSH" | "HELP COMMAND" | "KILL" | "LOAD INDEX" | "RESET" |
+                    "SET" | "SHOW"
+<Administration> ::= <BinLog> | <CacheIndex> | <Flush> | <HelpCommand> | <Kill> | <LoadIndex> | <Reset> | <Set> | <show>
+
+(* ------------------------- Administration helper rules -------------------------- *)
+
+<logType> ::= "BINARY" | "ENGINE" | "ERROR" | "GENERAL" | "RELAY" | "SLOW"            
+<flushOption> ::= ( "DES_KEY_FILE" | "HOSTS" | ( [<logType>] "LOGS" ) | "MASTER" | "PRIVILEGES" | "QUERY CACHE" | "SLAVE" | "STATUS" |
+                    ( "TABLES" <TODO> ) | "USER_RESOURCES" ) <TODO>
+<searchString> ::= "contents" | "logs" | "SHOW BINARY LOGS" | "SHOW MASTER LOGS"
+
+(* ------------------------- Administration rules -------------------------- *)
+
+<BinLog> ::= "BINLOG" <base64EncodedString>
+<CacheIndex> ::= "CACHE INDEX" <tableIndexList> {", " <tableIndexList>} ["PARTITION" ( <partitionList> | "ALL" )] "IN" <keyCacheName>
+<Flush> ::= "FLUSH" ["NO_WRITE_TO_BIN_LOG" | "LOCAL"] <flushOption> {", " <flushOption>}
+<HelpCommand> ::= "HELP COMMAND" <searchString>
+<Kill> ::= "KILL" ["CONNECTION" | "QUERY"] <threadId>
+<LoadIndex> ::= "LOAD INDEX INTO CACHE" <tableIndexList> {", " <tableIndexList>}
+<Reset> ::= "RESET" <resetOption> {", " <resetOption>}
+<Set> ::= "SET" <variableAssignment> {", " <variableAssignment>}
+<show> ::= "SHOW" [ 
+                    "AUTHORS" | 
+                    ( ( "BINARY" | "MASTER" ) "LOGS" ) | 
+                    ( "BINLOG EVENTS" ["IN" <logName>]["FROM" <pos>] ["LIMIT" [<offset> ", "] <rowCount> ]) |
+                    ( "CHARACTER SET" [<likeOrWhere>] ) |
+                    ( "COLLATION" [<likeOrWhere>] ) |
+                    ( ["FULL"] "COLUMNS FROM" <tableName> ["FROM" <dbName>] [<likeOrWhere>] ) |
+                    "CONTRIBUTORS" |
+                    ( "CREATE" 
+                        ( "DATABASE" <dbName> ) |
+                        ( "EVENT" <eventName> ) |
+                        ( "FUNCTION" <functionName> ) |
+                        ( "PROCEDURE" <procName> ) |
+                        ( "TABLE" <tableName> ) |
+                        ( "TRIGGER" <triggerName> ) |
+                        ( "VIEW" <viewName> )
+                    ) |
+                    ( "DATABASES" <likeOrWhere> ) |
+                    ( "ENGINE" <engineName> ( "STATUS" | "MUTEX" ) ) |
+                    ( ["STORAGE"] "ENGINES" ) |
+                    ( "ERRORS" ["LIMIT" [<offset> ", "] <rowCount>] ) |
+                    "EVENTS" |
+                    ( "FUNCTION CODE" <functionName> ) |
+                    ( "FUNCTION STATUS" <likeOrWhere> ) |
+                    ( "GRANTS FOR" <user> ) |
+                    ( "INDEX FROM" <tableName> ["FROM" <dbName>] ) |
+                    "MASTER STATUS" |
+                    ( "OPEN TABLES" ["FROM" <dbName>] [<likeOrWhere>]) | 
+                    "PLUGINS" | 
+                    ( "PROCEDURE CODE" <procName> ) |
+                    ( "PROCEDURE STATUS" [<likeOrWhere>] ) |
+                    "PRIVILEGES" |
+                    ( ["FULL"] "PROCESSLIST" ) |
+                    ( "PROFILE" [<type>] ["FOR QUERY" <query>] ["OFFSET" <offset>] ["LIMIT" <limit>] ) |
+                    "PROFILES" | 
+                    ( "SLAVE" ( "HOSTS" | "STATUS") ) |
+                    ( ( "GLOBAL" | "SESSION" ) "STATUS" [<likeOrWhere>] ) |
+                    ( "TABLE STATUS" ["FROM" <dbName>] [<likeOrWhere>] ) |
+                    ( ["FULL"] "TABLES" ["FROM" <dbName>] [<likeOrWhere>] ) |
+                    ( "TRIGGERS" ["FROM" <dbName>] [<likeOrWhere>] ) |
+                    ( ( "GLOBAL" | "SESSION" ) "VARIABLES" [<likeOrWhere>] ) |
+                    ( "WARNINGS" ["LIMIT" [<offset> ", "] <rowCount>] )
+                  ] 

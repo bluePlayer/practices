@@ -1,0 +1,125 @@
+<TODO> ::= "Finish the rule"
+
+(* MySQL Literals *)
+<Literal> ::= ( 
+                <STRING_LITERAL> | 
+                <NUMBER_LITERAL> | 
+                <DATE_AND_TIME_LITERAL> | 
+                <HEXADECIMAL_LITERAL> | 
+                <BOOLEAN_LITERAL> | 
+                <BIT_FIELD_LITRERALS> |
+                <NULL_LITERAL>
+              )
+
+<byteSequence> ::= <TODO>
+<charSequence> ::= <TODO>
+<binaryString> ::= <byteSequence>
+<charString> ::= <charsetName> <charSequence> ["COLLATE" <collationName>]
+<STRING_LITERAL> ::= <binaryString> | <charString>
+<NUMBER_LITERAL> ::= <TODO>
+
+<label> ::= <STRING_LITERAL> | <TODO>
+<varName> ::= <TODO>
+<value> ::= <TODO>
+<statement> ::= <TODO>
+<Identifier> ::= <IDENTIFIER_NAME> | <TODO>
+<dbName> ::= <Identifier>
+<fileName> ::= <Identifier>
+<user> ::= ( <Identifier> "@" <host> ) | ( <Identifier> "@%" ) | <TODO>
+<userSpecification> ::= <user> [ ( "IDENTIFIED BY" ["PASSWORD"] <password> ) | ( "IDENTIFIED WITH" <authPlugin> ["AS" <authString>] ) ]
+<logName> ::= <TODO>
+<pos> ::= <TODO>
+<offset> ::= <TODO>
+<rowCount> ::= <TODO>
+<likeOrWhere> ::= ( "LIKE" <pattern> ) | ( "WHERE" <expression> )
+<pattern> ::= <TODO>
+<tableName> ::= <TODO>
+<eventName> ::= <TODO>
+<functionName> ::= <TODO>
+<procName> ::= <TODO>
+<triggerName> ::= <TODO>
+<viewName> ::= <TODO>
+<type> ::= <TODO>
+<query> ::= <TODO>
+<limit> ::= <TODO> 
+<dbName> ::= <Identifier>
+<engineName> ::= <TODO>
+<charset> ::= <TODO>
+<userDefinedPort> ::= <TODO>
+<oldUser> ::= <user>
+<newUser> ::= <user>
+<sslOption> ::= <TODO>
+<withOption> ::= <TODO>
+<privType> ::= <TODO>
+<columnList> ::= <TODO> 
+<objectType> ::= <TODO>
+<privLevel> ::= <TODO>
+<password> ::= <Literal> | <TODO>
+<authPlugin> ::= <TODO>
+<authString> ::= <TODO>
+<indexName> ::= <TODO>
+<partitionName> ::= <TODO>
+<host> ::= <hostAddress> [":" <portNumber>]
+<portNumber> ::= "3306" | <userDefinedPort> | <TODO>
+<EightBitDecimalNumber> ::= 0 | 1 | .. | 255
+<hostAddress> ::= <ipv4Adress> | <ipv6Address>
+<loopbackAddr> = "127.0.0.1" | "localhost"
+<ipv4Address> ::= ( ( <EightBitDecimalNumber> "." <EightBitDecimalNumber> "." <EightBitDecimalNumber> "." <EightBitDecimalNumber> ) | 
+                    <loopbackAddr> | <serverName> )
+<serverName> ::= <TODO>
+<ipv6Address> ::= <TODO>
+<base64EncodedString> ::= <TODO>
+<tableIndexList> ::= <tableName> ( 
+                                    [ ["INDEX" | "KEY"] <indexName> {", " <indexName>} ] |
+                                    [ "PARTITION" ( <partitionList> | "ALL") ] |
+                                    [ "IGNORE LEAVES" ]
+                                  )
+<partitionList> ::= <partitionName> {", " <partitionName>}
+<keyCacheName> ::= <TODO>
+<threadId> ::= <TODO>
+<resetOption> ::= <TODO>
+<userVarName> ::= <TODO>
+<variableAssignment> ::= ( <userVarName> "=" <expression> ) |
+                            ( ["GLOBAL" | "SESSION"] <systemVarName> "=" <expression> ) |
+                            ( ["@@global" | "@@session" | "@@"] <systemVarName> "=" <expression> )
+<statementList> ::= <TODO>
+
+<MySQLErrorCode> ::= <TODO>
+
+<subquery> ::= <TODO>
+<functionCall> ::= <TODO>
+<collationName> ::= <TODO>
+<paramMarker> ::= <TODO>
+<matchExpression> ::= <TODO>
+<caseExpression> ::= <TODO>
+<simpleExpression> ::= <Literal> | 
+                        <identifier> | 
+                        <functionCall> | 
+                        ( <simpleExpression> "COLLATE" <collationName> ) | 
+                        <paramMarker> |
+                        <variable> | 
+                        ( <simpleExpression> "||" <simpleExpression> ) | 
+                        ( ( "+" | "-" | "~" | "!" | "BINARY" ) <simpleExpression> ) |
+                        ( ["ROW"] <expression> {", " <expression>} ) |
+                        ( ["EXISTS"] <subquery> ) |
+                        ( <identifier> <expression> ) |
+                        <matchExpression> |
+                        <caseExpression> |
+                        <intervalExpression>
+                        
+<intervalExpression> ::= <TODO>
+<bitExpression> ::= <simpleExpression> |
+                    ( <bitExpression> ( "+" | "-" ) <intervalExpression> ) |
+                    ( <bitExpression> ( "|" | "&" | "<<" | ">>" | "+" | "-" | "*" | "/" | "DIV" | "MOD" | "%" | "^" | "") <bitExpression> )
+<predicate> ::= <TODO>
+<comparisonOperator> ::= "=" | ">=" | ">" | "<=" | "<" | "<>" | "!="
+<booleanPrimary> ::= <predicate> | 
+                    ( <booleanPrimary> 
+                        ( "IS" ["NOT"] "NULL" ) | 
+                        ( "<=>" <predicate> ) |
+                        ( <comparisonOperator> ( <predicate> | ( "ALL" | "ANY" ) <subquery> ) ) |
+                    )
+                                        
+<expression> ::= <expression> ( "OR" | "||" | "XOR" | "AND" | "&&" ) <expression> | 
+                ( "NOT" | "!" ) <expression> |
+                <booleanPrimary> [ "IS" ["NOT"] ( "TRUE" | "FALSE" | "UNKNOWN" ) ]

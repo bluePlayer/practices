@@ -1,0 +1,7 @@
+C:\Users\vlado\Documents\SharpDevelop Projects\Pipeline Dev Vezhba 2D\Pipeline Dev Vezhba 2D\bin\Debug\Pipeline Dev Vezhba 2D.exe.config
+C:\Users\vlado\Documents\SharpDevelop Projects\Pipeline Dev Vezhba 2D\Pipeline Dev Vezhba 2D\bin\Debug\Pipeline Dev Vezhba 2D.exe
+C:\Users\vlado\Documents\SharpDevelop Projects\Pipeline Dev Vezhba 2D\Pipeline Dev Vezhba 2D\bin\Debug\Pipeline Dev Vezhba 2D.pdb
+C:\Users\vlado\Documents\SharpDevelop Projects\Pipeline Dev Vezhba 2D\Pipeline Dev Vezhba 2D\obj\Debug\Pipeline Dev Vezhba 2D.csprojResolveAssemblyReference.cache
+C:\Users\vlado\Documents\SharpDevelop Projects\Pipeline Dev Vezhba 2D\Pipeline Dev Vezhba 2D\obj\Debug\Pipeline Dev Vezhba 2D.exe
+C:\Users\vlado\Documents\SharpDevelop Projects\Pipeline Dev Vezhba 2D\Pipeline Dev Vezhba 2D\obj\Debug\Pipeline Dev Vezhba 2D.pdb
+C:\Users\vlado\Documents\SharpDevelop Projects\Pipeline Dev Vezhba 2D\Pipeline Dev Vezhba 2D\bin\Debug\NUnit.Framework.dll

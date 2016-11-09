@@ -1,0 +1,262 @@
+1. Write an EBNF description for phone-number, which describes telephone numbers
+written according to the following specifications. The description should be
+compact, and each rule should be well named.
+- Normal: a three digit exchange, followed by a dash, followed by a four digit
+number: 555-1212
+- Long Distance: A 1, followed by a dash, followed by a three digit area code
+enclosed in parentheses, followed by a three digit exchange, followed by a dash,
+followed by a four digit number: 1-(800)555-1212
+- Interoffice: a 1 followed by either a 3 or a 5, followed by a dash, followed by a
+four digit number: 15-1212
+
+Solution:
+
+<Digit> ::= ( "0" | "1" | "2" | ... | "9" )
+<Dash> ::= "-"
+<Exchange> ::= <Digit> <Digit> <Digit>
+<AreaCode> ::= "(" <Digit> <Digit> <Digit> ")"
+<FourDigits> ::= <Digit> <Digit> <Digit> <Digit>
+<Normal> ::= <Exchange> <Dash> <FourDigits>
+<LongDistance> ::= "1" <Dash> <AreaCode> <Exchange> <Dash> <FourDigits>
+<InterOffice> ::= "1" ("3" | "5") <Dash> <FourDigits>
+
+<PhoneNumber> ::= ["1" ["3" | "5"] <Dash> <AreaCode>] [<Exchange>] <Dash> <FourDigits>
+
+2. The control forms in each of the following pairs are not equivalent. Find the
+simplest symbol that is classified differently by each control form in the pair.
+
+al. [A][B]    bl. {A | B}         cl. A | B
+a2. [A[B]]    b2. {A} | {B}     c2. [A][B]
+
+Solution: 
+
+b2: {{A} | {B}}
+
+3. Simplify each of the following control forms (but preserve equivalence).
+For this problem, simpler means shorter or has fewer nested forms.
+
+a. A | B | A     c. [A]{A}              e. [A | B] | [B | A]      g. A | AB
+b. [A[A[A]]]     d. [A]{C} | [B]{C}     f. {[A | B] [B | A]}      h. A | AA | AAA | AAAA | AAAAA
+
+Solution:
+
+<EmptyString> ::= ""
+<a> ::= ( A | B )
+<b> ::= ( <EmptyString> | A | AA | AAA) ::= {A}
+<c> ::= {A}
+<d> ::= ( [A] | [B] ){C}
+<e> ::= ( AB | AA | BB | BA | A | B | <EmptyString>) ::= ( [A[B]][B[A]] ) ::= [A][B]
+<f> ::= {[A][B]}
+<g> ::= A[B]
+<h> ::= [A[A[A[A[A]]]]] ::= {A}
+
+4. Write an EBNF description for numbers written in scientific notation, which
+scientists and engineers use to write very large and very small numbers compactly.
+Avogadro'snumber is written 6.02252xl0E23 and read as 6.02252 -called the mantissa
+- times 10 raised to the 23d power - called the exponent. Likewise, the mass of
+an electron is written 9.11xl0E(-31) and earth's gravitational constant is written 9.8 -
+this number is pure mantissa; it is not multiplied by any power of ten.
+Numbers in scientific notation always contain at least one digit in the mantissa;
+if that digit is nonzero: (1) it may have a plus or minus sign preceding it, (2) it may be
+followed by a decimal point, which may be followed by more digits, and (3) it may be
+followed by an exponent that specifies multiplication by ten raised to some non-zero
+unsigned or signed integer power. The symbols 0.5, 15.2, +0,0x10E5,5.3x10E02, and
+5.3xl0E(2.0) are illegal in scientific notation. Hint: my solution uses a total of five
+EBNF rules: non-0-digit, digit , mantissa, exponent, and scientific-notation.
+
+Solution:
+
+<NonZeroDigit> ::= ( "1" | "2" | ... | "9" )
+<Digit> ::= ("0" | <NonZeroDigit> )
+<WholePart> ::= <NonZeroDigit> | {NonZeroDigit}
+<FractionalPart> ::= <Digit> | {Digit}
+<Mantissa> ::= [+ | -] <WholePart> "." <FractionalPart>
+<Exponent> ::= "x10E" ( ( "(-" <WholePart> ")" ) | <WholePart> )
+<ScientificNotation> ::= <Mantissa> [<Exponent>]
+
+5. Identify one advantage of writing dates as a structured-integer in the form: year,
+month, day (1954-02-10) instead of in the normal order (02-10-1954).
+
+Solution 1:
+
+<NonZeroDigit> ::= ("1" | "2" | ... | "9")
+<Month> ::= ( "0" <NonZeroDigit> ) | ( "1" ( "0" | "1" | "2" ) ) 
+<Day> ::= ( "0" <NonZeroDigit> ) | ( ("1" | "2") <NonZeroDigit> ) | ("3" ( "0" | "1" ) )
+<Year> ::= ( "000" <NonZeroDigit> ) | 
+            ( "00" <NonZeroDigit> <NonZeroDigit> ) | 
+            ( "0" <NonZeroDigit> <NonZeroDigit> <NonZeroDigit> ) | 
+            ( "1"  <NonZeroDigit> <NonZeroDigit> <NonZeroDigit>) |
+            ( "20" <NonZeroDigit> <NonZeroDigit> ) )
+            
+Solution 2:
+
+<FebruaryNum> ::= "02"
+<Dash> ::= "-"
+<NonLeapDigit> ::= "1" | "2" | "3" | "5" | "6" | "7"
+<LeapDigit> ::= "4" | "8"
+<NonZeroOrNineDigit> ::= <NonLeapDigit> | <LeapDigit>
+<Digit> ::= "0" | <NonZeroOrNineDigit> | "9"
+<ThreeDigits> ::= <Digit> <Digit> <Digit>
+<DaysFebNonLeap> ::= ( "0" <Digit> ) | ( ("1" | "2" ) ( <NonZeroOrNineDigit> | "0")
+<DaysFebLeap> ::= <DaysFebNonLeap> | "29"
+<Days30> ::= <DaysFebLeap> | "30"
+<Days31> ::= <Days30> | "31" 
+<LeapYear> ::= <ThreeDigits> ( <LeapDigit> | "0" )
+<NonLeapYear> ::= <ThreeDigits> ( "0" | <NonLeapDigit> | "9" )
+<Month31Days> ::= ( ( "0" ( "1" | "3" | "5" | "7" | "8") ) | ( "1" ( "0" | "2" ) ) ) <Dash> <Days31>
+<Month30Days> ::= ( ( "0" ( "4" | "6" | "9" ) ) | "11" ) <Dash> <Days30> 
+<FebruaryLeap> ::= <FebruaryNum> <Dash> <DaysFebLeap>
+<FebruaryNonLeap> ::= <FebruaryNum> <Dash> <DaysFebNonLeap>
+
+<DateYearMonthDay> ::= ( <LeapYear> <Dash> ( <FebruaryLeap> | <Month30Days> | <Month31Days> ) ) | 
+                        ( <NonLeapYear> <Dash> ( <FebruaryNonLeap> | <Month30Days> | <Month31Days> ))
+
+6. The following EBNF rules attempt to describe every possible family-relation. Here
+spaces are important, so all the characters do not run together.
+
+contemporary ::= SISTER | BROTHER | WIFE | HUSBAND
+ancestor-descendent ::= MOTHER | FATHER | DAUGHTER | SON | NEPHEW | NIECE
+side-relation ::= AUNT | UNCLE | COUSIN
+close-relation ::= contemporary | ancestor-descendent | side-relation
+far-relation ::= {GREAT} side-relation | {GREAT} [GRAND] ancestor-descendent
+family-relation ::= far-relation | [STEP] close-relation
+
+a. Classify each of the following symbols as a legal or illegal family-relation.
+i. SISTER                     iv. GRAND MOTHER      vii. GREAT UNCLE
+ii. UNCLE LARRY                V. GRAND UNCLE      viii. STEP STEP BROTHER
+iii. GREAT GREAT GRAND SON    vi. GRAND NIECE        ix. GREAT MOTHER
+
+i. correct, ii. incorrect, no name terminal exists, iii. correct, iv. correct, v. incorrect, the uncle cannot be grand
+vi. correct, vii. correct, viii. incorrect, the brother cannot be step step, ix. correct
+
+b. Based on your classification in ix, improve the far-relation rule to always require
+a GRAND after the last GREAT.
+
+far-relation ::= [{GREAT} GRAND] ( side-relation | ancestor-descendent )
+
+7. We can extend the previous EBNF rules for describing family relationships.
+
+contemporary ::= SISTER | BROTHER | WIFE | HUSBAND
+ancestor-descendent ::= MOTHER | FATHER | DAUGHTER | SON | NEPHEW | NIECE
+side-relation ::= AUNT | UNCLE | COUSIN
+close-relation ::= contemporary | ancestor-descendent | side-relation
+far-relation ::= [{GREAT} GRAND] ( side-relation | ancestor-descendent )
+family-relation ::= far-relation | [STEP] close-relation
+person ::= ME | MY family-relation | THE family-relation OF MY family-relation
+
+This description specifies symbols such as MY GRAND MOTHER and THE MOTHER
+OF MY MOTHER. These symbols may denote the same person, although MY
+GRAND MOTHER may also refer to THE MOTHER OF MY FATHER, THE MOTHER OF MY
+STEP FATHER, etc. Write a simpler symbol that is equivalent to each of
+the following; in some cases, more than one answer may be correct
+
+a. THE SISTER OF MY MOTHER          e. THE SON OF MY FATHER
+b. THE GRAND SON OF MY MOTHER       f. THE DAUGHTER OF MY GREAT GRAND MOTHER
+c. THE WIFE OF MY FATHER            g. THE GRAND SON OF MY GREAT GREAT GRAND MOTHER
+d. THE GRAND FATHER OF MY SON       h. THE FATHER OF MY AUNT
+
+person ::= ME | ( [THE family-relation OF] MY family-relation )
+
+8. Write an EBNF description for comma-integer, which includes normalized unsigned
+or signed integers (no extraneous leading zeros) that have commas in only the correct
+places (separating thousands, millions, billions, etc.): 0; 213; -2,048; and 1,000,000. It
+should not recognize -0; 062; 0,516; 05,418; 54,32,12; or 5, ,123 as legal.
+
+NonZeroDigit ::= "1" | "2" | .. | "9"
+Sign ::= "+" | "-"
+Digit ::= "0" | NonZeroDigit
+TwoDigits ::= Digit Digit
+ThreeDigits ::= TwoDigits Digit
+CommaInteger ::= "0" | ( [Sign] NonZeroDigit [Digit | TwoDigits] { "," ThreeDigits} )
+
+9. a. Write an EBNF description for structured-integer-set that specifies an integer-set
+(Section 2.6) allowing sets and ranges that use structured-integer (Section 2.4).
+b. How can a similar coma-integer-set allowing sets and ranges that uses comma-integer
+(Exercise 8) lead to a semantic problem?
+
+sign <= + | -
+digit <= 0 | 1 | .. | 9
+integer <= sign digit {digit}
+integer-set <= ([integer-list])
+integer-list <= integer {, integer}
+structured-integer <= digit {[_] digit}
+structured-integer-list <= structured-integer {, structured-integer}
+structured-integer-set <= ([structured-integer-list])
+
+10. Using the following rules, write an EBNF description for train. Let letters stand
+for each car in a train: E for Engine, C for Caboose, B for Boxcar, P for Passenger car,
+and D for Dining car. The railroad has four rules telling how to form trains.
+
+a. Trains start with one or more Engines and end with one Caboose; neither can
+appear anywhere else.
+b. Whenever Boxcars are used, they always come in pairs: BB, BBBB, etc.
+c. There cannot be more than four Passenger cars in a series.
+d. A single dining car must follow each series of passenger cars; it cannot appear
+anywhere else.
+
+    Train                            Analysis
+    
+EC                     The smallest train
+EEEPPDBBPDBBBBC        A train showing all the cars
+EEEPPDBBPDBBBB         Illegal by rule a - no caboose
+EBBBC                  Illegal by rule b - 3 boxcars in a row
+EEPPPPPDBBC            Illegal by rule c - 5 passenger cars in a row
+EEPPBBC                Illegal by rule d -no dining car after passenger cars
+EEBBOC                 Illegal by rule d - dining car after box car
+
+<Car> ::= "Car"
+<E> ::= "Engine" <Car>
+<C> ::= "Caboose" <Car>
+<B> ::= "Boxcar" <Car>
+<P> ::= "Passenger" <Car>
+<D> ::= "Dining" <Car>
+<BoxCars> ::= ( <B> <B> )*
+<PassengerCars> ::= ( ( <P> | <P> <P> | <P> <P> <P> | <P> <P> <P> <P> ) <D> )*
+<MidPart> ::= ( <BoxCars> <PassengerCars> )*
+<Train> ::= <E> <MidPart> <C> 
+
+11. The following message was seen on a bumper sticker: Stinks Syntax. What is the
+joke?
+
+r1 ::= in | yn
+r2 ::= ks | x
+Stinks Syntax ::= St r1 r2 | S r1 ta r2
+
+Stynx
+Sintaks
+
+Solution:
+The joke is that in English, the subject (syntax) must come before the verb (stinks). 
+So that is a syntax error, which the bumper sticker's author is complaining about.
+
+12. a. Write a directly recursive EBNF rule named mp that describes all symbols that
+have matching parentheses: (), ()()(), ()(()()), and ((())())(()(()))(). It should
+not recognize (, ())(, or (()() as legal. b. Write a tabular proof and its derivation
+tree showing how () (()()) is recognized as legal.
+
+Solution for a:
+
+<mp> ::= ( "(" <mp> ")" <mp> ) | ""
+
+Solution for b:
+
+mp
+( mp ) mp
+( '' ) mp
+()( mp ) mp
+()( mp ) ''
+()(( mp ) mp )
+()(( '' ) mp )
+()(()( mp ) mp )
+()(()( mp ) '' )
+()(()( '' ))
+()(()()) 
+
+
+
+
+
+
+
+
+
