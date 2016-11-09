@@ -16,6 +16,8 @@ I also planned user interaction testing with QUnit and JQuery trigger but also t
 I will try to maintain the demo application live here: [Furniture Constructor](http://myconstructor-phasertest.rhcloud.com/)
 Hosted on OpenShift server, but the free membership puts the app. into idle state once it is not used for few days.
 
+![All parts exercise](https://github.com/bluePlayer/practices/blob/master/FurnitureConstructor/dev/other_assets/AllPartsExercise5.png)
+
 
 
 
