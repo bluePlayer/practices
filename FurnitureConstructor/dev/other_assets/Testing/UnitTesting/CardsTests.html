@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cards Tests</title>
+        <h2>Cards Tests</h2>
+        <script src="../jsunit/app/jsUnitCore.js"></script>
+        <script src="../../phaser.min.js"></script>
+        <script src="../../WML.js"></script>
+        <script src="../../Cards/Cards.js"></script>
+        <script src="../../Cards/Card.js"></script>
+        <script src="Stubs/CardReferences.js"></script>
+     
+        <script>
+            var YES_SOUND = 'YES_SOUND',
+                NICE_SOUND = 'NICE_SOUND',
+                YES_MATCH_SOUND = 'YES_MATCH_SOUND',
+                MISS_SOUND = 'MISS_SOUND',
+                NOOO_SOUND = 'NOOO_SOUND',
+                NO_SOUND = 'NO_SOUND';
+
+            function testGetMatchSound_For0_ReturnsYesSoundString () {
+                // arrange
+                var param = 0,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMatchSound(param);
+                
+                // assert
+                assertEquals(result, YES_SOUND);
+            }
+            
+            function testGetMatchSound_For3_ReturnsYesSoundString () {
+                // arrange
+                var param = 3,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMatchSound(param);
+                
+                // assert
+                assertEquals(result, YES_SOUND);
+            }
+            
+            function testGetMatchSound_For1_ReturnsNiceSoundString () {
+                // arrange
+                var param = 1,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMatchSound(param);
+                
+                // assert
+                assertEquals(result, NICE_SOUND);
+            }
+            
+            function testGetMatchSound_For4_ReturnsNiceSoundString () {
+                // arrange
+                var param = 4,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMatchSound(param);
+                
+                // assert
+                assertEquals(result, NICE_SOUND);
+            }
+            
+            function testGetMatchSound_For2_ReturnsYesMatchSoundString () {
+                // arrange
+                var param = 2,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMatchSound(param);
+                
+                // assert
+                assertEquals(result, YES_MATCH_SOUND);
+            }
+            
+            function testGetMatchSound_For5_ReturnsYesMatchSoundString () {
+                // arrange
+                var param = 5,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMatchSound(param);
+                
+                // assert
+                assertEquals(result, YES_MATCH_SOUND);
+            }
+            
+            function testGetMissSound_For0_ReturnsMissSoundString () {
+                // arrange
+                var param = 0,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMissSound(param);
+                
+                // assert
+                assertEquals(result, MISS_SOUND);
+            }
+            
+            function testGetMissSound_For3_ReturnsMissSoundString () {
+                // arrange
+                var param = 3,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMissSound(param);
+                
+                // assert
+                assertEquals(result, MISS_SOUND);
+            }
+            
+            function testGetMissSound_For1_ReturnsNoooSoundString () {
+                // arrange
+                var param = 1,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMissSound(param);
+                
+                // assert
+                assertEquals(result, NOOO_SOUND);
+            }
+            
+            function testGetMissSound_For4_ReturnsNoooSoundString () {
+                // arrange
+                var param = 4,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMissSound(param);
+                
+                // assert
+                assertEquals(result, NOOO_SOUND);
+            }
+            
+            function testGetMissSound_For2_ReturnsNoSoundString () {
+                // arrange
+                var param = 2,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMissSound(param);
+                
+                // assert
+                assertEquals(result, NO_SOUND);
+            }
+            
+            function testGetMissSound_For5_ReturnsNoSoundString () {
+                // arrange
+                var param = 5,
+                    result = '';
+                
+                // act
+                result = WML.Card.getMissSound(param);
+                
+                // assert
+                assertEquals(result, NO_SOUND);
+            }
+           
+        </script>
+        
+    </head>
+    <body>
+    </body>
+</html>

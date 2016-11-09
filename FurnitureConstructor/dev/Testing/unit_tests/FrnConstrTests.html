@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>FrnConstr Unit Tests</title>
+        <meta name="description" content="">
+        <meta name="author" content="vlado">
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="stylesheet" href="css/qunit-2.0.0.css">
+        <!--<link rel="stylesheet" href="css/qunit-theme-burce.css">-->
+        <!--<link rel="stylesheet" href="css/qunit-theme-ninja.css">-->
+    </head>
+
+    <body>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+        <script src="js/qunit-2.0.0.js"></script>
+        <script src="js/qunit-parameterize.js"></script>
+        <script src="js/phaser.min.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/tests/stubs/FrnConstrStubs/FrnConstrStub.js"></script>
+        <script src="http://localhost:8081/phaser-framework/projects/FurnitureConstructor/dev/js/utils/Constants.js"></script>
+        <script src="http://localhost:8081/phaser-framework/projects/FurnitureConstructor/dev/js/utils/Utility.js"></script>
+        <script src="http://localhost:8081/phaser-framework/projects/FurnitureConstructor/dev/js/utils/FrnConstrMessages.js"></script>
+        <!--<script src="http://localhost:8081/phaser-framework/projects/FurnitureConstructor/dev/js/InitFrnConstrForm.js"></script>-->
+        <script>
+
+            var fetchHtml = function () {
+                $.ajax({
+                  url: 'http://localhost:8081/phaser-framework/projects/FurnitureConstructor/dev/index.html',
+                  dataType: 'html',
+                  success: function(html) {
+                    var form = $(html).find("form"),
+                        elem = $(html).find("input");
+
+                    $(form).append(elem);
+                    $('#qunit-fixture').append("<div id=\"gameContainer\"><\/div>");
+                    $('#qunit-fixture').append(form);
+                    QUnit.start();
+                  }
+                });
+            };
+
+            QUnit.config.autostart = false;
+            fetchHtml();
+        </script>
+        <script src="js/tests/FrnConstrTests.js"></script>
+    </body>
+</html>

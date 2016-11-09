@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/utils/Constants.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">js/utils/</a> Constants.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>192/192</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>192/192</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">window.FrnConstr.namespace('Constants', {}, (function (frnConstr) {'use strict';
+&nbsp;
+    return {
+        init: function () {
+            var frnConst = frnConstr.Const,
+                frnConstGr = frnConst.Graphics,
+                frnConstApp = frnConst.Application,
+                frnConstLS = frnConst.LocalStorage;
+&nbsp;
+            // application settings
+            frnConstr.addConstant(frnConst, 'GAME_NAME', 'Furniture Constructor');
+            frnConstr.addConstant(frnConst, 'VERSION', '1.0.0');
+            frnConstr.addConstant(frnConst, 'TWEEN_LINEAR', 'Linear');
+            frnConstr.addConstant(frnConst, 'FADE_DURATION', 500);
+            frnConstr.addConstant(frnConst, 'BLOG_LINK', 'http://myconstructor-phasertest.rhcloud.com/');
+            frnConstr.addConstant(frnConst, 'BLOG_NAME', 'Furniture Constructor');
+            frnConstr.addConstant(frnConst, 'GAME_LINK', 'http://myconstructor-phasertest.rhcloud.com/');
+            frnConstr.addConstant(frnConst, 'GAME_LINK_NAME', 'Furniture Constructor');
+            frnConstr.addConstant(frnConst, 'TWITTER_URL', null);
+            frnConstr.addConstant(frnConst, 'FACEBOOK_URL', null);
+            frnConstr.addConstant(frnConst, 'BLOG_URL', null);
+            frnConstr.addConstant(frnConst, 'TIMER_DELAY', 1000);
+            frnConstr.addConstant(frnConst, 'LOOP_DELAY', 100);
+            frnConstr.addConstant(frnConst, 'LOADING_LABEL_IMG_KEY', 'loadingLabel.png');
+            frnConstr.addConstant(frnConst, 'NUM_OF_FLOAT_DIGITS', 3);
+            frnConstr.addConstant(frnConst, 'BETTER_PRECISION', 5);
+            frnConstr.addConstant(frnConst, 'DECIMAL_ROUND_EXP', -3);
+&nbsp;
+            // graphics
+            frnConstr.addConstant(frnConstGr, 'LOADING_BAR_X_POS', 400);
+            frnConstr.addConstant(frnConstGr, 'LOADING_BAR_Y_POS', 250);
+            frnConstr.addConstant(frnConstGr, 'LOADING_LABEL_X_POS', 350);
+            frnConstr.addConstant(frnConstGr, 'LOADING_LABEL_Y_POS', 180);
+            frnConstr.addConstant(frnConstGr, 'ALPHA_100_PERCENT', 1);
+            frnConstr.addConstant(frnConstGr, 'ALPHA_0_PERCENT', 0);
+            frnConstr.addConstant(frnConstGr, 'PRELOADER_TOP_START_XY', 2);
+            frnConstr.addConstant(frnConstGr, 'PRELOADER_TOP_WIDTH', 0);
+            frnConstr.addConstant(frnConstGr, 'PRELOADER_TOP_HEIGHT', 11);
+            frnConstr.addConstant(frnConstGr, 'PRELOADER_BOTTOM_START_XY', 0);
+            frnConstr.addConstant(frnConstGr, 'PRELOADER_BOTTOM_WIDTH', 104);
+            frnConstr.addConstant(frnConstGr, 'PRELOADER_BOTTOM_HEIGHT', 15);
+&nbsp;
+            // application specific graphics
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_GRAPHIC_X', 40);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_GRAPHIC_Y', 65);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_GRAPHICS_BORDER_SIZE', 0.5);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_SHADOW_ALPHA', 0.5);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_COLOR_SHIFT_PERCENT', 75);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_COLOR_SHIFT_PERCENT_1', 20);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_SWATCH_WIDTH', 50);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_SWATCH_HEIGHT', 20);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_SWATCH_PADDING', 3);
+            frnConstr.addConstant(frnConstGr, 'ARROW_PIN_SIZE', 4);
+            frnConstr.addConstant(frnConstGr, 'ORIENT_NORTH', "north");
+            frnConstr.addConstant(frnConstGr, 'ORIENT_SOUTH', "south");
+            frnConstr.addConstant(frnConstGr, 'ORIENT_EAST', "east");
+            frnConstr.addConstant(frnConstGr, 'ORIENT_WEST', "west");
+            frnConstr.addConstant(frnConstGr, 'NUM_OF_COLOR_DIGITS', 6);
+            frnConstr.addConstant(frnConstGr, 'NUM_OF_COLOR_CHANNEL_DIGITS', 2);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_BUTTON_WIDTH', 150);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_BUTTON_HEIGHT', 40);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_WINDOW_PADDING', 10);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_TOP_MARKERS_Y_SHIFT', 30);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_TOP_MARKERS_HEIGHT', 55);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_TOP_MARKERS_PERCENT', 15);
+            frnConstr.addConstant(frnConstGr, 'DEFAULT_VALIDATION_WINDOW_WIDTH', 800);
+            frnConstr.addConstant(frnConstGr, 'VALIDATION_WINDOW_TITLE', "Validation Errors");
+            frnConstr.addConstant(frnConstGr, 'HORIZONTAL', true);
+            frnConstr.addConstant(frnConstGr, 'VERTICAL', false);
+            frnConstr.addConstant(frnConstGr, 'MAX_PARTS_PER_SLOT', 4);
+            frnConstr.addConstant(frnConstGr, 'DRAWER_MIN_WIDTH', 2);
+            frnConstr.addConstant(frnConstGr, 'DRAWER_MAX_WIDTH', 20);
+            frnConstr.addConstant(frnConstGr, 'DRAWER_MIN_HEIGHT', 1);
+            frnConstr.addConstant(frnConstGr, 'DRAWER_MAX_HEIGHT', 2);
+            frnConstr.addConstant(frnConstGr, 'TIE_WIDTH', 3);
+            frnConstr.addConstant(frnConstGr, 'TIE_HEIGHT', 5);
+            frnConstr.addConstant(frnConstGr, 'SHOES_WIDTH', 5);
+            frnConstr.addConstant(frnConstGr, 'SHOES_HEIGHT', 7);
+            frnConstr.addConstant(frnConstGr, 'TROUSER_WIDTH', 5);
+            frnConstr.addConstant(frnConstGr, 'TROUSER_HEIGHT', 3);
+            frnConstr.addConstant(frnConstGr, 'HANGER_WIDTH', 4);
+            frnConstr.addConstant(frnConstGr, 'HANGER_HEIGHT', 6);
+            frnConstr.addConstant(frnConstGr, 'PTGR_MIN_WIDTH', 6);
+            frnConstr.addConstant(frnConstGr, 'PTGR_MAX_WIDTH', 15);
+            frnConstr.addConstant(frnConstGr, 'PTGR_MIN_HEIGHT', 6);
+            frnConstr.addConstant(frnConstGr, 'PTGR_MAX_HEIGHT', 8);
+            frnConstr.addConstant(frnConstGr, 'HORZ_BEAM_SPACE', 5);
+&nbsp;
+            // colors
+            frnConstr.addConstant(frnConstGr.Colors, 'BLACK', 0x000000);
+            frnConstr.addConstant(frnConstGr.Colors, 'DEFAULT_EDGE_COLOR', frnConstGr.Colors.BLACK);
+            frnConstr.addConstant(frnConstGr.Colors, 'BACKGROUND_COLOR', 0xC0C0C0);
+            frnConstr.addConstant(frnConstGr.Colors, 'DARK_GRAY', 0x9C9C9C);
+            frnConstr.addConstant(frnConstGr.Colors, 'DARK_GRAY_1', 0x292929);
+            frnConstr.addConstant(frnConstGr.Colors, 'MATTERHORN', 0x4D4D4D);
+            frnConstr.addConstant(frnConstGr.Colors, 'WHITE', 0xffffff);
+            frnConstr.addConstant(frnConstGr.Colors, 'RED', 0xff0000);
+            frnConstr.addConstant(frnConstGr.Colors, 'GREEN', 0x00ff00);
+            frnConstr.addConstant(frnConstGr.Colors, 'BLUE', 0x0000ff);
+            frnConstr.addConstant(frnConstGr.Colors, 'YELLOW', 0xffff00);
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_DARK_BLUE', "#3d6990");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_ANTIQUE_WHITE', "#efcf9f");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_BLACK', "#000000");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_WHITE', "#ffffff");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_DARK_BROWN', "#3b1901");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_GREY', "#9c9c9c");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_RED', "#bf1717");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_PURPLE', "#ff00f7");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_GREEN', "#569922");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_VIOLET', "#744c78");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_BROWN', "#8b592b");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_ORANGE', "#f77511");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_YELLOW', "#ffd000");
+            frnConstr.addConstant(frnConstGr.Colors.Material, 'MAT_BLUE', "#01a2dd");
+            frnConstr.addConstant(frnConstGr.Colors.Doors, 'DOOR_LIGHT_GRAY', "#bdb9b9");
+            frnConstr.addConstant(frnConstGr.Colors.Doors, 'DOOR_BLACK', "#211e1e");
+            frnConstr.addConstant(frnConstGr.Colors.Doors, 'DOOR_BROWN', "#573d2a");
+            frnConstr.addConstant(frnConstGr.Colors.Doors, 'DOOR_LIGHT_BROWN', "#ccbc56");
+            frnConstr.addConstant(frnConstGr.Colors.Doors, 'DOOR_GRAY', "#696969");
+&nbsp;
+            frnConstr.addConstant(frnConstApp, 'MAX_NUM_OF_SHELVES', 25);
+&nbsp;
+            // application keys for internal use and referencing different types of display objects
+            frnConstr.addConstant(frnConstApp.Keys, 'REAR_WALL_KEY', "rearWall");
+            frnConstr.addConstant(frnConstApp.Keys, 'CEILING_KEY', "ceiling");
+            frnConstr.addConstant(frnConstApp.Keys, 'FLOOR_KEY', "floor");
+            frnConstr.addConstant(frnConstApp.Keys, 'LEFT_WALL_KEY', "leftWall");
+            frnConstr.addConstant(frnConstApp.Keys, 'RIGHT_WALL_KEY', "rightWall");
+            frnConstr.addConstant(frnConstApp.Keys, 'LEFT_SHELVE_KEY', "leftShelve");
+            frnConstr.addConstant(frnConstApp.Keys, 'RIGHT_SHELVE_KEY', "rightShelve");
+            frnConstr.addConstant(frnConstApp.Keys, 'LEFT_SHELVE_WALL_KEY', "leftShelveWall");
+            frnConstr.addConstant(frnConstApp.Keys, 'RIGHT_SHELVE_WALL_KEY', "rightShelveWall");
+            frnConstr.addConstant(frnConstApp.Keys, 'RECT_KEY', "rect");
+            frnConstr.addConstant(frnConstApp.Keys, 'LINE_KEY', "line");
+            frnConstr.addConstant(frnConstApp.Keys, 'POLYGON_KEY', "polygon");
+            frnConstr.addConstant(frnConstApp.Keys, 'SHELVE_SHADOW_KEY', "shelveShadow");
+            frnConstr.addConstant(frnConstApp.Keys, 'SHELVE_WITH_AREA_KEY', "shelveWithArea");
+            frnConstr.addConstant(frnConstApp.Keys, 'MATERIAL_COLOR_KEY', "materialColor");
+            frnConstr.addConstant(frnConstApp.Keys, 'DARKER_COLOR_KEY', "darkerMaterialColor");
+            frnConstr.addConstant(frnConstApp.Keys, 'EDGE_COLOR_KEY', "edgeColor");
+            frnConstr.addConstant(frnConstApp.Keys, 'TOP_SHELVES_KEY', "topShelves");
+            frnConstr.addConstant(frnConstApp.Keys, 'BOTTOM_SHELVES_KEY', "bottomShelves");
+            frnConstr.addConstant(frnConstApp.Keys, 'SHELVE_SLOTS_KEY', "shelveSlots");
+&nbsp;
+            // Furniture data keys
+            frnConstr.addConstant(frnConstApp.Keys, 'MILLS_PER_PIXEL_KEY', "millsPerPixel");
+            frnConstr.addConstant(frnConstApp.Keys, 'MILLS_PER_PIXEL_FOR_DEPTH_KEY', "millsPerPixelForDepth");
+            frnConstr.addConstant(frnConstApp.Keys, 'CUPBOARD_WIDTH_KEY', "cupboardWidth");
+            frnConstr.addConstant(frnConstApp.Keys, 'CUPBOARD_HEIGHT_KEY', "cupboardHeight");
+            frnConstr.addConstant(frnConstApp.Keys, 'CUPBOARD_DEPTH_KEY', "cupboardDepth");
+            frnConstr.addConstant(frnConstApp.Keys, 'LEFT_SHELVE_WIDTH_KEY', "leftShelveWidth");
+            frnConstr.addConstant(frnConstApp.Keys, 'RIGHT_SHELVE_WIDTH_KEY', "rightShelveWidth");
+            frnConstr.addConstant(frnConstApp.Keys, 'THICKNESS_KEY', "thickness");
+&nbsp;
+            // Furniture parts
+            frnConstr.addConstant(frnConstApp.Keys, 'DUMMY_SLOT_KEY', "dummy");
+            frnConstr.addConstant(frnConstApp.Keys, 'EMPTY_SLOT_KEY', "emptySlot");
+            frnConstr.addConstant(frnConstApp.Keys, 'HORZ_BAFFLE_KEY', "horzBaffle");
+            frnConstr.addConstant(frnConstApp.Keys, 'VERT_BAFFLE_KEY', "vertBaffle");
+            frnConstr.addConstant(frnConstApp.Keys, 'HORZ_BEAM_KEY', "horzBeam");
+            frnConstr.addConstant(frnConstApp.Keys, 'VERT_BEAM_KEY', "vertBeam");
+            frnConstr.addConstant(frnConstApp.Keys, 'DRAWER_KEY', "drawer");
+            frnConstr.addConstant(frnConstApp.Keys, 'TIE_KEY', "tie");
+            frnConstr.addConstant(frnConstApp.Keys, 'SHOES_KEY', "shoes");
+            frnConstr.addConstant(frnConstApp.Keys, 'HANGER_KEY', "hanger");
+            frnConstr.addConstant(frnConstApp.Keys, 'PANTOGRAPH_KEY', "pantograph");
+            frnConstr.addConstant(frnConstApp.Keys, 'TROUSER_KEY', "trouser");
+&nbsp;
+            // default shelve color. Some shade of blue
+            frnConstr.addConstant(frnConstApp, 'DEFAULT_MATERIAL_COLOR', frnConstGr.Colors.Material.MAT_DARK_BLUE);
+&nbsp;
+            // millsPerPixel
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixel, 'MIN_VAL', 5);
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixel, 'DEFAULT_VAL', 7);
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixel, 'MAX_VAL', 10);
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixel, 'RANGE_LABEL', "Range: (7 &lt;= millsPerPixel &lt;= 10), default: 7");
+&nbsp;
+            // millsPerPixelForDepth
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixelForDepth, 'MIN_VAL', 16);
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixelForDepth, 'DEFAULT_VAL', 16);
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixelForDepth, 'MAX_VAL', 20);
+            frnConstr.addConstant(frnConstApp.FrnData.millsPerPixelForDepth, 'RANGE_LABEL', "Range: (16 &lt;= millsPerPixelForDepth &lt;= 20), default: 16");
+&nbsp;
+            // cupboardWidth
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardWidth, 'MIN_VAL', 700);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardWidth, 'DEFAULT_VAL', 3000);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardWidth, 'MAX_VAL', 5000);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardWidth, 'RANGE_LABEL', "Range: (700 &lt;= cupboardWidth &lt;= 5000), default: 3000");
+&nbsp;
+            // cupboardHeight
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardHeight, 'MIN_VAL', 1000);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardHeight, 'DEFAULT_VAL', 2500);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardHeight, 'MAX_VAL', 3000);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardHeight, 'RANGE_LABEL', "Range: (1000 &lt;= cupboardHeight &lt;= 3000), default: 2500");
+&nbsp;
+            // cupboardDepth
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardDepth, 'MIN_VAL', 500);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardDepth, 'DEFAULT_VAL', 700);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardDepth, 'MAX_VAL', 1000);
+            frnConstr.addConstant(frnConstApp.FrnData.cupboardDepth, 'RANGE_LABEL', "Range: (500 &lt;= cupboardDepth &lt;= 1000), default: 700");
+&nbsp;
+            // leftShelveWidth
+            frnConstr.addConstant(frnConstApp.FrnData.leftShelveWidth, 'MIN_VAL', 150);
+            frnConstr.addConstant(frnConstApp.FrnData.leftShelveWidth, 'DEFAULT_VAL', 250);
+            frnConstr.addConstant(frnConstApp.FrnData.leftShelveWidth, 'MAX_VAL', 500);
+            frnConstr.addConstant(frnConstApp.FrnData.leftShelveWidth, 'RANGE_LABEL', "Range: (150 &lt;= leftShelveWidth &lt;= 500), default: 250");
+&nbsp;
+            // rightShelveWidth
+            frnConstr.addConstant(frnConstApp.FrnData.rightShelveWidth, 'MIN_VAL', 150);
+            frnConstr.addConstant(frnConstApp.FrnData.rightShelveWidth, 'DEFAULT_VAL', 250);
+            frnConstr.addConstant(frnConstApp.FrnData.rightShelveWidth, 'MAX_VAL', 500);
+            frnConstr.addConstant(frnConstApp.FrnData.rightShelveWidth, 'RANGE_LABEL', "Range: (150 &lt;= rightShelveWidth &lt;= 500), default: 250");
+&nbsp;
+            // thickness
+            frnConstr.addConstant(frnConstApp.FrnData.thickness, 'MIN_VAL', 5);
+            frnConstr.addConstant(frnConstApp.FrnData.thickness, 'DEFAULT_VAL', 30);
+            frnConstr.addConstant(frnConstApp.FrnData.thickness, 'MAX_VAL', 50);
+            frnConstr.addConstant(frnConstApp.FrnData.thickness, 'RANGE_LABEL', "Range: (5 &lt;= thickness &lt;= 50), default: 30");
+&nbsp;
+            // floor checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_FLOOR_IS_DRAWN', true);
+&nbsp;
+            // ceiling checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_CEILING_IS_DRAWN', true);
+&nbsp;
+            // left shelve checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_LEFT_SHELVE_IS_DRAWN', true);
+&nbsp;
+            // right shelve checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_RIGHT_SHELVE_IS_DRAWN', true);
+&nbsp;
+            // rear wall checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_REAR_WALL_IS_DRAWN', true);
+&nbsp;
+            // stand left checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_STAND_LEFT_IS_DRAWN', true);
+&nbsp;
+            // stand right checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_STAND_RIGHT_IS_DRAWN', true);
+&nbsp;
+            // stand checkbox
+            frnConstr.addConstant(frnConstApp.FrnData.checkBoxes, 'DEFAULT_STAND_IS_DRAWN', true);
+&nbsp;
+            // regular expressions
+            frnConstr.addConstant(frnConstApp, 'REGEX_ONLY_HEX_DIGITS', /[0-9A-Fa-f]/gi);
+            frnConstr.addConstant(frnConstApp, 'REGEX_ONLY_DIGITS', /^[0-9.,]+$/gi);
+&nbsp;
+            // local storage
+            frnConstr.addConstant(frnConstLS, 'FIRST_VISIT', 'firstVisit');
+            frnConstr.addConstant(frnConstLS, 'FRN_CONSTR_DATA_OBJECT', 'frnConstrDataObject');
+        }
+    };
+    }(window.FrnConstr)).init());</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 04 2016 10:31:43 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

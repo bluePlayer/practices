@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Testing/unit_tests/js/tests/FrnConstrTests.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">Testing/unit_tests/js/tests/</a> FrnConstrTests.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">39.02% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>16/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">11.11% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">39.02% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>16/41</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function runTests(qunit, frnConstr, phaser, jq) {
+    'use strict';
+&nbsp;
+    var utils = frnConstr.Utility,
+        frnConst = frnConstr.Const,
+        frnConstGr = frnConst.Graphics,
+        frnConstApp = frnConst.Application,
+        frnConstAppFrnData = frnConstApp.FrnData;
+&nbsp;
+    qunit.module("Test createDefaultDataObject()");
+&nbsp;
+    qunit.test("The returned object should contain all necessary fields and they should have default values.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var constObject = frnConstr.createDefaultDataObject(),</span>
+            expected = true,
+            calculated = utils.isTruthy(constObject);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.ok(calculated, "expected: " + expected + ", calculated: " + calculated);</span>
+    });
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {propName: 'millsPerPixel', value: frnConstAppFrnData.millsPerPixel.DEFAULT_VAL},
+            {propName: 'millsPerPixelForDepth', value: frnConstAppFrnData.millsPerPixelForDepth.DEFAULT_VAL},
+            {propName: 'cupboardWidth', value: frnConstAppFrnData.cupboardWidth.DEFAULT_VAL},
+            {propName: 'cupboardHeight', value: frnConstAppFrnData.cupboardHeight.DEFAULT_VAL},
+            {propName: 'cupboardDepth', value: frnConstAppFrnData.cupboardDepth.DEFAULT_VAL},
+            {propName: 'leftShelveWidth', value: frnConstAppFrnData.leftShelveWidth.DEFAULT_VAL},
+            {propName: 'rightShelveWidth', value: frnConstAppFrnData.rightShelveWidth.DEFAULT_VAL},
+            {propName: 'thickness', value: frnConstAppFrnData.thickness.DEFAULT_VAL}
+        ])
+        .test("The returned object should contain all necessary fields and they should have default values. (Numeric values)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = frnConstr.createDefaultDataObject();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.ok(utils.isTruthy(calculated[parameters.propName]), "expected: true");</span>
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated[parameters.propName], frnConstAppFrnData[parameters.propName].DEFAULT_VAL, ", expected: true");</span>
+        });
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {propName: 'floorChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_FLOOR_IS_DRAWN, chkBoxName: 'DEFAULT_FLOOR_IS_DRAWN'},
+            {propName: 'ceilingChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_CEILING_IS_DRAWN, chkBoxName: 'DEFAULT_LEFT_SHELVE_IS_DRAWN'},
+            {propName: 'leftShelveChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_LEFT_SHELVE_IS_DRAWN, chkBoxName: 'DEFAULT_LEFT_SHELVE_IS_DRAWN'},
+            {propName: 'rightShelveChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_RIGHT_SHELVE_IS_DRAWN, chkBoxName: 'DEFAULT_RIGHT_SHELVE_IS_DRAWN'},
+            {propName: 'rearChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_REAR_WALL_IS_DRAWN, chkBoxName: 'DEFAULT_REAR_WALL_IS_DRAWN'},
+            {propName: 'standLeftChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_STAND_LEFT_IS_DRAWN, chkBoxName: 'DEFAULT_STAND_LEFT_IS_DRAWN'},
+            {propName: 'standRightChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_STAND_RIGHT_IS_DRAWN, chkBoxName: 'DEFAULT_STAND_RIGHT_IS_DRAWN'},
+            {propName: 'standChkBox', value: frnConstAppFrnData.checkBoxes.DEFAULT_STAND_IS_DRAWN, chkBoxName: 'DEFAULT_STAND_IS_DRAWN'}
+        ])
+        .test("The returned object should contain all necessary fields and they should have default values. (Checkboxes)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = frnConstr.createDefaultDataObject();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.ok(utils.isTruthy(calculated[parameters.propName]), "expected: true");</span>
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated[parameters.propName], frnConstAppFrnData.checkBoxes[parameters.chkBoxName], ", expected: true");</span>
+        });
+&nbsp;
+    qunit.test("FrnConstr data object must have default CSS color.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var calculated = frnConstr.createDefaultDataObject();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.ok(utils.isTruthy(calculated.shelveCssColor), "expected: true");</span>
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated.shelveCssColor, frnConstApp.DEFAULT_MATERIAL_COLOR, ", expected: true");</span>
+    });
+&nbsp;
+    qunit.module("Const object tests");
+&nbsp;
+    qunit.test("Form fields should be set to default values after pressing resetForm() function.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var constObject = frnConst,</span>
+            expected = true,
+            calculated = utils.isTruthy(constObject);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.ok(calculated, "expected: " + expected + ", calculated: " + calculated);</span>
+    });
+&nbsp;
+    qunit.module("getFormDataArray()");
+&nbsp;
+    qunit.test("The returned object should contain all form fields", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var i = 0,</span>
+            calculated = frnConstr.getFormDataArray();
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        for (i = 0; i &lt; calculated.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >            assert.ok(utils.isTruthy(calculated[i])," calculated: " + JSON.stringify(calculated[i]));</span>
+        }
+    });
+&nbsp;
+    qunit
+        .cases
+        .init([
+             {inputName: 'millsPerPixel', value: 7},
+             {inputName: 'millsPerPixelForDepth', value: 16},
+             {inputName: 'cupboardWidth', value: 3000},
+             {inputName: 'cupboardHeight', value: 2500},
+             {inputName: 'cupboardDepth', value: 700},
+             {inputName: 'thickness', value: 30},
+             {inputName: 'leftShelveWidth', value: 250},
+             {inputName: 'rightShelveWidth', value: 250},
+&nbsp;
+             {inputName: 'standLeftChkBox', value: 'on'},
+             {inputName: 'rearChkBox', value: 'on'},
+             {inputName: 'rightShelveChkBox', value: 'on'},
+             {inputName: 'leftShelveChkBox', value: 'on'},
+             {inputName: 'floorChkBox', value: 'on'},
+             {inputName: 'ceilingChkBox', value: 'on'},
+             {inputName: 'standRightChkBox', value: 'on'},
+             {inputName: 'standChkBox', value: 'on'}
+        ])
+        .test("The returned object should contain all form fields with default values", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var i = 0,</span>
+                calculated = frnConstr.getFormDataArray();
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            for (i = 0; i &lt; calculated.length; i += 1) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (calculated[i].name === params.inputName) {</span>
+<span class="cstat-no" title="statement not covered" >                    assert.equal(calculated[i].value, params.value, " calculated: " + JSON.stringify(calculated[i]) + ", expected: " + JSON.stringify(params));</span>
+                }
+&nbsp;
+            }
+        });
+&nbsp;
+    qunit.module("setDataObject(data)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+             {field: 'millsPerPixel', value: 7},
+             {field: 'millsPerPixelForDepth', value: 16},
+             {field: 'fullWidth', value: 3000},
+             {field: 'cupboardWidth', value: 2500},
+             {field: 'cupboardHeight', value: 2500},
+             {field: 'cupboardDepth', value: 700},
+             {field: 'thickness', value: 30},
+             {field: 'leftShelveWidth', value: 250},
+             {field: 'rightShelveWidth', value: 250},
+             {field: 'maxNumOfShelves', value: 25},
+             {field: 'maxNumOfInnerShelves', value: 25},
+             {field: 'maxNumOfBeams', value: 25},
+&nbsp;
+             {field: 'standLeftChkBox', value: true},
+             {field: 'rearChkBox', value: true},
+             {field: 'rightShelveChkBox', value: true},
+             {field: 'leftShelveChkBox', value: true},
+             {field: 'floorChkBox', value: true},
+             {field: 'ceilingChkBox', value: true},
+             {field: 'standRightChkBox', value: true},
+             {field: 'standChkBox', value: true}
+        ])
+        .test("The returned fcdo object should contain all fields from the form and maxNumOfShelves, maxNumOfInnerShelves, maxNumOfBeams, fullWidth", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var item = null,</span>
+                data = frnConstr.getFormDataArray(),
+                calculated = frnConstr.setDataObject(data);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            for (item in calculated) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (calculated.hasOwnProperty(item) &amp;&amp; item === params.field) {</span>
+<span class="cstat-no" title="statement not covered" >                    assert.ok(utils.isTruthy(calculated[item])," calculated: " + JSON.stringify(calculated[item]) + ", expected: true");</span>
+<span class="cstat-no" title="statement not covered" >                    assert.equal(calculated[item], params.value, " calculated: " + JSON.stringify(calculated[item]) + ", expected: " + params.value);</span>
+                }
+&nbsp;
+            }
+        });
+&nbsp;
+    qunit.module("resetForm()", {
+        // TODO check this
+        /*before: function () {
+            jq.ajax({
+                url: 'http://localhost:8081/phaser-framework/projects/FurnitureConstructor/dev/index.html',
+                dataType: 'html',
+                success: function(html) {
+                    var form = jq(html).find("form"),
+                        elem = jq(html).find("input");
+&nbsp;
+                    jq(form).append(elem);
+                    jq('#qunit-fixture').append("&lt;div id=\"gameContainer\"&gt;&lt;\/div&gt;");
+                    jq('#qunit-fixture').append(form);
+                }
+            });
+        }*/
+    });
+/*
+    qunit.test("Form fields should be set to default values after pressing resetForm() function.", function(assert) {
+        var defMillsPerPixel = frnConstApp.FrnData.millsPerPixel.DEFAULT_VAL,
+            defMillsPerPixelForDepth = frnConstApp.FrnData.millsPerPixelForDepth.DEFAULT_VAL,
+            defCupboardWidth = frnConstApp.FrnData.cupboardWidth.DEFAULT_VAL,
+            defCupboardHeight = frnConstApp.FrnData.cupboardHeight.DEFAULT_VAL,
+            defCupboardDepth = frnConstApp.FrnData.cupboardDepth.DEFAULT_VAL,
+            defLeftShelveWidth = frnConstApp.FrnData.leftShelveWidth.DEFAULT_VAL,
+            defRightShelveWidth = frnConstApp.FrnData.rightShelveWidth.DEFAULT_VAL,
+            defThickness = frnConstApp.FrnData.thickness.DEFAULT_VAL;
+&nbsp;
+        jq("#millsPerPixel").val(frnConstApp.FrnData.millsPerPixel.MAX_VAL);
+        jq("#millsPerPixelForDepth").val(frnConstApp.FrnData.millsPerPixelForDepth.MAX_VAL);
+        jq("#cupboardWidth").val(frnConstApp.FrnData.cupboardWidth.MAX_VAL);
+        jq("#cupboardHeight").val(frnConstApp.FrnData.cupboardHeight.MAX_VAL);
+        jq("#cupboardDepth").val(frnConstApp.FrnData.cupboardDepth.MAX_VAL);
+        jq("#leftShelveWidth").val(frnConstApp.FrnData.leftShelveWidth.MAX_VAL);
+        jq("#rightShelveWidth").val(frnConstApp.FrnData.rightShelveWidth.MAX_VAL);
+        jq("#thickness").val(frnConstApp.FrnData.thickness.MAX_VAL);
+&nbsp;
+        frnConstr.InitFrnConstrForm.resetForm();
+&nbsp;
+        assert.equal(defMillsPerPixel, jq("#millsPerPixel").val(), "expected: " + defMillsPerPixel + ", calculated: " + jq("#millsPerPixel").val());
+        assert.equal(defMillsPerPixelForDepth, jq("#millsPerPixelForDepth").val(), "expected: " + defMillsPerPixelForDepth + ", calculated: " + jq("#millsPerPixelForDepth").val());
+        assert.equal(defCupboardWidth, jq("#cupboardWidth").val(), "expected: " + defCupboardWidth + ", calculated: " + jq("#cupboardWidth").val());
+        assert.equal(defCupboardHeight, jq("#cupboardHeight").val(), "expected: " + defCupboardHeight + ", calculated: " + jq("#cupboardHeight").val());
+        assert.equal(defCupboardDepth, jq("#cupboardDepth").val(), "expected: " + defCupboardDepth + ", calculated: " + jq("#cupboardDepth").val());
+        assert.equal(defLeftShelveWidth, jq("#leftShelveWidth").val(), "expected: " + defLeftShelveWidth + ", calculated: " + jq("#leftShelveWidth").val());
+        assert.equal(defRightShelveWidth, jq("#rightShelveWidth").val(), "expected: " + defRightShelveWidth + ", calculated: " + jq("#rightShelveWidth").val());
+        assert.equal(defThickness, jq("#thickness").val(), "expected: " + defThickness + ", calculated: " + jq("#thickness").val());
+    });*/
+}
+&nbsp;
+runTests(QUnit, window.FrnConstr, Phaser, $);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 26 2016 18:27:19 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+window.UnitTests.namespace('UnitTestsUtils', {}, (function (unitTests, wml) {'use strict';    return {        pointsArrWithDummies: function () {            var i;            for (i = 0; i < wml.Const.LEVELS_COUNT; i += 1) {                wml.setLevelPoints(i, i);            }        }    };    }(window.UnitTests, WML)));

@@ -1,0 +1,2372 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/utils/ProcessDataUtility.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">js/utils/</a> ProcessDataUtility.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.08% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/59</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">10% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.08% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/59</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">window.FrnConstr.namespace('ProcessDataUtility', window.FrnConstr.Screen, ( function(windowObject, frnConstr, phaser, jq) {
+        'use strict';
+        var thisObject = null,
+            gameObject = null,
+            utils = frnConstr.Utility,
+            ismUtils = frnConstr.InnerSlotMatrixUtility,
+            frnConst = frnConstr.Const,
+            constGr = frnConst.Graphics,
+            constAppKeys = frnConst.Application.Keys;
+&nbsp;
+        return {
+&nbsp;
+            processData : <span class="fstat-no" title="function not covered" >function(fcdo, shelveCssColor, millsPerPixel) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo = this.preProcessData(fcdo, shelveCssColor, millsPerPixel);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.artmTree = this.makeArtmTree(fcdo);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.constrData = this.makeConstrDataObject(fcdo);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return fcdo;</span>
+            },
+&nbsp;
+            preProcessData: <span class="fstat-no" title="function not covered" >function (fcdo, shelveCssColor, millsPerPixel) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.thicknessPx = utils.convertMillsToPixels(fcdo.thickness, millsPerPixel);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.fullWidthPx = utils.convertMillsToPixels(fcdo.fullWidth, millsPerPixel);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.cupboardWidthPx = utils.convertMillsToPixels(fcdo.cupboardWidth, millsPerPixel);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.cupboardHeightPx = utils.convertMillsToPixels(fcdo.cupboardHeight, millsPerPixel);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.cupboardDepthPx = utils.convertMillsToPixels(fcdo.cupboardDepth, fcdo.millsPerPixelForDepth);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.leftShelveWidthPx = utils.convertMillsToPixels(fcdo.leftShelveWidth, millsPerPixel);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.rightShelveWidthPx = utils.convertMillsToPixels(fcdo.rightShelveWidth, millsPerPixel);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.frameX = constGr.DEFAULT_GRAPHIC_X;</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.frameY = constGr.DEFAULT_GRAPHIC_Y;</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.borderSize = constGr.DEFAULT_GRAPHICS_BORDER_SIZE;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.currentMaterialColor = utils.getColor(constAppKeys.MATERIAL_COLOR_KEY, shelveCssColor);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.currentDarkerMatColor = utils.getColor(constAppKeys.DARKER_COLOR_KEY, shelveCssColor);</span>
+<span class="cstat-no" title="statement not covered" >                fcdo.currentEdgeColor = utils.getColor(constAppKeys.EDGE_COLOR_KEY, shelveCssColor);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.shelveShiftFactor = utils.decimalRound(((fcdo.cupboardHeightPx - fcdo.cupboardDepthPx) / fcdo.maxNumOfShelves),</span>
+                    frnConst.DECIMAL_ROUND_EXP);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.innerShelveSlotHeight = utils.decimalRound((fcdo.cupboardHeightPx / fcdo.maxNumOfInnerShelves),</span>
+                    frnConst.DECIMAL_ROUND_EXP);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.innerShelveSlotWidth = utils.decimalRound(((fcdo.cupboardWidthPx) / fcdo.maxNumOfBeams),</span>
+                    frnConst.DECIMAL_ROUND_EXP);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return fcdo;</span>
+            },
+&nbsp;
+            makeArtmTree : <span class="fstat-no" title="function not covered" >function(fcdo) {</span>
+<span class="cstat-no" title="statement not covered" >                var frameX = fcdo.frameX,</span>
+                    frameY = fcdo.frameY,
+                    fullWidthPx = fcdo.fullWidthPx,
+                    cupboardWidthPx = fcdo.cupboardWidthPx,
+                    cupboardHeightPx = fcdo.cupboardHeightPx,
+                    cupboardDepthPx = fcdo.cupboardDepthPx,
+                    thicknessPx = fcdo.thicknessPx,
+                    leftShelveWidthPx = fcdo.leftShelveWidthPx,
+                    rightShelveWidthPx = fcdo.rightShelveWidthPx,
+                    halfCupboardDepthPx = utils.decimalRound((cupboardDepthPx / 2), frnConst.DECIMAL_ROUND_EXP),
+                    shelveShiftFactor = fcdo.shelveShiftFactor,
+&nbsp;
+                    artmTree = {
+                        fullWidthPx : {
+                            value : fullWidthPx,
+                            sumThicknessPx : {
+                                value : utils.decimalRound((fullWidthPx + thicknessPx), frnConst.DECIMAL_ROUND_EXP),
+                                subRightShelveWidthPx : {
+                                    value : utils.decimalRound((fullWidthPx + thicknessPx - rightShelveWidthPx), frnConst.DECIMAL_ROUND_EXP)
+                                }
+                            }
+                        },
+                        frameX : {
+                            value : constGr.DEFAULT_GRAPHIC_X,
+                            doubleFrameX : {
+                                value : utils.decimalRound((constGr.DEFAULT_GRAPHIC_X * 2), frnConst.DECIMAL_ROUND_EXP),
+                                sumLeftShelveWidthPx : {
+                                    value : utils.decimalRound(((constGr.DEFAULT_GRAPHIC_X * 2) + leftShelveWidthPx),
+                                        frnConst.DECIMAL_ROUND_EXP)
+                                }
+                            },
+                            sumFullWidthPx : {
+                                value : utils.decimalRound((frameX + fullWidthPx), frnConst.DECIMAL_ROUND_EXP),
+                                subRightShelveWidthPx : {
+                                    value : utils.decimalRound((frameX + fullWidthPx - rightShelveWidthPx), frnConst.DECIMAL_ROUND_EXP),
+                                    sumThicknessPx : {
+                                        value : utils.decimalRound((frameX + fullWidthPx - rightShelveWidthPx + thicknessPx),
+                                            frnConst.DECIMAL_ROUND_EXP)
+                                    }
+                                }
+                            },
+                            sumLeftShelveWidthPx : {
+                                value : utils.decimalRound(frameX + leftShelveWidthPx, frnConst.DECIMAL_ROUND_EXP),
+                                sumOne : {
+                                    value : utils.decimalRound(frameX + leftShelveWidthPx + 1, frnConst.DECIMAL_ROUND_EXP)
+                                },
+                                sumThicknessPx : {
+                                    value : utils.decimalRound(frameX + leftShelveWidthPx + thicknessPx, frnConst.DECIMAL_ROUND_EXP),
+                                    sumHalfCupboardDepth : {
+                                        value : utils.decimalRound(frameX + leftShelveWidthPx + thicknessPx + halfCupboardDepthPx,
+                                            frnConst.DECIMAL_ROUND_EXP)
+                                    }
+                                },
+&nbsp;
+                                sumHalfCupboardDepth : {
+                                    value : utils.decimalRound(frameX + leftShelveWidthPx + halfCupboardDepthPx,
+                                        frnConst.DECIMAL_ROUND_EXP),
+                                    sumDoubleThicknessPx : {
+                                        value : utils.decimalRound(frameX + leftShelveWidthPx + halfCupboardDepthPx + (thicknessPx * 2),
+                                            frnConst.DECIMAL_ROUND_EXP)
+                                    }
+                                },
+                                sumCupboardWidthPx : {
+                                    value : utils.decimalRound(frameX + leftShelveWidthPx + cupboardWidthPx, frnConst.DECIMAL_ROUND_EXP),
+                                    sumOne : {
+                                        value : utils.decimalRound(frameX + leftShelveWidthPx + cupboardWidthPx + 1,
+                                            frnConst.DECIMAL_ROUND_EXP)
+                                    },
+                                    sumThicknessPx : {
+                                        value :
+                                            utils.decimalRound(frameX + leftShelveWidthPx + cupboardWidthPx + thicknessPx,
+                                                frnConst.DECIMAL_ROUND_EXP),
+                                        sumRightShelveWidthPx : {
+                                            value :
+                                                utils.decimalRound(
+                                                    frameX + leftShelveWidthPx + cupboardWidthPx + thicknessPx + rightShelveWidthPx,
+                                                    frnConst.DECIMAL_ROUND_EXP)
+                                        }
+                                    },
+                                    sumHalfCupboardDepth : {
+                                        value :
+                                            utils.decimalRound(frameX + leftShelveWidthPx + cupboardWidthPx + halfCupboardDepthPx,
+                                                frnConst.DECIMAL_ROUND_EXP),
+                                        sumThicknessPx : {
+                                            value :
+                                                utils.decimalRound(
+                                                    frameX + leftShelveWidthPx + cupboardWidthPx + halfCupboardDepthPx + thicknessPx,
+                                                    frnConst.DECIMAL_ROUND_EXP)
+                                        }
+                                    },
+                                    subHalfCupboardDepth : {
+                                        value :
+                                            utils.decimalRound(frameX + leftShelveWidthPx + cupboardWidthPx - halfCupboardDepthPx,
+                                                frnConst.DECIMAL_ROUND_EXP),
+                                        subThicknessPx : {
+                                            value :
+                                                utils.decimalRound(
+                                                    frameX + leftShelveWidthPx + cupboardWidthPx - halfCupboardDepthPx - thicknessPx,
+                                                    frnConst.DECIMAL_ROUND_EXP)
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        leftShelveWidthPx : {
+                            value: leftShelveWidthPx
+                        },
+                        rightShelveWidthPx : {
+                            value: rightShelveWidthPx
+                        },
+                        halfCupboardDepthPx : {
+                            value : halfCupboardDepthPx,
+                            sumThicknessPx : {
+                                value : utils.decimalRound(halfCupboardDepthPx + thicknessPx, frnConst.DECIMAL_ROUND_EXP)
+                            },
+                            sumRearHeight : {
+                                value : utils.decimalRound(cupboardHeightPx - halfCupboardDepthPx, frnConst.DECIMAL_ROUND_EXP),
+                                subShelveShiftFactor : {
+                                    value :
+                                        utils.decimalRound(cupboardHeightPx - halfCupboardDepthPx - shelveShiftFactor,
+                                            frnConst.DECIMAL_ROUND_EXP),
+                                    sumThicknessPx : {
+                                        value :
+                                            utils.decimalRound(
+                                                cupboardHeightPx - halfCupboardDepthPx - shelveShiftFactor + thicknessPx,
+                                                frnConst.DECIMAL_ROUND_EXP)
+                                    }
+                                }
+                            }
+                        },
+                        frameY : {
+                            value : constGr.DEFAULT_GRAPHIC_Y,
+                            sumThicknessPx : {
+                                value : constGr.DEFAULT_GRAPHIC_Y + thicknessPx
+                            },
+                            doubleFrameY : {
+                                value : (constGr.DEFAULT_GRAPHIC_Y * 2)
+                            },
+                            sumHalfCupboardDepth : {
+                                value : utils.decimalRound(frameY + halfCupboardDepthPx, frnConst.DECIMAL_ROUND_EXP),
+                                sumThicknessPx : {
+                                    value : utils.decimalRound(frameY + halfCupboardDepthPx + thicknessPx, frnConst.DECIMAL_ROUND_EXP)
+                                },
+                                subThicknessPx : {
+                                    value : utils.decimalRound(frameY + halfCupboardDepthPx - thicknessPx, frnConst.DECIMAL_ROUND_EXP)
+                                },
+                                sumRearHeight : {
+                                    value : utils.decimalRound(frameY - halfCupboardDepthPx + cupboardHeightPx,
+                                        frnConst.DECIMAL_ROUND_EXP),
+                                    subThicknessPx : {
+                                        value : utils.decimalRound(frameY - halfCupboardDepthPx + cupboardHeightPx - thicknessPx,
+                                            frnConst.DECIMAL_ROUND_EXP)
+                                    },
+                                    subShelveShiftFactor : {
+                                        value :
+                                            utils.decimalRound(frameY - halfCupboardDepthPx + cupboardHeightPx - shelveShiftFactor,
+                                                frnConst.DECIMAL_ROUND_EXP),
+                                        subThicknessPx : {
+                                            value :
+                                                utils.decimalRound(
+                                                    frameY - halfCupboardDepthPx + cupboardHeightPx - shelveShiftFactor - thicknessPx,
+                                                    frnConst.DECIMAL_ROUND_EXP)
+                                        }
+                                    }
+                                }
+                            },
+                            sumHalfFrameHeight : {
+                                value : utils.decimalRound(constGr.DEFAULT_GRAPHIC_Y + (cupboardHeightPx / 2), frnConst.DECIMAL_ROUND_EXP)
+                            },
+                            sumFrameHeight : {
+                                value : utils.decimalRound(frameY + cupboardHeightPx, frnConst.DECIMAL_ROUND_EXP),
+                                subHalfCupboardDepth : {
+                                    value :
+                                        utils.decimalRound(frameY + cupboardHeightPx - halfCupboardDepthPx, frnConst.DECIMAL_ROUND_EXP),
+                                    subThicknessPx : {
+                                        value :
+                                            utils.decimalRound(frameY + cupboardHeightPx - halfCupboardDepthPx - thicknessPx,
+                                                frnConst.DECIMAL_ROUND_EXP)
+                                    },
+                                    subShelveShiftFactor: {
+                                        value: utils.decimalRound(frameY + cupboardHeightPx - halfCupboardDepthPx - shelveShiftFactor, frnConst.DECIMAL_ROUND_EXP)
+                                    }
+                                },
+                                subThicknessPx : {
+                                    value : utils.decimalRound(frameY + cupboardHeightPx - thicknessPx, frnConst.DECIMAL_ROUND_EXP)
+                                },
+                                subShelveShiftFactor: {
+                                    value: utils.decimalRound(frameY + cupboardHeightPx - shelveShiftFactor, frnConst.DECIMAL_ROUND_EXP),
+                                    sumThicknessPx : {
+                                        value : utils.decimalRound(frameY + cupboardHeightPx - shelveShiftFactor + thicknessPx, frnConst.DECIMAL_ROUND_EXP)
+                                    }
+                                }
+                            }
+                        },
+                        cupboardHeightPx : {
+                            value : cupboardHeightPx,
+                            subCupboardDepthPx : {
+                                value : utils.decimalRound(cupboardHeightPx - cupboardDepthPx, frnConst.DECIMAL_ROUND_EXP),
+                                halfSubCupboardDepthPx : {
+                                    value : utils.decimalRound(((cupboardHeightPx - cupboardDepthPx) / 2),
+                                        frnConst.DECIMAL_ROUND_EXP)
+                                },
+                                subDoubleThicknessPx : {
+                                    value : utils.decimalRound(cupboardHeightPx - cupboardDepthPx - (thicknessPx * 2),
+                                        frnConst.DECIMAL_ROUND_EXP)
+                                }
+                            }
+                        },
+                        cupboardDepthPx : {
+                            value : cupboardDepthPx,
+                            halfCupboardDepthPx : {
+                                value : utils.decimalRound(halfCupboardDepthPx, frnConst.DECIMAL_ROUND_EXP)
+                            }
+                        },
+                        thicknessPx : {
+                            value : thicknessPx,
+                            doubleThicknessPx : {
+                                value : utils.decimalRound((thicknessPx * 2), frnConst.DECIMAL_ROUND_EXP)
+                            }
+                        },
+                        cupboardWidthPx : {
+                            value : cupboardWidthPx,
+                            subCupboardDepthPx : {
+                                value : utils.decimalRound(cupboardWidthPx - cupboardDepthPx, frnConst.DECIMAL_ROUND_EXP),
+                                subThicknessPx : {
+                                    value : utils.decimalRound(cupboardWidthPx - cupboardDepthPx - thicknessPx,
+                                        frnConst.DECIMAL_ROUND_EXP)
+                                }
+                            },
+                            sumThicknessPx : {
+                                value : utils.decimalRound(cupboardWidthPx + thicknessPx, frnConst.DECIMAL_ROUND_EXP),
+                                subTwo : {
+                                    value : utils.decimalRound(cupboardWidthPx + thicknessPx - 2, frnConst.DECIMAL_ROUND_EXP)
+                                }
+                            }
+                        }
+                    };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return artmTree;</span>
+            },
+&nbsp;
+            makeConstrDataObject : <span class="fstat-no" title="function not covered" >function(fcdo) {</span>
+<span class="cstat-no" title="statement not covered" >                var artmTree = fcdo.artmTree,</span>
+                    currentEdgeColor = fcdo.currentEdgeColor,
+                    currentMaterialColor = fcdo.currentMaterialColor,
+                    currentDarkerMatColor = fcdo.currentDarkerMatColor,
+                    borderSize = fcdo.borderSize,
+&nbsp;
+                    showLeftWall = true,
+                    showRightWall = true,
+                    leftShelvesArray = [],
+                    rightShelvesArray = [],
+                    storageFrnConstrDataObject = JSON.parse(
+                        windowObject.localStorage.getItem(frnConstr.Const.LocalStorage.FRN_CONSTR_DATA_OBJECT)),
+&nbsp;
+                    constrData = {
+                        rearWall : {
+                            key : constAppKeys.REAR_WALL_KEY,
+                            enabled : fcdo.rearChkBox,
+                            x : artmTree.frameX.sumLeftShelveWidthPx.sumThicknessPx.sumHalfCupboardDepth.value,
+                            y : artmTree.frameY.sumHalfCupboardDepth.value,
+                            width : artmTree.cupboardWidthPx.subCupboardDepthPx.subThicknessPx.value,
+                            height : artmTree.cupboardHeightPx.subCupboardDepthPx.value,
+                            borderSize : 1,
+                            borderColor : currentEdgeColor,
+                            borderAlpha : 1,
+                            fillColor : currentMaterialColor,
+                            fillAlpha : 1
+                        },
+                        ceiling : {
+                            key : constAppKeys.CEILING_KEY,
+                            enabled : fcdo.ceilingChkBox,
+                            borderSize : borderSize,
+                            borderColor : currentEdgeColor,
+                            borderAlpha : 1,
+                            line : {
+                                pt1 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.value,
+                                    y : artmTree.frameY.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.value
+                                }
+                            },
+                            polygon : {
+                                pt1 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.sumThicknessPx.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.value,
+                                    y : artmTree.frameY.sumThicknessPx.value
+                                },
+                                pt3 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.subHalfCupboardDepth.subThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumThicknessPx.value
+                                },
+                                pt4 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumHalfCupboardDepth.sumDoubleThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumThicknessPx.value
+                                },
+                                fillColor : currentDarkerMatColor,
+                                fillAlpha : 1
+                            },
+                            rect : {
+                                x : artmTree.frameX.sumLeftShelveWidthPx.sumOne.value,
+                                y : artmTree.frameY.value,
+                                width : artmTree.cupboardWidthPx.sumThicknessPx.subTwo.value,
+                                height : artmTree.thicknessPx.value,
+                                fillColor : currentMaterialColor,
+                                fillAlpha : 1
+                            }
+                        },
+                        floor : {
+                            key : constAppKeys.FLOOR_KEY,
+                            enabled : fcdo.floorChkBox,
+                            borderSize : borderSize,
+                            borderColor : currentEdgeColor,
+                            borderAlpha : 1,
+                            line : {
+                                pt1 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.subShelveShiftFactor.sumThicknessPx.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.subShelveShiftFactor.sumThicknessPx.value
+                                }
+                            },
+                            polygon : {
+                                pt1 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.subShelveShiftFactor.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumHalfCupboardDepth.sumDoubleThicknessPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.subHalfCupboardDepth.subShelveShiftFactor.value
+                                },
+                                pt3 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.subHalfCupboardDepth.subThicknessPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.subHalfCupboardDepth.subShelveShiftFactor.value
+                                },
+                                pt4 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumOne.value,
+                                    y : artmTree.frameY.sumFrameHeight.subShelveShiftFactor.value
+                                },
+                                fillColor : currentDarkerMatColor,
+                                fillAlpha : 1
+                            },
+                            rect : {
+                                x : artmTree.frameX.sumLeftShelveWidthPx.sumOne.value,
+                                y : artmTree.frameY.sumFrameHeight.subShelveShiftFactor.value,
+                                width : artmTree.cupboardWidthPx.sumThicknessPx.subTwo.value,
+                                height : artmTree.thicknessPx.value,
+                                fillColor : currentMaterialColor,
+                                fillAlpha : 1
+                            }
+                        },
+                        leftWall : {
+                            key : constAppKeys.LEFT_WALL_KEY,
+                            enabled : showLeftWall,
+                            borderSize : borderSize,
+                            borderColor : currentEdgeColor,
+                            borderAlpha : 1,
+                            polygon : {
+                                pt1 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumHalfCupboardDepth.sumDoubleThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.value
+                                },
+                                pt3 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumHalfCupboardDepth.sumDoubleThicknessPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.subHalfCupboardDepth.value
+                                },
+                                pt4 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.value
+                                },
+                                fillColor : currentDarkerMatColor,
+                                fillAlpha : 1
+                            },
+                            rect : {
+                                x : artmTree.frameX.sumLeftShelveWidthPx.value,
+                                y : artmTree.frameY.value,
+                                width : artmTree.thicknessPx.value,
+                                height : artmTree.cupboardHeightPx.value,
+                                fillColor : currentMaterialColor,
+                                fillAlpha : 1
+                            }
+                        },
+                        rightWall : {
+                            key : constAppKeys.RIGHT_WALL_KEY,
+                            enabled : showRightWall,
+                            borderSize : borderSize,
+                            borderColor : currentEdgeColor,
+                            borderAlpha : 1,
+                            polygon : {
+                                pt1 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.subHalfCupboardDepth.subThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.value,
+                                    y : artmTree.frameY.value
+                                },
+                                pt3 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.value,
+                                    y : artmTree.frameY.sumFrameHeight.value
+                                },
+                                pt4 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.subHalfCupboardDepth.subThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumRearHeight.value
+                                },
+                                fillColor : currentDarkerMatColor,
+                                fillAlpha : 1
+                            },
+                            rect : {
+                                x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.value,
+                                y : artmTree.frameY.value,
+                                width : artmTree.thicknessPx.value,
+                                height : artmTree.cupboardHeightPx.value,
+                                fillColor : currentMaterialColor,
+                                fillAlpha : 1
+                            }
+                        },
+                        leftShelveWall : {
+                            key : constAppKeys.LEFT_SHELVE_WALL_KEY,
+                            enabled : fcdo.leftShelveChkBox,
+                            borderSize : borderSize,
+                            borderColor : currentEdgeColor,
+                            borderAlpha : 1,
+                            polygon : {
+                                pt1 : {
+                                    x : artmTree.frameY.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumThicknessPx.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumThicknessPx.value
+                                },
+                                cp : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.value,
+                                    y : artmTree.frameY.sumHalfFrameHeight.value
+                                },
+                                pt3 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumRearHeight.subThicknessPx.value
+                                },
+                                pt4 : {
+                                    x : artmTree.frameY.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumRearHeight.subThicknessPx.value
+                                },
+                                fillColor : currentDarkerMatColor,
+                                fillAlpha : constGr.DEFAULT_SHADOW_ALPHA
+                            },
+                            rect : {
+                                x : artmTree.frameX.value,
+                                y : artmTree.frameY.sumHalfCupboardDepth.value,
+                                width : artmTree.leftShelveWidthPx.value,
+                                height : artmTree.cupboardHeightPx.subCupboardDepthPx.value,
+                                fillColor : currentMaterialColor,
+                                fillAlpha : 1
+                            },
+                            shelvesData : {
+                                key : constAppKeys.LEFT_SHELVE_KEY,
+                                frameHeight : artmTree.cupboardHeightPx.value,
+                                halfCupboardDepth : artmTree.cupboardDepthPx.halfCupboardDepthPx.value,
+                                rearHeight : artmTree.cupboardHeightPx.subCupboardDepthPx.value,
+                                thickness : artmTree.thicknessPx.value,
+                                borderColor : currentEdgeColor,
+                                frontColor : currentMaterialColor,
+                                areaColor : currentDarkerMatColor
+                            }
+                        },
+                        rightShelveWall : {
+                            key : constAppKeys.RIGHT_SHELVE_WALL_KEY,
+                            enabled : fcdo.rightShelveChkBox,
+                            borderSize : borderSize,
+                            borderColor : currentEdgeColor,
+                            borderAlpha : 1,
+                            polygon : {
+                                pt1 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumThicknessPx.sumRightShelveWidthPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumThicknessPx.value
+                                },
+                                pt2 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumThicknessPx.value
+                                },
+                                cp : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfFrameHeight.value
+                                },
+                                pt3 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumThicknessPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumRearHeight.subThicknessPx.value
+                                },
+                                pt4 : {
+                                    x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumThicknessPx.sumRightShelveWidthPx.value,
+                                    y : artmTree.frameY.sumHalfCupboardDepth.sumRearHeight.subThicknessPx.value
+                                },
+                                fillColor : currentDarkerMatColor,
+                                fillAlpha : constGr.DEFAULT_SHADOW_ALPHA
+                            },
+                            rect : {
+                                x : artmTree.frameX.sumLeftShelveWidthPx.sumCupboardWidthPx.sumThicknessPx.value,
+                                y : artmTree.frameY.sumHalfCupboardDepth.value,
+                                width : artmTree.rightShelveWidthPx.value,
+                                height : artmTree.cupboardHeightPx.subCupboardDepthPx.value,
+                                fillColor : currentMaterialColor,
+                                fillAlpha : 1
+                            },
+                            shelvesData : {
+                                key : constAppKeys.RIGHT_SHELVE_KEY,
+                                frameHeight : artmTree.cupboardHeightPx.value,
+                                halfCupboardDepth : artmTree.cupboardDepthPx.halfCupboardDepthPx.value,
+                                rearHeight : artmTree.cupboardHeightPx.subCupboardDepthPx.value,
+                                thickness : artmTree.thicknessPx.value,
+                                borderColor : currentEdgeColor,
+                                frontColor : currentMaterialColor,
+                                areaColor : currentDarkerMatColor
+                            }
+                        }
+                    };
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (utils.isTruthy(storageFrnConstrDataObject.constrData)) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    fcdo.constrData = storageFrnConstrDataObject.constrData;</span>
+&nbsp;
+                } else {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    fcdo.constrData = constrData;</span>
+&nbsp;
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                fcdo.constrData.shelveSlotMatrix =</span>
+                    ismUtils.makeInnerPartsMatrix(
+                        fcdo.constrData.ceiling.enabled,
+                        fcdo.constrData.floor.enabled,
+                        fcdo.constrData.leftWall.enabled,
+                        fcdo.constrData.shelveSlotMatrix,
+                        fcdo.maxNumOfInnerShelves,
+                        fcdo.maxNumOfBeams);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                leftShelvesArray = (utils.isTruthy(fcdo.constrData.leftShelveWall.shelvesData.shelves) ?</span>
+                    fcdo.constrData.leftShelveWall.shelvesData.shelves : []);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                rightShelvesArray = (utils.isTruthy(fcdo.constrData.rightShelveWall.shelvesData.shelves) ?</span>
+                    fcdo.constrData.rightShelveWall.shelvesData.shelves : []);
+&nbsp;
+                // left shelve slots
+<span class="cstat-no" title="statement not covered" >                fcdo.constrData.leftShelveWall.shelvesData.shelves = this.createLeftWallSlots(fcdo, leftShelvesArray);</span>
+&nbsp;
+                // right shelve slots
+<span class="cstat-no" title="statement not covered" >                fcdo.constrData.rightShelveWall.shelvesData.shelves = this.createRightWallSlots(fcdo, rightShelvesArray);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return constrData;</span>
+            },
+&nbsp;
+            shelveSlotObject : <span class="fstat-no" title="function not covered" >function(x, y, shiftX, shiftY, busy) {</span>
+<span class="cstat-no" title="statement not covered" >                return {</span>
+                    x : x,
+                    y : y,
+                    shiftX : shiftX,
+                    shiftY : shiftY,
+                    busy : busy
+                };
+            },
+&nbsp;
+            leftShelveSlot : <span class="fstat-no" title="function not covered" >function(fcdo, busy, shiftY) {</span>
+<span class="cstat-no" title="statement not covered" >                return this.shelveSlotObject(0, 0, utils.decimalRound(fcdo.artmTree.leftShelveWidthPx.value, frnConst.DECIMAL_ROUND_EXP), shiftY, busy);</span>
+            },
+&nbsp;
+            rightShelveSlot : <span class="fstat-no" title="function not covered" >function(fcdo, busy, shiftY) {</span>
+<span class="cstat-no" title="statement not covered" >                return this.shelveSlotObject(fcdo.artmTree.fullWidthPx.sumThicknessPx.value, 0,</span>
+                    fcdo.artmTree.fullWidthPx.sumThicknessPx.subRightShelveWidthPx.value, shiftY, busy);
+            },
+&nbsp;
+            createLeftWallSlots : <span class="fstat-no" title="function not covered" >function(fcdo, busyArray) {</span>
+<span class="cstat-no" title="statement not covered" >                var i = 0,</span>
+                    artmTree = fcdo.artmTree,
+                    shelveShiftFactor = fcdo.shelveShiftFactor,
+                    maxNumOfShelves = fcdo.maxNumOfShelves,
+                    halfNumOfShelves = utils.decimalRound((maxNumOfShelves / 2), 0),
+                    currentNumOfShelves = busyArray.length,
+                    shelves = [];
+&nbsp;
+                /*if (currentNumOfShelves === maxNumOfShelves) {
+&nbsp;
+&nbsp;
+                    //TODO check this code it should work with saving the shelves in localStorage
+                    shelves.push(this.leftShelveSlot(fcdo, busyArray[0].busy, utils.decimalRound(artmTree.halfCupboardDepthPx.value,
+                        frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+                    for ( i = 1; i &lt; halfNumOfShelves; i += 1) {
+                        shelves.push(this.leftShelveSlot(fcdo, busyArray[i].busy,
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.value + (shelveShiftFactor * i), frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+                    if (maxNumOfShelves % 2 !== 0) {
+                        shelves.push(this.leftShelveSlot(fcdo, busyArray[halfNumOfShelves].busy,
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.sumThicknessPx.value + (shelveShiftFactor * halfNumOfShelves),
+                                frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+                    for ( i = halfNumOfShelves + (maxNumOfShelves % 2 !== 0 ? 1 : 0); i &lt; maxNumOfShelves - 1; i += 1) {
+                        shelves.push(this.leftShelveSlot(fcdo, busyArray[i].busy,
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.sumThicknessPx.value + (shelveShiftFactor * i),
+                                frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+                    shelves.push(this.leftShelveSlot(fcdo, busyArray[maxNumOfShelves - 1].busy,
+                        utils.decimalRound(artmTree.halfCupboardDepthPx.sumRearHeight.subShelveShiftFactor.sumThicknessPx.value,
+                            frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+                } else */<span class="cstat-no" title="statement not covered" >if (currentNumOfShelves === 0) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    shelves.push(this.leftShelveSlot(fcdo, true,</span>
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.value, frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    for ( i = 1; i &lt; halfNumOfShelves; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                        shelves.push(this.leftShelveSlot(fcdo,</span>
+                            false,
+                                utils.decimalRound(artmTree.halfCupboardDepthPx.value + (shelveShiftFactor * i),
+                                    frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    for ( i = halfNumOfShelves; i &lt; maxNumOfShelves - 1; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                        shelves.push(this.leftShelveSlot(fcdo, false,</span>
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.sumThicknessPx.value + (shelveShiftFactor * i),
+                                frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    shelves.push(this.leftShelveSlot(fcdo, true,</span>
+                        utils.decimalRound(artmTree.halfCupboardDepthPx.sumRearHeight.subShelveShiftFactor.sumThicknessPx.value,
+                            frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                console.log(shelves.length + ", " + maxNumOfShelves);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return shelves;</span>
+            },
+&nbsp;
+            createRightWallSlots : <span class="fstat-no" title="function not covered" >function(fcdo, busyArray) {</span>
+<span class="cstat-no" title="statement not covered" >                var i = 0,</span>
+                    artmTree = fcdo.artmTree,
+                    maxNumOfShelves = fcdo.maxNumOfShelves,
+                    shelveShiftFactor = fcdo.shelveShiftFactor,
+                    shelves = [],
+                    currentNumOfShelves = busyArray.length,
+                    halfNumOfShelves = utils.decimalRound((maxNumOfShelves / 2), 0);
+&nbsp;
+                /*
+                 //TODO check this code it should work with saving the shelves in localStorage
+                 if (currentNumOfShelves &gt; maxNumOfShelves) {
+&nbsp;
+                    shelves.push(this.rightShelveSlot(fcdo, busyArray[0].busy,
+                        utils.decimalRound(artmTree.halfCupboardDepthPx.value, frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+                    for ( i = 1; i &lt; halfNumOfShelves; i += 1) {
+                        shelves.push(this.rightShelveSlot(fcdo, busyArray[i].busy, utils.decimalRound((
+                            artmTree.halfCupboardDepthPx.value + (shelveShiftFactor * i)), frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+                    if (maxNumOfShelves % 2 !== 0) {
+                        shelves.push(this.rightShelveSlot(fcdo, busyArray[halfNumOfShelves].busy,
+                            utils.decimalRound((artmTree.halfCupboardDepthPx.sumThicknessPx.value + (shelveShiftFactor * halfNumOfShelves)),
+                            frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+                    }
+&nbsp;
+                    for ( i = halfNumOfShelves + (maxNumOfShelves % 2 !== 0 ? 1 : 0); i &lt; maxNumOfShelves - 1; i += 1) {
+                        shelves.push(this.rightShelveSlot(fcdo, busyArray[i].busy,
+                            utils.decimalRound((artmTree.halfCupboardDepthPx.sumThicknessPx.value + (shelveShiftFactor * i)),
+                            frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+                    shelves.push(this.rightShelveSlot(fcdo, busyArray[maxNumOfShelves - 1].busy,
+                        utils.decimalRound(artmTree.halfCupboardDepthPx.sumRearHeight.subShelveShiftFactor.sumThicknessPx.value,
+                        frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+                } else */<span class="cstat-no" title="statement not covered" >if (currentNumOfShelves === 0) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    shelves.push(this.rightShelveSlot(fcdo, true,</span>
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.value, frnConst.DECIMAL_ROUND_EXP)));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    for ( i = 1; i &lt; halfNumOfShelves; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                        shelves.push(this.rightShelveSlot(fcdo, false,</span>
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.value + (shelveShiftFactor * i),
+                                frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    for ( i = halfNumOfShelves; i &lt; maxNumOfShelves - 1; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                        shelves.push(this.rightShelveSlot(fcdo, false,</span>
+                            utils.decimalRound(artmTree.halfCupboardDepthPx.sumThicknessPx.value + (shelveShiftFactor * i),
+                            frnConst.DECIMAL_ROUND_EXP)));
+                    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    shelves.push(this.rightShelveSlot(fcdo, true,</span>
+                        utils.decimalRound(artmTree.halfCupboardDepthPx.sumRearHeight.subShelveShiftFactor.sumThicknessPx.value,
+                        frnConst.DECIMAL_ROUND_EXP)));
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                console.log(shelves.length + ", " + maxNumOfShelves);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                return shelves;</span>
+            }
+        };
+    }(window, window.FrnConstr, Phaser, $)));</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 26 2016 18:27:19 GMT+0200 (CEST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

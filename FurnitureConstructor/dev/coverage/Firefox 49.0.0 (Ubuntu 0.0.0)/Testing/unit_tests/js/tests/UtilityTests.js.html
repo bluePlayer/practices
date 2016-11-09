@@ -1,0 +1,2648 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Testing/unit_tests/js/tests/UtilityTests.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">Testing/unit_tests/js/tests/</a> UtilityTests.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44.24% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>73/165</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">12.5% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.88% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44.24% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>73/165</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816
+817
+818
+819
+820
+821
+822
+823
+824
+825
+826
+827
+828
+829
+830
+831
+832
+833
+834
+835
+836
+837
+838
+839
+840
+841
+842
+843
+844
+845
+846
+847
+848
+849
+850
+851
+852
+853
+854
+855
+856
+857
+858
+859
+860
+861
+862</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function runTests(qunit, frnConstrObj, phaser) {
+    'use strict';
+&nbsp;
+    var utils = frnConstrObj.Utility,
+        frnConst = frnConstrObj.Const,
+        frnConstGr = frnConst.Graphics,
+        frnConstApp = frnConst.Application,
+        frnConstAppKeys = frnConstApp.Keys,
+        y = frnConstGr.DEFAULT_GRAPHIC_Y,
+        millsPerPixelForDepth = frnConstApp.FrnData.millsPerPixelForDepth.DEFAULT_VAL,
+        millPerPixel = frnConstApp.FrnData.millsPerPixel.DEFAULT_VAL,
+        cupboardHeight = frnConstApp.FrnData.cupboardHeight.DEFAULT_VAL,
+        cupboardHeightPx = utils.convertMillsToPixels(cupboardHeight, millPerPixel),
+        cupboardDepth = frnConstApp.FrnData.cupboardDepth.DEFAULT_VAL,
+        cupboardDepthPx = utils.convertMillsToPixels(cupboardDepth, millsPerPixelForDepth),
+        halfCupboardDepthPx = utils.decimalRound((cupboardDepthPx / 2), frnConst.DECIMAL_ROUND_EXP),
+        halfCupboardHeightPx = utils.decimalRound((cupboardHeightPx / 2), frnConst.DECIMAL_ROUND_EXP),
+        halfRearHeightPx = cupboardHeightPx - cupboardDepthPx,
+        lowerYBound = 0,
+        upperYBound = 0,
+        hashColorKey = "",
+        defaultColorShiftPercent = frnConstGr.DEFAULT_COLOR_SHIFT_PERCENT,
+        forInAssertFunction = null,
+        listColorsInArray = null,
+        logMyProperties = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            console.log("UtilityTests - Mills per pixel: " + millPerPixel +</span>
+                        ", mills per pixel for depth: " + millsPerPixelForDepth +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", rearHeight/2: " + halfRearHeightPx +
+                        ", lowerY: " + lowerYBound +
+                        ", upperY: " + upperYBound);
+        },
+&nbsp;
+        /**
+         * @method logForInnerShelveSlotMatrix
+         * @param {object} details contains:
+         * result:boolean,
+         * actual: object, expected: object,
+         * message: string, source: string, module: string, name: string,
+         * runtime: number
+         */
+        logForUtilityTests = function (details) {
+            var loc = "",
+                output = "";
+&nbsp;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (details.result) {
+                return;
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            loc = details.module + ": " + details.name + ": ";</span>
+<span class="cstat-no" title="statement not covered" >            output = "FAILED: " + loc + (details.message ? details.message + ", " : "");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (details.actual) {</span>
+<span class="cstat-no" title="statement not covered" >                output += "expected: " + details.expected + ", actual: " + details.actual;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (details.source) {</span>
+<span class="cstat-no" title="statement not covered" >                output += details.source;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            console.log(output);</span>
+        };
+&nbsp;
+    qunit.log(logForUtilityTests);
+&nbsp;
+    qunit.module("countNodesInObject(obj)");
+    // TODO countNodesInObject(obj) is not working - fix it
+    qunit
+        .cases
+        .init([
+            {obj: {node1: 1, node2: 2, node3: 3}, expected: 0},
+            {obj: {node1: {node4: 4}, node2: 2, node3: 3}, expected: 1},
+            {obj: {node1: {node4: 4}, node2: 2, node3: {node5:5 , node6: 6}}, expected: 2},
+            {obj: {node1: {node4: {node8: 8}}, node2: 2, node3: {node5: {node7: 7} , node6: {node9: 9}}}, expected: 4}
+        ])
+        .test("Counts how many subobjects are there in the given one. Should traverse the whole object tree.", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.countNodesInObject(params.obj);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("rowOrColSet(rowOrCol, numOfRowsOrCols)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {rowOrCol: 5, numOfRowsOrCols: 10, expected: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14]},
+            {rowOrCol: 3, numOfRowsOrCols: 10, expected: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]},
+            {rowOrCol: 2, numOfRowsOrCols: 10, expected: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]},
+            {rowOrCol: 0, numOfRowsOrCols: 10, expected: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]},
+            {rowOrCol: 7, numOfRowsOrCols: 5,  expected: [7, 8, 9, 10, 11]},
+            {rowOrCol: 9, numOfRowsOrCols: 3,  expected: [9, 10, 11]},
+            {rowOrCol: 6, numOfRowsOrCols: 5,  expected: [6, 7, 8, 9, 10]},
+            {rowOrCol: 6, numOfRowsOrCols: 2,  expected: [6, 7]},
+            {rowOrCol: 4, numOfRowsOrCols: 8,  expected: [4, 5, 6, 7, 8, 9, 10, 11]},
+            {rowOrCol: 7, numOfRowsOrCols: 7,  expected: [7, 8, 9, 10, 11, 12, 13]},
+            {rowOrCol: 8, numOfRowsOrCols: 8,  expected: [8, 9, 10, 11, 12, 13, 14, 15]}
+        ])
+        .test("Should return an array of indexes starting with rowOrCol sequentially to numOfRowsOrCols.", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.rowOrColSet(params.rowOrCol, params.numOfRowsOrCols);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, params.expected, "expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("rowOrColShiftMax(rowOrCol, numOfRowsOrCols, maxValue)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {rowOrCol: 5, numOfRowsOrCols: 10, maxValue: 3, expected: 3},
+            {rowOrCol: 3, numOfRowsOrCols: 10, maxValue: 3, expected: 3},
+            {rowOrCol: 2, numOfRowsOrCols: 10, maxValue: 3, expected: 3},
+            {rowOrCol: 0, numOfRowsOrCols: 10, maxValue: 3, expected: 3},
+            {rowOrCol: 7, numOfRowsOrCols: 10, maxValue: 3, expected: 2},
+            {rowOrCol: 9, numOfRowsOrCols: 10, maxValue: 3, expected: 0},
+            {rowOrCol: 6, numOfRowsOrCols: 10, maxValue: 3, expected: 3},
+            {rowOrCol: 6, numOfRowsOrCols: 10, maxValue: 5, expected: 3},
+            {rowOrCol: 4, numOfRowsOrCols: 10, maxValue: 5, expected: 5},
+            {rowOrCol: 7, numOfRowsOrCols: 10, maxValue: 5, expected: 2},
+            {rowOrCol: 8, numOfRowsOrCols: 10, maxValue: 5, expected: 1}
+        ])
+        .test("Should return number of max. value of rows/columns or number of rows/columns until numOfRowsOrCols.", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.rowOrColShiftMax(params.rowOrCol, params.numOfRowsOrCols, params.maxValue);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("rowOrColShiftMin(rowOrCol, minValue)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {rowOrCol: 5, minValue: 3, expected: 3},
+            {rowOrCol: 3, minValue: 3, expected: 3},
+            {rowOrCol: 2, minValue: 3, expected: 2},
+            {rowOrCol: 0, minValue: 3, expected: 0},
+            {rowOrCol: 9, minValue: 3, expected: 3},
+            {rowOrCol: 10, minValue: 3, expected: 3},
+            {rowOrCol: 9, minValue: 10, expected: 9}
+&nbsp;
+        ])
+        .test("Should return number of min. value of rows/columns or number of rows/columns until zero.", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.rowOrColShiftMin(params.rowOrCol, params.minValue);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("zeroBasedRange(value, minRange, maxRange)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {value: 5, minRange: 0, maxRange: 10, expected: 5},
+            {value: -5, minRange: 0, maxRange: 10, expected: 0},
+            {value: 12, minRange: 0, maxRange: 10, expected: 10},
+            {value: 10, minRange: 0, maxRange: 10, expected: 10},
+            {value: 0, minRange: 0, maxRange: 10, expected: 0},
+            {value: 5, minRange: 2, maxRange: 10, expected: 5},
+            {value: -5, minRange: 2, maxRange: 10, expected: 2},
+            {value: 12, minRange: 2, maxRange: 10, expected: 10},
+            {value: 10, minRange: 2, maxRange: 10, expected: 10},
+            {value: 2, minRange: 2, maxRange: 10, expected: 2},
+            {value: 5.5, minRange: 0, maxRange: 10, expected: 5.5},
+            {value: -5.5, minRange: 0, maxRange: 10, expected: 0},
+            {value: 12.12, minRange: 0, maxRange: 10, expected: 10},
+            {value: 10.1, minRange: 0, maxRange: 10, expected: 10},
+            {value: 0, minRange: 0, maxRange: 10, expected: 0},
+            {value: 5.5, minRange: 2, maxRange: 10, expected: 5.5},
+            {value: -5.5, minRange: 2, maxRange: 10, expected: 2},
+            {value: 12.12, minRange: 2, maxRange: 10, expected: 10},
+            {value: 10.1, minRange: 2, maxRange: 10, expected: 10},
+            {value: 2.2, minRange: 2, maxRange: 10, expected: 2.2}
+        ])
+        .test("should return minRange for lower value, maxRange - 1 for above value and given value if in range (minRange &lt;= value &lt; maxRange)", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.zeroBasedRange(params.value, params.minRange, params.maxRange);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("bubleSort(array, sortType), -1 is ASCENDING, 1 is DESCENDING");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {array: [1, 2, 9, 3, 4, 5, 6, 7, 8, 0], sortType: phaser.Group.SORT_ASCENDING, expected: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]},
+            {array: [1, 9, 9, 3, 3, 5, 6, 7, 7, 0], sortType: phaser.Group.SORT_ASCENDING, expected: [0, 1, 3, 3, 5, 6, 7, 7, 9, 9]},
+            {array: [-1, 0, -2, -9, -3, -8, -4, -7, -5, -6], sortType: phaser.Group.SORT_ASCENDING, expected: [-9, -8, -7, -6, -5, -4, -3, -2, -1, 0]},
+            {array: [-1, 0, -2, -9, -8, -8, -4, -4, -5, -5], sortType: phaser.Group.SORT_ASCENDING, expected: [-9, -8, -8, -5, -5, -4, -4, -2, -1, 0]},
+            {array: [5, -5, -4, 4, -3, 3, -2, 2, 1, -1, 0], sortType: phaser.Group.SORT_ASCENDING, expected: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]},
+            {array: [-5, -5, -4, 4, -3, -3, -2, 2, 1, -1, 0], sortType: phaser.Group.SORT_ASCENDING, expected: [-5, -5, -4, -3, -3, -2, -1, 0, 1, 2, 4]},
+            {array: [1.1, 2.2, 9.9, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 0], sortType: phaser.Group.SORT_ASCENDING, expected: [0, 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9]},
+            {array: [1, 2, 9, 3, 4, 5, 6, 7, 8, 0], sortType: phaser.Group.SORT_DESCENDING, expected: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]},
+            {array: [1, 0, 2, 9, 9, 8, 4, 4, 6, 6], sortType: phaser.Group.SORT_DESCENDING, expected: [9, 9, 8, 6, 6, 4, 4, 2, 1, 0]},
+            {array: [-1, 0, -2, -9, -3, -8, -4, -7, -5, -6], sortType: phaser.Group.SORT_DESCENDING, expected: [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]},
+            {array: [5, -5, -4, 4, -3, 3, -2, 2, 1, -1, 0], sortType: phaser.Group.SORT_DESCENDING, expected: [5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5]},
+            {array: [5, -5, 4, 4, -3, 3, 2, 2, 1, -1, 0], sortType: phaser.Group.SORT_DESCENDING, expected: [5, 4, 4, 3, 2, 2, 1, 0, -1, -3, -5]},
+            {array: [-5, -5, 4, -4, -3, -3, 2, 2, 1, -1, 0], sortType: phaser.Group.SORT_DESCENDING, expected: [4, 2, 2, 1, 0, -1, -3, -3, -4, -5, -5]},
+            {array: [1.1, 2.2, 9.9, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 0], sortType: phaser.Group.SORT_DESCENDING, expected: [9.9, 8.8, 7.7, 6.6, 5.5, 4.4, 3.3, 2.2, 1.1, 0]}
+        ])
+        .test("", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.bubleSort(parameters.array, parameters.sortType);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("makeShelveDataObject(x, y, shiftX, shiftY, frameHeight, halfCupboardDepth, rearHeight, thickness)");
+&nbsp;
+    qunit.module("convertTwoDimIndexesToOneDimIndex(cols, currentRow, currentCol)");
+    qunit
+        .cases
+        .init([
+            {twoDimArray: [[9, 8, 7], [6, 5, 4], [3, 2, 1]]},
+            {twoDimArray: [[9, 8, 7], [6, 5, 4], [3, 2, 1], [0, -1, -2]]},
+            {twoDimArray: [[9, 8, 7, 6], [5, 4, 3, 2], [1, 0, -1 , -2]]}
+        ])
+        .test("should convert two-dim array index [i][j] to one-dim array index [k]", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = 0,</span>
+                expected = 0,
+                i = 0, j = 0, k = 0,
+                twoDimArray = parameters.twoDimArray,
+                oneDimArray = [],
+                cols = twoDimArray[0].length;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            for (i = 0; i &lt; twoDimArray.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                for (j = 0; j &lt; twoDimArray[i].length; j += 1, k += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                    oneDimArray.push(twoDimArray[i][j]);</span>
+&nbsp;
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            k = 0;</span>
+<span class="cstat-no" title="statement not covered" >            for (i = 0; i &lt; twoDimArray.length; i += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                for (j = 0; j &lt; twoDimArray[i].length; j += 1, k += 1) {</span>
+<span class="cstat-no" title="statement not covered" >                    calculated = oneDimArray[utils.convertTwoDimIndexesToOneDimIndex(cols, i, j)];</span>
+<span class="cstat-no" title="statement not covered" >                    expected = oneDimArray[k];</span>
+<span class="cstat-no" title="statement not covered" >                    assert.equal(calculated, expected, "expected: " + expected + ", calculated: " + calculated);</span>
+                }
+            }
+&nbsp;
+        });
+&nbsp;
+    qunit.module("validateNumericFrnData(dataType, value)");
+&nbsp;
+    // validation tests for millimeters per pixel
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: 5, expected: 5},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: "5", expected: 5},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.MILLS_PER_PIXEL_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: 8, expected: 8},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: "8", expected: 8},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: 8.123456, expected: 8.123456},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: "8.123456", expected: 8.123456},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: 11, expected: 10},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_KEY, value: "11", expected: 10}
+        ])
+        .test("Mills per Pixel(min = 7, max = 10, default = 7)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    // validation tests for millimeters per pixel for depth
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: 11, expected: 16},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: "11", expected: 16},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: 18, expected: 18},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: "18", expected: 18},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: 18.123456, expected: 18.123456},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: "18.123456", expected: 18.123456},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: 23, expected: 20},
+             {dataType: frnConstApp.Keys.MILLS_PER_PIXEL_FOR_DEPTH_KEY, value: "23", expected: 20}
+        ])
+        .test("Mills per Pixel for Depth(min = 16, max = 20, default = 16)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    // validation tests for cupboard width
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: 500, expected: 700},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: "500", expected: 700},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.CUPBOARD_WIDTH_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: 1345, expected: 1345},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: "1345", expected: 1345},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: 1345.12345, expected: 1345.12345},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: "1345.12345", expected: 1345.12345},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: 5500, expected: 5000},
+             {dataType: frnConstApp.Keys.CUPBOARD_WIDTH_KEY, value: "5500", expected: 5000}
+        ])
+        .test("Cupboard Width(min = 700, max = 5000, default = 3000)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    // validation tests for cupboard height
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: 500, expected: 1000},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: "500", expected: 1000},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.CUPBOARD_HEIGHT_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: 1345, expected: 1345},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: "1345", expected: 1345},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: 1345.12345, expected: 1345.12345},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: "1345.12345", expected: 1345.12345},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: 3500, expected: 3000},
+             {dataType: frnConstApp.Keys.CUPBOARD_HEIGHT_KEY, value: "3500", expected: 3000}
+        ])
+        .test("Cupboard Height(min = 1000, max = 3000, default = 2500)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    // validation tests for cupboard depth
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: 150, expected: 500},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: "150", expected: 500},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.CUPBOARD_DEPTH_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: 675, expected: 675},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: "675", expected: 675},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: 675.12345, expected: 675.12345},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: "675.12345", expected: 675.12345},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: 1500, expected: 1000},
+             {dataType: frnConstApp.Keys.CUPBOARD_DEPTH_KEY, value: "1500", expected: 1000}
+        ])
+        .test("Cupboard Depth(min = 500, max = 1000, default = 700)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    // validation tests for left shelve width
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: 100, expected: 150},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: "100", expected: 150},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: 350, expected: 350},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: "350", expected: 350},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: 350.12345, expected: 350.12345},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: "350.12345", expected: 350.12345},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: 700, expected: 500},
+             {dataType: frnConstApp.Keys.LEFT_SHELVE_WIDTH_KEY, value: "700", expected: 500}
+        ])
+        .test("Left Shelve Width(min = 150, max = 500, default = 250)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    // validation tests for right shelve width
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: 100, expected: 150},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: "100", expected: 150},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: 350, expected: 350},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: "350", expected: 350},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: 350.12345, expected: 350.12345},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: "350.12345", expected: 350.12345},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: 700, expected: 500},
+             {dataType: frnConstApp.Keys.RIGHT_SHELVE_WIDTH_KEY, value: "700", expected: 500}
+        ])
+        .test("Right Shelve Width(min = 150, max = 500, default = 250)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    // validation tests for thickness
+    qunit
+        .cases
+        .init([
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: 3, expected: 5},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: "3", expected: 5},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: "~!@#$%^*()", expected: frnConstApp.FrnData[frnConstApp.Keys.THICKNESS_KEY].DEFAULT_VAL},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: 35, expected: 35},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: "35", expected: 35},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: 35.12345, expected: 35.12345},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: "35.12345", expected: 35.12345},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: 60, expected: 50},
+             {dataType: frnConstApp.Keys.THICKNESS_KEY, value: "60", expected: 50}
+        ])
+        .test("Thickness(min = 5, max = 50, default = 30)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.validateNumericFrnData(parameters.dataType, parameters.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, parameters.expected, "expected: " + parameters.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("isTruthy(value) function");
+&nbsp;
+    qunit.test("value = true", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = true,</span>
+            calculated = utils.isTruthy(true);
+<span class="cstat-no" title="statement not covered" >        assert.ok(calculated, "expected: " + expected + ", calculated: " + calculated);</span>
+    });
+&nbsp;
+    qunit
+        .cases
+        .init([
+             {value: false},
+             {value: ""},
+             {value: undefined},
+             {value: null},
+             {value: 0},
+             {value: NaN}
+        ])
+        .test("", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.isTruthy(params.value);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.notOk(calculated, "calculated: " + calculated + ", value: " + params.value);</span>
+        });
+&nbsp;
+    qunit.module("getRGBHexValue(hashString, length)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+             {t: 1, hashString: '#abcdef', length: frnConstGr.NUM_OF_COLOR_DIGITS, expected: "abcdef"},
+             {t: 2, hashString: 'abcdef', length: frnConstGr.NUM_OF_COLOR_DIGITS, expected: "abcdef"},
+             {t: 3, hashString: 'abcde#fghijx0123456789aaa', length: frnConstGr.NUM_OF_COLOR_DIGITS, expected: "abcdef"},
+             {t: 4, hashString: "122';;344#fghijx0123456789aaa", length: frnConstGr.NUM_OF_COLOR_DIGITS, expected: "122344"},
+             {t: 5, hashString: "@#$%caf**fee?;,;/'", length: frnConstGr.NUM_OF_COLOR_DIGITS, expected: "caffee"},
+             {t: 6, hashString: "avf", length: frnConstGr.NUM_OF_COLOR_DIGITS, expected: "0000af"},
+&nbsp;
+             {t: 7, hashString: "a", length: frnConstGr.NUM_OF_COLOR_CHANNEL_DIGITS, expected: "0a"},
+             {t: 8, hashString: "3a", length: frnConstGr.NUM_OF_COLOR_CHANNEL_DIGITS, expected: "3a"}
+        ])
+        .test("Returns string which contains only alpha-numeric chars of the given length. Spec. chars are avoided and chars above the length are ommited.", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.getRGBHexValue(params.hashString, params.length);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "test: " + params.t + ", expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("getDarkerHexColor(rgbString, prcnt)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {name: 'MAT_DARK_BLUE', hashValue: "3d6990", percent: defaultColorShiftPercent, expected: "3034988"},
+            {name: 'MAT_BLACK', hashValue: "000000", percent: defaultColorShiftPercent, expected: "000000"},
+            {name: 'BACKGROUND_COLOR', hashValue: "C0C0C0", percent: defaultColorShiftPercent, expected: "9474192"},
+            {name: 'MAT_DARK_BLUE', hashValue: "#3d6990", percent: defaultColorShiftPercent, expected: "3034988"},
+            {name: 'MAT_ANTIQUE_WHITE', hashValue: "#efcf9f", percent: defaultColorShiftPercent, expected: "11770743"},
+            {name: 'MAT_BLACK', hashValue: "#000000", percent: defaultColorShiftPercent, expected: "0"},
+            {name: 'MAT_WHITE', hashValue: "#ffffff", percent: defaultColorShiftPercent, expected: "12566463"},
+            {name: 'MAT_DARK_BROWN', hashValue: "#3b1901", percent: defaultColorShiftPercent, expected: "2888449"},
+            {name: 'MAT_GREY', hashValue: "#9c9c9c", percent: defaultColorShiftPercent, expected: "7697781"},
+            {name: 'MAT_RED', hashValue: "#bf1717", percent: defaultColorShiftPercent, expected: "9376017"},
+            {name: 'MAT_PURPLE', hashValue: "#ff00f7", percent: defaultColorShiftPercent, expected: "12517561"},
+            {name: 'MAT_GREEN', hashValue: "#569922", percent: defaultColorShiftPercent, expected: "4289306"},
+            {name: 'MAT_VIOLET', hashValue: "#744c78", percent: defaultColorShiftPercent, expected: "5716314"},
+            {name: 'MAT_BROWN', hashValue: "#8b592b", percent: defaultColorShiftPercent, expected: "6832928"},
+            {name: 'MAT_ORANGE', hashValue: "#f77511", percent: defaultColorShiftPercent, expected: "12146701"},
+            {name: 'MAT_YELLOW', hashValue: "#ffd000", percent: defaultColorShiftPercent, expected: "12557312"},
+            {name: 'MAT_BLUE', hashValue: "#01a2dd", percent: defaultColorShiftPercent, expected: "96934"},
+            {name: 'DOOR_BLACK', hashValue: "#211e1e", percent: defaultColorShiftPercent, expected: "1644311"},
+            {name: 'DOOR_LIGHT_GRAY', hashValue: "#bdb9b9", percent: defaultColorShiftPercent, expected: "9341835"},
+            {name: 'DOOR_BROWN', hashValue: "#573d2a", percent: defaultColorShiftPercent, expected: "4271648"},
+            {name: 'DOOR_LIGHT_BROWN', hashValue: "#ccbc56", percent: defaultColorShiftPercent, expected: "10063169"},
+            {name: 'DOOR_GRAY', hashValue: "#696969", percent: defaultColorShiftPercent, expected: "5197647"}
+        ])
+        .test("Should calculate hex/decimal value out of CSS value ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.getDarkerHexColor(params.hashValue, params.percent);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("getHexColor(hashString)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, name: '', hashValue: "#abcdef", expected: parseInt("abcdef", 16)},
+            {t: 2, name: '', hashValue: "#123456", expected: parseInt("123456", 16)},
+            {t: 3, name: '', hashValue: "#123abc", expected: parseInt("123abc", 16)},
+            {t: 4, name: '', hashValue: "123abc", expected: parseInt("123abc", 16)},
+            {t: 5, name: 'MAT_DARK_BLUE', hashValue: "#3d6990", expected: "4024720"},
+            {t: 6, name: 'MAT_ANTIQUE_WHITE', hashValue: "#efcf9f", expected: "15716255"},
+            {t: 7, name: 'MAT_BLACK', hashValue: "#000000", expected: "0"},
+            {t: 8, name: 'MAT_WHITE', hashValue: "#ffffff", expected: "16777215"},
+            {t: 9, name: 'MAT_DARK_BROWN', hashValue: "#3b1901", expected: "3873025"},
+            {t: 10, name: 'MAT_GREY', hashValue: "#9c9c9c", expected: "10263708"},
+            {t: 11, name: 'MAT_RED', hashValue: "#bf1717", expected: "12523287"},
+            {t: 12, name: 'MAT_PURPLE', hashValue: "#ff00f7", expected: "16711927"},
+            {t: 13, name: 'MAT_GREEN', hashValue: "#569922", expected: "5675298"},
+            {t: 14, name: 'MAT_VIOLET', hashValue: "#744c78", expected: "7621752"},
+            {t: 15, name: 'MAT_BROWN', hashValue: "#8b592b", expected: "9132331"},
+            {t: 16, name: 'MAT_ORANGE', hashValue: "#f77511", expected: "16217361"},
+            {t: 17, name: 'MAT_YELLOW', hashValue: "#ffd000", expected: "16764928"},
+            {t: 18, name: 'MAT_BLUE', hashValue: "#01a2dd", expected: "107229"},
+            {t: 19, name: 'DOOR_BLACK', hashValue: "#211e1e", expected: "2170398"},
+            {t: 20, name: 'DOOR_LIGHT_GRAY', hashValue: "#bdb9b9", expected: "12433849"},
+            {t: 21, name: 'DOOR_BROWN', hashValue: "#573d2a", expected: "5717290"},
+            {t: 22, name: 'DOOR_LIGHT_BROWN', hashValue: "#ccbc56", expected: "13417558"},
+            {t: 23, name: 'DOOR_GRAY', hashValue: "#696969", expected: "6908265"}
+        ])
+        .test("Should calculate hex value out of CSS value ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.getHexColor(params.hashValue);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "test: " + params.t + ", expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("getColor(colorType, hashColor)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {
+                t: 1, colorType: 'MATERIAL_COLOR_KEY', hashColor: frnConstGr.Colors.Material.MAT_BLACK,
+                colorName: 'DARK_GRAY_1', expected: frnConstGr.Colors.DARK_GRAY_1
+            },
+            {
+                t: 2, colorType: 'DARKER_COLOR_KEY',   hashColor: frnConstGr.Colors.Material.MAT_BLACK,
+                colorName: 'DEFAULT_EDGE_COLOR', expected: frnConstGr.Colors.DEFAULT_EDGE_COLOR
+            },
+            {
+                t: 3, colorType: 'EDGE_COLOR_KEY', hashColor: frnConstGr.Colors.Material.MAT_BLACK,
+                colorName: 'MATTERHORN', expected: frnConstGr.Colors.MATTERHORN
+            },
+            {
+                t: 4, colorType: 'default', hashColor: frnConstGr.Colors.Material.MAT_BLACK,
+                colorName: 'MATTERHORN', expected: frnConstGr.Colors.MATTERHORN
+            },
+            {
+                t: 5, colorType: 'MATERIAL_COLOR_KEY', hashColor: frnConstGr.Colors.Material.MAT_DARK_BLUE,
+                colorName: 'DARK_BLUE', expected: utils.getHexColor(frnConstGr.Colors.Material.MAT_DARK_BLUE)
+            },
+            {
+                t: 6, colorType: 'DARKER_COLOR_KEY', hashColor: frnConstGr.Colors.Material.MAT_DARK_BLUE,
+                colorName: 'DARK_BLUE', expected: utils.getDarkerHexColor(frnConstGr.Colors.Material.MAT_DARK_BLUE, frnConstGr.DEFAULT_COLOR_SHIFT_PERCENT)
+            },
+            {
+                t: 7, colorType: 'EDGE_COLOR_KEY', hashColor: frnConstGr.Colors.Material.MAT_DARK_BLUE,
+                colorName: 'DARK_BLUE', expected: frnConstGr.Colors.DEFAULT_EDGE_COLOR
+            }
+        ])
+        .test("Should calculate hex value out of CSS value ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.getColor(frnConstAppKeys[params.colorType], params.hashColor);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "test: " + params.t + ", expected: " + params.expected + ", calculated: " + calculated + ", color name: " + params.colorName);</span>
+        });
+&nbsp;
+    qunit.module("getDarkerStringColor(rgbString, prcnt)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, rgbString: "#ffffff", percent: 0, expected: "000000"},
+            {t: 1, rgbString: "#ffffff", percent: 25, expected: "404040"},
+            {t: 1, rgbString: "#ffffff", percent: 50, expected: "808080"},
+            {t: 1, rgbString: "#ffffff", percent: 75, expected: "BFBFBF"},
+            {t: 1, rgbString: "#3d6990", percent: 75, expected: "2E4F6C"}
+        ])
+        .test("Should return string representation of the given percent darker color", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.getDarkerStringColor(params.rgbString, params.percent).toUpperCase();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated, params.expected, "test: " + params.t + ", given: " + params.rgbString + ", expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("decimalRound(value, exp)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, value: "276.3465", digit: -3, expected: "276.347"},
+            {t: 2, value: "276.3464", digit: -3,  expected: "276.346"}
+        ])
+        .test("Returns decimal round to the given ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.decimalRound(params.value, params.digit);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(params.expected, calculated, "test: " + params.t + ", value: " + params.value + ", expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("decimalFloor(value, exp)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, value: "276.346999", digit: -3, expected: "276.346"}
+        ])
+        .test("Returns decimal round to the given ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.decimalFloor(params.value, params.digit);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(params.expected, calculated, "test: " + params.t + ", value: " + params.value + ", expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("decimalCeil(value, exp)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, value: "276.346999", digit: -3, expected: "276.347"}
+        ])
+        .test("Returns decimal round to the given ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.decimalCeil(params.value, params.digit);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(params.expected, calculated, "test: " + params.t + ", value: " + params.value + ", expected: " + params.expected + ", calculated: " + calculated);</span>
+        });
+&nbsp;
+    qunit.module("isTopCornerShelvesDrawn(lowerYBound, upperYBound, y)");
+&nbsp;
+    lowerYBound = y + halfCupboardDepthPx;
+    upperYBound = y + halfCupboardHeightPx;
+&nbsp;
+    qunit.test("y is equal to lowerYBound. (lowerYBound &lt;=  y &lt; upperYbound). expected = true.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = true,</span>
+            calculated = utils.isTopCornerShelvesDrawn(lowerYBound, upperYBound, lowerYBound);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.test("y is equal to upperYBound. (lowerYBound &lt;=  y &lt; upperYbound). expected = false.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = false,</span>
+            calculated = utils.isTopCornerShelvesDrawn(lowerYBound, upperYBound, upperYBound);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.test("y is lower than lowerYBound. (lowerYBound &lt;=  y &lt; upperYbound). expected = false.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = false,</span>
+            calculated = utils.isTopCornerShelvesDrawn(lowerYBound, upperYBound, lowerYBound - 2);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.test("y is between lowerYBound and upperYBound. (lowerYBound &lt;=  y &lt; upperYbound). expected = true.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = true,</span>
+            calculated = utils.isTopCornerShelvesDrawn(lowerYBound, upperYBound, lowerYBound + utils.decimalRound(upperYBound / 2, frnConst.DECIMAL_ROUND_EXP));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.module("isRectShelveDrawn(midPoint, y)");
+&nbsp;
+    qunit.test("y is equal to midPoint. (midPoint ==  y). expected = true.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var y = upperYBound,</span>
+            midPoint = upperYBound,
+            expected = true,
+            calculated = utils.isRectShelveDrawn(midPoint, y);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", midPoint: " + midPoint);
+    });
+&nbsp;
+    qunit.test("y is not equal to midPoint. (midPoint !=  y). expected = false.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var y = upperYBound,</span>
+            midPoint = utils.decimalRound(y / 2, frnConst.DECIMAL_ROUND_EXP),
+            expected = false,
+            calculated = utils.isRectShelveDrawn(midPoint, y);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", midPoint: " + midPoint);
+    });
+&nbsp;
+    qunit.module("isBottomCornerShelvesDrawn(lowerYBound, upperYBound, y)");
+&nbsp;
+    lowerYBound = utils.decimalRound(y + halfCupboardHeightPx, frnConst.DECIMAL_ROUND_EXP);
+    upperYBound = utils.decimalRound(lowerYBound + halfRearHeightPx, frnConst.DECIMAL_ROUND_EXP);
+&nbsp;
+    qunit.test("y equal to lowerYBound. (lowerYBound &lt;  y &lt;= upperYbound). expected = false.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = false,</span>
+            calculated = utils.isBottomCornerShelvesDrawn(lowerYBound, upperYBound, lowerYBound);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", halfRearHeight: " + halfRearHeightPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.test("y equal to upperYBound. (lowerYBound &lt;  y &lt;= upperYbound). expected = true.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = true,</span>
+            calculated = utils.isBottomCornerShelvesDrawn(lowerYBound, upperYBound, upperYBound);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.test("y is between lowerYBound and upperYBound. (lowerYBound &lt;  y &lt;= upperYbound). expected = true.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = true,</span>
+            calculated = utils.isBottomCornerShelvesDrawn(lowerYBound, upperYBound, lowerYBound + utils.decimalRound(halfRearHeightPx / 2, frnConst.DECIMAL_ROUND_EXP));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.test("y is bigger than upperYBound. (lowerYBound &lt;  y &lt;= upperYbound). expected = false.", <span class="fstat-no" title="function not covered" >function(assert) {</span>
+<span class="cstat-no" title="statement not covered" >        var expected = false,</span>
+            calculated = utils.isBottomCornerShelvesDrawn(lowerYBound, upperYBound, upperYBound + utils.decimalRound(halfRearHeightPx / 2, frnConst.DECIMAL_ROUND_EXP));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        assert.equal(calculated,</span>
+                        expected,
+                        "Calculated: " + calculated +
+                        ", expected: " + expected +
+                        ", y: " + y +
+                        ", height: " + cupboardHeightPx +
+                        ", depth: " + cupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", lowerY: " + lowerYBound +
+                        " upperY: " + upperYBound);
+    });
+&nbsp;
+    qunit.module("percentToSample(percent, sum)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, percent: 0, sum: 100, expected: 0},
+            {t: 2, percent: 100, sum: 100, expected: 100},
+            {t: 3, percent: 50, sum: 100, expected: 50},
+            {t: 4, percent: -10, sum: 100, expected: 10},
+            {t: 5, percent: 10, sum: -100, expected: 10},
+            {t: 6, percent: 23.456, sum: 2000, expected: 469.12},
+            {t: 7, percent: 2333.45678, sum: 2000, expected: 46669.136},
+            {t: 8, percent: 233.456899, sum: 2000, expected: 4669.138},
+            {t: 9, percent: -233.456899, sum: 2000, expected: 4669.138}
+        ])
+        .test("Returns decimal round to the given ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.percentToSample(params.percent, params.sum);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated,</span>
+                            params.expected,
+                            "test: " + params.t +
+                            ", calculated: " + calculated +
+                            ", expected: " + params.expected +
+                            ", percent: " + params.percent + "%" +
+                            ", sum: " + params.sum);
+        });
+&nbsp;
+    qunit.module("sampleToPercent(sample, sum)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, sample: 0, sum: 100, expected: 0},
+            {t: 2, sample: 100, sum: 100, expected: 100},
+            {t: 3, sample: 50, sum: 100, expected: 50},
+            {t: 4, sample: -65, sum: 100, expected: 65},
+            {t: 5, sample: 65, sum: -100, expected: 65},
+            {t: 6, sample: -65, sum: -100, expected: 65},
+            {t: 7, sample: 23.456, sum: 2000, expected: 1.173},
+            {t: 8, sample: 233.4568976, sum: 2000, expected: 11.673},
+            {t: 9, sample: 2334.568976, sum: 2000, expected: 116.728}
+        ])
+        .test("Returns decimal round to the given ", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = utils.sampleToPercent(params.sample, params.sum);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.equal(calculated,</span>
+                params.expected,
+                "test: " + params.t +
+                ", calculated: " + calculated +
+                ", expected: " + params.expected +
+                ", percent: " + params.sample + "%" +
+                ", sum: " + params.sum);
+        });
+&nbsp;
+    qunit.module("Testing Parameterized.js plugin");
+&nbsp;
+    qunit.cases
+            .init([{a: 1, b: 2, expected: 3}, {a: 4, b: 5, expected: 9}, {a: -5, b: 5, expected: 0}])
+            .test("test sum(a, b)", <span class="fstat-no" title="function not covered" >function (parameters, assert) {</span>
+<span class="cstat-no" title="statement not covered" >                var sum = parameters.a + parameters.b;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                assert.equal(sum, parameters.expected, "expected: " + parameters.expected + ", calculated: " + sum);</span>
+            });
+}
+&nbsp;
+runTests(QUnit, FrnConstr, Phaser);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 04 2016 10:31:43 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/Screens/Preloader.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">js/Screens/</a> Preloader.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.08% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/59</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">8.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.08% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/59</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">window.FrnConstr.namespace('Preloader', window.FrnConstr.Screen, (function (frnConstr) {'use strict';
+    var gameObject = null,
+        parent = null;
+&nbsp;
+    return {
+&nbsp;
+        init: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            parent = this;</span>
+<span class="cstat-no" title="statement not covered" >            gameObject = frnConstr.gameObject;</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.frnConstrPreloader = frnConstr.createFrnConstrPreloader();</span>
+        },
+&nbsp;
+        preload: <span class="fstat-no" title="function not covered" >function () {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadAudio('CLICK_SOUND', null, ['assets/audio/basic/ogg/buttonClick.ogg', 'assets/audio/basic/mp3/buttonClick.mp3']);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadAtlasJSONHash('OTHER_GUI_ASSETS_ATLAS', null, 'assets/images/UI/otherGuiAssetsSheet.png', 'assets/settings/otherGuiAssetsHash.json');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadSpriteSheet('GUIDE_BUTTONS_SHEET', null, 'assets/images/UI/guideButtonsSheet.png', 100, 40, 8);</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadSpriteSheet('SOCIAL_BUTTONS_SHEET', null, 'assets/images/UI/socialButtonsSheet.png', 152, 61.5, 4);</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadSpriteSheet('STANDARD_BUTTONS_SHEET', null, 'assets/images/UI/standardButtonsSheet.png', 152, 38.66, 30);</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('HORIZONTAL_BAFFLE', null, 'assets/images/UI/HorizontalBaffle.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('VERTICAL_BAFFLE', null, 'assets/images/UI/VerticalBaffle.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('SHELVE_SLOT', null, 'assets/images/UI/shelveSlot.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('HORIZONTAL_BEAM', null, 'assets/images/UI/HorzBeam.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('VERTICAL_BEAM', null, 'assets/images/UI/VertBeam.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('DRAWER', null, 'assets/images/UI/Drawer.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('TIE', null, 'assets/images/UI/Tie.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('SHOES', null, 'assets/images/UI/Shoes.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('TROUSER', null, 'assets/images/UI/Trouser.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('HANGER', null, 'assets/images/UI/Hanger.png');</span>
+<span class="cstat-no" title="statement not covered" >            frnConstr.loadImage('PANTOGRAPH', null, 'assets/images/UI/Pantograph.png');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            parent.load.onFileError.add(<span class="fstat-no" title="function not covered" >function (error) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var frnConstrObject = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (frnConstrObject.debugMode()) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Error loading file: ' + error);</span>
+                }
+            }, frnConstr);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            parent.load.onFileStart.add(<span class="fstat-no" title="function not covered" >function (param) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var frnConstrObject = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (frnConstrObject.debugMode()) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Loading files, percent: ' + param + '%');</span>
+                }
+            }, frnConstr);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            parent.load.onFileComplete.add(<span class="fstat-no" title="function not covered" >function (progress, cacheKey, success, totalLoaded, totalFiles) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var frnConstrObject = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                frnConstrObject.frnConstrPreloader.preloaderTop.clear();</span>
+<span class="cstat-no" title="statement not covered" >                frnConstrObject.frnConstrPreloader.preloaderTop.beginFill(frnConstr.Const.Graphics.Colors.DARK_GRAY, 1);</span>
+<span class="cstat-no" title="statement not covered" >                frnConstrObject.frnConstrPreloader.preloaderTop.drawRect(2, 2, progress, 11, "preloaderTop");</span>
+<span class="cstat-no" title="statement not covered" >                frnConstrObject.frnConstrPreloader.ready = true;</span>
+<span class="cstat-no" title="statement not covered" >                if (frnConstrObject.debugMode()) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.dir(arguments);</span>
+                }
+            }, frnConstr);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            parent.load.onLoadStart.add(<span class="fstat-no" title="function not covered" >function (param) {</span></span>
+<span class="cstat-no" title="statement not covered" >                var frnConstrObject = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (frnConstrObject.debugMode()) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Started loading files: ' + param);</span>
+                }
+            }, frnConstr);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            parent.load.onLoadComplete.add(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                var frnConstrObject = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (frnConstrObject.debugMode()) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Finished loading files!');</span>
+                }
+            }, frnConstr);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            parent.load.onPackComplete.add(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                var frnConstrObject = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (frnConstrObject.debugMode()) {</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Finished packing files: ');</span>
+                }
+            }, frnConstr);
+        },
+&nbsp;
+        update: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            if (frnConstr.frnConstrPreloader.ready === true) {</span>
+<span class="cstat-no" title="statement not covered" >                frnConstr.frnConstrPreloader.loadingTween = gameObject.add.tween(frnConstr.frnConstrPreloader.loadingObjects).to({alpha: 0},</span>
+                                                                        frnConstr.Const.FADE_DURATION, frnConstr.Const.TWEEN_LINEAR,
+                                                                        true);
+<span class="cstat-no" title="statement not covered" >                frnConstr.frnConstrPreloader.loadingTween.onComplete.add(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                    var frnConstrObject = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    frnConstrObject.gameObject.state.start(frnConstrObject.EnteriorScreen.KEY);</span>
+<span class="cstat-no" title="statement not covered" >                    frnConstrObject.gameObject.state.clearCurrentState();</span>
+                }, frnConstr);
+<span class="cstat-no" title="statement not covered" >                frnConstr.frnConstrPreloader.ready = false;</span>
+            }
+        },
+&nbsp;
+        shutdown: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            gameObject = null;</span>
+<span class="cstat-no" title="statement not covered" >            parent.clearScreenState();</span>
+        }
+    };
+    }(window.FrnConstr)));
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 03 2016 21:34:02 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

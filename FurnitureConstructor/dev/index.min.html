@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Furniture Constructor</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+    {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+
+    <table>
+        <tr>
+            <form id="constrForm">
+                <p>
+                    <label for="millsPerPixel"> Millimeters per Pixel: </label>
+                    <input type="number" value="7" max="10" min="5" step="any" name="millsPerPixel" id="millsPerPixel"/>
+                    <label>|</label>
+                    <label for="millsPerPixelForDepth"> Millimeters per Pixel for Depth: </label>
+                    <input type="number" value="16" max="20" min="16" step="1" name="millsPerPixelForDepth"  id="millsPerPixelForDepth"/>
+                </p>
+                The following number pickers contain value in number of millimeters:
+                <p>
+
+                    <label for="cupboardWidth">Cupboard Width: </label><input type="number" value="3000" max="5000" min="700" step="10" name="cupboardWidth" id="cupboardWidth"/>
+                    <label for="cupboardHeight">Height: </label><input type="number" value="2500" max="3000" min="1000" step="10" name="cupboardHeight" id="cupboardHeight"/>
+                    <label for="cupboardDepth">Depth: </label><input type="number" value="700" max="1000" min="500" step="10" name="cupboardDepth" id="cupboardDepth"/>
+                    <label>|</label>
+                    <label for="floorChkBox"> Floor On/Off: </label><input type="checkbox" checked="checked" name="floorChkBox" id="floorChkBox"/>
+                    <label for="ceilingChkBox"> Ceiling On/Off: </label><input type="checkbox" checked="checked" name="ceilingChkBox" id="ceilingChkBox"/>
+                    <label>|</label>
+                    <label for="thickness"> Thickness: </label><input type="number" value="30" max="50" min="5" step="5" name="thickness" id="thickness"/>
+                    <label>|</label>
+
+                </p>
+                <p>
+                    <label for="leftShelveWidth"> Left Shelve Width: </label><input type="number" value="250" max="500" min="150" step="10" name="leftShelveWidth" id="leftShelveWidth"/>
+                    <label for="leftShelveChkBox"> On/Off: </label><input type="checkbox" checked="checked" name="leftShelveChkBox" id="leftShelveChkBox"/>
+                    <label>|</label>
+                    <label for="rightShelveWidth"> Right Shelve Width: </label><input type="number" value="250" max="500" min="150" step="10" name="rightShelveWidth" id="rightShelveWidth"/>
+                    <label for="rightShelveChkBox"> On/Off: </label><input type="checkbox" checked="checked" name="rightShelveChkBox" id="rightShelveChkBox"/>
+                    <label>|</label>
+                    <label for="rearChkBox"> Rear: </label><input type="checkbox" checked="checked" name="rearChkBox" id="rearChkBox"/>
+                    <label for="standLeftChkBox"> Stand Left: </label><input type="checkbox" checked="checked" name="standLeftChkBox" id="standLeftChkBox"/>
+                    <label for="standRightChkBox"> Stand Right: </label><input type="checkbox" checked="checked" name="standRightChkBox" id="standRightChkBox"/>
+                    <label for="standChkBox"> Stand: </label><input type="checkbox" checked="checked" name="standChkBox" id="standChkBox"/>
+                    <label>|</label>
+                </p>
+                <p>
+                    <label>Choose stage: </label>
+                    <input type="button" value="Enterior" name="enteriorButton" id="enteriorButton"/>
+                    <input type="button" value="Exterior" name="exteriorButton" id="exteriorButton"/>
+                    <input type="button" value="Send Application" name="sendButton" id="sendButton"/>
+                    <label>|</label>
+                    <input type="button" value="Generate a Wardrobe" id="generateButton"/>
+                    <input type="button" value="Reset to Defaults" id="resetConstrFormButton"/>
+                    <input type="button" value="Save Progress" id="saveProgressButton"/>
+                    <input type="button" value="Delete Progress" id="deleteProgressButton"/>
+                    <label>|</label>
+                </p>
+            </form>
+        </tr>
+        <tr>
+            <div id="gameContainer"></div>
+        </tr>
+    </table>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/phaser.min.js"></script>
+    <script src="js/FrnConstr.min.js"></script>
+
+</body>
+</html>

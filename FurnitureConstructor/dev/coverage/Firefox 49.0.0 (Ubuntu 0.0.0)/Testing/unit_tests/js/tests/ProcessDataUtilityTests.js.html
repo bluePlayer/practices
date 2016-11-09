@@ -1,0 +1,2168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Testing/unit_tests/js/tests/ProcessDataUtilityTests.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../index.html">all files</a> / <a href="index.html">Testing/unit_tests/js/tests/</a> ProcessDataUtilityTests.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">37.5% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>24/64</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>1/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">15.38% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">37.5% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>24/64</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function runTests(qunit, frnConstr, phaser) {
+    'use strict';
+&nbsp;
+    var utils = frnConstr.Utility,
+        frnConst = frnConstr.Const,
+        frnConstGr = frnConst.Graphics,
+        frnConstApp = frnConst.Application,
+        frnConstAppKeys = frnConstApp.Keys,
+        pdUtils = frnConstr.ProcessDataUtility,
+&nbsp;
+        roundExponent = frnConst.DECIMAL_ROUND_EXP,
+&nbsp;
+        defaultFrameX = frnConstGr.DEFAULT_GRAPHIC_X,
+        defaultFrameY = frnConstGr.DEFAULT_GRAPHIC_Y,
+&nbsp;
+        defaultMillsPerPixelForDepth = frnConstApp.FrnData.millsPerPixelForDepth.DEFAULT_VAL,
+        defaultMillsPerPixel = frnConstApp.FrnData.millsPerPixel.DEFAULT_VAL,
+&nbsp;
+        defaultLeftShelveWidth = frnConstApp.FrnData.leftShelveWidth.DEFAULT_VAL,
+        defaultLeftShelveWidthPx = utils.convertMillsToPixels(defaultLeftShelveWidth, defaultMillsPerPixel),
+&nbsp;
+        defaultRightShelveWidth = frnConstApp.FrnData.rightShelveWidth.DEFAULT_VAL,
+        defaultRightShelveWidthPx = utils.convertMillsToPixels(defaultRightShelveWidth, defaultMillsPerPixel),
+&nbsp;
+        defaultFullWidth = frnConstApp.FrnData.cupboardWidth.DEFAULT_VAL,
+        defaultFullWidthPx = utils.convertMillsToPixels(defaultFullWidth, defaultMillsPerPixel),
+&nbsp;
+        defaultCupboardWidth = (defaultFullWidth - (defaultLeftShelveWidth + defaultRightShelveWidth)),
+        defaultCupboardWidthPx = utils.convertMillsToPixels(defaultCupboardWidth, defaultMillsPerPixel),
+&nbsp;
+        defaultCupboardHeight = frnConstApp.FrnData.cupboardHeight.DEFAULT_VAL,
+        defaultCupboardHeightPx = utils.convertMillsToPixels(defaultCupboardHeight, defaultMillsPerPixel),
+        halfCupboardHeightPx = utils.decimalRound((defaultCupboardHeightPx / 2), frnConst.DECIMAL_ROUND_EXP),
+&nbsp;
+        defaultCupboardDepth = frnConstApp.FrnData.cupboardDepth.DEFAULT_VAL,
+        defaultCupboardDepthPx = utils.convertMillsToPixels(defaultCupboardDepth, defaultMillsPerPixelForDepth),
+        halfCupboardDepthPx = utils.decimalRound((defaultCupboardDepthPx / 2), frnConst.DECIMAL_ROUND_EXP),
+&nbsp;
+        halfRearHeightPx = defaultCupboardHeightPx - defaultCupboardDepthPx,
+&nbsp;
+        defaultThickness = frnConstApp.FrnData.thickness.DEFAULT_VAL,
+        defaultThicknessPx = utils.convertMillsToPixels(defaultThickness, defaultMillsPerPixel),
+&nbsp;
+        defaultMaxNumOfShelves = utils.decimalRound((defaultCupboardHeight / 100), 0),
+        defaultMaxNumOfBeams = utils.decimalRound((defaultCupboardWidth / 100), 0),
+        defaultShelveShiftFactor =
+            utils.decimalRound(((defaultCupboardHeightPx - defaultCupboardDepthPx) / defaultMaxNumOfShelves),
+                    frnConst.DECIMAL_ROUND_EXP),
+&nbsp;
+        defaultInnerShelveSlotHeight = utils.decimalRound((defaultCupboardHeightPx / defaultMaxNumOfShelves),
+                    frnConst.DECIMAL_ROUND_EXP),
+&nbsp;
+        defaultInnerShelveSlotWidth = utils.decimalRound(((defaultCupboardWidthPx) / defaultMaxNumOfBeams),
+                    frnConst.DECIMAL_ROUND_EXP),
+&nbsp;
+        defaultShelveCssColor = frnConst.Application.DEFAULT_MATERIAL_COLOR,
+&nbsp;
+        defaultCurrentMaterialColor = utils.getColor(frnConstApp.Keys.MATERIAL_COLOR_KEY, defaultShelveCssColor),
+        defaultCurrentDarkerMatColor = utils.getColor(frnConstApp.Keys.DARKER_COLOR_KEY, defaultShelveCssColor),
+        defaultCurrentEdgeColor = utils.getColor(frnConstApp.EDGE_COLOR_KEY, defaultShelveCssColor),
+        defaultBorderSize = frnConstGr.DEFAULT_GRAPHICS_BORDER_SIZE,
+&nbsp;
+        lowerYBound = 0,
+        upperYBound = 0,
+        hashColorKey = "",
+        forInAssertFunction = null,
+        listColorsInArray = null,
+&nbsp;
+        artmTreeValuesObj = {
+            frameX: defaultFrameX,
+            frameY: defaultFrameY,
+            fullWidthPx: defaultFullWidthPx,
+            cupboardWidthPx: defaultCupboardWidthPx,
+            cupboardHeightPx: defaultCupboardHeightPx,
+            cupboardDepthPx: defaultCupboardDepthPx,
+            thicknessPx: defaultThicknessPx,
+            leftShelveWidthPx: defaultLeftShelveWidthPx,
+            rightShelveWidthPx: defaultRightShelveWidthPx,
+            halfCupboardDepthPx: utils.decimalRound((defaultCupboardDepthPx / 2), roundExponent),
+            shelveShiftFactor: defaultShelveShiftFactor,
+&nbsp;
+            sumThicknessPx: utils.decimalRound((defaultFullWidthPx + defaultThicknessPx), roundExponent),
+            subRightShelveWidthPx: utils.decimalRound((defaultFullWidthPx + defaultThicknessPx - defaultRightShelveWidthPx), roundExponent)
+        },
+&nbsp;
+        preProcessDataMsg = "fcdo object must contain all form fields " +
+            "and maxNumOfShelves, maxNumOfInnerShelves, maxNumOfBeams, " +
+            "fullWidth, thicknessPx, fullWidthPx, cupboardWidthPx, cupboardHeightPx, " +
+            "cupboardDepthPx, leftShelveWidthPx, rightShelveWidthPx, frameX, frameY, " +
+            "borderSize, currentMaterialColor, currentDarkerMatColor, currentEdgeColor, " +
+            "shelveShiftFactor, innerShelveSlotHeight, innerShelveSlotWidth",
+&nbsp;
+        logMyProperties = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            console.log("Mills per pixel: " + defaultMillsPerPixel +</span>
+                        ", mills per pixel for depth: " + defaultMillsPerPixelForDepth +
+                        ", y: " + defaultFrameY +
+                        ", height: " + defaultCupboardHeightPx +
+                        ", depth: " + defaultCupboardDepthPx +
+                        ", height/2: " + halfCupboardHeightPx +
+                        ", depth/2: " + halfCupboardDepthPx +
+                        ", rearHeight/2: " + halfRearHeightPx +
+                        ", lowerY: " + lowerYBound +
+                        ", upperY: " + upperYBound);
+        },
+        /**
+         * @method logForProcessDataUtility
+         * @param {object} details contains:
+         * result:boolean,
+         * actual: object, expected: object,
+         * message: string, source: string, module: string, name: string,
+         * runtime: number
+         */
+        logForProcessDataUtility = function (details) {
+            var loc = "",
+                output = "";
+&nbsp;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (details.result) {
+                return;
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            loc = details.module + ": " + details.name + ": ";</span>
+<span class="cstat-no" title="statement not covered" >            output = "FAILED: " + loc + (details.message ? details.message + ", " : "");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (details.actual) {</span>
+<span class="cstat-no" title="statement not covered" >                output += "expected: " + details.expected + ", actual: " + details.actual;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (details.source) {</span>
+<span class="cstat-no" title="statement not covered" >                output += details.source;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            console.log(output);</span>
+        };
+&nbsp;
+    qunit.log(logForProcessDataUtility);
+&nbsp;
+    qunit.module("preProcessData(fcdo, shelveCssColor, millsPerPixel)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 1, field: 'millsPerPixel'},
+            {t: 2, field: 'millsPerPixelForDepth'},
+            {t: 3, field: 'frameX'},
+            {t: 4, field: 'frameY'},
+            {t: 5, field: 'fullWidth'},
+            {t: 6, field: 'fullWidthPx'},
+            {t: 7, field: 'cupboardWidth'},
+            {t: 8, field: 'cupboardWidthPx'},
+            {t: 9, field: 'cupboardHeight'},
+            {t: 10, field: 'cupboardHeightPx'},
+            {t: 11, field: 'cupboardDepth'},
+            {t: 12, field: 'cupboardDepthPx'},
+            {t: 13, field: 'thickness'},
+            {t: 14, field: 'thicknessPx'},
+            {t: 15, field: 'leftShelveWidth'},
+            {t: 16, field: 'leftShelveWidthPx'},
+            {t: 17, field: 'rightShelveWidth'},
+            {t: 18, field: 'rightShelveWidthPx'},
+            {t: 19, field: 'maxNumOfShelves'},
+            {t: 20, field: 'maxNumOfInnerShelves'},
+            {t: 21, field: 'maxNumOfBeams'},
+            {t: 22, field: 'shelveShiftFactor'},
+            {t: 23, field: 'innerShelveSlotHeight'},
+            {t: 24, field: 'innerShelveSlotWidth'},
+&nbsp;
+            {t: 25, field: 'borderSize'},
+            {t: 26, field: 'currentMaterialColor'},
+            {t: 27, field: 'currentDarkerMatColor'},
+            {t: 28, field: 'currentEdgeColor'},
+            {t: 29, field: 'shelveCssColor'},
+&nbsp;
+            {t: 30, field: 'standLeftChkBox'},
+            {t: 31, field: 'rearChkBox'},
+            {t: 32, field: 'rightShelveChkBox'},
+            {t: 33, field: 'leftShelveChkBox'},
+            {t: 34, field: 'floorChkBox'},
+            {t: 35, field: 'ceilingChkBox'},
+            {t: 36, field: 'standRightChkBox'},
+            {t: 37, field: 'standChkBox'}
+        ])
+        .test(preProcessDataMsg, <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var expect = 1,</span>
+                key = null,
+                value = null,
+                dataArray = frnConstr.getFormDataArray(),
+                fcdo = frnConstr.setDataObject(dataArray),
+                propType = true;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.expect(expect);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            fcdo = pdUtils.preProcessData(fcdo, fcdo.shelveCssColor, fcdo.millsPerPixel);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            for (key in fcdo) {</span>
+<span class="cstat-no" title="statement not covered" >                if (fcdo.hasOwnProperty(key) &amp;&amp; key === params.field) {</span>
+<span class="cstat-no" title="statement not covered" >                    value = fcdo[key];</span>
+<span class="cstat-no" title="statement not covered" >                    propType = (typeof value === "number" || typeof value === "string" ||</span>
+                        typeof value === "object" || typeof value === "boolean");
+<span class="cstat-no" title="statement not covered" >                    assert.ok(propType, "Test: " + params.t + ", calculated: " + key + ", item: " + value);</span>
+                }
+            }
+&nbsp;
+        });
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {t: 38, field: 'millsPerPixel', value: defaultMillsPerPixel},
+            {t: 39, field: 'millsPerPixelForDepth', value: frnConstApp.FrnData.millsPerPixelForDepth.DEFAULT_VAL},
+            {t: 40, field: 'frameX', value: defaultFrameX},
+            {t: 41, field: 'frameY', value: defaultFrameY},
+            {t: 42, field: 'fullWidth', value: defaultFullWidth},
+            {t: 43, field: 'fullWidthPx', value: defaultFullWidthPx},
+            {t: 44, field: 'cupboardWidth', value: defaultCupboardWidth},
+            {t: 45, field: 'cupboardWidthPx', value: defaultCupboardWidthPx},
+            {t: 46, field: 'cupboardHeight', value: defaultCupboardHeight},
+            {t: 47, field: 'cupboardHeightPx', value: defaultCupboardHeightPx},
+            {t: 48, field: 'cupboardDepth', value: defaultCupboardDepth},
+            {t: 49, field: 'cupboardDepthPx', value: defaultCupboardDepthPx},
+            {t: 50, field: 'thickness', value: defaultThickness},
+            {t: 51, field: 'thicknessPx', value: defaultThicknessPx},
+            {t: 52, field: 'leftShelveWidth', value: defaultLeftShelveWidth},
+            {t: 53, field: 'leftShelveWidthPx', value: defaultLeftShelveWidthPx},
+            {t: 54, field: 'rightShelveWidth', value: defaultRightShelveWidth},
+            {t: 55, field: 'rightShelveWidthPx', value: defaultRightShelveWidthPx},
+            {t: 56, field: 'maxNumOfShelves', value: defaultMaxNumOfShelves},
+            {t: 57, field: 'maxNumOfInnerShelves', value: defaultMaxNumOfShelves},
+            {t: 58, field: 'maxNumOfBeams', value: defaultMaxNumOfBeams},
+            {t: 59, field: 'shelveShiftFactor', value: defaultShelveShiftFactor},
+            {t: 60, field: 'innerShelveSlotHeight', value: defaultInnerShelveSlotHeight},
+            {t: 61, field: 'innerShelveSlotWidth', value: defaultInnerShelveSlotWidth},
+&nbsp;
+            {t: 62, field: 'borderSize', value: defaultBorderSize},
+            {t: 63, field: 'shelveCssColor', value: defaultShelveCssColor},
+            {t: 64, field: 'currentMaterialColor', value: defaultCurrentMaterialColor},
+            {t: 65, field: 'currentDarkerMatColor', value: defaultCurrentDarkerMatColor},
+            {t: 66, field: 'currentEdgeColor', value: defaultCurrentEdgeColor},
+&nbsp;
+            {t: 67, field: 'standLeftChkBox', value: true},
+            {t: 68, field: 'rearChkBox', value: true},
+            {t: 69, field: 'rightShelveChkBox', value: true},
+            {t: 70, field: 'leftShelveChkBox', value: true},
+            {t: 71, field: 'floorChkBox', value: true},
+            {t: 72, field: 'ceilingChkBox', value: true},
+            {t: 73, field: 'standRightChkBox', value: true},
+            {t: 74, field: 'standChkBox', value: true}
+        ])
+        .test(preProcessDataMsg, <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var expect = 1,</span>
+                key = null,
+                value = null,
+                dataArray = frnConstr.getFormDataArray(),
+                fcdo = frnConstr.setDataObject(dataArray);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.expect(expect);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            fcdo = pdUtils.preProcessData(fcdo, fcdo.shelveCssColor, fcdo.millsPerPixel);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            for (key in fcdo) {</span>
+<span class="cstat-no" title="statement not covered" >                if (fcdo.hasOwnProperty(key) &amp;&amp; key === params.field) {</span>
+<span class="cstat-no" title="statement not covered" >                    value = fcdo[key];</span>
+<span class="cstat-no" title="statement not covered" >                    assert.equal(value, params.value, "Test: " + params.t + ", calculated: " + value + ", expected: " + params.value);</span>
+                }
+            }
+&nbsp;
+        });
+&nbsp;
+    qunit.module("shelveSlotObject(x, y, shiftX, shiftY, busy)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {x: 10, y: 10, shiftX: 100, shiftY: 100, busy: false},
+            {x: -10, y: 10, shiftX: 100, shiftY: 100, busy: false},
+            {x: 10, y: -10, shiftX: 100, shiftY: 100, busy: false},
+            {x: 10, y: 10, shiftX: -100, shiftY: 100, busy: false},
+            {x: 10, y: 10, shiftX: 100, shiftY: -100, busy: false},
+            {x: 10, y: 10, shiftX: 100, shiftY: 100, busy: true},
+            {x: 10.1, y: 10, shiftX: 100, shiftY: 100, busy: false},
+            {x: 10.1, y: 10.2, shiftX: 100, shiftY: 100, busy: false},
+            {x: 10.1, y: 10, shiftX: 100.3, shiftY: 100, busy: false},
+            {x: 10.1, y: 10, shiftX: 100, shiftY: 100.4, busy: false},
+            {x: 10.1, y: 10.2, shiftX: 100.3, shiftY: 100.4, busy: true}
+&nbsp;
+        ])
+        .test("should return object of the form: {x: Number, y: Number, shiftX: Number, shiftY: Number, busy: true/false}", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var expected = {x: params.x, y: params.y, shiftX: params.shiftX, shiftY: params.shiftY, busy: params.busy},</span>
+                calculated = pdUtils.shelveSlotObject(params.x, params.y, params.shiftX, params.shiftY, params.busy);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, expected, "expected: " + JSON.stringify(expected) + ", calculated: " + JSON.stringify(calculated));</span>
+        });
+&nbsp;
+    qunit.module("makeArtmTree(fcdo, decimalRoundExponent)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {
+                t: 1,
+                fcdo: {
+                    frameX: defaultFrameX,
+                    frameY: defaultFrameY,
+                    fullWidthPx: defaultFullWidthPx,
+                    cupboardWidthPx: defaultCupboardWidthPx,
+                    cupboardHeightPx: defaultCupboardHeightPx,
+                    cupboardDepthPx: defaultCupboardDepthPx,
+                    thicknessPx: defaultThicknessPx,
+                    leftShelveWidthPx: defaultLeftShelveWidthPx,
+                    rightShelveWidthPx: defaultRightShelveWidthPx,
+                    halfCupboardDepthPx: utils.decimalRound((defaultCupboardDepthPx / 2), -3),
+                    shelveShiftFactor: defaultShelveShiftFactor
+                },
+                roundExponent: -3
+            },
+            {
+                t: 2,
+                fcdo: {
+                    frameX: 1,
+                    frameY: 2,
+                    fullWidthPx: 3,
+                    cupboardWidthPx: 4,
+                    cupboardHeightPx: 5,
+                    cupboardDepthPx: 6,
+                    thicknessPx: 7,
+                    leftShelveWidthPx: 8,
+                    rightShelveWidthPx: 9,
+                    halfCupboardDepthPx: utils.decimalRound((6 / 2), -3),
+                    shelveShiftFactor: 11
+                },
+                roundExponent: -3
+            },
+            {
+                t: 3,
+                fcdo: {
+                    frameX: defaultFrameX,
+                    frameY: defaultFrameY,
+                    fullWidthPx: defaultFullWidthPx,
+                    cupboardWidthPx: defaultCupboardWidthPx,
+                    cupboardHeightPx: defaultCupboardHeightPx,
+                    cupboardDepthPx: defaultCupboardDepthPx,
+                    thicknessPx: defaultThicknessPx,
+                    leftShelveWidthPx: defaultLeftShelveWidthPx,
+                    rightShelveWidthPx: defaultRightShelveWidthPx,
+                    halfCupboardDepthPx: utils.decimalRound((defaultCupboardDepthPx / 2), -5),
+                    shelveShiftFactor: defaultShelveShiftFactor
+                },
+                roundExponent: -5
+            },
+            {
+                t: 4,
+                fcdo: {
+                    frameX: 1,
+                    frameY: 2,
+                    fullWidthPx: 3,
+                    cupboardWidthPx: 4,
+                    cupboardHeightPx: 5,
+                    cupboardDepthPx: 6,
+                    thicknessPx: 7,
+                    leftShelveWidthPx: 8,
+                    rightShelveWidthPx: 9,
+                    halfCupboardDepthPx: utils.decimalRound((6 / 2), -5),
+                    shelveShiftFactor: 11
+                },
+                roundExponent: -5
+            },
+            {
+                t: 5,
+                fcdo: {
+                    frameX: defaultFrameX,
+                    frameY: defaultFrameY,
+                    fullWidthPx: defaultFullWidthPx,
+                    cupboardWidthPx: defaultCupboardWidthPx,
+                    cupboardHeightPx: defaultCupboardHeightPx,
+                    cupboardDepthPx: defaultCupboardDepthPx,
+                    thicknessPx: defaultThicknessPx,
+                    leftShelveWidthPx: defaultLeftShelveWidthPx,
+                    rightShelveWidthPx: defaultRightShelveWidthPx,
+                    halfCupboardDepthPx: utils.decimalRound((defaultCupboardDepthPx / 2), 0),
+                    shelveShiftFactor: defaultShelveShiftFactor
+                },
+                roundExponent: 0
+            },
+            {
+                t: 6,
+                fcdo: {
+                    frameX: 1,
+                    frameY: 2,
+                    fullWidthPx: 3,
+                    cupboardWidthPx: 4,
+                    cupboardHeightPx: 5,
+                    cupboardDepthPx: 6,
+                    thicknessPx: 7,
+                    leftShelveWidthPx: 8,
+                    rightShelveWidthPx: 9,
+                    halfCupboardDepthPx: utils.decimalRound((6 / 2), 0),
+                    shelveShiftFactor: 11
+                },
+                roundExponent: 0
+            }
+        ])
+        .test("Checks to see if artmTree object contains the 10 important properties and wheter they contain the right value.", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var expect = 20,</span>
+                key = null,
+                value = null,
+                requiredKeys = [
+                    'fullWidthPx',
+                    'frameX',
+                    'leftShelveWidthPx',
+                    'rightShelveWidthPx',
+                    'halfCupboardDepthPx',
+                    'frameY',
+                    'cupboardHeightPx',
+                    'cupboardDepthPx',
+                    'thicknessPx',
+                    'cupboardWidthPx'
+                ],
+                fcdo = params.fcdo,
+                calculated = pdUtils.makeArtmTree(fcdo, params.roundExponent);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.expect(expect);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            requiredKeys.forEach(<span class="fstat-no" title="function not covered" >function (crv, index, arr) {</span></span>
+<span class="cstat-no" title="statement not covered" >                assert.ok(utils.isTruthy(calculated[crv]), "Test: " + params.t + ", expected: true, calculated: " + JSON.stringify(calculated[crv]));</span>
+<span class="cstat-no" title="statement not covered" >                assert.equal(calculated[crv].value, fcdo[crv], crv + " = expected: " + fcdo[crv] + ", calculated: " + calculated[crv].value);</span>
+            }, requiredKeys);
+        });
+&nbsp;
+    qunit.module("removeVertBafflesAndBeams(bafflesOrBeamsArray, maxNumOfBeams)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {
+                bafflesOrBeamsArray: [
+                    {col: 5, colShift: 6, row: 1, rowShift: 5},
+                    {col: 10, colShift: 11, row: 1, rowShift: 10},
+                    {col: 11, colShift: 12, row: 3, rowShift: 7},
+                    {col: 15, colShift: 16, row: 3, rowShift: 7}
+                ],
+                maxNumOfBeams: 11,
+                expectedCoords: [
+                    {col: 5, colShift: 6, row: 1, rowShift: 5},
+                    {col: 10, colShift: 11, row: 1, rowShift: 10}
+                ]
+            }
+        ])
+        .test("removeVertBafflesAndBeams(bafflesOrBeamsArray, maxNumOfBeams)", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = pdUtils.removeVertBafflesAndBeams(params.bafflesOrBeamsArray, params.maxNumOfBeams);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, params.expectedCoords, "expected: " + JSON.stringify(params.expectedCoords) + ", calculated: " + JSON.stringify(calculated));</span>
+        });
+&nbsp;
+    qunit.module("extendHorzBafflesAndBeams(bafflesOrBeamsArray, maxNumOfBeams)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {
+                bafflesOrBeamsArray: [
+                    {col: 0, colShift: 25, row: 1, rowShift: 2},
+                    {col: 15, colShift: 25, row: 7, rowShift: 8}
+                ],
+                maxNumOfBeams: 30,
+                expectedCoords: [
+                    {col: 0, colShift: 30, row: 1, rowShift: 2},
+                    {col: 15, colShift: 30, row: 7, rowShift: 8}
+                ]
+            }
+        ])
+        .test("extendHorzBafflesAndBeams(bafflesOrBeamsArray, maxNumOfBeams)", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = pdUtils.extendHorzBafflesAndBeams(params.bafflesOrBeamsArray, params.maxNumOfBeams);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, params.expectedCoords, "expected: " + JSON.stringify(params.expectedCoords) + ", calculated: " + JSON.stringify(calculated));</span>
+        });
+&nbsp;
+    qunit.module("shrinkHorzBafflesAndBeams(bafflesOrBeamsArray, maxNumOfBeams)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {
+                bafflesOrBeamsArray: [
+                    {col: 0, colShift: 25, row: 1, rowShift: 2},
+                    {col: 15, colShift: 25, row: 7, rowShift: 8},
+                    {col: 0, colShift: 5, row: 10, rowShift: 11},
+                    {col: 5, colShift: 15, row: 11, rowShift: 12},
+                    {col: 5, colShift: 10, row: 14, rowShift: 15}
+                ],
+                maxNumOfBeams: 10,
+                expected: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 2},
+                    {col: 0, colShift: 5, row: 10, rowShift: 11},
+                    {col: 5, colShift: 10, row: 11, rowShift: 12},
+                    {col: 5, colShift: 10, row: 14, rowShift: 15}
+                ]
+            }
+        ])
+        .test("shrinkHorzBafflesAndBeams(bafflesOrBeamsArray, maxNumOfBeams)", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = pdUtils.shrinkHorzBafflesAndBeams(params.bafflesOrBeamsArray, params.maxNumOfBeams);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, params.expected, "expected: " + JSON.stringify(params.expected) + ", calculated: " + JSON.stringify(calculated));</span>
+        });
+&nbsp;
+    qunit.module("extendDrawerOrPtgrs(drawersOrPtgrsArray, maxNumOfBeams, minWidth, maxWidth)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 15, colShift: 27, row: 10, rowShift: 13},
+                    {col: 28, colShift: 29, row: 12, rowShift: 14},
+                    {col: 10, colShift: 25, row: 12, rowShift: 14},
+                    {col: 29, colShift: 30, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 30,
+                minWidth: 2,
+                maxWidth: 20,
+                expected: [
+                    {col: 15, colShift: 30, row: 10, rowShift: 13},
+                    {col: 28, colShift: 30, row: 12, rowShift: 14},
+                    {col: 10, colShift: 30, row: 12, rowShift: 14}
+                ]
+            },
+            {
+                drawersOrPtgrsArray: [
+                    {col: 12, colShift: 25, row: 1, rowShift: 3},
+                    {col: 15, colShift: 24, row: 1, rowShift: 3}
+                ],
+                maxNumOfBeams: 25,
+                minWidth: 2,
+                maxWidth: 20,
+                expected: [
+                    {col: 12, colShift: 25, row: 1, rowShift: 3},
+                    {col: 15, colShift: 25, row: 1, rowShift: 3}
+                ]
+            }
+        ])
+        .test("", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = pdUtils.extendDrawerOrPtgrs(params.drawersOrPtgrsArray, params.maxNumOfBeams, params.minWidth, params.maxWidth);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, params.expected, "expected: " + JSON.stringify(params.expected) + ", calculated: " + JSON.stringify(calculated));</span>
+        });
+&nbsp;
+    qunit.module("shrinkDrawersOrPtgrs(drawersOrPtgrsArray, maxNumOfBeams, minWidth, maxWidth)");
+&nbsp;
+    qunit
+        .cases
+        .init([
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 9, colShift: 16, row: 10, rowShift: 13},
+                    {col: 2, colShift: 6, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 10,
+                minWidth: 2,
+                maxWidth: 20,
+                expected: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 10, row: 7, rowShift: 9},
+                    {col: 2, colShift: 6, row: 12, rowShift: 14}
+                ]
+            },
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 9, colShift: 16, row: 10, rowShift: 13},
+                    {col: 2, colShift: 6, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 2,
+                minWidth: 2,
+                maxWidth: 20,
+                expected: [
+                    {col: 0, colShift: 2, row: 1, rowShift: 3}
+                ]
+            },
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 12, colShift: 35, row: 10, rowShift: 13},
+                    {col: 18, colShift: 20, row: 12, rowShift: 14},
+                    {col: 19, colShift: 20, row: 12, rowShift: 14},
+                    {col: 0, colShift: 20, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 20,
+                minWidth: 2,
+                maxWidth: 20,
+                expected: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 12, colShift: 20, row: 10, rowShift: 13},
+                    {col: 18, colShift: 20, row: 12, rowShift: 14},
+                    {col: 0, colShift: 20, row: 12, rowShift: 14}
+                ]
+            },
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 25, colShift: 35, row: 10, rowShift: 13},
+                    {col: 0, colShift: 20, row: 12, rowShift: 14},
+                    {col: 5, colShift: 30, row: 12, rowShift: 14},
+                    {col: 28, colShift: 30, row: 12, rowShift: 14},
+                    {col: 29, colShift: 30, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 30,
+                minWidth: 2,
+                maxWidth: 20,
+                expected: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 25, colShift: 30, row: 10, rowShift: 13},
+                    {col: 0, colShift: 20, row: 12, rowShift: 14},
+                    {col: 28, colShift: 30, row: 12, rowShift: 14}
+                ]
+            },
+&nbsp;
+            // pantograph widths
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 12, colShift: 16, row: 10, rowShift: 13},
+                    {col: 2, colShift: 8, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 10,
+                minWidth: 6,
+                maxWidth: 15,
+                expected: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 2, colShift: 8, row: 12, rowShift: 14}
+                ]
+            },
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 9, colShift: 16, row: 10, rowShift: 13},
+                    {col: 2, colShift: 6, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 6,
+                minWidth: 6,
+                maxWidth: 15,
+                expected: [
+                    {col: 0, colShift: 6, row: 1, rowShift: 3}
+                ]
+            },
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 12, colShift: 35, row: 10, rowShift: 13},
+                    {col: 18, colShift: 20, row: 12, rowShift: 14},
+                    {col: 19, colShift: 20, row: 12, rowShift: 14},
+                    {col: 0, colShift: 20, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 15,
+                minWidth: 6,
+                maxWidth: 15,
+                expected: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 0, colShift: 15, row: 12, rowShift: 14}
+                ]
+            },
+            {
+                drawersOrPtgrsArray: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 25, colShift: 35, row: 10, rowShift: 13},
+                    {col: 0, colShift: 15, row: 12, rowShift: 14},
+                    {col: 5, colShift: 20, row: 12, rowShift: 14},
+                    {col: 22, colShift: 35, row: 12, rowShift: 14},
+                    {col: 27, colShift: 35, row: 12, rowShift: 14}
+                ],
+                maxNumOfBeams: 30,
+                minWidth: 6,
+                maxWidth: 15,
+                expected: [
+                    {col: 0, colShift: 10, row: 1, rowShift: 3},
+                    {col: 5, colShift: 15, row: 7, rowShift: 9},
+                    {col: 0, colShift: 15, row: 12, rowShift: 14},
+                    {col: 5, colShift: 20, row: 12, rowShift: 14},
+                    {col: 22, colShift: 30, row: 12, rowShift: 14}
+                ]
+            }
+        ])
+        .test("", <span class="fstat-no" title="function not covered" >function (params, assert) {</span>
+<span class="cstat-no" title="statement not covered" >            var calculated = pdUtils.shrinkDrawersOrPtgrs(params.drawersOrPtgrsArray, params.maxNumOfBeams, params.minWidth, params.maxWidth);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            assert.deepEqual(calculated, params.expected, "expected: " + JSON.stringify(params.expected) + ", calculated: " + JSON.stringify(calculated));</span>
+        });
+}
+&nbsp;
+runTests(QUnit, FrnConstr, Phaser);
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 04 2016 10:31:43 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../sorter.js"></script>
+</body>
+</html>

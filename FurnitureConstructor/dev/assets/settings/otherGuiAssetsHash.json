@@ -1,0 +1,135 @@
+{
+"frames": {
+	"beingHumanAch.png": {
+		"frame": {"x":236, "y":507, "w":90, "h":90},
+		"spriteSourceSize": {"x":0,"y":0,"w":90,"h":90},
+		"sourceSize": {"w":90,"h":90}
+	},
+	"checkBoxOff.png": {
+		"frame": {"x":327, "y":591, "w":45, "h":45},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":45},
+		"sourceSize": {"w":45,"h":45}
+	},
+	"checkBoxOn.png": {
+		"frame": {"x":327, "y":545, "w":45, "h":45},
+		"spriteSourceSize": {"x":0,"y":0,"w":45,"h":45},
+		"sourceSize": {"w":45,"h":45}
+	},
+	"correctLabel.png": {
+		"frame": {"x":0, "y":603, "w":56, "h":12},
+		"spriteSourceSize": {"x":0,"y":0,"w":56,"h":12},
+		"sourceSize": {"w":56,"h":12}
+	},
+	"daResults.png": {
+		"frame": {"x":0, "y":416, "w":204, "h":34},
+		"spriteSourceSize": {"x":2,"y":0,"w":206,"h":34},
+		"sourceSize": {"w":206,"h":34}
+	},
+	"gearsAch.png": {
+		"frame": {"x":145, "y":531, "w":90, "h":90},
+		"spriteSourceSize": {"x":0,"y":0,"w":90,"h":90},
+		"sourceSize": {"w":90,"h":90}
+	},
+	"helperArrow.png": {
+		"frame": {"x":327, "y":466, "w":60, "h":78},
+		"spriteSourceSize": {"x":0,"y":0,"w":60,"h":78},
+		"sourceSize": {"w":60,"h":78}
+	},
+	"inLoveAch.png": {
+		"frame": {"x":205, "y":416, "w":90, "h":90},
+		"spriteSourceSize": {"x":0,"y":0,"w":90,"h":90},
+		"sourceSize": {"w":90,"h":90}
+	},
+	"levelComplete.png": {
+		"frame": {"x":0, "y":45, "w":454, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":454,"h":153},
+		"sourceSize": {"w":454,"h":153}
+	},
+	"levelPointsBorder.png": {
+		"frame": {"x":50, "y":616, "w":43, "h":21},
+		"spriteSourceSize": {"x":0,"y":0,"w":43,"h":21},
+		"sourceSize": {"w":43,"h":21}
+	},
+	"levelsTitle.png": {
+		"frame": {"x":0, "y":531, "w":144, "h":32},
+		"spriteSourceSize": {"x":3,"y":0,"w":147,"h":32},
+		"sourceSize": {"w":147,"h":32}
+	},
+	"loadingLabel.png": {
+		"frame": {"x":0, "y":375, "w":224, "h":40},
+		"spriteSourceSize": {"x":3,"y":0,"w":227,"h":40},
+		"sourceSize": {"w":227,"h":40}
+	},
+	"menuPanel.png": {
+		"frame": {"x":0, "y":199, "w":400, "h":37},
+		"spriteSourceSize": {"x":0,"y":0,"w":400,"h":37},
+		"sourceSize": {"w":400,"h":37}
+	},
+	"menuPauseButton.png": {
+		"frame": {"x":0, "y":564, "w":56, "h":38},
+		"spriteSourceSize": {"x":0,"y":0,"w":56,"h":38},
+		"sourceSize": {"w":56,"h":38}
+	},
+	"menuPauseButtonOver.png": {
+		"frame": {"x":57, "y":564, "w":56, "h":38},
+		"spriteSourceSize": {"x":0,"y":0,"w":56,"h":38},
+		"sourceSize": {"w":56,"h":38}
+	},
+	"mindMagicianAch.png": {
+		"frame": {"x":296, "y":375, "w":90, "h":90},
+		"spriteSourceSize": {"x":0,"y":0,"w":90,"h":90},
+		"sourceSize": {"w":90,"h":90}
+	},
+	"muteOff.png": {
+		"frame": {"x":344, "y":237, "w":39, "h":44},
+		"spriteSourceSize": {"x":0,"y":0,"w":39,"h":44},
+		"sourceSize": {"w":39,"h":44}
+	},
+	"muteOn.png": {
+		"frame": {"x":114, "y":564, "w":29, "h":38},
+		"spriteSourceSize": {"x":0,"y":0,"w":29,"h":38},
+		"sourceSize": {"w":29,"h":38}
+	},
+	"optionsTitle.png": {
+		"frame": {"x":0, "y":451, "w":177, "h":40},
+		"spriteSourceSize": {"x":2,"y":0,"w":179,"h":40},
+		"sourceSize": {"w":179,"h":40}
+	},
+	"replayButton.png": {
+		"frame": {"x":225, "y":375, "w":38, "h":35},
+		"spriteSourceSize": {"x":0,"y":0,"w":38,"h":35},
+		"sourceSize": {"w":38,"h":35}
+	},
+	"replayButtonOver.png": {
+		"frame": {"x":94, "y":603, "w":38, "h":35},
+		"spriteSourceSize": {"x":0,"y":0,"w":38,"h":35},
+		"sourceSize": {"w":38,"h":35}
+	},
+	"resetWindow.png": {
+		"frame": {"x":0, "y":237, "w":343, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":343,"h":137},
+		"sourceSize": {"w":343,"h":137}
+	},
+	"scoreBorder.png": {
+		"frame": {"x":0, "y":492, "w":172, "h":38},
+		"spriteSourceSize": {"x":0,"y":0,"w":172,"h":38},
+		"sourceSize": {"w":172,"h":38}
+	},
+	"statsPanel.png": {
+		"frame": {"x":0, "y":0, "w":640, "h":44},
+		"spriteSourceSize": {"x":0,"y":0,"w":640,"h":44},
+		"sourceSize": {"w":640,"h":44}
+	},
+	"wrongLabel.png": {
+		"frame": {"x":0, "y":616, "w":49, "h":12},
+		"spriteSourceSize": {"x":0,"y":0,"w":49,"h":12},
+		"sourceSize": {"w":49,"h":12}
+	}
+
+},
+"meta": {
+	"image": "sprites.png",
+	"size": {"w": 641, "h": 639},
+	"scale": "1"
+}
+}

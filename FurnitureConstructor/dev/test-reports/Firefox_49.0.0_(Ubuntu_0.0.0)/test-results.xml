@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<testsuite name="Firefox 49.0.0 (Ubuntu 0.0.0)" package="" timestamp="2016-11-04T09:48:46" id="0" hostname="asus-vlado" tests="0" errors="1" failures="0" time="0">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:49.0) Gecko/20100101 Firefox/49.0"/>
+  </properties>
+  <system-out>
+    <![CDATA[PhantomJS 2.1.1 (Linux 0.0.0) LOG: Object{millsPerPixel: 7, millsPerPixelForDepth: 16, cupboardWidth: 2500, cupboardHeight: 2500, cupboardDepth: 700, leftShelveWidth: 250, rightShelveWidth: 250, thickness: 30, floorChkBox: true, ceilingChkBox: true, leftShelveChkBox: true, rightShelveChkBox: true, rearChkBox: true, standLeftChkBox: true, standRightChkBox: true, standChkBox: true, shelveCssColor: '#3d6990', fullWidth: 3000, maxNumOfShelves: 25, maxNumOfInnerShelves: 25, maxNumOfBeams: 25}
+,Firefox 49.0.0 (Ubuntu 0.0.0) LOG: null
+,PhantomJS 2.1.1 (Linux 0.0.0) LOG: Object{millsPerPixel: 7, millsPerPixelForDepth: 16, cupboardWidth: 2500, cupboardHeight: 2500, cupboardDepth: 700, leftShelveWidth: 250, rightShelveWidth: 250, thickness: 30, floorChkBox: true, ceilingChkBox: true, leftShelveChkBox: true, rightShelveChkBox: true, rearChkBox: true, standLeftChkBox: true, standRightChkBox: true, standChkBox: true, shelveCssColor: '#3d6990', fullWidth: 3000, maxNumOfShelves: 25, maxNumOfInnerShelves: 25, maxNumOfBeams: 25}
+,Firefox 49.0.0 (Ubuntu 0.0.0) ERROR
+  Disconnected, because no message in 10000 ms.
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

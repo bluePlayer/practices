@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/utils/FrnConstrMessages.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">js/utils/</a> FrnConstrMessages.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>24/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>24/24</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">window.FrnConstr.namespace('FrnConstrMessages', {}, (function (frnConstr) {'use strict';
+    var frnData = frnConstr.Const.Application.FrnData,
+        utils = frnConstr.Utility;
+&nbsp;
+    return {
+        init: function (fcdo) {
+&nbsp;
+            frnConstr.addConstant(frnConstr.Const.Messages, 'NON_NUMERIC_DATA_MSG', 'Non numeric data entered!');
+&nbsp;
+            frnConstr.addConstant(frnConstr.Const.Messages,
+                                    'LEFT_SHELVE_CANNOT_FIT_MSG', 'The left shelve cannot fit! Min. width for the cupboard is ' + frnData.cupboardWidth.MIN_VAL + " millimeters.");
+            frnConstr.addConstant(frnConstr.Const.Messages,
+                                    'RIGHT_SHELVE_CANNOT_FIT_MSG', 'The right shelve cannot fit! Min. width for the cupboard is ' + frnData.cupboardWidth.MIN_VAL + " millimeters.");
+&nbsp;
+            // mills per pixel
+            frnConstr.addConstant(frnConstr.Const.Messages.millsPerPixel,
+                                    'VERY_LOW_MSG',
+                                    'Millimeters per pixels is very low! ' + frnData.millsPerPixel.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.millsPerPixel,
+                                    'VERY_HIGH_MSG',
+                                    'Millimeters per pixels is very high! ' + frnData.millsPerPixel.RANGE_LABEL);
+&nbsp;
+            // mills per pixels for depth
+            frnConstr.addConstant(frnConstr.Const.Messages.millsPerPixelForDepth,
+                                    'VERY_LOW_MSG',
+                                    'Millimeters per pixels for depth is very low! ' + frnData.millsPerPixelForDepth.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.millsPerPixelForDepth,
+                                    'VERY_HIGH_MSG',
+                                    'Millimeters per pixels for depth is very high! ' + frnData.millsPerPixelForDepth.RANGE_LABEL);
+&nbsp;
+            // cupboard width
+            frnConstr.addConstant(frnConstr.Const.Messages.cupboardWidth,
+                                    'VERY_LOW_MSG',
+                                    'Cupboard width is very low! ' + frnData.cupboardWidth.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.cupboardWidth,
+                                    'VERY_HIGH_MSG',
+                                    'Cupboard width is very high! ' + frnData.cupboardWidth.RANGE_LABEL);
+&nbsp;
+            // cupboard height
+            frnConstr.addConstant(frnConstr.Const.Messages.cupboardHeight,
+                                    'VERY_LOW_MSG',
+                                    'Cupboard height is very low! ' + frnData.cupboardHeight.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.cupboardHeight,
+                                    'VERY_HIGH_MSG',
+                                    'Cupboard height is very high! ' + frnData.cupboardHeight.RANGE_LABEL);
+&nbsp;
+            // cupboard depth
+            frnConstr.addConstant(frnConstr.Const.Messages.cupboardDepth,
+                                    'VERY_LOW_MSG',
+                                    'Cupboard depth is very low! ' + frnData.cupboardDepth.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.cupboardDepth,
+                                    'VERY_HIGH_MSG',
+                                    'Cupboard depth is very high! ' + frnData.cupboardDepth.RANGE_LABEL);
+&nbsp;
+            // left shelve width
+            frnConstr.addConstant(frnConstr.Const.Messages.leftShelveWidth,
+                                    'VERY_LOW_MSG',
+                                    'Left shelve width is very low! ' + frnData.leftShelveWidth.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.leftShelveWidth,
+                                    'VERY_HIGH_MSG',
+                                    'Left shelve width is very high! ' + frnData.leftShelveWidth.RANGE_LABEL);
+&nbsp;
+            // right shelve width
+            frnConstr.addConstant(frnConstr.Const.Messages.rightShelveWidth,
+                                    'VERY_LOW_MSG',
+                                    'Right shelve width is very low! ' + frnData.rightShelveWidth.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.rightShelveWidth,
+                                    'VERY_HIGH_MSG',
+                                    'Right shelve width is very high! ' + frnData.rightShelveWidth.RANGE_LABEL);
+&nbsp;
+            // thickness
+            frnConstr.addConstant(frnConstr.Const.Messages.thickness,
+                                    'VERY_LOW_MSG',
+                                    'Thickness is very low! ' + frnData.thickness.RANGE_LABEL);
+            frnConstr.addConstant(frnConstr.Const.Messages.thickness,
+                                    'VERY_HIGH_MSG',
+                                    'Thickness is very high! ' + frnData.thickness.RANGE_LABEL);
+&nbsp;
+            frnConstr.addConstant(frnConstr.Const.Messages, 'LEFT_MAX_NUM_OF_SHELVES_REACHED_MSG',
+                                    'Number of shelves for left wall is reached! Max: ' + fcdo.maxNumOfShelves);
+&nbsp;
+            frnConstr.addConstant(frnConstr.Const.Messages, 'RIGHT_MAX_NUM_OF_SHELVES_REACHED_MSG',
+                                    'Number of shelves for right wall is reached! Max: ' + fcdo.maxNumOfShelves);
+        }
+    };
+    }(window.FrnConstr)));</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 03 2016 21:34:02 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

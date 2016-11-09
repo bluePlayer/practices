@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<testsuite name="PhantomJS 2.1.1 (Linux 0.0.0)" package="" timestamp="2016-11-04T09:48:54" id="0" hostname="asus-vlado" tests="1002" errors="0" failures="0" time="0.022">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Unknown; Linux i686) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
+  </properties>
+  <testcase name="removeVertBafflesBeamsAndHangers(partsArray, maxNumOfBeams) removeVertBafflesBeamsAndHangers(partsArray, maxNumOfBeams)" time="0.022" classname="PhantomJS_2_1_1_(Linux_0_0_0).removeVertBafflesBeamsAndHangers(partsArray, maxNumOfBeams)"/>
+  <system-out>
+    <![CDATA[PhantomJS 2.1.1 (Linux 0.0.0) LOG: Object{millsPerPixel: 7, millsPerPixelForDepth: 16, cupboardWidth: 2500, cupboardHeight: 2500, cupboardDepth: 700, leftShelveWidth: 250, rightShelveWidth: 250, thickness: 30, floorChkBox: true, ceilingChkBox: true, leftShelveChkBox: true, rightShelveChkBox: true, rearChkBox: true, standLeftChkBox: true, standRightChkBox: true, standChkBox: true, shelveCssColor: '#3d6990', fullWidth: 3000, maxNumOfShelves: 25, maxNumOfInnerShelves: 25, maxNumOfBeams: 25}
+,Firefox 49.0.0 (Ubuntu 0.0.0) LOG: null
+,PhantomJS 2.1.1 (Linux 0.0.0) LOG: Object{millsPerPixel: 7, millsPerPixelForDepth: 16, cupboardWidth: 2500, cupboardHeight: 2500, cupboardDepth: 700, leftShelveWidth: 250, rightShelveWidth: 250, thickness: 30, floorChkBox: true, ceilingChkBox: true, leftShelveChkBox: true, rightShelveChkBox: true, rearChkBox: true, standLeftChkBox: true, standRightChkBox: true, standChkBox: true, shelveCssColor: '#3d6990', fullWidth: 3000, maxNumOfShelves: 25, maxNumOfInnerShelves: 25, maxNumOfBeams: 25}
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

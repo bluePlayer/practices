@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WML Tests</title>
+        <h2>WML Tests</h2>
+
+        <!-- Application related files -->
+        <script src="../../phaser.min.js"></script>
+        <script src="../../WML.js"></script>
+        <script src="../../State.js"></script>
+        <script src="../../Screens/Screen.js"></script>
+        <script src="../../Screens/Boot.js"></script>
+        <script src="../../Screens/Preloader.js"></script>
+        <script src="../../Screens/LevelsScreen.js"></script>
+        <script src="../../Screens/TestScreen.js"></script>
+        <script src="../../utils/Utility.js"></script>
+        
+        <!-- Unit tests related files -->
+        <script src="../jsunit/app/jsUnitCore.js"></script>
+        <script src="../jsunit/app/jsUnitParams.js"></script>
+        <script src="UnitTests.js"></script>
+        <script src="Utils/UnitTestsUtils.js"></script>
+        <script src="Utils/FadeInOutUtils.js"></script>
+        <script src="Stubs/UnitTestsStub.js"></script>
+        <script src="Stubs/PreloaderStub.js"></script>
+
+        <script>
+            var game = WML.gameObject,
+                preloaderStub = UnitTests.UnitTestsStub.PreloaderStub,
+                loader = loader = game.load,
+                cache = loader = game.cache,
+                atlasJsonHashType = Phaser.Loader.TEXTURE_ATLAS_JSON_HASH;
+
+            // Preloader tests
+            
+            function testCreateWMLPreloader_LoadingObjectsIsNotNull_ReturnsNonEmptyPreloaderObject () {
+                // arrange
+                var myPreloader = null;
+                
+                // act
+                myPreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertNotNull(myPreloader.loadingObjects);
+            }
+
+            function testCreateWMLPreloader_LoadingLabelIsNotNull_ReturnsNonEmptyPreloaderObject () {
+                // arrange
+                var myPreloader = null;
+                
+                // act
+                myPreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertNotNull(myPreloader.loadingLabel);
+            }
+           
+            function testCreateWMLPreloader_PreloaderBottomIsNotNull_ReturnsNonEmptyPreloaderObject () {
+                // arrange
+                var myPreloader = null;
+                
+                // act
+                myPreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertNotNull(myPreloader.preloaderBottom);
+            }
+            
+            function testCreateWMLPreloader_PreloaderTopIsNotNull_ReturnsNonEmptyPreloaderObject () {
+                // arrange
+                var myPreloader = null;
+                
+                // act
+                myPreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertNotNull(myPreloader.preloaderTop);
+            }
+            
+            function testCreateWMLPreloader_ReadyIsFalse_ReturnsNonEmptyPreloaderObject () {
+                // arrange
+                var myPreloader = null;
+                
+                // act
+                myPreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertFalse(myPreloader.ready);
+            }
+            
+            function testCreateWMLPreloader_LoadingTweenIsNull_ReturnsNonEmptyPreloaderObject () {
+                // arrange
+                var myPreloader = null;
+                
+                // act
+                myPreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertNull(myPreloader.loadingTween);
+            }
+            
+            function testCreateWMLPreloader_LoadingTweenIsNotNullAfterPreloaderUpdateFunc_PassesIfLoadingTweenIsNotNull () {
+                // arrange
+                var myPreloader = null;
+                WML.MainMenuScreen = {};
+                WML.HelpScreen = {};
+                WML.GameScreen = {};
+                WML.BreakPointScreen = {};
+                WML.OptionsScreen = {};
+                WML.GameOverScreen = {};
+                
+                // act
+                WML.init({});
+                WML.Preloader.init();
+                WML.wmlPreloader.ready = true;
+                WML.Preloader.update();
+                
+                // assert
+                assertNotNull(WML.wmlPreloader.loadingTween);
+            }
+            
+            function testCreateWMLPreloader_LoadingTweenIsOfTypePhaserTweenAfterPreloaderUpdateFunc_PassesIfLoadingTweenIsOfTypePhaserTween () {
+                // arrange
+                var myPreloader = null;
+                WML.MainMenuScreen = {};
+                WML.HelpScreen = {};
+                WML.GameScreen = {};
+                WML.BreakPointScreen = {};
+                WML.OptionsScreen = {};
+                WML.GameOverScreen = {};
+                
+                // act
+                WML.init({});
+                WML.Preloader.init();
+                WML.wmlPreloader.ready = true;
+                WML.Preloader.update();
+                
+                // assert
+                assertTrue(WML.wmlPreloader.loadingTween instanceof Phaser.Tween);
+            }
+            
+            function testCreateWMLPreloader_LoadingObjectsIsOfTypePhaserGroup_PassesIfLoadingObjectsIsOfTypePhaserGroup () {
+                // arrange
+                var myPreloader = null,
+                    gamePreloader = null;
+                
+                // act
+                myPreloader = preloaderStub.initializePreloader();
+                gamePreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertTrue(gamePreloader.loadingObjects instanceof Phaser.Group);
+            }
+            
+            function testCreateWMLPreloader_LoadingLabelIsOfTypePhaserSprite_PassesIfLoadingLabelIsOfTypePhaserSprite () {
+                // arrange
+                var myPreloader = null,
+                    gamePreloader = null;
+                
+                // act
+                myPreloader = preloaderStub.initializePreloader();
+                gamePreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertTrue(gamePreloader.loadingLabel instanceof Phaser.Sprite);
+            }
+            
+            function testCreateWMLPreloader_PreloaderBottomIsOfTypePhaserGraphics_PassesIfPreloaderBottomIsOfTypePhaserGraphics () {
+                // arrange
+                var myPreloader = null,
+                    gamePreloader = null;
+                
+                // act
+                myPreloader = preloaderStub.initializePreloader();
+                gamePreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertTrue(gamePreloader.preloaderBottom instanceof Phaser.Graphics);
+            }
+            
+            function testCreateWMLPreloader_PreloaderTopIsOfTypePhaserGraphics_PassesIfPreloaderTopIsOfTypePhaserGraphics () {
+                // arrange
+                var myPreloader = null,
+                    gamePreloader = null;
+                
+                // act
+                myPreloader = preloaderStub.initializePreloader();
+                gamePreloader = WML.createWmlPreloader();
+                
+                // assert
+                assertTrue(gamePreloader.preloaderTop instanceof Phaser.Graphics);
+            }
+            
+            // setLevelPoints() tests
+            
+            function testSetLevelPoints_SetsPointsToLevelBelowZero_PassesIfLevelZeroContainsGivenPoints () {
+                var points = 400,
+                    levelNum = -1;
+                
+                WML.setLevelPoints(levelNum, points);
+                
+                assertEquals(WML.getLevelPointsArray()[0], points);
+            }
+            
+            function testSetLevelPoints_SetsPointsToLevelBiggerThanLevelsCount_PassesIfLastLevelContainsGivenPoints () {
+                var points = 400,
+                    levelNum = WML.Const.LEVELS_COUNT;
+                
+                WML.setLevelPoints(levelNum, points);
+                
+                assertEquals(WML.getLevelPointsArray()[levelNum - 1], points);
+            }
+            
+            function testSetLevelPoints_SetsPointsToLevelBetweenZeroAndLevelsCountMinusOne_PassesIfGivenLevelContainsGivenPoints () {
+                var points = 400,
+                    levelNum = 6;
+                
+                WML.setLevelPoints(levelNum, points);
+                
+                assertEquals(WML.getLevelPointsArray()[levelNum], points);
+            }
+            
+            // updateScore() tests
+            function testUpdateScore_FillLevelPointsArrayWithNaturalNumbersZeroToLevelsCountMinusOne_ScoreEqualsSumOfNaturalNumbersZeroToLevelsCountMinusOne () {
+                // arrange
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    i = 0,
+                    sum = 210;
+                
+                // act
+                WML.clearLevelPointsArray();
+                UnitTests.UnitTestsUtils.pointsArrWithDummies();
+                WML.updateScore();
+                
+                // assert
+                assertEquals(WML.getScore(), sum);
+            }
+           
+            // setCurrentLevel() tests 
+            function testSetCurrentLevel_ForLevelNumberBelowZero_ReturnsCurrentLevelZero () {
+                var levelNum = -1,
+                    currentLevel = 0;
+                
+                currentLevel = WML.setCurrentLevel(levelNum);
+                
+                assertEquals(currentLevel, 0);
+            }
+            
+            function testSetCurrentLevel_ForLevelNumberAboveLevelsCountMinusOne_ReturnsLevelCountMinusOne () {
+                var levelNum = WML.Const.LEVELS_COUNT,
+                    levelsCount = WML.Const.LEVELS_COUNT,
+                    currentLevel = 0;
+                
+                currentLevel = WML.setCurrentLevel(levelNum);
+                
+                assertEquals(currentLevel, levelsCount - 1);
+            }
+            
+            function testSetCurrentLevel_ForLevelNumberBetweenZeroAndLevelsCount_ReturnsLevelNumber () {
+                var levelNum = 7,
+                    levelsCount = WML.Const.LEVELS_COUNT,
+                    currentLevel = 0;
+                
+                currentLevel = WML.setCurrentLevel(levelNum);
+                
+                assertEquals(currentLevel, levelNum);
+            }
+            
+            // incrCurrentLevel() tests
+            function testIncrCurrentLevel_ForCurrentLevelAboveLevelsCountMinusOne_ReturnsLevelsCountMinusOne () {
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    levelNum = WML.Const.LEVELS_COUNT,
+                    currentLevel = 0;
+                
+                WML.setCurrentLevel(levelNum);
+                currentLevel = WML.incrCurrentLevel();
+                
+                assertEquals(currentLevel, WML.Const.LEVELS_COUNT - 1);
+            }
+            
+            function testIncrCurrentLevel_ForCurrentLevelBelowZero_ReturnsZero () {
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    levelNum = -1,
+                    currentLevel = 0;
+                
+                WML.setCurrentLevel(levelNum);
+                currentLevel = WML.incrCurrentLevel();
+                
+                assertEquals(currentLevel, 1);
+            }
+            
+            function testIncrCurrentLevel_ForCurrentLevelBetweenZeroAndLevelsCountMinusOne_ReturnsCurrentLevelIncrByOne () {
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    levelNum = 5,
+                    currentLevel = 0;
+                
+                WML.setCurrentLevel(levelNum);
+                currentLevel = WML.incrCurrentLevel();
+                
+                assertEquals(currentLevel, levelNum + 1);
+            }
+            
+            // decrCurrentLevel() tests
+            function testDecrCurrentLevel_ForCurrentLevelAboveLevelsCountMinusOne_ReturnsLevelsCountMinusOne () {
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    levelNum = WML.Const.LEVELS_COUNT,
+                    currentLevel = 0;
+                
+                WML.setCurrentLevel(levelNum);
+                currentLevel = WML.decrCurrentLevel();
+                
+                assertEquals(currentLevel, WML.Const.LEVELS_COUNT - 2);
+            }
+            
+            function testDecrCurrentLevel_ForCurrentLevelBelowZero_ReturnsZero () {
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    levelNum = -1,
+                    currentLevel = 0;
+                
+                WML.setCurrentLevel(levelNum);
+                currentLevel = WML.decrCurrentLevel();
+                
+                assertEquals(currentLevel, 0);
+            }
+            
+            function testDecrCurrentLevel_ForCurrentLevelBetweenZeroAndLevelsCountMinusOne_ReturnsCurrentLevelDecrementedByOne () {
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    levelNum = 6,
+                    currentLevel = 0;
+                
+                WML.setCurrentLevel(levelNum);
+                currentLevel = WML.decrCurrentLevel();
+                
+                assertEquals(currentLevel, levelNum - 1);
+            }
+            
+            // incrementGameProgress tests
+            /*
+            function testIncrementGameProgress_ () {
+                // arrange
+                var levelsCount = WML.Const.LEVELS_COUNT,
+                    gameProgress = 1,
+                    newGameProgress = 1;
+                
+                // act
+                WML.LevelsScreen.screenObjects = game.add.group();
+                WML.LevelsScreen.resetGame();
+                newGameProgress = WML.incrementGameProgress();
+                
+                assertEquals(gameProgress, newGameProgress);
+            }
+            */
+            
+            // fadeOutGroup() tests
+            function testFadeOutGroup_CreateCardBoxesAndRunFadeOutFunctionOnThem_PassesIfAllBoxesInTheGroupHaveAlphaZero () {
+                // arrage
+                var testScreen = WML.TestScreen,
+                    allObjectsFadedOut = true,
+                    checkMinAlpha = function () {
+                        testScreen.screenObjects.forEach(function (item){
+                            if (item.alpha !== 0) {
+                                allObjectsFadedOut = allObjectsFadedOut && false;
+                            }
+                        }, testScreen, false, {});
+                    };
+                
+                // act
+                testScreen.init();
+                testScreen.clearScreenState();
+                testScreen.create = function () {
+                    testScreen.screenObjects = UnitTests.UnitTestsUtils.FadeInOutUtils.createAllCardBoxesOnStage(WML);
+                };
+                testScreen.create();
+                WML.fadeOutGroup(testScreen.screenObjects).onComplete.add(checkMinAlpha);
+                
+                // assert
+                assertTrue(allObjectsFadedOut);
+            }
+            
+            // fadeInGroup() tests
+            function testFadeInGroup_CreateCardBoxesAndRunFadeInFunctionOnThem_PassesIfAllBoxesInTheGroupHaveAlphaOne () {
+                // arrage
+                var testScreen = WML.TestScreen,
+                    allObjectsFadedIn = true,
+                    checkMaxAlpha = function () {
+                        testScreen.screenObjects.forEach(function (item){
+                            if (item.alpha !== 1) {
+                                allObjectsFadedIn = allObjectsFadedIn && false;
+                            }
+                        }, testScreen, false, {});
+                    },
+                    startFadeIn = function () {
+                        WML.fadeInGroup(testScreen.screenObjects).onComplete.add(checkMaxAlpha);
+                    };
+                
+                // act
+                testScreen.init();
+                testScreen.clearScreenState();
+                testScreen.create = function () {
+                    testScreen.screenObjects = UnitTests.UnitTestsUtils.FadeInOutUtils.createAllCardBoxesOnStage(WML);
+                };
+                testScreen.create();
+                WML.fadeOutGroup(testScreen.screenObjects).onComplete.add(startFadeIn);
+                
+                // assert
+                assertTrue(allObjectsFadedIn);
+            }
+            
+            function testGetLevelPointsArray_FillPointsArrWithDumiesAndAssignTwoNewArrsWithItsValuesMakeAChangeInOneOfTheTwoNewArrays_PassesIfTwoInstancesHaveDiffValueOnSameIndex () {
+                // arrange
+                var pointsArray1 = [],
+                    pointsArray2 = [],
+                    i = 0,
+                    changeIndex = WML.Utility.randomNumber(0, WML.Const.LEVELS_COUNT - 1);
+
+                UnitTests.UnitTestsUtils.pointsArrWithDummies();
+                
+                // act
+                pointsArray1 = WML.getLevelPointsArray();
+                pointsArray2 = WML.getLevelPointsArray();
+                pointsArray1[changeIndex] = pointsArray1[changeIndex] + pointsArray2[changeIndex];
+                
+                //assert
+                assertNotEquals(pointsArray1[changeIndex], pointsArray2[changeIndex]);
+            }
+             
+            function testClearLevelPointsArray_FillPointsArrayWithDummyValuesAndRunClearLevelPointArrayFunc_PassesIfAllLevelsHaveScoreZero () {
+                var pointsArray = [],
+                    allValuesAreZero = true,
+                    i;
+                
+                UnitTests.UnitTestsUtils.pointsArrWithDummies();
+                WML.clearLevelPointsArray();
+                pointsArray = WML.getLevelPointsArray();
+                for (i = 0; i < WML.Const.LEVELS_COUNT; i += 1) {
+                    if (pointsArray[i] !== 0) {
+                        allValuesAreZero &= false;
+                    }
+                }
+                
+                assertTrue(allValuesAreZero);
+            }
+             
+            function testAddConstant_MakeFakeObjectAndRunAddConstantOnItWithGivenConstNameAndValue_PassesIfTheNewConstIsNotUndefined () {
+                var myFakeObject = {},
+                    constName = 'MY_NEW_CONST',
+                    myConstValue = 'myNewConst';
+                
+                WML.addConstant(myFakeObject, constName, myConstValue);
+                
+                assertNotUndefined(myFakeObject.MY_NEW_CONST);
+            }
+            
+            function testAddConstant_MakeFakeObjectAndRunAddConstantOnItWithGivenConstNameAndValue_PassesIfTheNewConstHasntValueOfNull () {
+                var myFakeObject = {},
+                    constName = 'MY_NEW_CONST',
+                    myConstValue = 'myNewConst';
+                
+                WML.addConstant(myFakeObject, constName, myConstValue);
+                
+                assertNotNull(myFakeObject.MY_NEW_CONST);
+            }
+            
+            function testAddConstant_MakeFakeObjectAndRunAddConstantOnItWithGivenOnlyConstNameConstValueIsUndefined_PassesIfTheNewConstHasStringValueOfItsName () {
+                var myFakeObject = {},
+                    constName = 'MY_NEW_CONST';
+                
+                WML.addConstant(myFakeObject, constName);
+                
+                assertEquals(myFakeObject.MY_NEW_CONST, constName);
+            }
+            
+            function testAddConstant_MakeFakeObjectAndRunAddConstantOnItWithGivenOnlyConstNameConstValueIsNull_PassesIfTheNewConstHasStringValueOfItsName () {
+                var myFakeObject = {},
+                    constName = 'MY_NEW_CONST',
+                    myConstValue = null;
+                
+                WML.addConstant(myFakeObject, constName, myConstValue);
+                
+                assertEquals(myFakeObject.MY_NEW_CONST, constName);
+            }
+            
+            // LoadAtlasJSONHash tests
+            
+            function clearGameCache () {
+                game.cache = new Phaser.Cache(game);
+                cache = game.cache;
+                game.load.reset();
+                game.load.removeAll();
+                loader = game.load;
+            }
+            
+            function testLoadAtlasJSONHash_CreateCustomJSONAtlasAndRunTheFunc_PassesIfImageAssetKeysObjectContainsTheAssetKey () {
+                var keyName = 'KEY_NAME',
+                    keyValue = 'keyValue',
+                    sheetUrl = 'assets/testing/images/guidesAndBackgrounds.png', 
+                    sheetConfigUrl = 'assets/testing/settings/guidesAndBackgroundsHash.json';
+
+                clearGameCache();
+                
+                WML.loadAtlasJSONHash(keyName, keyValue, sheetUrl, sheetConfigUrl);
+                
+                assertNotUndefined(WML.ImageAssetKeys[keyName]);
+            }
+            
+            function testLoadAtlasJSONHash_CreateCustomJSONAtlasAndRunTheFunc_ShouldFailSinceAssetUrlIsWrong () {
+                var keyName = 'KEY_NAME',
+                    keyValue = 'keyValue',
+                    sheetUrl = 'asts/testin/guidndBackgrounds.png', 
+                    sheetConfigUrl = 'assets/testing/settings/guidesAndBackgroundsHash.json',
+                    loadCompleteListener = function () {
+                        debug('Got some error while loading a file!', error);
+                    },
+                    fileErrorListener = function () {
+                        //var error = loader.fileError(0);
+                        //debug('Got some error while loading a file!', error);
+                        assertFalse(loader.getAsset(atlasJsonHashType, keyName));
+                    };
+
+                clearGameCache();
+                
+                loader.onFileError.add(fileErrorListener);
+                loader.onLoadComplete.add(loadCompleteListener);
+                WML.loadAtlasJSONHash(keyName, keyValue, sheetUrl, sheetConfigUrl);
+            }
+            
+            function testLoadAtlasJSONHash_CreateCustomJSONAtlasAndRunTheFunc_PassesIfTheNewImageKeyHasNonNullValue () {
+                var keyName = 'KEY_NAME',
+                    keyValue = 'keyValue',
+                    sheetUrl = 'assets/testing/images/guidesAndBackgrounds.png', 
+                    sheetConfigUrl = 'assets/testing/settings/guidesAndBackgroundsHash.json';
+
+                clearGameCache();
+                
+                WML.loadAtlasJSONHash(keyName, keyValue, sheetUrl, sheetConfigUrl);
+                
+                assertNotNull(WML.ImageAssetKeys[keyName]);
+            }
+            
+            function testLoadAtlasJSONHash_CreateCustomJSONAtlasAndRunTheFunc_PassesIfTheNewImageKeyHasTheGivenValue () {
+                var keyName = 'KEY_NAME',
+                    keyValue = 'keyValue',
+                    sheetUrl = 'assets/testing/images/guidesAndBackgrounds.png', 
+                    sheetConfigUrl = 'assets/testing/settings/guidesAndBackgroundsHash.json';
+
+                clearGameCache();
+                
+                WML.loadAtlasJSONHash(keyName, keyValue, sheetUrl, sheetConfigUrl);
+                
+                assertEquals(WML.ImageAssetKeys[keyName], keyValue);
+            }
+            
+            function testLoadAtlasJSONHash_CreateCustomJSONAtlasAndRunTheFunc_PassesIfThePhaserLoaderContainsTheAssetKey () {
+                var keyName = 'KEY_NAME',
+                    keyValue = 'keyValue',
+                    sheetUrl = 'assets/testing/images/guidesAndBackgrounds.png', 
+                    sheetConfigUrl = 'assets/testing/settings/guidesAndBackgroundsHash.json',
+                    fileCompleteListener = function () {
+                        assertTrue(loader.checkKeyExists(atlasJsonHashType, keyName));
+                    };
+                
+                clearGameCache();
+
+                WML.loadAtlasJSONHash(keyName, keyValue, sheetUrl, sheetConfigUrl).onFileComplete.add(fileCompleteListener);
+            }
+
+            function testLoadAtlasJSONHash_CreateCustomJSONAtlasAndRunTheFunc_PassesIfThePhaserLoaderContainsTheAssetItself () {
+                var keyName = 'KEY_NAME',
+                    keyValue = 'keyValue',
+                    sheetUrl = 'assets/testing/images/guidesAndBackgrounds.png', 
+                    sheetConfigUrl = 'assets/testing/settings/guidesAndBackgroundsHash.json',
+                    fileCompleteListener = function () {
+                        assertEquals(loader.getAsset(atlasJsonHashType, keyName), 
+                                        cache.getTileMapData(keyName));
+                    };
+                    
+                clearGameCache();
+                
+                loader.onFileComplete.add(fileCompleteListener);
+                loader = WML.loadAtlasJSONHash(keyName, keyValue, sheetUrl, sheetConfigUrl);
+            }
+            
+            function testLoadAtlasJSONHash_CreateCustomJSONAtlasAndRunTheFunc_PassesIfThePhaserLoaderContansAllLoadedAssets () {
+            
+                var boxesAtlasKey = 'BOXES_ATLAS',
+                    storyBackgroundsAtlasKey = 'STORY_BACKGROUNDS_ATLAS',
+                    guidesAndBackgroundsAtlasKey = 'GUIDES_AND_BACKGROUNDS_ATLAS',
+                    boxesImgUrl = 'assets/testing/images/boxes/boxesSheet.png',
+                    storyBgImgUrl = 'assets/testing/images/storyBackgrounds.png',
+                    guidesBgImgUrl = 'assets/testing/images/guidesAndBackgrounds.png',
+                    boxesImgDataUrl = 'assets/testing/settings/boxesSheetHash.json',
+                    storyBgImgDataUrl = 'assets/testing/settings/storyBackgroundsHash.json',
+                    guidesBgImgDataUrl = 'assets/testing/settings/guidesAndBackgroundsHash.json',
+                    loadCompleteListener = function () {
+                        assertEquals(loader.getAsset(atlasJsonHashType, boxesAtlasKey), cache.getTileMapData(boxesAtlasKey));
+                        assertEquals(loader.getAsset(atlasJsonHashType, storyBackgroundsAtlasKey), cache.getTileMapData(storyBackgroundsAtlasKey));
+                        assertEquals(loader.getAsset(atlasJsonHashType, guidesAndBackgroundsAtlasKey), cache.getTileMapData(guidesAndBackgroundsAtlasKey));
+                    },
+                    fileErrorListener = function () {
+                        var error = loader.fileError(0);
+                        debug('Got some error while loading a file!', error);
+                    };
+
+                clearGameCache();
+
+                loader.onFileError.add(fileErrorListener);
+                loader.onLoadComplete.add(loadCompleteListener);
+                
+                WML.loadAtlasJSONHash(boxesAtlasKey, null, boxesImgUrl, boxesImgDataUrl);
+                WML.loadAtlasJSONHash(storyBackgroundsAtlasKey, null, storyBgImgUrl, storyBgImgDataUrl);
+	            WML.loadAtlasJSONHash(guidesAndBackgroundsAtlasKey, null, guidesBgImgUrl, guidesBgImgDataUrl);
+                
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

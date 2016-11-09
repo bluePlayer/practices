@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for js/InitFrnConstrForm.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">js/</a> InitFrnConstrForm.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">31.43% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/35</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">22.22% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">31.43% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>11/35</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">window.FrnConstr.namespace('InitFrnConstrForm', {}, (function (frnConstr, jq, phaser) {'use strict';
+    var frnConst = frnConstr.Const,
+        frnConstApp = frnConst.Application;
+&nbsp;
+    return {
+&nbsp;
+        resetForm: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >            var frnData = frnConstApp.FrnData;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            jq("#floorChkBox").prop("checked", frnData.checkBoxes.DEFAULT_FLOOR_IS_DRAWN);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#ceilingChkBox").prop("checked", frnData.checkBoxes.DEFAULT_CEILING_IS_DRAWN);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#leftShelveChkBox").prop("checked", frnData.checkBoxes.DEFAULT_LEFT_SHELVE_IS_DRAWN);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#rightShelveChkBox").prop("checked", frnData.checkBoxes.DEFAULT_RIGHT_SHELVE_IS_DRAWN);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#rearChkBox").prop("checked", frnData.checkBoxes.DEFAULT_REAR_WALL_IS_DRAWN);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#standLeftChkBox").prop("checked", frnData.checkBoxes.DEFAULT_STAND_LEFT_IS_DRAWN);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#standRightChkBox").prop("checked", frnData.checkBoxes.DEFAULT_STAND_RIGHT_IS_DRAWN);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#standChkBox").prop("checked", frnData.checkBoxes.DEFAULT_STAND_IS_DRAWN);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            jq("#millsPerPixel").val(frnData.millsPerPixel.DEFAULT_VAL);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#millsPerPixelForDepth").val(frnData.millsPerPixelForDepth.DEFAULT_VAL);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#cupboardWidth").val(frnData.cupboardWidth.DEFAULT_VAL);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#cupboardHeight").val(frnData.cupboardHeight.DEFAULT_VAL);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#cupboardDepth").val(frnData.cupboardDepth.DEFAULT_VAL);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#leftShelveWidth").val(frnData.leftShelveWidth.DEFAULT_VAL);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#rightShelveWidth").val(frnData.rightShelveWidth.DEFAULT_VAL);</span>
+<span class="cstat-no" title="statement not covered" >            jq("#thickness").val(frnData.thickness.DEFAULT_VAL);</span>
+        },
+&nbsp;
+        initForm: function () {
+&nbsp;
+            jq("#enteriorButton").click(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                frnConstr.gameObject.state.start(frnConstr.EnteriorScreen.KEY);</span>
+            });
+&nbsp;
+            jq("#exteriorButton").click(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                frnConstr.gameObject.state.start(frnConstr.ExteriorScreen.KEY);</span>
+            });
+&nbsp;
+            jq("#sendButton").click(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >                frnConstr.gameObject.state.start(frnConstr.SendApplicationScreen.KEY);</span>
+            });
+&nbsp;
+            jq("#generateButton").click(frnConstr.generateWardrobe);
+&nbsp;
+            jq("#saveProgressButton").click(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                frnConstr.saveStorageData(frnConstr.getFrnConstrDataObject());</span>
+            });
+&nbsp;
+            jq("#deleteProgressButton").click(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                frnConstr.clearStorageData();</span>
+<span class="cstat-no" title="statement not covered" >                frnConstr.generateWardrobe();</span>
+            });
+&nbsp;
+            jq("#standLeftChkBox").change(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                jq('#leftShelveChkBox').click();</span>
+            });
+&nbsp;
+            jq("#resetConstrFormButton").click(this.resetForm);
+        }
+    };
+    }(window.FrnConstr, $, Phaser)));
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 04 2016 10:31:43 GMT+0100 (CET)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

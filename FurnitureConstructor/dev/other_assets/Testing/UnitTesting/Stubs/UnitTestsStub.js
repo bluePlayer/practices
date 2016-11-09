@@ -1,0 +1,1 @@
+window.UnitTests.namespace('UnitTestsStub', {}, (function (unitTests) {'use strict';    return {            };    }(window.UnitTests)));
