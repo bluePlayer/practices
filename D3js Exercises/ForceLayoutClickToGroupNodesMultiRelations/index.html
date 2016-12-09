@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Force Layout Click to Group/Bundle Nodes - Multiple Relations</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        svg {
+          border: 1px solid #ccc;
+        }
+        body {
+          font: 10px sans-serif;
+        }
+        circle.node {
+          fill: lightsteelblue;
+          stroke: #555;
+          stroke-width: 3px;
+        }
+        circle.leaf {
+          stroke: #fff;
+          stroke-width: 1.5px;
+        }
+        circle.link-expanded {
+          stroke: #555;
+          stroke-width: 3px;
+          stroke-dasharray: 2px 4px;
+        }
+        circle.helper {
+          stroke-width: 0;
+          fill: #333;
+          opacity: 0.6;
+        }
+        circle.center-of-mass {
+          fill: white;
+          stroke: red;
+          stroke-width: 5px;
+        }
+        path.hull {
+          fill: lightsteelblue;
+          fill-opacity: 0.3;
+        }
+        path.hlink {
+          stroke: #333;
+          stroke-opacity: 0.5;
+          fill: none;
+          pointer-events: none;
+        }
+        line.link {
+          stroke: red;
+          stroke-opacity: 0.7;
+          pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Force Layout Click to Group/Bundle Nodes - Multiple Relations</h2>
+    <script src="http://d3js.org/d3.v2.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
