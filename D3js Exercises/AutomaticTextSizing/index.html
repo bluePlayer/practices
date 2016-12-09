@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Automatic Text Sizing</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        text {
+          font: 24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+          text-anchor: middle;
+          pointer-events: none;
+        }
+
+        circle {
+          fill: #ccc;
+        }
+
+        .node:hover circle {
+          fill: orange;
+        }
+    </style>
+</head>
+<body>
+    <h2>Automatic Text Sizing</h2>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

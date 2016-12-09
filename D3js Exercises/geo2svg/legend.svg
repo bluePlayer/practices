@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="960" height="1100" viewBox="0 0 960 1100" fill="none">
+  <g transform="translate(540,40)" font-size="10" font-family="sans-serif" text-anchor="middle">
+    <rect height="8" x="0" width="6" fill="#fff7ec"></rect>
+    <rect height="8" x="6" width="13" fill="#fee8c8"></rect>
+    <rect height="8" x="19" width="23" fill="#fdd49e"></rect>
+    <rect height="8" x="42" width="42" fill="#fdbb84"></rect>
+    <rect height="8" x="84" width="49" fill="#fc8d59"></rect>
+    <rect height="8" x="133" width="56" fill="#ef6548"></rect>
+    <rect height="8" x="189" width="78" fill="#d7301f"></rect>
+    <rect height="8" x="267" width="110" fill="#b30000"></rect>
+    <rect height="8" x="377" width="23" fill="#7f0000"></rect>
+    <text x="0" y="-6" fill="#000" text-anchor="start" font-weight="bold">Population per square mile</text>
+    <g transform="translate(6,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">1</text>
+    </g>
+    <g transform="translate(19,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">10</text>
+    </g>
+    <g transform="translate(42,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">50</text>
+    </g>
+    <g transform="translate(84,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">200</text>
+    </g>
+    <g transform="translate(133,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">500</text>
+    </g>
+    <g transform="translate(189,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">1,000</text>
+    </g>
+    <g transform="translate(267,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">2,000</text>
+    </g>
+    <g transform="translate(377,0)">
+      <line stroke="#000" y2="13" x1="0.5" x2="0.5"></line>
+      <text fill="#000" y="16" x="0.5" dy="0.71em">4,000</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Clock With Ticks D3 version 3</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        body {
+          background: #fff;
+        }
+
+        svg{
+            stroke: #000;
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        }
+
+        #rim {
+          fill: none;
+          stroke: #999;
+          stroke-width: 3px;
+        }
+
+        .second-hand{
+            stroke-width:3;
+
+        }
+
+        .minute-hand{
+            stroke-width:8;
+            stroke-linecap:round;
+        }
+
+        .hour-hand{
+            stroke-width:12;
+            stroke-linecap:round;
+        }
+
+        .hands-cover{
+            stroke-width:3;
+            fill:#fff;
+        }
+
+        .second-tick{
+            stroke-width:3;
+            fill:#000;
+        }
+
+        .hour-tick{
+            stroke-width:8;
+        }
+
+        .second-label{
+            font-size: 12px;
+        }
+
+        .hour-label{
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Clock With Ticks D3 version 3</h2>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "d3-geoPath-canvas-example",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "scripts": {
+    "prepublish": "./rasterize"
+  },
+  "devDependencies": {
+    "canvas": "1",
+    "d3-geo": "1",
+    "topojson-client": "2",
+    "us-atlas": "1"
+  }
+}
