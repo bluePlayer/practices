@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Zoomable Tree Map</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        .feature {
+            position: relative;
+            width: calc(100% - 50px);
+            height: calc(100% - 50px);
+            margin: 25px;
+            background: #aaa;
+            border: 1px solid red;
+        }
+
+        .node {
+            position: absolute;
+            background: transparent url("") no-repeat 50%/cover;
+            border: 1px white solid;
+            overflow: hidden;
+            opacity: 0.5;
+            -webkit-transition: opacity .8s;
+            transition: opacity .8s;
+        }
+        .node .label {
+            display: inline;
+            font-family: sans-serif;
+            color: rgba(255, 255, 255, 0.8);
+            white-space: nowrap;
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            -webkit-transition: -webkit-filter .8s;
+            transition: -webkit-filter .8s;
+            transition: filter .8s;
+            transition: filter .8s, -webkit-filter .8s;
+        }
+        .node:hover {
+            opacity: 0;
+        }
+        .node:hover .label {
+            -webkit-filter: blur(10px);
+            filter: blur(10px);
+        }
+        .node.level-0 {
+            z-index: 4;
+            font-size: 15vmin;
+            display: none;
+        }
+        .node.level-1 {
+            z-index: 3;
+            font-size: 10vmin;
+        }
+        .node.level-2 {
+            z-index: 2;
+            font-size: 5vmin;
+        }
+        .node.level-3 {
+            z-index: 1;
+            font-size: 2.5vmin;
+        }
+    </style>
+</head>
+<body>
+    <h2>Zoomable Tree Map</h2>
+    <div class="feature" id="chart"></div>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
