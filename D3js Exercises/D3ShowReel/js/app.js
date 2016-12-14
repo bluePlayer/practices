@@ -10,51 +10,65 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
         m = [20, 20, 30, 20],
         w = 960 - m[1] - m[3],
         h = 500 - m[0] - m[2],
-        x,
-        y,
+        k = 1,
+        n = 0,
+        x = null,
+        x1 = null,
+        y = null,
         duration = 1500,
         delay = 500,
         color = d3.scale.category10(),
+        color2 = d3.scale.ordinal()
+        .range(["#c6dbef", "#9ecae1", "#6baed6"]),
 
         svg = d3.select("body").append("svg")
-            .attr("width", w + m[1] + m[3])
-            .attr("height", h + m[0] + m[2])
-            .append("g")
-            .attr("transform", "translate(" + m[3] + "," + m[0] + ")"),
+        .attr("width", w + m[1] + m[3])
+        .attr("height", h + m[0] + m[2])
+        .append("g")
+        .attr("transform", "translate(" + m[3] + "," + m[0] + ")"),
 
-        symbols,
+        pie = d3.layout.pie()
+        .value(function(d) {
+            return d.sumPrice;
+        }),
+
+        arc = d3.svg.arc(),
+        g = null,
+        t = null,
+        stack = null,
+        symbols = null,
 
         // A line generator, for the dark stroke.
         line = d3.svg.line()
-            .interpolate("basis")
-            .x(function(d) {
-                return x(d.date);
-            })
-            .y(function(d) {
-                return y(d.price);
-            }),
+        .interpolate("basis")
+        .x(function(d) {
+            return x(d.date);
+        })
+        .y(function(d) {
+            return y(d.price);
+        }),
 
         // A line generator, for the dark stroke.
         axis = d3.svg.line()
-            .interpolate("basis")
-            .x(function(d) {
-                return x(d.date);
-            })
-            .y(h),
+        .interpolate("basis")
+        .x(function(d) {
+            return x(d.date);
+        })
+        .y(h),
 
         // A area generator, for the dark stroke.
         area = d3.svg.area()
-            .interpolate("basis")
-            .x(function(d) {
-                return x(d.date);
-            })
-            .y1(function(d) {
-                return y(d.price);
-            });
+        .interpolate("basis")
+        .x(function(d) {
+            return x(d.date);
+        })
+        .y1(function(d) {
+            return y(d.price);
+        });
 
     return {
-        overlappingArea: function () {
-            var g = svg.selectAll(".symbol");
+        overlappingArea: function() {
+            g = svg.selectAll(".symbol");
 
             line
                 .y(function(d) {
@@ -83,7 +97,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                     return y(d.price);
                 });
 
-            var t = g.transition()
+            t = g.transition()
                 .duration(duration);
 
             t.select(".line")
@@ -102,6 +116,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 .attr("dy", ".31em")
                 .attr("transform", function(d) {
                     d = d.values[d.values.length - 1];
+
                     return "translate(" + (w - 60) + "," + y(d.price) + ")";
                 });
 
@@ -118,23 +133,23 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
 
             setTimeout(self.groupedBar, duration + delay);
         },
-    
-        groupedBar: function () {
+
+        groupedBar: function() {
             x = d3.scale.ordinal()
                 .domain(symbols[0].values.map(function(d) {
                     return d.date;
                 }))
                 .rangeBands([0, w - 60], 0.1);
 
-            var x1 = d3.scale.ordinal()
+            x1 = d3.scale.ordinal()
                 .domain(symbols.map(function(d) {
                     return d.key;
                 }))
                 .rangeBands([0, x.rangeBand()]);
 
-            var g = svg.selectAll(".symbol");
+            g = svg.selectAll(".symbol");
 
-            var t = g.transition()
+            t = g.transition()
                 .duration(duration);
 
             t.select(".line")
@@ -170,11 +185,9 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
 
             setTimeout(self.stackedBar, duration + delay);
         },
-    
-        stackedBar: function () {
-            x.rangeRoundBands([0, w - 60], 0.1);
 
-            var stack = d3.layout.stack()
+        stackedBar: function() {
+            stack = d3.layout.stack()
                 .values(function(d) {
                     return d.values;
                 })
@@ -189,8 +202,8 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 })
                 .order("reverse");
 
-            var g = svg.selectAll(".symbol");
-
+            x.rangeRoundBands([0, w - 60], 0.1);
+            g = svg.selectAll(".symbol");
             stack(symbols);
 
             y
@@ -199,7 +212,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 }))])
                 .range([h, 0]);
 
-            var t = g.transition()
+            t = g.transition()
                 .duration(duration / 2);
 
             t.select("text")
@@ -234,8 +247,19 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
 
             setTimeout(self.transposeBar, duration + symbols[0].values.length * 10 + delay);
         },
-    
-        transposeBar: function () {
+
+        transposeBar: function() {
+            stack = d3.layout.stack()
+                .x(function(d, i) {
+                    return i;
+                })
+                .y(function(d) {
+                    return d.price;
+                })
+                .out(function(d, y0, y) {
+                    d.price0 = y0;
+                });
+
             x
                 .domain(symbols.map(function(d) {
                     return d.key;
@@ -249,24 +273,13 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                     }));
                 }))]);
 
-            var stack = d3.layout.stack()
-                .x(function(d, i) {
-                    return i;
-                })
-                .y(function(d) {
-                    return d.price;
-                })
-                .out(function(d, y0, y) {
-                    d.price0 = y0;
-                });
-
             stack(d3.zip.apply(null, symbols.map(function(d) {
                 return d.values;
             }))); // transpose!
 
-            var g = svg.selectAll(".symbol");
+            g = svg.selectAll(".symbol");
 
-            var t = g.transition()
+            t = g.transition()
                 .duration(duration / 2);
 
             t.selectAll("rect")
@@ -301,18 +314,34 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
 
             setTimeout(self.donut, duration / 2 + symbols[0].values.length * 10 + delay);
         },
-    
-        donut: function () {
-            var g = svg.selectAll(".symbol");
 
+        donutArcTween: function(d) {
+            var donutPath = d3.select(this),
+                donutText = d3.select(this.parentNode.appendChild(this.previousSibling)),
+                x0 = x(d.data.key),
+                y0 = h - y(d.data.sumPrice);
+
+            return function(t) {
+                var r = h / 2 / Math.min(1, t + 1e-3),
+                    a = Math.cos(t * Math.PI / 2),
+                    xx = (-r + (a) * (x0 + x.rangeBand()) + (1 - a) * (w + h) / 2),
+                    yy = ((a) * h + (1 - a) * h / 2),
+                    f = {
+                        innerRadius: r - x.rangeBand() / (2 - a),
+                        outerRadius: r,
+                        startAngle: a * (Math.PI / 2 - y0 / r) + (1 - a) * d.startAngle,
+                        endAngle: a * (Math.PI / 2) + (1 - a) * d.endAngle
+                    };
+
+                donutPath.attr("transform", "translate(" + xx + "," + yy + ")");
+                donutPath.attr("d", arc(f));
+                donutText.attr("transform", "translate(" + arc.centroid(f) + ")translate(" + xx + "," + yy + ")rotate(" + ((f.startAngle + f.endAngle) / 2 + 3 * Math.PI / 2) * 180 / Math.PI + ")");
+            };
+        },
+
+        donut: function() {
+            g = svg.selectAll(".symbol");
             g.selectAll("rect").remove();
-
-            var pie = d3.layout.pie()
-                .value(function(d) {
-                    return d.sumPrice;
-                });
-
-            var arc = d3.svg.arc();
 
             g.append("path")
                 .style("fill", function(d) {
@@ -323,7 +352,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 })
                 .transition()
                 .duration(duration)
-                .tween("arc", arcTween);
+                .tween("arc", self.donutArcTween);
 
             g.select("text").transition()
                 .duration(duration)
@@ -335,72 +364,51 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 .attr("y2", 2 * h)
                 .remove();
 
-            function arcTween(d) {
-                var path = d3.select(this),
-                    text = d3.select(this.parentNode.appendChild(this.previousSibling)),
-                    x0 = x(d.data.key),
-                    y0 = h - y(d.data.sumPrice);
-
-                return function(t) {
-                    var r = h / 2 / Math.min(1, t + 1e-3),
-                        a = Math.cos(t * Math.PI / 2),
-                        xx = (-r + (a) * (x0 + x.rangeBand()) + (1 - a) * (w + h) / 2),
-                        yy = ((a) * h + (1 - a) * h / 2),
-                        f = {
-                            innerRadius: r - x.rangeBand() / (2 - a),
-                            outerRadius: r,
-                            startAngle: a * (Math.PI / 2 - y0 / r) + (1 - a) * d.startAngle,
-                            endAngle: a * (Math.PI / 2) + (1 - a) * d.endAngle
-                        };
-
-                    path.attr("transform", "translate(" + xx + "," + yy + ")");
-                    path.attr("d", arc(f));
-                    text.attr("transform", "translate(" + arc.centroid(f) + ")translate(" + xx + "," + yy + ")rotate(" + ((f.startAngle + f.endAngle) / 2 + 3 * Math.PI / 2) * 180 / Math.PI + ")");
-                };
-            }
-
             setTimeout(self.donutExplode, duration + delay);
         },
-    
-        donutExplode: function () {
+
+        explodeArcTween: function(b) {
+            return function(a) {
+                var explodeArcPath = d3.select(this),
+                    explodeArcText = d3.select(this.nextSibling),
+                    i = d3.interpolate(a, b),
+                    key = null;
+
+                for (key in b) {
+                    if (b.hasOwnProperty(key)) {
+                        a[key] = b[key]; // update data
+                    }
+                }
+
+                return function(t) {
+                    var a = i(t);
+
+                    explodeArcPath.attr("d", arc(a));
+                    explodeArcText.attr("transform", "translate(" + arc.centroid(a) + ")translate(" + w / 2 + "," + h / 2 + ")rotate(" + ((a.startAngle + a.endAngle) / 2 + 3 * Math.PI / 2) * 180 / Math.PI + ")");
+                };
+            };
+        },
+
+        transitionExplode: function(d, i) {
             var r0a = h / 2 - x.rangeBand() / 2,
                 r1a = h / 2,
                 r0b = 2 * h - x.rangeBand() / 2,
-                r1b = 2 * h,
-                arc = d3.svg.arc();
+                r1b = 2 * h;
 
+            d.innerRadius = r0a;
+            d.outerRadius = r1a;
+
+            d3.select(this).transition()
+                .duration(duration / 2)
+                .tween("arc", self.explodeArcTween({
+                    innerRadius: r0b,
+                    outerRadius: r1b
+                }));
+        },
+
+        donutExplode: function() {
             svg.selectAll(".symbol path")
-                .each(transitionExplode);
-
-            function transitionExplode(d, i) {
-                d.innerRadius = r0a;
-                d.outerRadius = r1a;
-                d3.select(this).transition()
-                    .duration(duration / 2)
-                    .tween("arc", tweenArc({
-                        innerRadius: r0b,
-                        outerRadius: r1b
-                    }));
-            }
-
-            function tweenArc(b) {
-                return function(a) {
-                    var path = d3.select(this),
-                        text = d3.select(this.nextSibling),
-                        i = d3.interpolate(a, b),
-                        key;
-
-                    for (key in b) {
-                        a[key] = b[key]; // update data
-                    }
-
-                    return function(t) {
-                        var a = i(t);
-                        path.attr("d", arc(a));
-                        text.attr("transform", "translate(" + arc.centroid(a) + ")translate(" + w / 2 + "," + h / 2 + ")rotate(" + ((a.startAngle + a.endAngle) / 2 + 3 * Math.PI / 2) * 180 / Math.PI + ")");
-                    };
-                };
-            }
+                .each(self.transitionExplode);
 
             setTimeout(function() {
                 svg.selectAll("*").remove();
@@ -408,9 +416,9 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 self.lines();
             }, duration);
         },
-    
-        streamgraph: function () {
-            var stack = d3.layout.stack()
+
+        streamGraph: function() {
+            stack = d3.layout.stack()
                 .values(function(d) {
                     return d.values;
                 })
@@ -433,7 +441,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                     return y(d.price0);
                 });
 
-            var t = svg.selectAll(".symbol").transition()
+            t = svg.selectAll(".symbol").transition()
                 .duration(duration);
 
             t.select("path.area")
@@ -455,9 +463,9 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
 
             setTimeout(self.overlappingArea, duration + delay);
         },
-        
-        stackedArea: function () {
-            var stack = d3.layout.stack()
+
+        stackedArea: function() {
+            stack = d3.layout.stack()
                 .values(function(d) {
                     return d.values;
                 })
@@ -493,7 +501,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                     return y(d.price0 + d.price);
                 });
 
-            var t = svg.selectAll(".symbol").transition()
+            t = svg.selectAll(".symbol").transition()
                 .duration(duration)
                 .attr("transform", "translate(0,0)")
                 .each("end", function() {
@@ -519,11 +527,11 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                     return "translate(" + (w - 60) + "," + y(d.price / 2 + d.price0) + ")";
                 });
 
-            setTimeout(self.streamgraph, duration + delay);
+            setTimeout(self.streamGraph, duration + delay);
         },
-    
-        areas: function () {
-            var g = svg.selectAll(".symbol");
+
+        areas: function() {
+            g = svg.selectAll(".symbol");
 
             axis
                 .y(h / 4 - 21);
@@ -575,8 +583,31 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
 
             setTimeout(self.stackedArea, duration + delay);
         },
-    
-        lines: function () {
+
+        draw: function(k) {
+            g.each(function(d) {
+                var e = d3.select(this);
+
+                y.domain([0, d.maxPrice]);
+
+                e.select("path")
+                    .attr("d", function(d) {
+                        return line(d.values.slice(0, k + 1));
+                    });
+
+                e.selectAll("circle, text")
+                    .data(function(d) {
+                        return [d.values[k], d.values[k]];
+                    })
+                    .attr("transform", function(d) {
+                        return "translate(" + x(d.date) + "," + y(d.price) + ")";
+                    });
+            });
+        },
+
+        lines: function() {
+            k = 1;
+            n = symbols[0].values.length;
             x = d3.time.scale().range([0, w - 60]);
             y = d3.scale.linear().range([h / 4 - 20, 0]);
 
@@ -590,7 +621,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 })
             ]);
 
-            var g = svg.selectAll(".symbol")
+            g = svg.selectAll(".symbol")
                 .attr("transform", function(d, i) {
                     return "translate(0," + (i * h / 4 + 10) + ")";
                 });
@@ -615,39 +646,19 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                     .text(d.key);
             });
 
-            function draw(k) {
-                g.each(function(d) {
-                    var e = d3.select(this);
-                    y.domain([0, d.maxPrice]);
-
-                    e.select("path")
-                        .attr("d", function(d) {
-                            return line(d.values.slice(0, k + 1));
-                        });
-
-                    e.selectAll("circle, text")
-                        .data(function(d) {
-                            return [d.values[k], d.values[k]];
-                        })
-                        .attr("transform", function(d) {
-                            return "translate(" + x(d.date) + "," + y(d.price) + ")";
-                        });
-                });
-            }
-
-            var k = 1,
-                n = symbols[0].values.length;
             d3.timer(function() {
-                draw(k);
+                self.draw(k);
+
                 if ((k += 2) >= n - 1) {
-                    draw(n - 1);
+                    self.draw(n - 1);
                     setTimeout(self.horizons, 500);
+
                     return true;
                 }
             });
         },
-    
-        horizons: function () {
+
+        horizons: function() {
             svg.insert("defs", ".symbol")
                 .append("clipPath")
                 .attr("id", "clip")
@@ -655,10 +666,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                 .attr("width", w)
                 .attr("height", h / 4 - 20);
 
-            var color = d3.scale.ordinal()
-                .range(["#c6dbef", "#9ecae1", "#6baed6"]);
-
-            var g = svg.selectAll(".symbol")
+            g = svg.selectAll(".symbol")
                 .attr("clip-path", "url(#clip)");
 
             area
@@ -690,7 +698,7 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                     })
                     .attr("d", area(d.values))
                     .style("fill", function(d, i) {
-                        return color(i);
+                        return color2(i);
                     })
                     .style("fill-opacity", 1e-6);
 
@@ -712,13 +720,12 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
 
             setTimeout(self.areas, duration + delay);
         },
-    
+
         run: function() {
             self = this;
 
             d3.csv(csvUrl, function(data) {
-                var parse = d3.time.format("%b %Y").parse,
-                    g = null;
+                var parse = d3.time.format("%b %Y").parse;
 
                 // Nest stock values by symbol.
                 symbols = d3.nest()
@@ -734,9 +741,11 @@ window.D3ShowReel = window.D3ShowReel || (function(d3) {
                         d.date = parse(d.date);
                         d.price = +d.price;
                     });
+
                     s.maxPrice = d3.max(s.values, function(d) {
                         return d.price;
                     });
+
                     s.sumPrice = d3.sum(s.values, function(d) {
                         return d.price;
                     });
