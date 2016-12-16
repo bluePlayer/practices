@@ -59,7 +59,7 @@ window.FLCTGNMR = window.FLCTGNMR || (function(d3) {
         helper_nodeg = null,
         node = null,
         hnode = null,
-        debug = 1; // 0: disable, 1: all, 2: only force2;
+        debug = 0; // 0: disable, 1: all, 2: only force2;
 
     return {
         getNet: function() {
