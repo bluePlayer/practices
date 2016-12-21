@@ -19,6 +19,7 @@ window.CanvasPathBenchmark = window.CanvasPathBenchmark || (function(windowObjec
         factor = 15,
         factor_div_2 = (factor / 2),
         correction = 0.0035,
+        maxSeconds = 5000,
 
         table_row = null,
         table_data = null,
@@ -29,18 +30,16 @@ window.CanvasPathBenchmark = window.CanvasPathBenchmark || (function(windowObjec
         sample_start = 0,
         sample_end = 0,
 
-        requestAnimFrame = (function() {
+        requestAnimFrame = (function () {
             return (windowObject.requestAnimationFrame ||
                 windowObject.webkitRequestAnimationFrame ||
                 windowObject.mozRequestAnimationFrame ||
                 windowObject.oRequestAnimationFrame ||
                 windowObject.msRequestAnimationFrame ||
-                function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
-                    return windowObject.setTimeout(callback, (1000 / 60));
-                });
+                self.frameRequest);
         }()),
         
-        cancelRequestAnimFrame = (function() {
+        cancelRequestAnimFrame = (function () {
             return (windowObject.cancelCancelRequestAnimationFrame ||
                 windowObject.webkitCancelRequestAnimationFrame ||
                 windowObject.mozCancelRequestAnimationFrame ||
@@ -64,7 +63,15 @@ window.CanvasPathBenchmark = window.CanvasPathBenchmark || (function(windowObjec
     ctx.strokeStyle = "rgba(255,65,0, 1.0)";
 
     return {
-        addLineSegments: function(num) {
+        /**
+         * @param frameRequestCallback {Function}
+         * @param DOMElement Element {Object}
+         */
+        frameRequest: function (callback, element) {
+            return windowObject.setTimeout(callback, (1000 / 60));
+        },
+        
+        addLineSegments: function (num) {
             for (i = 0; i < num; i += 1) {
                 ctx.beginPath();
                 ctx.moveTo(xpos, ypos);
@@ -76,7 +83,7 @@ window.CanvasPathBenchmark = window.CanvasPathBenchmark || (function(windowObjec
             }
         },
         
-        addToResults: function(samples, elapsed_time, sample_time) {
+        addToResults: function (samples, elapsed_time, sample_time) {
             table_row = document.createElement('tr');
             table_data = document.createElement('td');
             table_data.innerHTML = samples;
@@ -90,14 +97,14 @@ window.CanvasPathBenchmark = window.CanvasPathBenchmark || (function(windowObjec
             results.appendChild(table_row);
         },
 
-        benchmark: function() {
-            if (count < 5000) {
+        benchmark: function () {
+            if (count < maxSeconds) {
                 requestAnimFrame(self.benchmark, canvas);
                 self.runSet();
             }
         },
 
-        runSet: function() {
+        runSet: function () {
             sample_start = +new Date();
             self.addLineSegments(increment);
             sample_end = +new Date();
@@ -121,7 +128,7 @@ window.CanvasPathBenchmark = window.CanvasPathBenchmark || (function(windowObjec
             self.run();
         },
 
-        run: function() {
+        run: function () {
             requestAnimFrame(self.benchmark, canvas);
             self.clear();
         }
@@ -129,7 +136,7 @@ window.CanvasPathBenchmark = window.CanvasPathBenchmark || (function(windowObjec
 
 }(window));
 
-window.document.addEventListener("DOMContentLoaded", function(event) {
+window.document.addEventListener("DOMContentLoaded", function (event) {
     'use strict';
     var CanvasPathBenchmark = window.CanvasPathBenchmark;
 
