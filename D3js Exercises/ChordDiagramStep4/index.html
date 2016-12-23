@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Step 4 - Collaborations between MCU Avengers</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <style>
+            body {
+              font-size: 14px;
+              font-family: 'Lato', sans-serif;
+              text-align: left;
+              color: #757575;
+              cursor: default;
+            }
+
+            .title {
+                margin-top: 20px;
+                margin-bottom: 10px;
+                margin-left: 20px;
+                font-size:32px;
+                font-family: 'Oswald', sans-serif;
+                color: #2B2B2B;
+            }
+
+            .texts {
+                margin-left: 20px;
+                margin-right: 20px;
+                line-height: 140%;
+            }
+
+            .credit {
+                color: #9E9E9E;
+                font-size: 10px;
+                margin-bottom: 0.5em;
+            }
+
+            .notes {
+                color: #9E9E9E;
+                font-size: 10px;
+            }
+
+            .popover {
+                pointer-events: none;
+            }
+
+            #chart{
+              font-size: 16px;
+              font-family: 'Bangers', sans-serif;
+              text-align: center;
+              fill: #2B2B2B;
+            }
+
+            @media (min-width: 600px) {
+                #chart{
+                    font-size: 20px;
+                }
+            }
+    </style>
+</head>
+<body>
+    <div class = "title">Movie collaborations between Avengers in the MCU</div>
+    <div class = "explanation texts">
+            <p style="margin-bottom: 0em;">
+                The visualization below shows how often the original Avengers have appeared in MCU movies together since Iron Man
+                in 2008 and counting up to Thor: Ragnarok scheduled in 2017. The thicker a line, the more movies in which both characters appeared.
+            </p>
+            <p style="margin-top: 0.5em;">
+                Because all six have appeared in both Avengers movies, the minimum number of co-appearances is 2.
+                Iron Man and Black Widow are the Avengers who have appeared most often together, with 5 movies.
+            </p>
+    </div>
+    <div id = "chart"></div>
+    <div class="credit texts">
+        Created by Nadieh Bremer | <a href="http://www.visualcinnamon.com/">VisualCinnamon.com</a>
+    </div>
+    <div class = "notes texts">
+            The 12 MCU movies taken into account are: Iron Man, Iron Man 2, Iron Man 3, Captain America: The First Avenger, Captain America: The Winter Soldier,
+            Captain America: Civil War, Thor, Thor: The Dark World, Thor: Ragnarok, The Incredible Hulk, The Avengers &amp; Avengers: Age of Ultron
+    </div>
+
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!-- Two scripts to make the Bootstrap tooltip follow the mouse movement
+         taken from https://github.com/ghophp/bootstrap-popover-move -->
+    <script src="bootstrap.tooltip.js"></script>
+    <script src="bootstrap.popover.js"></script>
+
+    <script src="js/d3.v3.5.6.min.js"></script>
+    <script src="js/ChordDiagramUtils.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
