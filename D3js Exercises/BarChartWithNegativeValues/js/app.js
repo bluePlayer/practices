@@ -3,7 +3,7 @@
  * @param {Object} d3
  * @author Mike Bostock
  * modified by me
- * @autor Vladimir Zakar aka bluePlayer
+ * @autor Vlado aka bluePlayer
  */
 window.BarChartWithNegativeValues = window.BarChartWithNegativeValues || ( function(d3) {
         'use strict';
