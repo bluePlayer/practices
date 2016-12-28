@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Bar Chart</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        .bar {
+          fill: steelblue;
+        }
+
+        .bar:hover {
+          fill: brown;
+        }
+
+        .axis--x path {
+          display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bar Chart</h2>
+    <svg width="960" height="500"></svg>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
