@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Bar chart with negative values</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        .bar--positive {
+          fill: steelblue;
+        }
+
+        .bar--negative {
+          fill: darkorange;
+        }
+
+        .axis text {
+          font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bar chart with Negative Values</h2>
+
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
