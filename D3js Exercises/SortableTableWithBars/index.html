@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Sortable Table with Bars</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        table {
+          border-collapse: collapse;
+          font: 10px sans-serif;
+          width: 720px;
+        }
+
+        th {
+          font-weight: normal;
+          text-align: right;
+          padding-right: 6px;
+          min-width: 43px;
+        }
+
+        thead td {
+          cursor: s-resize;
+        }
+
+        tbody tr:first-child td {
+          padding-top: 2px;
+        }
+
+        tbody td {
+          padding: 0;
+          border-left: solid 1px #000;
+        }
+
+        tbody rect {
+          fill: steelblue;
+        }
+
+        tbody tr:hover rect {
+          fill: brown;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sortable Table with Bars</h2>
+    <table>
+        <thead>
+            <tr>
+              <th>State</th>
+              <td>&lt; 5</td>
+              <td>5 - 13</td>
+              <td>14 - 17</td>
+              <td>18 - 24</td>
+              <td>≥ 16</td>
+              <td>≥ 18</td>
+              <td>15 - 44</td>
+              <td>45 - 64</td>
+              <td>≥ 65</td>
+              <td>≥ 85</td>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
