@@ -1,0 +1,39 @@
+(* ---------------- Grun Bash Shell tokens -------------- *)
+
+<grun> := 'java org.antlr.v4.gui.TestRig'
+
+<bashUser> := <STRING_LITERAL>
+<computerName> : = <STRING_LITERAL>
+<folderName> := <STRING_LITERAL>
+<bashFolder> := '/' *<folderName>
+<bashCommands> := <EBNFForBashShellCommands>
+<noCommand> := <EMPTY_STRING>
+<bash> := (<bashUser> '@' <computerName> <bashFolder>) (<bashCommands> | (<grun> <grunCommand>))
+
+(* ---------------- Grun Command tokens -------------- *)
+
+<gammarName> := <STRING_LITERAL>
+<startRuleName> := <STRING_LITERAL>
+<fileName> := <STRING_LITERAL>
+<inputFileName> := <STRING_LITERAL>
+<encodingName> := 'en_US' | 'en_GB' | 'mk_MK' | <daSeDovrshi>
+<ruleInput> := <STRING_LITERAL>
+
+<switch> := '-tokens' | 
+            '-tree' | 
+            '-gui' | 
+            ('-ps' <fileName>'.ps') | 
+            ('-encoding' <encodingName>) |
+            '-trace' |
+            '-diagnostics' |
+            '-SLL' |
+            +<inputFileName>
+            
+<grunCommand> := <noCommand> | (<gammarName> <startRuleName> <switch> <ruleInput>) 
+
+(* ---------------- Grun Help tokens -------------- *)
+
+<basicGrunHelp> := 'java org.antlr.v4.gui.TestRig GrammarName startRuleName' '\n' '[' <switch> ']'
+<useRuleTokensHelp> := 'Use startRuleName='tokens' if GrammarName is a lexer grammar.'
+<ommitingInputFileNameHelp> := 'Omitting input-filename makes rig read from stdin.'
+<noCommandOutput> := <basicGrunHelp> '\n' <useRuleTokensHelp> '\n' <ommitingInputFileNameHelp> 
