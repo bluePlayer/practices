@@ -7,7 +7,7 @@
 <bashFolder> := '/' *<folderName>
 <bashCommands> := <EBNFForBashShellCommands>
 <noCommand> := <EMPTY_STRING>
-<bash> := (<bashUser> '@' <computerName> <bashFolder>) (<bashCommands> | <antlr4> <antlrCommand>)
+<bash> := (<bashUser> '@' <computerName> <bashFolder>) (<bashCommands> | <antlr4> (<noCommand> | <antlrCommand>))
 
 (* ---------------- Antlr4 Help tokens -------------- *)
 
