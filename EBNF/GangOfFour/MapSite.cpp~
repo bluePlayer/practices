@@ -1,0 +1,4 @@
+class MapSite {
+    public:
+        virtual vodi Enter() = 0;
+};

@@ -1,0 +1,4 @@
+class MyProduct : public Product {
+	public:
+		MyProduct();
+}

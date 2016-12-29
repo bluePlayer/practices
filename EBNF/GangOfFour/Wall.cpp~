@@ -1,0 +1,6 @@
+class Wall: MapSite {
+    public:
+        Wall();
+        virtual void Enter();
+     
+};

@@ -1,0 +1,32 @@
+#include "MazeBuilder.cpp"
+
+class StandardMazeBuilder: public MazeBuilder {
+	public:
+		StandardMazeBuilder():: StandardMazeBuilder () {
+			_currentMaze = 0;
+		}
+
+		void StandardMazeBuilder::BuildMaze () {
+			_currentMaze = new Maze;
+		}
+		void StandardMazeBuilder::BuildRoom(int n) {
+			if (!_currentMaze->RoomNo(n)) {
+				Room* room = new Room(n);
+				_currentMaze->AddRoom(room);
+			}
+
+			room->SetSide("North", new Wall);
+			room->SetSide("South", new Wall);
+			room->SetSide("East", new Wall);
+			room->SetSide("West", new Wall);
+		}
+		virtual void BuildDoor(int, int);
+		
+		Maze* StandardMazeBuilder::GetMaze () {
+			return _currentMaze;		
+		}
+
+	private:
+		Direction CommonWall(Room*, Room*);
+		Maze* _currentMaze;
+} 

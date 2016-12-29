@@ -1,0 +1,21 @@
+#include "MazeBuilder.cpp"
+
+class CountingMazeBuilder: public MazeBuilder {
+	public 
+		CountingMazeBuilder::CountingMazeBuilder() {
+			_rooms = _doors = 0;	
+		}
+
+		virtual void BuildMaze();
+		void CountingMazeBuilder::BuildRoom(int) {
+			_rooms += 1;
+		}
+		virtual void BuildDoor(int, int);
+		virtual void AddWall(int, Direction);
+		
+		void GetCounts(int&, int&) const;
+
+	private: 
+		int _doors;
+		int _rooms;
+};
