@@ -1,0 +1,3 @@
+<jquery> := ('jQuery' | '$') <jqueryCommand>
+<jqueryCommand> :=  '.noConflict()' |
+                    '.ready(' <readyParameter> ')'

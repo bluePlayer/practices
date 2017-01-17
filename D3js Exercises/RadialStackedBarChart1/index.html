@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Radial Stacked Bar Chart 1</title>
+    <link rel="icon" type="image/png" size="16x16" href="assets/images/favicon-16x16.png">
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        .bar {
+          fill: steelblue;
+        }
+
+        .axis path {
+          display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Radial Stacked Bar Chart 1</h2>
+    <div><input type="button" id="btn1" value="Data 1"/> <input type="button" id="btn2" value="Data 2"/></div>
+    <svg width="960" height="960" font-family="sans-serif" font-size="10"></svg>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+    <script src="https://d3js.org/d3-ease.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+    <script src="https://d3js.org/d3-timer.v1.min.js"></script>
+    <script src="https://d3js.org/d3-transition.v1.min.js"></script>
+    <script src="js/d3-scale-radial.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
