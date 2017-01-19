@@ -1,0 +1,17 @@
+/*
+ * Scanner, Parser and ProgramNodeBuilder builder classes interact according to the builder pattern
+ */
+class ProgramNodeBuilder {
+    public:
+        ProgramNodeBuilder();
+        
+        virtual ProgramNode* NewVariable(const char* variableName) const;
+        virtual ProgramNode* NewAssignment(ProgramNode* variable, ProgramNode* expression) const;
+        virtual ProgramNode* NewReturnStatement(ProgramNode* value) const;
+        virtual ProgramNode* NewCondition(ProgramNode* condition, ProgramNode* truePart, ProgramNode* falsePart) const;
+        
+        ProgramNode* GetRootNode();
+        
+    private:
+        ProgramNode* _node;
+};

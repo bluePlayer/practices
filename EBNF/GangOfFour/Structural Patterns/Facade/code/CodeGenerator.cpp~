@@ -1,0 +1,13 @@
+/*
+ * The class CodeGenerator is a visitor (see Visitor (366)).
+ */
+class CodeGenerator {
+    public:
+        virtual void Visit(StatementNode*);
+        virtual void Visit(ExpressionNode*);
+        // ...
+        
+    protected:
+        CodeGenerator(BytecodeStream&);
+        BytecodeStream& _output;
+};
