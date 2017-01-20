@@ -1,0 +1,8 @@
+class Glyph {
+    public:
+        virtual ~Glyph();
+        virtual void Draw(Window*, GlyphContext&);
+        virtual void SetFont(Font*, GlyphContext&);
+        virtual Font* GetFont(GlyphContext&);
+        virtual void First(GlyphContext&);
+};
