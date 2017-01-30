@@ -1,0 +1,5 @@
+class Graphic {
+    public:
+        virtual ~Graphic();
+        virtual void Draw(const Point& at) = 0;
+};

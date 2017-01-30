@@ -1,0 +1,32 @@
+{
+  "name": "quicksort",
+  "version": "1.0.0",
+  "description": "D3js Quicksort, check the code with ESlint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluePlayer/practices.git"
+  },
+  "keywords": [
+    "d3js",
+    "eslint",
+    "quicksort",
+    "mikebostock"
+  ],
+  "author": "Mike Bostock",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bluePlayer/practices/issues"
+  },
+  "homepage": "https://github.com/bluePlayer/practices#readme",
+  "devDependencies": {
+    "eslint": "^3.12.2"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

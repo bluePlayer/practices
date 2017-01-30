@@ -1,0 +1,7 @@
+class Image;
+extern Image* LoadAnImageFile(const char*);
+    // external function
+    
+ImagePtr image = ImagePtr("anImageFileName");
+image -> Draw(Point(50, 100));
+// (image.operator->())->Draw(Point(50, 100));

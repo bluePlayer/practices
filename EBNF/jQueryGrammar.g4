@@ -365,6 +365,6 @@
                     '.width()' |
                     '.wrap()' |
                     '.wrapAll()' |
-                    'wrapInner()'
+                    '.wrapInner()'
                     
                     

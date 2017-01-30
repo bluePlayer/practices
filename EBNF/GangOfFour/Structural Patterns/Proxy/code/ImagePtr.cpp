@@ -1,0 +1,34 @@
+class ImagePtr {
+    public:
+        ImagePtr(const char* imageFile);
+        
+        virtual ~ImagePtr();
+        virtual Image* operator->();
+        virtual Image& operator*();
+        
+        ImagePtr::ImagePtr (const char8 theImageFile) {
+            _imageFile = theImageFile;
+            _image = 0;
+        }
+        
+        Image* ImagePtr::LoadImage () {
+            if (_image == 0) {
+                _image = LoadAnImageFile(_imageFile);
+                
+                return _image;
+            }
+        }
+        
+        Image* ImagePtr::operator-> () {
+            return LoadImage();
+        }
+        
+        Image& ImagePtr::operator* () {
+            return *LoadImage();
+        }
+        
+    private:
+        Image* LoadImage();
+        Image* _image;
+        const char* _imageFile;
+};

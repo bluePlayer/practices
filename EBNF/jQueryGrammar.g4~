@@ -13,21 +13,22 @@
 <className> := <STRING_LITERAL>
 <selector> := '*' | 
               ':animated' |
-              (<element> '['<attribute>'|=' <value>']') |
-              (<element> '['<attribute>'*=' <value>']') |
-              (<element> '['<attribute>'~=' <value>']') |
-              (<element> '['<attribute>'$=' <value>']') |
-              (<element> '['<attribute>'=' <value>']')  |
-              (<element> '['<attribute>'!=' <value>']') |
-              (<element> '['<attribute>'^=' <value>']') |
+              '('<element> '['<attribute>'|=' <value>']') |
+              '('<element> '['<attribute>'*=' <value>']') |
+              '('<element> '['<attribute>'~=' <value>']') |
+              '('<element> '['<attribute>'$=' <value>']') |
+              '('<element> '['<attribute>'=' <value>']')  |
+              '('<element> '['<attribute>'!=' <value>']') |
+              '('<element> '['<attribute>'^=' <value>']') |
               ':button' |
               ':checkbox' |
               ':checked' |
-              (<parentSelector> '>' <childSelector>) |
-              ('.'<className>) |
-              ( ':contains(' <STRING_LITERAL> ')' ) |
-              (<ancestorSelector> <descendantSelector>) |
-              ':disabled'
+              '('<parentSelector> '>' <childSelector>) |
+              '(.'<className>) |
+              '(' ':contains(' <STRING_LITERAL> ')' ) |
+              '('<ancestorSelector> <descendantSelector>) |
+              ':disabled' |
+              <daSeDovrshi>
               
 <context> := <element> | <jquery>
 <readyParameter> := <daSeDovrshi>
@@ -364,6 +365,6 @@
                     '.width()' |
                     '.wrap()' |
                     '.wrapAll()' |
-                    'wrapInner()'
+                    '.wrapInner()'
                     
                     
