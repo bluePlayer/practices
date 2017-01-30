@@ -11,25 +11,42 @@
                 <callback>
             ')'] <jqueryCommand>
 <className> := <STRING_LITERAL>
+<pseudoClassSelector> := <daSeDovrshi> (* starts with : *)
 <selector> := '*' | 
-              ':animated' |
-              '('<element> '['<attribute>'|=' <value>']') |
-              '('<element> '['<attribute>'*=' <value>']') |
-              '('<element> '['<attribute>'~=' <value>']') |
-              '('<element> '['<attribute>'$=' <value>']') |
-              '('<element> '['<attribute>'=' <value>']')  |
-              '('<element> '['<attribute>'!=' <value>']') |
-              '('<element> '['<attribute>'^=' <value>']') |
+              ([<selector> | <tagName> | '*' | ''] ':animated') |
+              ([<selector> | <tagName> | '*' | ''] '['<attribute>'|=' <value>']') |
+              ([<selector> | <tagName> | '*' | ''] '['<attribute>'*=' <value>']') |
+              ([<selector> | <tagName> | '*' | ''] '['<attribute>'~=' <value>']') |
+              ([<selector> | <tagName> | '*' | ''] '['<attribute>'$=' <value>']') |
+              ([<selector> | <tagName> | '*' | ''] '['<attribute>'=' <value>']')  |
+              ([<selector> | <tagName> | '*' | ''] '['<attribute>'!=' <value>']') |
+              ([<selector> | <tagName> | '*' | ''] '['<attribute>'^=' <value>']') |
               ':button' |
-              ':checkbox' |
-              ':checked' |
-              '('<parentSelector> '>' <childSelector>) |
-              '(.'<className>) |
-              '(' ':contains(' <STRING_LITERAL> ')' ) |
-              '('<ancestorSelector> <descendantSelector>) |
-              ':disabled' |
+              ([<selector> | <tagName> | '*' | ''] ':checkbox') |
+              ([<selector> | <tagName> | '*' | ''] ':checked') |
+              (<parentSelector> '>' <childSelector>) |
+              ('.'<className>) |
+              ( ':contains(' <STRING_LITERAL> ')' ) |
+              (<ancestorSelector> <descendantSelector>) |
+              ([<selector> | <tagName> | '*' | ''] ':disabled') |
+              ([<selector> | <tagName> | '*' | ''] ':empty') |
+              ([<selector> | <tagName> | '*' | ''] ':enabled') |
+              ([<selector> | <tagName> | '*' | ''] ':even') |
+              ([<selector> | <tagName> | '*' | ''] ':file') |
+              ([<selector> | <tagName> | '*' | ''] ':first-child') |
+              ([<selector> | <tagName> | '*' | ''] ':first-of-type') |
+              ([<selector> | <tagName> | '*' | ''] ':first') |
+              ([<selector> | <tagName> | '*' | ''] ':focus') |
+              ([<selector> | <tagName> | '*' | ''] ':gt(' <elementIndex> ')') |
+              ([<selector> | <tagName> | '*' | ''] '[' <attributeName> ']' ) |
+              ([<selector> | <tagName> | '*' | ''] ':has(' <selector> ')') |
+              ':header' |
+              
               <daSeDovrshi>
               
+<tagName> := <daSeDovrshi>
+<attributeName> := <STRING_LITERAL>
+<elementIndex> := <NUMBER_LITERAL>
 <context> := <element> | <jquery>
 <readyParameter> := <daSeDovrshi>
 
