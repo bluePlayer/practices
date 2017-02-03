@@ -8,9 +8,13 @@
                 <selection> |
                 (<html> [','<ownerDocument>]) |
                 (<html>','<attributes>) |
-                <callback>
+                <callback> |
+                ('#' <elementId>)
             ')'] <jqueryCommand>
+            
+<elementId> :=  <STRING_LITERAL>
 <className> := <STRING_LITERAL>
+
 <pseudoClassSelector> := <daSeDovrshi> (* starts with ':' *)
 <selector> := '*' | 
               ([<selector> | <tagName> | '*' | ''] ':animated') |
@@ -41,12 +45,24 @@
               ([<selector> | <tagName> | '*' | ''] '[' <attributeName> ']' ) |
               ([<selector> | <tagName> | '*' | ''] ':has(' <selector> ')') |
               ':header' |
-              
+              ([<selector> | <tagName> | '*' | ''] ':hidden') |
+              ':image' |
+              ':input' |
+              ([<selector> | <tagName> | '*' | ''] ':lang('<language>')) |
+              ([<selector> | <tagName> | '*' | ''] ':last-child') |
+              ([<selector> | <tagName> | '*' | ''] ':last-of-type') |
+              ([<selector> | <tagName> | '*' | ''] ':last') |
+              ([<selector> | <tagName> | '*' | ''] ':lt('<elementIndex>')') |
+              ([<selector> | <tagName> | '*' | ''] ('['<tagName> '=' <attributeValue>']' {'['<tagName> '=' <attributeValue>']'})) |
+              <selector> {<selector>}
               <daSeDovrshi>
               
+<language> := <daSeDovrshi>     
 <tagName> := <daSeDovrshi>
+<attributeValue> := <STRING_LITERAL> | <NUMBER_LITERAL>
 <attributeName> := <STRING_LITERAL>
-<elementIndex> := <NUMBER_LITERAL>
+<sign> := ('+' | '' | '-')
+<elementIndex> := <sign> <NUMBER_LITERAL>
 <context> := <element> | <jquery>
 <readyParameter> := <daSeDovrshi>
 

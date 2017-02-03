@@ -1,0 +1,139 @@
+------------------- Intruduction ----------------------
+
+1. Designing object-oriented software is hard, and designing reusable object oriented software is even harder. 
+You must find pertinent objects, factor them into classes at the right granularity, define class interfaces and inheritance hierachies, and establish key relationships among them.
+The design should be specific to the problem but also general enough to address future problems and requirements. 
+Also avoid redesign or at least minimize it.
+
+2. Design patterns help a software designer get a design "right" faster.
+
+3. The book does not explain patterns dealing with concurency, distributed programming, real-time programming or application domain-specific patterns. It doesn't tell how to build user interfaces or how to write device drivers or how to use OOP database. All these have their own patters which should also be catalogued.
+
+4. A pattern has 4 essential elements: pattern name, problem, solution and consequences.
+
+5. A pattern name is a word which is used to describe the design problem, its solutions and consequences in one or two words.
+
+6. The problem describes when to apply the pattern. It explains the problem and its context. Algorithms shown as objects, class or object structure, or it might include a list of conditions that must be met before it makes sense to apply the pattern.
+
+7. The solution describes the elements that make up the design, theur relationships, responsibilities and collaborations. The solution does not describe concrete design or implementation because pattern is like a template that can be used in different situations.
+
+8. The consequences are the results and trade-offs when applying the pattern. Consequences help evaluate the pattern, the costs and th benefits of its implementation. The consequences also describe the impact of a pattern on system's flexibility, extensibility or portability.
+
+------------------ What is a Design Pattern? ----------------
+
+9. Point of view affects one's interpretation of what is and what isn't a pattern. One person's pattern can be another person's primitive building block.
+
+10. Design patterns have certain level of abstraction, meaning linked lists or hash tables are not design patters because they can have code implementation.
+
+11. (Important) The design patterns in this book are descriptions of communicating objects and classes that are customized to solve a general design problem in a particular context.
+
+12. (Important) The design pattern indetifies the participating classes, instances, their roles and collaborations and the distribution of responsibilities.
+
+--------- Design Patterns in Smalltalk MVC ----------------
+
+13. The Model/View/Controller (MVC) triad of classes was used to build user inter in Smalltalk-80. MVC consists of 3 kinds of objects. Model is the application object, the View is its screen representation and the Controller defines the way the use interface reacts to user input.
+
+14. (Important) MVC decouples views and models by establishing a subscribe/notify protocol between them.
+
+15. A view must ensure that its appearance reflects the state of the model. Whenever a model's data changes, the model notifies the views that depend on it. Each view gets an opportunity to update itself. This allows the designer to attach multiple views to a model to provide different representations. No need to rewrite the model.
+
+16. MVC patter is described by more general pattern called Observer.
+
+17. Views can also be nested. For example a control panel of buttons might be implemented as a complex view containing nested button views. 
+The user interface for an object inspector can consist of nested views that may be reused in the debugger.
+
+18. MVC supports nested views with CompositeView class and a subclass of View. CompositeView objects act just like View objects, meaning a composite view object can be used whenever a view can be used, but it also can contain and manage nested views.
+This feature of MVC conforms to the Composite pattern.
+
+19. MVC also allows changeing the way view responds to user input without changing its visual representation. Maybe make it respond to keyboard or have apop-up menu instead of command keys. MVC encaplusates the response mechanism in a Controller object. The controllers are ordered in class hierarchies making it easy to add new controller as a variation of existing one.
+
+20. A view uses an instance of a Controller subclass to implement particular response strategy. To implement a different strategy simply replace the instace with different kind of controller. Its also even possible to change the controller at run-time.
+
+21. The View-Controller relationship is an example of a Strategy design pattern. A strategy is an object that represents an algorithm. Its useful when you want to replace the algorightm either statically or dynamically, when there are lot of variants of the algorithm or when the algorithm has complex data structure that needs to be encapsulated.
+
+22. MVC uses other desing patterns, such as Factory Method to specify the default controller class for a view and Decorator to add scrolling to a view. But the main relationships in MVC are given by Observer, Composite and Strategy design patterns.
+
+------------------- Describing Desing Patterns ----------------
+
+23. Properties of a design pattern: 
+    a) Pattern name and classification, 
+    b) Intent, 
+    c) Also Known As, 
+    d) Motivation, 
+    e) Applicability, 
+    f) Structure, 
+    g) Participants, 
+    h) Collaborations, 
+    i) Consequences, 
+    j) Implementation, 
+    k) Sample Code, 
+    l) Known Uses, 
+    m) Related Patterns.
+
+24. "Intent" is a short statement that answers the following questions: What does the pattern do? What is rationale and intent? What partucular desing issue or problem does it address?
+
+25. "Also known as" describes other well known names for the pattern if any.
+
+26. "Motivation" is a scenario that illustrates a design problem and how the class and object structures in the pattern solve the problem.
+
+27. "Applicability" is what a re the situations in which the design pattern can be applied? 
+
+28. "Structure" is a graphical representation of the classes in the pattern using a notation based on Object Modeling Technique (OMT). Intreraction diagrams are also used.
+
+29. "Participants" are the classes and/or objects participating in the design pattern and their responsibilities.
+
+30. "Collaborations" are how the participants collaborate to carry out their responsibilities.
+
+31. "Consequences" cover how does the pattern support its objectives? What are the trade-offs
+and results of using the pattern? What aspect of system structure does it let you vary independently?
+
+32. "Implementation" explains what pitfals, hints or techniques should you be aware of when implementing the pattern? Are there language-specific issues?
+
+33. "Sample code" are code fragments that illustrate how you might implement the pattern in C++ or Smalltalk.
+
+34. "Known uses" cover examples of the pattern found in real systems. We include at least two
+examples from different domains.
+
+35. "Related patterns" cover what design patterns are closely related to this one? What are the
+important differences? With which other patterns should this one be used?
+
+36. First critetion for classification of patterns is "purpose". Patterns can serve creational, structural or behavioral purpose. Creational patterns concern the process of object creation. Structural patterns deal with the composition of classes or objects. Behavioral patterns characterize the ways in which classes or objects interact or distribute responsibility.
+
+37. The second critetion is called "scope" and it specifies whether the pattern applies to classes or to objects. Class patterns deal with relationships between classes and their subclasses. The relationships are established trough inheritance so they are static-fixed at compile-time. Object patterns deal with object relationships, which can be changed at run-time and are more dynamic.
+
+38. Almost all patterns use inheritance to some extent. 
+
+39. Creational class patterns defer some part of object creation to subclasses, while creational object patterns defer it to another object.
+
+40. The Structural class patterns use inheritance to compose classes, while the Structural object patterns describe ways to assmble objects. 
+
+41. The behavioral class patterns use inheritance to describe algorithms and flow of control, whereas the Behavioral object patterns describe how a group of objects cooperate to perform a task that no single object can carry out alone.
+
+42. Composite is often used with Iterator and Visitor.
+
+43. Prototype is often alternative to Abstract Factory.
+
+44. The structure diagrams of Composite and Decorator are similar though they have different intents.
+
+--------------- How Design Patterns Solve Design Problems --------------------
+--------------- Finding Appropriate Objects ------------------------
+
+45. Object oriented programs are made of objects. An object packages both data and the procedures tha operate on that data. The procedures are typically called methods or operations. An object performs and operation when it receives a request(message) from a client. 
+
+46. Requests are the only way to get an object to execute an operation. Operations are the only way to change an object's internal data. Because of these restrictions, the object's internal state is said to be encapsulated, it cannot be accessed directly and its representation is invisible from outside the object.
+
+47. The hard part about object-oriented design is decomposing a system into objects. Its difficult because
+ many factors come into play: encapsulation, granularity, dependency, flexibility, performance, evolution, reusability and more...
+ 
+-------------- Determining Object Granularity --------------------
+
+48. Objects can vary tremendously in size and number. They can be anything down to hardware or all the way up to entire applications. How do we decide what should be an object?
+
+49. Facade pattern can represent complete subsystems as objects. 
+Flyweight pattern can help supporting huge numbers of objects at the finest granularities. 
+Abstract factory and Builder yield objects whose only purpose is to create other objects. 
+Visitor and Command yield objects whose only purpose are to implement a request on another object or group of objects.
+
+-------------- Specifying Object Interfaces -----------------------
+
+50.
