@@ -10,9 +10,11 @@
                 (<html>','<attributes>) |
                 <callback> |
                 ('#' <elementId>)
-            ')'] <jqueryCommand>
+            ')'] "." <jqueryCommand>
+            
 <elementId> :=  <STRING_LITERAL>
 <className> := <STRING_LITERAL>
+
 <pseudoClassSelector> := <daSeDovrshi> (* starts with ':' *)
 <selector> := '*' | 
               ([<selector> | <tagName> | '*' | ''] ':animated') |
@@ -52,30 +54,50 @@
               ([<selector> | <tagName> | '*' | ''] ':last') |
               ([<selector> | <tagName> | '*' | ''] ':lt('<elementIndex>')') |
               ([<selector> | <tagName> | '*' | ''] ('['<tagName> '=' <attributeValue>']' {'['<tagName> '=' <attributeValue>']'})) |
-              <selector> {<selector>}
-              <daSeDovrshi>
+              <selector> {<selector>} |
+              """<selector> "+" <selector>""" |
+              """<selector> "~" <selector>""" |
+              ":not(" <selector> ")" |
+              ":nth-child(" <cssElementIndex> ")" |
+              ":nth-last-child(" <cssElementIndex> ")" |
+              ":nth-last-of-type(" <cssElementIndex> ")" |
+              ":nth-of-type(" <cssElementIndex> ")" |
+              ":odd" |
+              ":only-child" |
+              ":only-of-type" |
+              ":parent" |
+              ":password" |
+              ":radio" |
+              ":reset" |
+              ":root" |
+              ":selected" |
+              ":submit" |
+              ":target" |
+              ":text" |
+              ":visible"
               
 <language> := <daSeDovrshi>     
 <tagName> := <daSeDovrshi>
 <attributeValue> := <STRING_LITERAL> | <NUMBER_LITERAL>
 <attributeName> := <STRING_LITERAL>
 <sign> := ('+' | '' | '-')
+<cssElementIndex> := <elementIndex> | <even> | <odd> | <equation>
 <elementIndex> := <sign> <NUMBER_LITERAL>
 <context> := <element> | <jquery>
 <readyParameter> := <daSeDovrshi>
-
+<args> := {<anything>}
 <callbacks> := 'callbacks.' (
-                    'add()' |
+                    'add(' <function> | "[" {","<function>} "]" ')' |
                     'disable()' |
                     'disabled()' |
                     'empty()' |
-                    'fire()' |
+                    'fire(' <anything> ')' |
                     'fired()' |
-                    'fireWith()' |
-                    'has()' |
+                    'fireWith(' [<context>] ["," <args>] ')' |
+                    'has(' [<function>] ')' |
                     'lock()' |
                     'locked()' |
-                    'remove()' |
+                    'remove(' <function> | "[" {","<function>} "]"')' |
                 )
                 
 <deferred> := 'deferred.' (
@@ -181,221 +203,214 @@
                 'uniqueSort()' |
                 'when()'
             )
-            
-<jqueryCommand> :=  '.noConflict()' |
-                    '.ready(' <readyParameter> ')' |
-                    '.add()' | 
-                    '.addBack()' |
-                    '.addClass()' |
-                    '.after()' |
-                    '.ajaxComplete()' |
-                    '.ajaxError()' |
-                    '.ajaxSend()' |
-                    '.ajaxStart()' |
-                    '.ajaxStop()' |
-                    '.ajaxSuccess()' |
-                    '("*")' |
-                    '.andSelf()' |
-                    '.animate()' |
-                    ':animated Selector' |
-                    '.append()' |
-                    '.appendTo()' |
-                    '.attr()' |
-                    '[name|="value"]' |
-                    '[name*="value"]' |
-                    '[name~="value"]' |
-                    '[name$="value"]' |
-                    '[name="value"]' |
-                    '[name!="value"]' |
-                    '[name^=value]' |
-                    '.before()' |
-                    '.bind()' |
-                    '.blur()' |
-                    ':button Selector' |
+(*
+    var fName = function (<params>) {};
+    function (<params>) {}
+    function fName (<params>) {}
+*)
+<functionName> := <STRING_LITERAL>
+<functionParams> := <daSeDovrshi>
+<functionBody> := <daSeDovrshi>
+<JavaScriptObject> := <daSeDovrshi> (* typeof === 'Object' => true *)
+<returnStatement> := "return" <JavaScriptObject> ";"
+<javascriptFunction> := ("var" <functionName> "(" <functionParams> ") {" <functionBody> [<returnStatement>] "};") |
+                        ("function" <functionName> "(" <functionParams> ") {" <functionBody> [<returnStatement>]"};") |
+                        ("function" "(" <functionParams> ") {" <functionBody> [<returnStatement>]"}")
+<function> := <javascriptFunction>
+<afterCommandFunction> := "function (" <INTEGER_LITERAL> ") {" <functionBody> "return" (<htmlString> | <element> | <text> | <jQuery>) "}"
+<afterCommandFunctionHtml> := "function (" <INTEGER_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "return" (<htmlString> | <element> | <text> | <jQuery>) "}"
+<beforeCommandFunction> :=  <afterCommandFunction>
+<beforeCommandFunctionHtml> := <afterCommandFunctionHtml>
+<appendCommandFunctionHtml> := <afterCommandFunctionHtml>
+<functionHTML> := <daSeDovrshi>
+<tagName> := <STRING_LITERAL>
+<tagAttributes> := <daSeDovrshi>
+<tagContents> := {[<STRING_LITERAL>] [<tagChildren>]}
+<tagChildren> := [<DOMElement>] {<DOMElement>}
+<DOMElement> := ("<" <tagName> <tagAttributes> ">" <tagContents> "</" <tagName> ">") | ("<" <tagName> <tagAttributes> "/>")
+<element> := <DOMElement>
+<text> := <STRING_LITERAL>
+<JavaScriptArray> := <daSeDovrshi>
+<array> := <JavaScriptArray>
+<jQuery> := {<DOMElement>} (* A jQuery object contains a collection of Document Object Model (DOM) elements that have been created from an HTML string or selected from a document.  *)
+<content> := <htmlString> | <element> | <text> | <array> | <jQuery>
+<htmlString> := {{<STRING_LITERAL>} {""" <DOMElement> """}}
+<jqXHR> := <JQueryProps> <XMLHTTPRequest> <daSeDovrshi> (* jqXHR object which is a superset of the XMLHTTPRequest object *)
+<plainObject> := <JavaScriptObject>
+<ajaxCompleteCommandHandler> := "function (" <event> "," <jqXHR> "," <plainObject> ") {" <functionBody> "}" 
+<ajaxErrorCommandHandler> := "function (" <event> "," <jqXHR> "," <plainObject> "," <STRING_LITERAL> ") {" <functionBody> "}" 
+<ajaxSendCommandHandler> := <ajaxCompleteCommandHandler>
+<ajaxSuccessCommandHandler> := "function (" <event> "," <jqXHR> "," <plainObject> "," <plainObject> ") {" <functionBody> "}" 
+<eventHandler> := <function>
+<plainEventHandler> := "function (" <event> ") {" <functionBody> "}"
+<stepFunction> := <daSeDovrshi>
+<progressFunction> := <daSeDovrshi>
+<completeFunction> := <daSeDovrshi>
+<startFunction> := <daSeDovrshi>
+<doneFunction> := <daSeDovrshi>
+<failFunction> := <daSeDovrshi>
+<alwaysFunction> := <daSeDovrshi>
+<animateOptionsPlainObject> := "{ duration: " (<NUMBER_LITERAL> | <STRING_LITERAL>) ", easing: " <STRING_LITERAL> ", queue: " (<STRING_LITERAL> | <BOOLEAN_LITERAL>) ", specialEasing: " <plainObject> ", step: " <stepFunction> ", progress: " <progressFunction> ", complete: " <completeFunction> ", start: " <startFunction> ", done: " <doneFunction> ", fail: " <failFunction> ", always: " <alwaysFunction> "}"
+<NULL_LITERAL> := "null"
+<attributeCommandFunction> := "function (" <INTEGER_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "return " (<STRING_LITERAL> | <NUMBER_LITERAL>) "}"
+<anything> := <ANY_TYPE_LITERAL>
+<jqueryCommand> :=  'noConflict()' |
+                    'ready(' <readyParameter> ')' |
+                    'add('<selector> | (<element> {<element>}) | <html> | <selection> | (<selector> <element>)')' | 
+                    'addBack('[<selector>]')' |
+                    'addClass('<className> | <function>')' |
+                    'after(' (<content> {"," <content>}) | <afterCommandFunction> | <afterCommandFunctionHtml> ')' |
+                    'ajaxComplete(' <ajaxCompleteCommandHandler> ')' |
+                    'ajaxError(' <ajaxErrorCommandHandler> ')' |
+                    'ajaxSend(' <ajaxSendCommandHandler> ')' |
+                    'ajaxStart(' <eventHandler> ')' |
+                    'ajaxStop(' <eventHandler> ')' |
+                    'ajaxSuccess(' <ajaxSuccessCommandHandler> ')' |
+                    'andSelf()' | (* Deprecated, alias for addBack() *)
+                    'animate('(<plainObject> ["," <NUMBER_LITERAL> | <STRING_LITERAL>]["," <STRING_LITERAL>]["," <function>]) |
+                            (<plainObject> "," <animateOptionsPlainObject>)')' |
+                    'append('(<content> {"," <content>}) | <appendCommandFunctionHtml>')' |
+                    'appendTo(' <selector> | <htmlString> | <element> | <array> | <jQuery> ')' |
+                    'attr(' <attributeName> | (<attributeName> "," (<STRING_LITERAL> | <NUMBER_LITERAL> | <NULL_LITERAL>)) | <plainObject> | (<attributeName> "," <attributeCommandFunction>) ')' |
+                    'before(' (<content> {"," <content>}) | <beforeCommandFunction> | <beforeCommandFunctionHtml> ')' |
+                    'bind(' (<STRING_LITERAL> ["," <anything>]["," <plainEventHandler>]) |
+                            (<STRING_LITERAL> ["," <anything>]["," <BOOLEAN_LITERAL>]) |
+                            <OBJECT_LITERAL> ')' |
+                    'blur(' [([<anything> ","] <plainEventHandler>)] ')' |
                     <callbacks> |
-                    '.change()' |
-                    ':checkbox Selector' |
-                    ':checked Selector' |
-                    '("parent" > "child")' |
-                    'children()' |
-                    '(".class")' |
-                    '.clearQueue()' |
-                    '.click()' |
-                    '.clone()' |
-                    '.closest()' |
-                    ':contains() Selector' |
-                    '.contents()' |
-                    '.context' |
-                    '.contextmenu()' |
-                    '.css()' |
-                    '.data()' |
+                    'change(' [([<anything> ","] <plainEventHandler>)] ')' |
+                    'children(' [<selector>] ')' |
+                    'clearQueue(' [<STRING_LITERAL>] ')' |
+                    'click(' [([<anything> ","] <plainEventHandler>)] ')' |
+                    'clone(' [<BOOLEAN_LITERAL>]["," <BOOLEAN_LITERAL>] ')' |
+                    'closest(' <selector> ["," <element>] | <jQuery> | <element>')' |
+                    'contents()' |
+                    'context' (* Deprecated, the value of this property is typically equal to document *) |
+                    'contextmenu(' [([<anything> ","] <plainEventHandler>)] ')' |
+                    'css(' (<STRING_LITERAL> "," (<STRING_LITERAL> | <NUMBER_LITERAL>)) |
+                        (<STRING_LITERAL> "," ("function (" <INTEGER_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "return" (<STRING_LITERAL> | <NUMBER_LITERAL>) "}" )) |
+                        <plainObject>')' |
+                    'data(' [(<STRING_LITERAL> ["," <anything>]) | <OBJECT_LITERAL>] ')' |
                     'dblclick()' |
                     <deferred> |
-                    '.delay()' |
+                    'delay()' |
                     'delegate()' |
                     'dequeue()' |
-                    '("ancestor descendant")' |
-                    '.detach()' |
-                    '.die()' |
-                    ':disabled Selector' |
-                    '.each()' |
-                    '("element")' |
-                    '.empty()' |
-                    ':empty Selector' |
-                    ':enabled Selector' |
-                    '.end()' |
-                    '.eq()' |
-                    ':eq() Selector' |
-                    '.error()' |
-                    ':even Selector' |
+                    'detach()' |
+                    'die()' |
+                    'each()' |
+                    'empty()' |
+                    'end()' |
+                    'eq()' |
+                    'error()' |
                     <event> |
-                    '.fadeIn()' |
-                    '.fadeOut()' |
-                    '.fadeTo()' |
+                    'fadeIn()' |
+                    'fadeOut()' |
+                    'fadeTo()' |
                     'fadeToggle()' |
-                    ':file Selector' |
-                    '.filter()' |
-                    '.find()' |
-                    '.finish()' |
-                    '.first()' |
-                    ':first-child Selector' |
-                    ':first-of-type Selector' |
-                    ':first Selector' |
-                    '.focus()' |
-                    ':focus Selector' |
-                    '.focusin()' |
-                    '.focusout()' |
-                    '.get()' |
-                    ':gt() Selector' |
-                    '.has()' |
-                    '[name] Has Attr Selector' |
-                    ':has() Selector' |
-                    '.hasClass()' |
-                    ':header Selector' |
-                    '.height()' |
-                    ':hidden Selector' |
-                    '.hide()' |
-                    '.hover()' |
+                    'filter()' |
+                    'find()' |
+                    'finish()' |
+                    'first()' |
+                    'focus()' |
+                    'focusin()' |
+                    'focusout()' |
+                    'get()' |
+                    'has()' |
+                    'hasClass()' |
+                    'height()' |
+                    'hide()' |
+                    'hover()' |
                     'html()' |
-                    '("#id")' |
-                    ':image Selector' |
-                    '.index()' |
-                    '.innerHeight()' |
-                    '.innerWidth()' |
-                    ':input Selector' |
-                    '.insertAfter()' |
-                    '.insertBefore()' |
-                    '.is()' |
+                    'index()' |
+                    'innerHeight()' |
+                    'innerWidth()' |
+                    'insertAfter()' |
+                    'insertBefore()' |
+                    'is()' |
                     'jQuery()' |
-                    '.jquery' |
+                    'jquery' |
                     <jQueryLowLevel> |
-                    '.keydown()' |
-                    '.keypress()' |
-                    '.keyup()' |
-                    ':lang Selector' |
-                    '.last()' |
-                    ':last-child Selector' |
-                    ':last-of-type Selector' |
-                    ':last Selector' |
-                    '.length' |
-                    '.live()' |
-                    '.load()' |
-                    '.load()' |
-                    ':lt() Selector' |
-                    '.map()' |
-                    '.mousedown()' |
-                    '.mouseenter()' |
-                    '.mouseleave()' |
-                    '.mousemove()' |
-                    '.mouseout()' |
-                    '.mouseover()' |
-                    '.mouseup()' |
-                    'multiple selector [name="value"][name2="value2"]' |
-                    'multiple selector ("selector1, selector2, selector3")' |
-                    '.next()' |
-                    'next adjacent selector ("prev + next")' |
-                    'Next Siblings Selector ("prev ~ siblings")' |
-                    '.nextAll()' |
+                    'keydown()' |
+                    'keypress()' |
+                    'keyup()' |
+                    'last()' |
+                    'length' |
+                    'live()' |
+                    'load()' |
+                    'load()' |
+                    'map()' |
+                    'mousedown()' |
+                    'mouseenter()' |
+                    'mouseleave()' |
+                    'mousemove()' |
+                    'mouseout()' |
+                    'mouseover()' |
+                    'mouseup()' |
+                    'next()' |
+                    'nextAll()' |
                     'nextUntil()' |
-                    '.not()' |
-                    ':not() Selector' |
-                    ':nth-child Selector' |
-                    ':nth-last-child() Selector' |
-                    ':nth-last-of-type() Selector' |
-                    ':nth-of-type() Selector' |
-                    ':doo Selector' |
-                    '.off()' |
-                    '.offset()' |
-                    '.offsetParent()' |
-                    '.on()' |
-                    '.net()' |
-                    ':only-child Selector' |
-                    ':only-of-type Selector' |
-                    '.outerHeight()' |
-                    '.outerWidth()' |
-                    '.parent()' |
-                    ':parent Selector' |
-                    '.parents()' |
-                    '.parentsUntil()' |
-                    ':password Selector' |
-                    '.position()' |
-                    '.prepend()' |
-                    '.prependTo()' |
-                    '.prev()' |
-                    '.prevAll()' |
-                    '.prevUnitl()' |
-                    '.promise()' |
-                    '.prop()' |
-                    '.pushStack()' |
-                    '.queue()' |
-                    ':radio Selector' |
-                    '.ready()' |
-                    '.remove()' |
-                    '.removeAttr()' |
-                    '.removeClass()' |
-                    '.removeData()' |
-                    '.removeProp()' |
-                    '.replaceAll()' |
-                    '.replaceWith()' |
-                    ':reset Selector' |
+                    'not()' |
+                    'off()' |
+                    'offset()' |
+                    'offsetParent()' |
+                    'on()' |
+                    'net()' |
+                    'outerHeight()' |
+                    'outerWidth()' |
+                    'parent()' |
+                    'parents()' |
+                    'parentsUntil()' |
+                    'position()' |
+                    'prepend()' |
+                    'prependTo()' |
+                    'prev()' |
+                    'prevAll()' |
+                    'prevUnitl()' |
+                    'promise()' |
+                    'prop()' |
+                    'pushStack()' |
+                    'queue()' |
+                    'ready()' |
+                    'remove()' |
+                    'removeAttr()' |
+                    'removeClass()' |
+                    'removeData()' |
+                    'removeProp()' |
+                    'replaceAll()' |
+                    'replaceWith()' |
                     'resize()' |
-                    ':root Selector' |
-                    '.scroll()' |
+                    'scroll()' |
                     'scrollLeft()' |
                     'scrollTop()' |
-                    '.select()' |
-                    ':selector Selector' |
-                    '.selector' |
-                    '.serialize()' |
-                    '.serializeArray()' |
-                    '.show()' |
-                    '.siblings()' |
-                    '.size()' |
-                    '.slice()' |
-                    '.slideDown()' |
-                    '.slideToggle()' |
-                    '.slideUp()' |
-                    '.stop()' |
-                    '.submit()' |
-                    ':submit Selector' |
-                    ':target Selector' |
-                    '.text()' |
-                    ':text Selector' |
-                    '.toArray()' |
-                    '.toggle()' |
-                    '.toggle()' |
-                    '.toggleClass()' |
-                    '.trigger()' |
-                    '.triggerHandler()' |
-                    '.unbind()' |
-                    '.undelegate()' |
-                    '.unload()' |
-                    '.unwrap()' |
-                    '.val()' |
-                    ':visible Selector' |
-                    '.width()' |
-                    '.wrap()' |
-                    '.wrapAll()' |
-                    '.wrapInner()'
+                    'select()' |
+                    'selector' |
+                    'serialize()' |
+                    'serializeArray()' |
+                    'show()' |
+                    'siblings()' |
+                    'size()' |
+                    'slice()' |
+                    'slideDown()' |
+                    'slideToggle()' |
+                    'slideUp()' |
+                    'stop()' |
+                    'submit()' |
+                    'text()' |
+                    'toArray()' |
+                    'toggle()' |
+                    'toggle()' |
+                    'toggleClass()' |
+                    'trigger()' |
+                    'triggerHandler()' |
+                    'unbind()' |
+                    'undelegate()' |
+                    'unload()' |
+                    'unwrap()' |
+                    'val()' |
+                    'width()' |
+                    'wrap()' |
+                    'wrapAll()' |
+                    'wrapInner()'
                     
                     
