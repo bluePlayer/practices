@@ -1,0 +1,35 @@
+Behavioral Patterns Notes - Chapter 5
+
+1. Behavioral patterns are concerned with algorithms and the assignment of responsibilities between objects.
+They describe not just patterns of objects or classes but also the patterns of communication between them.
+A complex control flow that is difficult to follow at run-time. 
+They help you focus more on the way how the objects are interconnected and less on the flow of control.
+
+2. Two behavioral(class) patterns use inheritance to distrubute behavior between classes: Template Method(360) and Interpreter(274).
+
+3. Template Method(360) is the more simple one and it represents an abstract definition of an algorithm. It defines the algorithm step by step. Each step invokes either an abstract or a primitive operation. A subclass fleshes out the algorithm by defininf the abstract operations.
+
+4. Interpreter(274) represents a grammar as a class hierarchy and implements an interprepter as an operation on instances of these classes.
+
+5. Behavioral(object) patterns who use object composition are: Mediator(305), Chain of Responsibility(251), Observer(326), Strategy(349), Command(263), State(338), Visitor(366) and Iterator(289).
+
+6. Some of the behavioral object patterns describe how a group of peer objects cooperate to perform a task that no single object can carry out by itself. An important issue here is how peer objects know about each other. 
+Peers could maintain explicit references to each other, but that would increase their coupling. The extreme case is when each object knows about every other object.
+
+7. Mediator patterns avoids this by introducing mediator object between peers. This mediator object provides indirection needed for loose coupling.
+
+8. Chain of responsibility provides even looser coupling. It lets you send requests to an object implcitly trough a chain of candidate objects. Any candidate may fulifill the request depending on the run-time conditions. The number of candidates is open-ended, and you can select which candidates participate in the chain at run-time.
+
+9. Observer(326) pattern defines and maintains a dependency between objects. Classic example of Observer is MVC(Model/View/Controller) where all views of the model are notified whenever the model's state changes.
+
+10. Object behavioral patterns are concerned with encapsulating behavior in an object and delegating requests to it.
+
+11. Strategy(349) pattern encapsulates an algorithm in an object. Strategy makes it easy to specify and change the algorithm an object uses.
+
+12. Command(263) pattern encapsulates a request in ana object so that it can be passes as a parameter, stored on a history list, or manipulated in other ways.
+
+13. State(338) pattern encapsulates the states of an object so that the object can change ots behavior when its state object changes. 
+
+14. Visitor(366) encapsulates behavior that would otherwise be distributed across classes
+
+15. Iterator(289) abstracts the way you access and traverse objects in an agregate.
