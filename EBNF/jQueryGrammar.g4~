@@ -101,23 +101,25 @@
                 )
                 
 <deferred> := 'deferred.' (
-                    'always()' |
-                    'catch()' |
-                    'done()' |
-                    'fail()' |
-                    'isRejected()' |
-                    'isResolved()' |
-                    'notify()' |
-                    'notifyWith()' |
-                    'pipe()' |
-                    'progress()' |
-                    'promise()' |
-                    'reject()' |
-                    'rejectWith()' |
-                    'resolve()' |
-                    'resolveWith()' |
+                    'always(' <function> | "[" {","<function>} "]" ')' |
+                    'catch(' <function> ')' |
+                    'done(' <function> | "[" {","<function>} "]" ')' |
+                    'fail(' <function> | "[" {","<function>} "]" ')' |
+                    'isRejected()' (* As of jQuery 1.7 this API has been deprecated; please use deferred.state() instead. *) | 
+                    'isResolved()' (* This API is deprecated as of jQuery 1.7 and removed as of jQuery 1.8; please use deferred.state() instead.*) |
+                    'notify(' <JavaScriptObject> ')' |
+                    'notifyWith(' <JavaScriptObject> [ "," <JavaScriptArray> ] ')' |
+                    'pipe(' ([<function>] ["," <function>]) | ([<function>] ["," <function>] ["," <function>]) ')' (* Deprecation Notice:As of jQuery 1.8, the deferred.pipe() method is deprecated. The deferred.then() method, which replaces it, should be used instead. *)|
+                    'progress(' <function> | "[" {","<function>} "]" ')' |
+                    'promise(' [<JavaScriptObject>] ')' |
+                    'reject(' [<anything>] ')' |
+                    'rejectWith(' <JavaScriptObject> ["," <JavaScriptArray> ] ')' |
+                    'resolve(' [<anything>] ')' |
+                    'resolveWith(' <JavaScriptObject> ["," <JavaScriptArray> ] ')' |
                     'state()' |
-                    'then()'
+                    'then(' (<function> ["," <function> ] ["," <function>] ) | 
+                        ((<function> | "[" {","<function>} "]") "," (<function> | "[" {","<function>} "]")) | 
+                        ((<function> | "[" {","<function>} "]") "," (<function> | "[" {","<function>} "]") ["," (<function> | "[" {","<function>} "]")]) ')'
                 )
                 
 <event> := 'event.' (
@@ -154,7 +156,7 @@
                 'cssHooks' |
                 'cssNumber' |
                 'data()' |
-                'Deferred()' |
+                'Deferred('[<deferredFunction>]')' |
                 'dequeue()' |
                 'each()' |
                 'error()' |
@@ -201,7 +203,7 @@
                 'type()' |
                 'unique()' |
                 'uniqueSort()' |
-                'when()'
+                'when(' {<deferred>} | {<JavaScriptObject>} ')'
             )
 (*
     var fName = function (<params>) {};
@@ -254,6 +256,12 @@
 <NULL_LITERAL> := "null"
 <attributeCommandFunction> := "function (" <INTEGER_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "return " (<STRING_LITERAL> | <NUMBER_LITERAL>) "}"
 <anything> := <ANY_TYPE_LITERAL>
+<deferredFunction> := 'function (' <deferred> ') {' <functionBody> 'return' <deferred> ';' '}'
+
+<fadeInOptionsObject> := <animateOptionsPlainObject>
+<fadeOutOptionsObject> := <animateOptionsPlainObject>
+<fadeToggleOptionsObject> := <animateOptionsPlainObject>
+
 <jqueryCommand> :=  'noConflict()' |
                     'ready(' <readyParameter> ')' |
                     'add('<selector> | (<element> {<element>}) | <html> | <selection> | (<selector> <element>)')' | 
@@ -291,34 +299,42 @@
                         (<STRING_LITERAL> "," ("function (" <INTEGER_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "return" (<STRING_LITERAL> | <NUMBER_LITERAL>) "}" )) |
                         <plainObject>')' |
                     'data(' [(<STRING_LITERAL> ["," <anything>]) | <OBJECT_LITERAL>] ')' |
-                    'dblclick()' |
+                    'dblclick(' [([<anything> ","] <plainEventHandler>)] ')' |
                     <deferred> |
-                    'delay()' |
-                    'delegate()' |
-                    'dequeue()' |
-                    'detach()' |
-                    'die()' |
-                    'each()' |
+                    'delay(' <INTEGER_LITERAL> ["," <STRING_LITERAL>] ')' (* .delay() is not a replacement for JavaScript's native setTimeout function *) |
+                    'delegate(' (<STRING_LITERAL> "," <STRING_LITERAL> "," <eventHandler>) |
+                        (<STRING_LITERAL> "," <STRING_LITERAL> "," <anything> "," <eventHandler>) |
+                        (<STRING_LITERAL> "," <JavaScriptObject>) ')' (* As of jQuery 3.0, .delegate() has been deprecated. It was superseded by the .on() method since jQuery 1.7 *) |
+                    'dequeue(' [<STRING_LITERAL>] ')' |
+                    'detach(' [<selector>] ')' |
+                    'die(' [(<STRING_LITERAL> ["," <STRING_LITERAL>]) | <JavaScriptObject>] ')' (* As of jQuery 1.7, use of .die() (and its complementary method, .live()) is not recommended. *) |
+                    'each(' 'function (' <INTEGER_LITERAL> "," <DOMElement> ') {' <functionBody> '}' ')' |
                     'empty()' |
                     'end()' |
-                    'eq()' |
-                    'error()' |
+                    'eq(' <sign> <INTEGER_LITERAL> ')' |
+                    'error(' [<anything> ","] <eventHandler> ')' (* As of jQuery 1.8, the .error() method is deprecated. Use .on( "error", handler ) to attach event handlers to the error event instead. *)|
                     <event> |
-                    'fadeIn()' |
-                    'fadeOut()' |
-                    'fadeTo()' |
-                    'fadeToggle()' |
-                    'filter()' |
-                    'find()' |
-                    'finish()' |
+                    'fadeIn(' ([<INTEGER_LITERAL> | <STRING_LITERAL>] ["," <function>]) | 
+                        <fadeInOptionsObject> | 
+                        ([<INTEGER_LITERAL> | <STRING_LITERAL>] [<STRING_LITERAL>] ["," <function>]) ')' | 
+                    'fadeOut(' ([<INTEGER_LITERAL> | <STRING_LITERAL>] ["," <function>]) | 
+                        <fadeOutOptionsObject> | 
+                        ([<INTEGER_LITERAL> | <STRING_LITERAL>] [<STRING_LITERAL>] ["," <function>]) ')' |
+                    'fadeTo(' ([<INTEGER_LITERAL> | <STRING_LITERAL>] ["," <function>]) | 
+                        ([<INTEGER_LITERAL> | <STRING_LITERAL>] [<STRING_LITERAL>] ["," <function>]) ')' |
+                    'fadeToggle(' ([<INTEGER_LITERAL> | <STRING_LITERAL>] [<STRING_LITERAL>] ["," <function>]) |
+                        <fadeToggleOptionsObject> ')' |
+                    'filter(' <selector> | ('function (' <INTEGER_LITERAL> "," <BOOLEAN_LITERAL> ') {' <functionBody> 'return' <BOOLEAN_LITERAL> '}') | (<DOMElement> {"," <DOMElement>}) | <jQuery> ')' |
+                    'find(' <selector> | <DOMElement> | <jQuery> ')' |
+                    'finish(' [<STRING_LITERAL>] ')' |
                     'first()' |
-                    'focus()' |
-                    'focusin()' |
-                    'focusout()' |
-                    'get()' |
-                    'has()' |
-                    'hasClass()' |
-                    'height()' |
+                    'focus(' [[<anything> ","] <eventHandler>]  ')' |
+                    'focusin(' [[<anything> ","] <eventHandler>] ')' |
+                    'focusout(' [[<anything> ","] <eventHandler>] ')' |
+                    'get(' [<INTEGER_LITERAL>] ')' |
+                    'has(' <STRING_LITERAL> | <DOMElement> ')' |
+                    'hasClass(' <STRING_LITERAL> ')' |
+                    'height(' [ (<STRING_LITERAL> | <NUMBER_LITERAL>) | ('function (' <INTEGER_LITERAL> "," <INTEGER_LITERAL> ') {' <functionBody> 'return' (<STRING_LITERAL> | <NUMBER_LITERAL>) '}')] ')' | (* ContinueHere *)
                     'hide()' |
                     'hover()' |
                     'html()' |
