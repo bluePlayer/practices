@@ -1,0 +1,13 @@
+class OpenCommand: public Command {
+    public:
+        OpenCommand(Application*);
+        
+        virtual void Execute();
+    
+    protected:
+        virtual const char* AskUser();
+        
+    private:
+        Application* _application;
+        char* _response;
+};

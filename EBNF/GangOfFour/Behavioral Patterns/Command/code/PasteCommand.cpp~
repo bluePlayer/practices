@@ -1,0 +1,9 @@
+class PasteCommand: public Command {
+    public:
+        PasteCommand(Document*);
+        
+        virtual void Execute();
+        
+    private:
+        Document* _document;
+};

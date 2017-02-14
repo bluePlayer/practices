@@ -1,0 +1,11 @@
+Abstract Factory: Kit
+Factory Method: Virtual Constructor
+Adapter: Wrapper
+Bridge: Handle/Body
+Decorator: Wrapper
+Proxy: Surrogate
+Command: Action, Transaction
+Iterator: Cursor
+Memento: Token
+Observer: Dependents, Publish-Subscribe
+State: Objects for States
