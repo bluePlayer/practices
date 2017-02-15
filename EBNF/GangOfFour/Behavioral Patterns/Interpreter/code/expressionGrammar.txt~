@@ -1,0 +1,12 @@
+expression ::= literal | alternation | sequence | repetition | '(' expression ')'
+alternation ::= expression '|' expression
+sequence ::= expression '&' expression
+repetition ::= expression 'repeat'
+literal ::= 'a' | 'b' | 'c' | ... {'a' | 'b' | 'c' | ... }*
+
+(('dog' | 'cat') repeat & 'weather') => "dog dog cat weather"
+
+'a' repeat => "a", "aa", "aaa" ...
+'a' repeat & 'bc' => 'abc', 'aabc', 'aaabc', ...
+
+

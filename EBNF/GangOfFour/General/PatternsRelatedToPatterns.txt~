@@ -1,0 +1,31 @@
+----------------- Creational Patterns ----------------
+
+AbstractFactory: Factory Method, Prototype, Singleton(Concrete Factory is Singleton)
+Builder: AbstractFactory, Composite
+FactoryMethod: AbstractFactory, TemplateMethod, Prototype
+Prototype: AbstractFactory, Composite, Decorator
+Singleton: AbstractFactory, Builder, Prototype
+
+----------------- Structural Patterns ----------------
+
+Adapter: Bridge, Decorator, Proxy, FactoryMethod
+Bridge: AbstractFactory, Adapter
+Composite: ChainOfResponsibility, Decorator, Flyweight, Iterator, Visitor
+Decorator: Adapter, Composite, Strategy
+Facade: AbstractFactory, Mediator, Singleton
+Flyweight: Composite, State, Strategy
+Proxy: Adapter, Decorator, Iterator
+
+----------------- Behavioral Patterns ----------------
+
+ChainOfResponsibility: Composite
+Command: Composite, Memento, Prototype
+Interpreter: Composite, Flyweight, Iterator, Visitor
+Iterator: Composite, FactoryMethod, Memento, TemplateMethod
+Mediator: Facade, Observer
+Memento: Command, Iterator
+Observer: Mediator, Singleton
+State: Flyweight, Singleton
+Strategy: Flyweight
+TemplateMethod: FactoryMethod, Strategy
+Visitor: Composite, Interpreter, 

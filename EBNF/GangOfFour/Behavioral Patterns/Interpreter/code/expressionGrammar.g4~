@@ -1,0 +1,5 @@
+expression ::= literal | alternation | sequence | repetition | '(' expression ')'
+alternation ::= expression '|' expression
+sequence ::= expression '&' expression
+repetition ::= expression 'repeat'
+literal ::= 'a' | 'b' | 'c' | ... {'a' | 'b' | 'c' | ... }*
