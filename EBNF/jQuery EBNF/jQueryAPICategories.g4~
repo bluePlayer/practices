@@ -1,0 +1,4 @@
+<ajaxCategory> := "Ajax"
+<Internals> := <finishTheRule>
+<jQueryAPICategories> :=    <ajaxCategory> | 
+                            <Internals>

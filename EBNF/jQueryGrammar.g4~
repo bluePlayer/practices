@@ -144,8 +144,61 @@
                 'which'
             )
             
+<url> := <STRING_LITERAL>
+<url> := "http://" <host> ":" <port> <path> ["?" <query>]["#" <fragment-id>]
+<host> := <hostName> | <hostAddress>
+<hostName> := <STRING_LITERAL>
+<hostAddress> := <ipV4> | <ipV6>
+<ipV6> := <daSeDovrshi>
+<ipV4AddressPart> := "0" | "1" | ... | "255"
+<ipV4> := <ipV4AddressPart> "." <ipV4AddressPart> "." <ipV4AddressPart> "." <ipV4AddressPart>
+<port> := <INTEGER_LITERAL> 
+<path> := "/" <prefix> ["/" <serviceName> ["/" <pathStepList>]]
+<prefix> ::= "ws"
+<path-step-list> ::= <path-step-name> ["/" <path-step-list>]
+<query> ::= <query-parameter-list>
+<query-parameter-list> ::= <query-parameter> ["&" <query-parameter-list>]
+<query-parameter> ::= <query-parameter-name> ["=" <query-parameter-value>]
+
+<ajaxObject> := "{  
+                    accepts: "<plainObject>", 
+                    async: " <BOOLEAN_LITERAL> ", 
+                    beforeSend: function (" <jqXHR> ", " <plainObject> ") {" <functionBody> "}, 
+                    cache: " <BOOLEAN_LITERAL> ", 
+                    complete: function (" <jqXHR> "," <STRING_LITERAL> ") {" <functionBody> "}, 
+                    contents: " <plainObject> ", 
+                    contentType: " (<BOOLEAN_LITERAL> | <STRING_LITERAL>) ", 
+                    context: " <plainObject> ", 
+                    converters: " <plainObject> ", 
+                    crossDomain: " <BOOLEAN_LITERAL> ", 
+                    data: " (<plainObject> | <STRING_LITERAL> | <JavaScriptArray>) ", 
+                    dataFilter: function (" <STRING_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "return" <anything> "}, 
+                    dataType: " <STRING_LITERAL> ", 
+                    error: function ("  <jqXHR> "," <STRING_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "}, 
+                    global: " <BOOLEAN_LITERAL> ", 
+                    headers: " <plainObject> ", 
+                    ifModified: " <BOOLEAN_LITERAL> ", 
+                    isLocal: " <BOOLEAN_LITERAL> ", 
+                    jsonp: " (<STRING_LITERAL> | <BOOLEAN_LITERAL>) ", 
+                    jsonpCallback: " (<STRING_LITERAL> | <function> ) ", 
+                    method: " <STRING_LITERAL> ", 
+                    mimeType: " <STRING_LITERAL> ", 
+                    password: " <STRING_LITERAL> ", 
+                    processData: " <BOOLEAN_LITERAL> ", 
+                    scriptCharset: " <STRING_LITERAL> ", 
+                    statusCode: " <plainObject> ", 
+                    success: function (" <anything> "," <STRING_LITERAL> "," <jqXHR> ") {" <functionBody> "}, 
+                    timeout: " <NUMBER_LITERAL> ", 
+                    traditional: " <BOOLEAN_LITERAL> ", 
+                    type: " < STRING_LITERAL>", 
+                    url: " <STRING_LITERAL> ", 
+                    username: " <STRING_LITERAL> ", 
+                    xhr: " <function> ", 
+                    xhrFields: " <plainObject> 
+                "}"
+<settings> := <ajaxObject>
 <jQueryLowLevel> := 'jQuery.' (
-                'ajax()' |
+                'ajax(' (<url> ["," <settings>]) | [<settings>] ')' |
                 'ajaxPrefilter()' |
                 'ajaxSetup()' |
                 'ajaxTransport()' |
@@ -261,6 +314,7 @@
 <fadeInOptionsObject> := <animateOptionsPlainObject>
 <fadeOutOptionsObject> := <animateOptionsPlainObject>
 <fadeToggleOptionsObject> := <animateOptionsPlainObject>
+<hideOptionsObject> := <animateOptionsPlainObject>
 
 <jqueryCommand> :=  'noConflict()' |
                     'ready(' <readyParameter> ')' |
@@ -334,17 +388,17 @@
                     'get(' [<INTEGER_LITERAL>] ')' |
                     'has(' <STRING_LITERAL> | <DOMElement> ')' |
                     'hasClass(' <STRING_LITERAL> ')' |
-                    'height(' [ (<STRING_LITERAL> | <NUMBER_LITERAL>) | ('function (' <INTEGER_LITERAL> "," <INTEGER_LITERAL> ') {' <functionBody> 'return' (<STRING_LITERAL> | <NUMBER_LITERAL>) '}')] ')' | (* ContinueHere *)
-                    'hide()' |
-                    'hover()' |
-                    'html()' |
-                    'index()' |
-                    'innerHeight()' |
-                    'innerWidth()' |
-                    'insertAfter()' |
-                    'insertBefore()' |
-                    'is()' |
-                    'jQuery()' |
+                    'height(' [ (<STRING_LITERAL> | <NUMBER_LITERAL>) | ('function (' <INTEGER_LITERAL> "," <INTEGER_LITERAL> ') {' <functionBody> 'return' (<STRING_LITERAL> | <NUMBER_LITERAL>) '}')] ')' | 
+                    'hide(' ([<INTEGER_LITERAL> | <STRING_LITERAL>]["," <function>]) |
+                        <hideOptionsObject> | (<INTEGER_LITERAL> | <STRING_LITERAL> ["," <STRING_LITERAL>] ["," <function>]) ')' | (* ContinueHere *)
+                    'hover(' (<eventHandler> "," <eventHandler>) | <eventHandler> ')' |
+                    'html(' [<htmlString> | ("function (" <INTEGER_LITERAL> "," <htmlString> ") {" <functionBody> "return" <htmlString> "}")] ')' |
+                    'index(' [<selector> | <DOMElement> | <jQuery>] ')' |
+                    'innerHeight(' [(<STRING_LITERAL> | <NUMBER_LITERAL>) | "function (" <INTEGER_LITERAL>, <NUMBER_LITERAL> ") {" <functionBody> "return" (<STRING_LITERAL> | <NUMBER_LITERAL>) "}"] ')' |
+                    'innerWidth(' [(<STRING_LITERAL> | <NUMBER_LITERAL>) | "function (" <INTEGER_LITERAL>, <NUMBER_LITERAL> ") {" <functionBody> "return" (<STRING_LITERAL> | <NUMBER_LITERAL>) "}"] ')' |
+                    'insertAfter(' <selector> | <htmlString> | <DOMElement> | <JavaScriptArray> | <jQuery> ')' |
+                    'insertBefore(' <selector> | <htmlString> | <DOMElement> | <JavaScriptArray> | <jQuery> ')' |
+                    'is(' <selector> | ("function (" <INTEGER_LITERAL> "," <DOMElement> ") {" <functionBody> "return" <BOOLEAN_LITERAL> "}") | <jQuery> | <DOMElement>')' |
                     'jquery' |
                     <jQueryLowLevel> |
                     'keydown()' |
