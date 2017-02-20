@@ -1,4 +1,4 @@
-<event> := "event." (
+<eventObject> := "event." (
                 "currentTarget" |
                 "data" |
                 "delegateTarget" |

@@ -1,6 +1,7 @@
 <include> :=    <DOMElement.g4> ","
                 <URL.g4> ","
-                <ajaxObject>               
+                <ajaxObject.g4> ","
+                <jQueryTypes.g4>               
 
 <flags> := <STRING_LITERAL>
 <container> := <DOMElement>
@@ -80,8 +81,8 @@
                 "isXMLDoc(" <DOMElement> ")" |
                 "makeArray(" <plainObject> ")" |
                 "map(" (<JavaScriptArray> | <JavaScriptObject>) ", function (" <plainObject> "," <INTEGER_LITERAL> ") {" <functionBody> "return" <plainObject> ";" "}" ")" |
-                "merge()" |  (* ContinueHere *)
-                "noConflict()" |
+                "merge(" <arrayLikeObject> "," <arrayLikeObject> ")" |  
+                "noConflict(" [<BOOLEAN_LITERAL>] ")" | (* ContinueHere *)
                 "noop()" |
                 "now()" |
                 "param()" |
