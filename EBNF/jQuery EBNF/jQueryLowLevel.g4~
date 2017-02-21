@@ -40,6 +40,12 @@
 <object2> := <plainObject>
 <arrayLikeObject> := <finishTheRule>
 
+<shorthandMethods> :=   "get(" (<url> ["," (<plainObject> | <STRING_LITERAL>)][", function (" <plainObject> "," <STRING_LITERAL> "," <jqXHR> ") {" <functionBody> "}" ]) | [<ajaxObject>] ")" | 
+                        "getJSON(" <url> ["," (<plainObject> | <STRING_LITERAL>)][", function (" <plainObject> "," <STRING_LITERAL> "," <jqXHR> ") {" <functionBody> "}"] ")" | 
+                        "getScript(" <url> [", function (" <STRING_LITERAL> "," <STRING_LITERAL> "," <jqXHR> ") {" <functionBody> "}"] ")" | 
+                        "post(" (<url> ["," (<plainObject | <string>)]["function (" <plainObject> "," <string> "," <jqXHR> ") {" <functionBody> "}"]["," <string>]) | [<plainObject>] ")" | 
+                        "load(" <url> ["," (<plainObject> | <string>)]["," "function (" <string> "," <string> "," <jqXHR> ") {" <functionBody> "}"] ")"
+
 <jQueryLowLevel> := "jQuery." (
                 "ajax(" (<url> ["," <settings>]) | [<settings>] ")" |
                 "ajaxPrefilter(" [<STRING_LITERAL>] ", function (" <plainObject> "," <plainObject> "," <jqXHR> ") {" <functionBody> "}"  ")" |
@@ -63,9 +69,6 @@
                 "fn.extend(" <plainObject> ")" |
                 "fx.interval" |
                 "fx.off" |
-                "get(" (<url> ["," (<plainObject> | <STRING_LITERAL>)][", function (" <plainObject> "," <STRING_LITERAL> "," <jqXHR> ") {" <functionBody> "}" ]) | [<ajaxObject>] ")" |
-                "getJSON(" <url> ["," (<plainObject> | <STRING_LITERAL>)][", function (" <plainObject> "," <STRING_LITERAL> "," <jqXHR> ") {" <functionBody> "}"] ")" |
-                "getScript(" <url> [", function (" <STRING_LITERAL> "," <STRING_LITERAL> "," <jqXHR> ") {" <functionBody> "}"] ")" |
                 "globalEval(" <STRING_LITERAL> ")" | 
                 "grep(" <JavaScriptArray> ", function (" <plainObject> "," <INTEGER_LITERAL> ") {" <functionBody> "return" <BOOLEAN_LITERAL> "}" ["," <BOOLEAN_LITERAL>]  ")" |
                 "hasData(" <DOMElement> ")" |
@@ -81,26 +84,25 @@
                 "isXMLDoc(" <DOMElement> ")" |
                 "makeArray(" <plainObject> ")" |
                 "map(" (<JavaScriptArray> | <JavaScriptObject>) ", function (" <plainObject> "," <INTEGER_LITERAL> ") {" <functionBody> "return" <plainObject> ";" "}" ")" |
-                "merge(" <arrayLikeObject> "," <arrayLikeObject> ")" |  (* ContinueHere *)
-                "noConflict(" [<BOOLEAN_LITERAL>] ")" |
+                "merge(" <arrayLikeObject> "," <arrayLikeObject> ")" |  
+                "noConflict(" [<BOOLEAN_LITERAL>] ")" | (* ContinueHere *)
                 "noop()" |
                 "now()" |
-                "param()" |
-                "parseHTML()" |
-                "parseJSON()" |
-                "parseXML()" |
-                "post()" |
-                "proxy()" |
-                "queue()" |
-                "readyException()" |
-                "removeData()" |
-                "speed" |
-                "sub()" |
-                "support" |
-                "trim()" |
-                "type()" |
-                "unique()" |
-                "uniqueSort()" |
+                "param(" (<array> | <plainObject> | <jQuery>) ["," <boolean>] ")" |
+                "parseHTML("<string> ["," <element>]["," <boolean>] ")" |
+                "parseJSON(" <string> ")" |
+                "parseXML(" <string> ")" |
+                "proxy(" (<function> "," <plainObject>) | (<plainObject> | <string>) | (<function> "," <plainObject> ["," <anything>]) | (<plainObject> "," <string> ["," <anything>]) ")" |
+                "queue(" (<element> ["," <string>]) | (<element> "," <string> "," <array>) | (<element> | <string> | <function>)")" |
+                "readyException(" <error> ")" |
+                "removeData(" <element> ["," <string>] ")" |
+                "speed(" ([<number> | <string>] ["," "{ easing: " <string> ", complete: " <function> "}"]) | ([<number> | <string>]["," <string>]["," <function>]) | <plainObject>")" |
+                "sub()" | (* Deprecated as of 1.7 *)
+                "support" | (* Deprecated as of 1.9 *)
+                "trim(" <string> ")" |
+                "type(" <anything> ")" |
+                "unique(" <array> ")" | (* Note that this only works on arrays of DOM elements, not strings or numbers. *)
+                "uniqueSort(" <array> ")" | (* Note that this only works on arrays of DOM elements, not strings or numbers. *)
                 "when(" {<deferred>} | {<JavaScriptObject>} ")"
             )
             

@@ -82,6 +82,23 @@
 <fadeOutOptionsObject> := <animateOptionsPlainObject>
 <fadeToggleOptionsObject> := <animateOptionsPlainObject>
 <hideOptionsObject> := <animateOptionsPlainObject>
+                        
+<mouseEvents> :=    "click(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "contextmenu(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "dblclick(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "hover(" (<eventHandler> "," <eventHandler>) | <eventHandler> ")" | 
+                    "mousedown(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "mouseenter(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "mouseleave(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "mousemove(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "mouseout(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "mouseover(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "mouseup(" [[<anything> ","] <plainEventHandler>] ")" | 
+                    "toggle(" [[<anything> ","] <plainEventHandler>] ")"
+
+<keyboardEvents> := "keydown(" [[<anything> ","] <plainEventHandler>] ")" |
+                    "keypress(" [[<anything> ","] <plainEventHandler>] ")" |
+                    "keyup(" [[<anything> ","] <plainEventHandler>] ")"
 
 <jqueryCommand> :=  "noConflict()" |
                     "ready(" <readyParameter> ")" |
@@ -110,17 +127,14 @@
                     "change(" [([<anything> ","] <plainEventHandler>)] ")" |
                     "children(" [<selector>] ")" |
                     "clearQueue(" [<STRING_LITERAL>] ")" |
-                    "click(" [([<anything> ","] <plainEventHandler>)] ")" |
                     "clone(" [<BOOLEAN_LITERAL>]["," <BOOLEAN_LITERAL>] ")" |
                     "closest(" <selector> ["," <DOMElement>] | <jQuery> | <DOMElement>")" |
                     "contents()" |
                     "context" (* Deprecated, the value of this property is typically equal to document *) |
-                    "contextmenu(" [([<anything> ","] <plainEventHandler>)] ")" |
                     "css(" (<STRING_LITERAL> "," (<STRING_LITERAL> | <NUMBER_LITERAL>)) |
                         (<STRING_LITERAL> "," ("function (" <INTEGER_LITERAL> "," <STRING_LITERAL> ") {" <functionBody> "return" (<STRING_LITERAL> | <NUMBER_LITERAL>) "}" )) |
                         <plainObject>")" |
                     "data(" [(<STRING_LITERAL> ["," <anything>]) | <OBJECT_LITERAL>] ")" |
-                    "dblclick(" [([<anything> ","] <plainEventHandler>)] ")" |
                     <deferred> |
                     "delay(" <INTEGER_LITERAL> ["," <STRING_LITERAL>] ")" (* .delay() is not a replacement for JavaScript"s native setTimeout function *) |
                     "delegate(" (<STRING_LITERAL> "," <STRING_LITERAL> "," <eventHandler>) |
@@ -158,7 +172,6 @@
                     "height(" [ (<STRING_LITERAL> | <NUMBER_LITERAL>) | ("function (" <INTEGER_LITERAL> "," <INTEGER_LITERAL> ") {" <functionBody> "return" (<STRING_LITERAL> | <NUMBER_LITERAL>) "}")] ")" | 
                     "hide(" ([<INTEGER_LITERAL> | <STRING_LITERAL>]["," <function>]) |
                         <hideOptionsObject> | (<INTEGER_LITERAL> | <STRING_LITERAL> ["," <STRING_LITERAL>] ["," <function>]) ")" | 
-                    "hover(" (<eventHandler> "," <eventHandler>) | <eventHandler> ")" |
                     "html(" [<htmlString> | ("function (" <INTEGER_LITERAL> "," <htmlString> ") {" <functionBody> "return" <htmlString> "}")] ")" |
                     "index(" [<selector> | <DOMElement> | <jQuery>] ")" |
                     "innerHeight(" [(<STRING_LITERAL> | <NUMBER_LITERAL>) | "function (" <INTEGER_LITERAL>, <NUMBER_LITERAL> ") {" <functionBody> "return" (<STRING_LITERAL> | <NUMBER_LITERAL>) "}"] ")" |
@@ -168,23 +181,15 @@
                     "is(" <selector> | ("function (" <INTEGER_LITERAL> "," <DOMElement> ") {" <functionBody> "return" <BOOLEAN_LITERAL> "}") | <jQuery> | <DOMElement>")" |
                     "jquery" |
                     <jQueryLowLevel> |
-                    "keydown()" |
-                    "keypress()" |
-                    "keyup()" |
+                    <keyboardEvents> |
                     "last()" |
                     "length" |
-                    "live()" |
-                    "load()" |
-                    "load()" |
-                    "map()" |
-                    "mousedown()" |
-                    "mouseenter()" |
-                    "mouseleave()" |
-                    "mousemove()" |
-                    "mouseout()" |
-                    "mouseover()" |
-                    "mouseup()" |
-                    "next()" |
+                    "live(" (<string> "," <eventHandler>) | (<string> ["," <plainObject>] "," <eventHandler>) | <plainObject> ")" | (* As of jQuery 1.7, the .live() method is deprecated. *)
+                    "load(" <url> ["," (<plainObject> | <string>)]["," "function (" <string> "," <string> "," <jqXHR> ") {" <functionBody> "}"] ")" | 
+                    "load(" [ <anything> ","] <eventHandler> ")" | (* Deprecated as of 1.8 *)
+                    "map(" "function (" <INTEGER_LITERAL> "," <DOMElement> ") {" <functionBody> "return" <object> ";}" ")" |
+                    <mouseEvents> |
+                    "next(" [<selector>] ")" | (* ContinueHere *)
                     "nextAll()" |
                     "nextUntil()" |
                     "not()" |
