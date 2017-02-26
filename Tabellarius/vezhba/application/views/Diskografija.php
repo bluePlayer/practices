@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             foreach ($artists as $row)
             {
                 echo "<tr>";
-                echo "<td><a href=\"" . site_url('/artist/') . $row->aid . "\">" . $row->aName . "</a></td>";
+                echo "<td><a href=\"" . site_url('index.php/artist/getArtistData/') . $row->aid . "\">" . $row->aName . "</a></td>";
                 echo "<td>" . $row->aDate . "</td>";
                 echo "<td>" . $row->cName . "</td>";
                 echo "</tr>";
