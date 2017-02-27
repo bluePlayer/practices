@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Дискографија.мк</title>
+    <title>Пејач</title>
 
     <style type="text/css">
 
@@ -67,24 +67,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </style>
 </head>
 <body>
-<?php
-
-echo $_GET['aid'];
-
-?>
-<div id="container">
-    <h1>Дикскографија.мк</h1>
+    <div id="container">
+    <h1>Пејач</h1>
 
     <div id="body">
-        <p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-        <p>If you would like to edit this page you'll find it located at:</p>
-        <code>application/views/welcome_message.php</code>
-
-        <p>The corresponding controller for this page is found at:</p>
-        <code>application/controllers/Welcome.php</code>
-
-        <p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+        <p>Детали за артист: <?php echo $artistName; ?></p>
+        <p>Основан/Активен од: <?php echo $dateActive; ?></p>
+        <p>Земја: <?php echo $countryName; ?></p>
+        <p>Биографија: <?php echo $artistBio; ?></p>
+        
+        <table>
+            <thead>Дискографија</thead>
+            <tbody>
+            <tr>
+            <?php
+                for ($i = 0; $i < $albumsDataNumRows; $i += 1) {
+                    echo "<td>";
+                    echo "<p>" . $albums[$i]->name . "</p>";
+                    echo "<p>Година: " . $albums[$i]->year . "</p>";
+                    echo "<p>Тип: " . $albums[$i]->type . "</p>";
+                    echo "<p>Жанр: " . $albums[$i]->genre . "</p>";
+                    echo "<p>Бр. Песни: " . $albumSongCountArray[$i][0]->count . "</p>";
+                    echo "</td>";
+                }
+            ?>
+            </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+        <a href="<?php echo site_url(); ?>">Листа на Пејачи</a>
     </div>
 
     <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
