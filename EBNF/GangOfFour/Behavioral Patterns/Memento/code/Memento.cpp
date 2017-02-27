@@ -1,0 +1,19 @@
+class Memento {
+    public:
+        // narrow public interface
+        
+        virtual ~Memento();
+        
+    private:
+        // private memebers accessible only to Originator
+        friend class Originator;
+        
+        Memento();
+        
+        void SetState(State*);
+        State* GetState();
+        
+        // ...
+        State* _state;
+        //...
+};
