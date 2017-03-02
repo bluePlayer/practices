@@ -1,0 +1,21 @@
+class Subject {
+    public:
+        virtual ~Subject();
+        virtual void Attach(Observer*);
+        virtual void Detach(Observer*);
+        virtual void Notify();
+        
+        void Subject::Attach (Observer* o) {
+            _observers->Append(o);
+        }
+        
+        void Subject::Detach (Observer*) {
+            _observers->Remove(o);
+        }
+        
+    protected:
+        Subject();
+        
+    private:
+        List<Observer*> *_observers;
+};
