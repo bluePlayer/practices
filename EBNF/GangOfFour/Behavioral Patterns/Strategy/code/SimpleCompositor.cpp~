@@ -1,0 +1,6 @@
+class SimpleCompositor : public Compositor {
+    public:
+        SimpleCompositor();
+        
+        virtual int Compose ();
+};
