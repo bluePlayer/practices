@@ -1,0 +1,14 @@
+1. This chapter includes an example of designing WYSIWYG text editor, called Lexi.
+2. Seven problems of the designing of Lexi include:
+   a) Structure of the document: The editing, the formating, displaying and analyzing the text influents the way this application is going to be designed.
+   b) Formatting: How should Lexi format the text in rows and columns? Which objects are responsible different mehods of formatting the text? Which methods can be represented as internal strucutre?
+   c) Decorating the user interface: It contains scrollbars, broders, shadows etc...These decorations might evolve in time with the GUI. That is why they should be easy to add or remove some part of the decorations without damaging the whole application.
+   d) Support for more standars of look and feel: Lexi should easily adapt to the different standards of look and feel. Something like Motif and Presentation Manager without too much modifications.
+   e) Support for more operating systems with windows: Different standards of look and feel are implemented in different windowing systems. That is why the design of Lexi should be as much as possible non-dependent on the windowing system.
+   f) User operaions: Users use Lexi trough different user interfaces, including buttons, drop down menus, etc... The mechanism behind these user interfaces is thrown troughout the application. The challenge here is to create unvaried mechanism to access this functionality, so as desctruction of its influence. 
+   g) Ortography and turn to the next row: How will Lexi support analytical operations like search for wrongly spelled words, or determining the position where the new row should begin? How to minimize the number of classes when we want to add new analytical operation?
+3. A text document is just placing characters, lines, polygons and other shapes on the screen. Still a document could be seen as rows, columns, images, tables, graphs and other types of objects.
+4. Lexi should allow a table of data be treated as a real table of data, not some unstructured mass of text and graphics. The same applies to all other document types of objects.
+5. Recursive composition: Building complex objects from more simple ones. Recursive composition out of columns, which contains rows, and each row may contain graphical elements like text characters, image, table, empty space etc...
+6. Object structure of Lexi should follow the physical structure of the document.
+7. 
