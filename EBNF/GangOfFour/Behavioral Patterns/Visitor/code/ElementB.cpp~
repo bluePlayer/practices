@@ -1,0 +1,7 @@
+class ElementB : public Element {
+    public:
+        virtual void Accept(Visitor&);
+        
+    private:
+        List<Element*>* _children;
+};
