@@ -1,0 +1,111 @@
+<include> :=    <IAssertionComponentConfigurator.g4> & 
+                <checkMethod.g4>
+
+<anything> := <cSharpObject> | <STRING_LITERAL> | <BOOLEAN_LITERAL> | <NUMBER_LITERAL> | <finishTheRule>
+<componentName> := <STRING_LITERAL>
+<acComponentName> := <STRING_LITERAL>
+<ActionBase> := <finishTheRule>
+<gameObject> := <finishTheRule>
+<cSharpObject> := <finishTheRule>
+<cSharpType> := <finishTheRule>
+<comparer> := <finishTheRule>
+<constValue> := <cSharpObject>
+<propertyPath> := <STRING_LITERAL>
+<IAssertionComponentConfigurator> := <finishTheRule>
+<configuratorName> := <STRING_LITERAL>
+<configurator> := "out " <configuratorName> <IAssertionComponentConfigurator>
+<this> := <assertionComponent>
+<IEnumerator> := <finishTheRule>
+
+<checkAfterTime> := "checkAfterTime" (* returns 1f or <FLOAT_LITERAL> *)
+<repeatCheckTime> := "repeatCheckTime" (* returns "true" or <BOOLEAN_LITERAL> *)
+<repeatEveryTime> := "repeatEveryTime" (* return 1f or <FLOAT_LITERAL> *)
+<checkAfterFrames> := "checkAfterFrames" (* returns 1 or <INTEGER_LITERAL> *)
+<repeatCheckFrame> := "repeatCheckFrame" (* returns "true" or <BOOLEAN_LITERAL> *)
+<repeatEveryFrame> := "repeatEveryFrame" (* returns 1 or <INTEGER_LITERAL> *)
+<hasFailed> := "hasFailed" (* returns "false" or <BOOLEAN_LITERAL> *) 
+<checkMethods> := "checkMethods" (* returns <checkMethod> *) 
+<checksPerformed> := "checksPerformed" (* returns "0" or <INTEGER_LITERAL> *)
+
+<acPublicFields> := <checkAfterTime> 
+                    <repeatCheckTime> 
+                    <repeatEveryTime> 
+                    <checkAfterFrames>
+                    <repeatCheckFrame>
+                    <repeatEveryFrame>
+                    <hasFailed>
+                    <checkMethods>
+                    <checksPerformed>
+
+<m_ActionBase> := "m_ActionBase" (* returns <ActionBase> *)
+<acPrivateFields> :=    <m_ActionBase>
+                        "m_CheckOnFrame" (* returns 0 or <INTEGER_LITERAL> *)
+                        "m_CreatedInFileLine" (* returns -1 or <INTEGER_LITERAL> *)
+                        
+<Action> := "Action" (* returns <m_ActionBase> *) | ("Action = " <ActionBase>) | ("Action.go = " <gameObject>)
+<UpdateCheckStartOnFrame> := "UpdateCheckStartOnFrame" (* returns <INTEGER_LITERAL> *) | ("UpdateCheckStartOnFrame = " <INTEGER_LITERAL>)
+<UpdateCheckRepeat> := "UpdateCheckRepeat" (* returns <BOOLEAN_LITERAL> *) | "UpdateCheckRepeat = " <BOOLEAN_LITERAL>
+<TimeCheckStartAfter> := "TimeCheckStartAfter" (* returns <FLOAT_LITERAL> *) | "TimeCheckStartAfter = " <FLOAT_LITERAL>
+<TimeCheckRepeatFrequency> := "TimeCheckRepeatFrequency" (* returns <FLOAT_LITERAL> *) | "TimeCheckRepeatFrequency = " <FLOAT_LITERAL>
+<TimeCheckRepeat> := "TimeCheckRepeat" (* returns <BOOLEAN_LITERAL> *) | "TimeCheckRepeat = " <BOOLEAN_LITERAL>
+<AssertionComponent> := "Component" (* returns (<assertionComponent> | <this>) *)
+
+<acPublicProperties> := <Action> | 
+                        <UpdateCheckStartOnFrame> |
+                        <UpdateCheckRepeat> |
+                        <TimeCheckStartAfter> |
+                        <TimeCheckRepeatFrequency> |
+                        <TimeCheckRepeat> |
+                        <AssertionComponent>
+
+<createMethod1> :=  (<checkMethod> ", " <gameObject> ", " <propertyPath>) | 
+                    (<configurator> ", " <checkMethod> ", " <gameObject> ", " <propertyPath>)       
+                    ") where " <cSharpType> ": ActionBase" (* returns <comparer> *)
+
+<createMethod2> :=  (<checkMethod> ", " <gameObject> ", " <propertyPath> ", " <gameObject> ", " <propertyPath>) |
+                    (<configurator> ", " <checkMethod> ", " <gameObject> ", " <propertyPath> ", " <gameObject> ", "<propertyPath>) |
+                    (<checkMethod> ", " <gameObject> ", " <propertyPath> ", " <constValue>) |
+                    (<configurator> ", " <checkMethod> ", " <gameObject> ", " <propertyPath> ", " <constValue>)        
+                    ") where " <cSharpType> ": ComparerBase" (* returns <comparer> *)
+
+<createAssertionMethods> := "public static " <cSharpType> " Create <" <cSharpType> "> (" (<createMethod1> | <createMethod2>)
+
+<acPublicMethods> :=    "GetFailureReferenceObject ()" (* returns <assertionComponent> | <this> *) |
+                        "GetCreationLocation()" (* returns <STRING_LITERAL> *) |
+                        "Awake()" |
+                        "OnValidate()" |
+                        "OnComponentCopy()" |
+                        "Start()" |
+                        "CheckPeriodically()" (* returns <IEnumerator> *) |
+                        "ShouldCheckOnFrame()" (* returns <BOOLEAN_LITERAL> *) |
+                        "OnDisable()" |
+                        "OnEnable()" |
+                        "OnDestroy()" |
+                        "Update()" |
+                        "FixedUpdate()" |
+                        "LateUpdate()" |
+                        "OnControllerColliderHit()" |
+                        "OnParticelCollision()" |
+                        "OnJointBreak()" |
+                        "OnBecameInvisible()" |
+                        "OnBecameVisible()" |
+                        "OnTriggerEnter()" |
+                        "OnTriggerExit()" |
+                        "OnTriggerStay()" |
+                        "OnCollisionEnter()" |
+                        "OnCollisionExit()" |
+                        "OnCollisionStay()" |
+                        "OnTriggerEnter2D()" |
+                        "OnTriggerExit2D()" |
+                        "OnTriggerStay2D()" |
+                        "OnCollisionEnter2D" |
+                        "OnCollisionExit2D()" |
+                        "OnCollisionStay2D()" |
+                        "IsCheckMethodSelected(" <checkMethod> ")" (* returns <BOOLEAN_LITERAL> *)
+                        
+<acPrivateMethods> :=   "OnComponentCopy()" |
+                        "CheckAssertionFor(" <checkMethod> ")" |
+                        ("private static " <cSharpType> " CreateAssertionComponent <" <cSharpType> "> (" <configurator> ", " <checkMethod> ", " <gameObject> ", " <propertyPath> ") where " <cSharpType> ": ActionBase") (* returns <comparer> *)
+                        
+<acAssetionComponent> := "var " <acComponentName> " AssertionComponent." <createAssertionMethods>
+<usage> := <acComponentName> "." ((<acPublicFields> | <acPublicProperties>) "=" <anything>) | <acPublicMethods>

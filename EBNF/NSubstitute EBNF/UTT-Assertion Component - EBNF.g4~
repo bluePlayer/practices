@@ -1,0 +1,23 @@
+<assertionComponent> := <finishTheRule>
+<checkAfterSeconds> := <INTEGER_LITERAL>
+<repeatCheck> := <BOOLEAN_LITERAL>
+<frequencyOfRepetitions> := <INTEGER_LITERAL>
+<checkAfterFrames> := <INTEGER_LITERAL>
+
+<checkBySeconds> := <checkAfterSeconds> <repeatCheck> <frequencyOfRepetitions>
+<checkByFrames> := <checkAfterFrames> <repeatCheck> <frequencyOfRepetitions>
+
+<gameObject> := <finishTheRule>
+<compare> := <gameObject>
+<floatingPointError> := <NUMBER_LITERAL>
+<compareTypes> := <finishTheRule>
+<compareToType> := <finishTheRule>
+<compareTo> := <gameObject>
+
+(* -------- Create Assertion from Code ----------- *)
+
+<cSharpType> := <finishTheRule>
+<cSharpObject> := <finishTheRule>
+<propertyPath> := <STRING_LITERAL>
+<constValue> := <cSharpObject>
+<createAssertionMethod> := "public static " <cSharpType> "Create<" <cSharpType> ">"[";"] "(" <checkMethod> ", " <gameObject> ", " <propertyPath> ([", " <gameObject> ", " <propertyPath>] | [<constValue>])")"

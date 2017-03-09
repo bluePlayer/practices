@@ -1,0 +1,27 @@
+<IAssertionComponentConfigurator> :=  
+
+        (* If the assertion is evaluated in Update, after how many frame should the evaluation start. Deafult is 1 (first frame) *)
+        
+        "UpdateCheckStartOnFrame" (* returns <INTEGER_LITERAL> *) | "UpdateCheckStartOnFrame = " <INTEGER_LITERAL> |
+        
+        (* If the assertion is evaluated in Update and UpdateCheckRepeat is true, how many frame should pass between evaluations *)
+        
+        "UpdateCheckRepeatFrequency" (* returns <INTEGER_LITERAL> *) | "UpdateCheckRepeatFrequency = " <INTEGER_LITERAL> |
+        
+        (* If the assertion is evaluated in Update, should the evaluation be repeated after UpdateCheckRepeatFrequency frames *)
+        
+        "UpdateCheckRepeat" (* returns <BOOLEAN_LITERAL> *) | "UpdateCheckRepeat = " <BOOLEAN_LITERAL> |
+         
+        (* If the assertion is evaluated after a period of time, after how many seconds the first evaluation should be done *)
+        
+        "TimeCheckStartAfter" (* returns <FLOAT_LITERAL> *) | "TimeCheckStartAfter = " <FLOAT_LITERAL> |
+        
+        (* If the assertion is evaluated after a period of time and TimeCheckRepeat is true, after how many seconds should the next evaluation happen *)
+        
+        "TimeCheckRepeatFrequency" (* returns <FLOAT_LITERAL> *) |"TimeCheckRepeatFrequency = " <FLOAT_LITERAL> | 
+        
+        (* If the assertion is evaluated after a period, should the evaluation happen again after TimeCheckRepeatFrequency seconds *)
+        
+        "TimeCheckRepeat" (* returns <BOOLEAN_LITERAL> *) | "TimeCheckRepeat = " <BOOLEAN_LITERAL> |
+        
+        "Component"
