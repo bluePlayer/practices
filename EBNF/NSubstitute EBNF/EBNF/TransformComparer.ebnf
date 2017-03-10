@@ -1,0 +1,9 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<inherits> := "ComparerBaseGeneric<" <typeTransform> ">"
+<compareType> := "Equals" | "NotEquals"
+<fields> := <compareType>
+<methods> := "Compare(" <Transform> ", " <Transform> ")" (* returns <BOOLEAN_LITERAL>, throws "Exception()" *)

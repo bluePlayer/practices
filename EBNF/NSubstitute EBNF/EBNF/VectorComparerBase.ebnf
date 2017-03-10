@@ -1,0 +1,10 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public abstract"
+<classType> := "<" <cSharpType> ">"
+<inherits> := "ComparerBaseGeneric<" <cSharpType> ">"
+<methods> := "AreVectorMagnitudeEqual(" <FLOAT_LITERAL> ", " <FLOAT_LITERAL> ", " <DOUBLE_LITERAL> ")" (* 
+returns <BOOLEAN_LITERAL> *)
+

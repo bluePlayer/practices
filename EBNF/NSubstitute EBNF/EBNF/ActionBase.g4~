@@ -32,9 +32,7 @@
 <abSubclasses> := <ActionBaseGeneric>
 <ActionBaseGeneric> := "public abstract class ActionBaseGeneric <" <cSharpType> "> : ActionBase {"
     "Compare(" <cSharpObject> ")" (* returns <BOOLEAN_LITERAl> *) |
-    "GetAccepatbleTypesForA()" (* returns <arrayOfCSharpTypes> *) |
-    "GetParameterType()" (* returns <cSharpType> *) |
-    "UseCache" (* returns "false" *)
+    "GetAccepatbleTypesForA()" (* returns <arrayOfCSharpTypes> *)
 "}"   
 
 <actionBase> := <abPublicFields> 

@@ -1,0 +1,24 @@
+<NotImplementedException> := <finishTheRule>
+<CompareToType> := "CompareToObject" |
+                    "CompareToConstantValue" |
+                    "CompareToNull"
+<ComparerBase> := <CompareToType> |
+                    "compareToType" (* returns <CompareToType>."CompareToObject" *) |
+                    "other" (* <gameObject> *) |
+                    "m_ObjOtherVal" (* <cSharpObject> *) |
+                    "otherPropertyPath" (* returns "" *) |
+                    "m_MemberResolverB" (* returns <memberResolver> *) |
+                    "Compare(" <cSharpObject> ", " <cSharpObject> ")" (* returns <BOOLEAN_LITERAl> *) |
+                    "Compare(" <cSharpObject> ")" (* returns <BOOLEAN_LITERAl> *) |
+                    "GetAccepatbleTypesForB()" (* returns "null" *) |
+                    ("ConstValue" (* returns <cSharpObject> *) | "ConstValue = " <cSharpObject>) |
+                    "GetDefaultConstValue()" (* returns <NotImplementedException> *) |
+                    "GetFailureMessage()" (* returns <STRING_LITERAL> *) |
+                    "public abstract class ComparerBaseGeneric<" <cSharpType> "> : ComparerBaseGeneric<" <cSharpType> "," <cSharpType> "> {}" |
+                    "public abstract class ComparerBaseGeneric<" <cSharpType> "," <cSharpType> "> : ComparerBase<" <cSharpType> "," <cSharpType> "> {"
+                        "constantValueGeneric" |
+                        "ConstValue" (* returns <cSharpObject> *) | "ConstValue = " <cSharpObject> |
+                        "GetDefaultConstValue" (* returns <cSharpObject> *) |
+                        "IsValueType(" <cSharpType> ")" (* returns <BOOLEAN_LITERAl> *) |
+                    "}" 
+                    

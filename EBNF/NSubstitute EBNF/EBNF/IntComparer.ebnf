@@ -1,0 +1,10 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+<access> := "public"
+<inherits> := "ComparerBaseGeneric" <tyepInterger>
+<compareType> := "Equal" | "NotEqual" | "Greater" | "GreaterOrEqual" | "Less" | "LessOrEqual"
+<fields> := <compareType>
+<methods> := "Compare(" <INTEGER_LITERAL> ", " <INTEGER_LITERAL> ")" (* returns <BOOLEAN_LITERAL>, throws "Exception()" *)

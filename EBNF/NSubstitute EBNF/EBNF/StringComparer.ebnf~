@@ -1,0 +1,12 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+<access> := "public"
+<inherits> := "ComparerBaseGeneric<" <typeString> ">"
+<compareType> := "Equal" | "NotEqual" | "Shorter" | "Longer"
+<StringComparison> := <finishTheRule>
+<comparisonType> := <StringComparison>."Ordinal"
+<ignoreCase> := "false"
+<fields> := <compareType> <comparisonType> <ignoreCase>

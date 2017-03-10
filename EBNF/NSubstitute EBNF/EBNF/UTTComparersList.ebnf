@@ -1,0 +1,17 @@
+<UnityTestToolsComparers> := "BoolComparer" |
+                                "ColliderComparer" |
+                                "FloatComparer" |
+                                "GeneralComparer" |
+                                "IntComparer" |
+                                "StringComparer" |
+                                "TransformComparer" |
+                                "Vector2Comparer" |
+                                "Vector3Comparer" |
+                                "Vector4Comparer" |
+                                "IsRenderedByCamera" |
+                                "ValueDoesNotChange"
+                                
+<UnityTestToolsComparerBases> := "ActionBase" |
+                                    "ComparerBase" |
+                                    "VectorComparerBase"
+                                    

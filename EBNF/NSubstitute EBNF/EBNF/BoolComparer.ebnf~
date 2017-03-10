@@ -1,0 +1,5 @@
+<imports> := "System" "System.Collections.Generic" "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<inherits> := "ComparerBaseGeneric" <BOOLEAN_LITERAL>
+<methods> := "Compare(" <BOOLEAN_LITERAL> ", " <BOOLEAN_LITERAL> ")"

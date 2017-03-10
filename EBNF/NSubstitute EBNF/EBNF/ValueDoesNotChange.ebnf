@@ -1,0 +1,8 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<inherits> := "ActionBase"
+<fields> := "m_Value"
+<methods> := "Compare(" <cSharpObject> ")" (* returns <BOOLEAN_LITERAL> *)

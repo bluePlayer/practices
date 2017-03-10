@@ -1,0 +1,9 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<typeVector2> := <finishTheRule>
+<inherits> := "VectorComparerBase<" <typeVector2> ">"
+<compareType> := "MagnitudeEquals" | "MagnitudeNotEquals"
+<fields> := <compareType>

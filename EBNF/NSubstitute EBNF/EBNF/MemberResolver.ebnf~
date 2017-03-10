@@ -1,0 +1,34 @@
+<imports> :=    "System"
+                "System.Collections.Generic"
+                "System.Reflection"
+                "System.Text.RegularExpressions"
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+
+<memberInfo> := <finishTheRule>
+<memberInfoArray> := <finishTheRule>
+<MemberInfoArray> := <finishTheRule>
+<FieldInfo> := <finishTheRule>
+<PropertyInfo> := <finishTheRule>
+<MethodInfo> := <finishTheRule>
+
+<fields> := "m_CallingObjectRef" (* returns <cSharpObject> *) |
+            "m_Callstack" (* returns <MemberInfoArray> *) |
+            "m_GameObject" (* returns <gameObject> *) |
+            "m_Path" (* returns <STRING_LITERAL> *)
+            
+<methods> :=    "MemberResolver(" <gameObject> ", " <STRING_LITERAL> ")" |
+                "GetValue(" <BOOLEAN_LITERAL> ")" (* returns <cSharpObject> *) |
+                "GetMemberType()" (* returns (<FieldType> | <ReturnType> | "null") *) |
+                "TryGetMemberType(" <gameObject> ", " <STRING_LITERAL> ", out " <cSharpType> ")" (* returns <BOOLEAN_LITERAL> *) |
+                "TryGetMemberValue(" <gameObject> ", " <STRING_LITERAL> ", out " <cSharpObject> ")" (* returns <BOOLEAN_LITERAL> *) |
+                "GetValueFromMember(" <cSharpObject> ", " <memberInfo> ")" (* returns <cSharpObject>, throws "InvalidPathException(" <STRING_LITERAL> ")" *) |
+                "GetBaseObject() (* returns <cSharpObject> *)" |
+                "GetCallstack()" (* returns <memberInfoArray>, throws "InvalidPathException(" <STRING_LITERAL> ")" *) |
+                "ValidatePath(" <STRING_LITERAL> ")" (* throws "InvalidPathException(" <STRING_LITERAL> ")" *) |
+                "IsValueType(" <cSharpType> ")" (* returns <BOOLEAN_LITERAL> *) |
+                "GetField(" <cSharpType> ", " <STRING_LITERAL> ")" (* returns <FieldInfo> *) |
+                "GetProperty(" <cSharpType> ", " <STRING_LITERAL> ")" (* returns <PropertyInfo> *) |
+                "GetGetMethod(" <PropertyInfo> ")" (* returns <MethodInfo> *) 
+                

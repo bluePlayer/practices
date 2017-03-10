@@ -1,0 +1,12 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<typeVector2> := <finishTheRule>
+<inherits> := "VectorComparerBase<" <typeVector2> ">"
+<compareType> := "MagnitudeEquals" | "MagnitudeNotEquals"
+<floatingPointError> := "0.0001f"
+<fields> := <compareType> <floatingPointError>
+<methods> := "Compare(" <vector2> ", " <vector2> ")" (* returns <BOOLEAN_LITERAL>, throws "Exceptio()" *) |
+                "GetDepthOfSearch()" (* returns "3" *)

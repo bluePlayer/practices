@@ -1,0 +1,11 @@
+<imports> := "System" 
+                "System.Collections.Generic" 
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<inherits> := "ComparerBaseGeneric" <typeFloat>
+<compareTypes> := "Equal" | "NotEqual" | "Greater" | "Less"
+<floatingPointError> := "0.0001f"
+<fields> := <compareTypes> | <floatingPointError>
+<methods> := "Compare(" <FLOAT_LITERAL> ", " <FLOAT_LITERAL> ")" (* returns <BOOLEAN_LITERAL>, throws "Exception()" *) |
+                "GetDepthOfSearch()" (* returns "3" *)

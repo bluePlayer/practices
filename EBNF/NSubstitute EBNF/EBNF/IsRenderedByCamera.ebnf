@@ -1,0 +1,12 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+<access> := "public"
+<Renderer> := <finishTheRule>
+<Camera> := <finishTheRule>
+<inherits> := "ComparerBaseGeneric<" <typeRenderer> "," <typeCamera> ">"
+<compareType> := "IsVisible" | "IsNotVisible"
+<fields> := <compareType>
+<methods> := "Compare(" <Renderer> ", " <Camera> ")" (* returns <BOOLEAN_LITERAL>, throws "Exception()" *)

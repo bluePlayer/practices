@@ -1,0 +1,7 @@
+<nameSpace> := "UnityTest"
+<inherits> := "ComparerBase"
+<access> := "public"
+<compareType> := "AEqualsB" |
+                    "ANotEqualsB"
+<fields> := <compareType>
+<methods> := "Compare(" <cSharpObject> ", " <cSharpObject> ")" (* returns <BOOLEAN_LITERAl> *)
