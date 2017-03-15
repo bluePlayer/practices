@@ -1,0 +1,26 @@
+<IComparable> := <finishTheRule>
+
+<access> := "public"
+<interfaceName> := "ITestComponent"
+<implements> := <IComparable><ITestComponent>
+
+<EnableTest> := <void> "EnableTest(" <BOOLEAN_LITERAL> ")"
+<IsTestGroup> := <BOOLEAN_LITERAL> "IsTestGroup()"
+<GetTestGroup> := <ITestComponent> "GetTestGroup()"
+<exceptionType> := <STRING_LITERAL>
+<IsExceptionExpected> := <BOOLEAN_LITERAL> "IsExceptionExpected(" <exceptionType> ")"
+<ShouldSucceedOnException> := <BOOLEAN_LITERAL> "ShouldSucceedOnException()"
+<GetTimeout> := <DOUBLE_LITERAL> "GetTimeout()"
+<IsIgnored> := <BOOLEAN_LITERAL> "IsIgnored()"
+<ShouldSucceedOnAssertions> := <BOOLEAN_LITERAL> "ShouldSucceedOnAssertions()"
+<IsExludedOnThisPlatform> := <BOOLEAN_LITERAL> "IsExludedOnThisPlatform()"
+
+<methods> :=    <EnableTest>
+                <IsTestGroup>
+                <GetTestGroup>
+                <IsExceptionExpected>
+                <ShouldSucceedOnException>
+                <GetTimeout>
+                <IsIgnored>
+                <ShouldSucceedOnAssertions>
+                <IsExludedOnThisPlatform>

@@ -1,0 +1,120 @@
+<TestRunnerCallbackList> := <finishTheRule>
+<TestResultRenderer> := <finishTheRule>
+<TestResult> := <finishTheRule>
+<ListGenerics> := <finishTheRule>
+<TestComponent> := <finishTheRule>
+<TestRunnerConfigurator> := <finishTheRule>
+<IntegrationTestsProvider> := <finishTheRule>
+
+<Serializable> := "Serializable"
+
+<imports> :=    "System" |
+                "System.Collections" |
+                "System.Collections.Generic" |
+                "System.Linq" |
+                "System.Reflection" |
+                "UnityEngine" |
+                "UnityTest.IntegrationTestRunner" |
+                "System.IO" |
+                "UnityEngine.SceneManagement"
+ 
+<nameSpace> := "UnityTest"
+<attributes> := <Serializable>
+<access> := "public"
+<className> := "TestRunner"
+<inherits> := "MonoBehavior"
+
+<TestSceneNumber> := <INTEGER_LITERAL> "TestSceneNumber = 0"
+<k_ResultRenderer> := <static> <readonly> <TestResultRenderer> "k_ResultRenderer"
+<k_ResultList> := <ListGenerics> <TestResult> "k_ResultList"
+<m_TestComponents> := <ListGenerics> <TestComponent> "m_TestComponents"
+<m_StartTime> := <DOUBLE_LITERAL> "m_StartTime"
+<m_ReadyToRun> := <BOOLEAN_LITERAL> "m_ReadyToRun"
+<m_TestMessages> := <STRING_LITERAL> "m_TestMessages"
+<m_StackTrace> := <STRING_LITERAL> "m_StackTrace"
+<m_TestState> := <TestState> "m_TestState"
+<m_Configurator> := <TestRunnerConfigurator> "m_Configurator"
+<m_TestProvider> := <IntegrationTestsProvider> "m_TestProvider"
+
+<k_Prefix> := <STRING_LITERAL> "k_Prefix = IntegrationTest" 
+<k_StartedMessage> := <k_Prefix> " Started"
+<k_FinishedMessage> := <k_Prefix> " Finished"
+<k_TimeoutMessage> := <k_Prefix> " Timeout"
+<k_FailedMessage> := <k_Prefix> " Failed" 
+<k_FailedExceptionMessage> := <k_Prefix> " Failed with exception"
+<k_IgnoredMessage> := <k_Prefix> " Ignored"
+<k_InterruptedMessage> := <k_Prefix> " Run interrupted"
+
+<TestStateStates> :=    "Running" |
+                        "Success" |
+                        "Failure" |
+                        "Exception" |
+                        "Timeout" |
+                        "Ignored"
+<TestState> := <enumerator> "TestState" <TestStateStates>
+
+<privateFields> :=  <TestSceneNumber> |
+                    <k_ResultRenderer> |
+                    <m_ResultList> |
+                    <m_TestComponents> |
+                    <m_StartTime> |
+                    <m_ReadyToRun> |
+                    <m_TestMessages> |
+                    <m_StackTrace> |
+                    <m_TestState> |
+                    <m_Configurator> |
+                    <m_TestProvider> |
+                    
+                    <k_Prefix> |
+                    <k_StartedMessage> |
+                    <k_FinishedMessage> |
+                    <k_TimeoutMessage> |
+                    <k_FailedMessage> |
+                    <k_FailedExceptionMessage> |
+                    <k_IgnoredMessage> |
+                    <k_InterruptedMessage> |
+                    <TestState>
+
+<currentTest> := <TestComponent> "currentTest"
+<TestRunnerCallback> := <TestRunnerCallbackList> "TestRunnerCallback"
+     
+<publicFields> :=   <currentTest> |
+                    <TestRunnerCallback>
+
+             
+             
+<isInitializedByRunner> := <BOOLEAN_LITERAL> "IsInitializedByRunner"
+     
+<publicProperties> := <isInitializedByRunner>
+
+<publcMethods> :=   <Awake>
+                    <Start>
+                    <InitRunner>        
+                    <Update>
+                    <OnDestroy>
+                    <StateMachine>
+                    <OnGUI>
+                    <GetTestRunner>
+ 
+<privateMethods> := <ParseListForGroups> |
+                    <LogHandler> |
+                    <LogMessage> |
+                    <FinishTestRun> |
+                    <PrintResultToLog> |
+                    <LoadNextLevelOrQuit> |
+                    <StartNewTest> |
+                    <FinishTest> |
+                    <Create> |
+                    <IsBatchMode>
+                    
+<class> :=  <imports> 
+            <nameSpace> 
+            <attributes> 
+            <access> 
+            <className> 
+            <inherits> 
+            <privateFields> 
+            <publicFields> 
+            <publicProperties>      
+            <publcMethods>   
+            <privateMethods>     

@@ -1,5 +1,5 @@
-<include> :=    <IAssertionComponentConfigurator.ebnf> & 
-                <checkMethod.ebnf>
+<include> :=    <IAssertionComponentConfigurator.g4> & 
+                <checkMethod.g4>
 
 <anything> := <cSharpObject> | <STRING_LITERAL> | <BOOLEAN_LITERAL> | <NUMBER_LITERAL> | <finishTheRule>
 <componentName> := <STRING_LITERAL>

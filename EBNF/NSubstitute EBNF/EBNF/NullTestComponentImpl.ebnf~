@@ -1,0 +1,33 @@
+<include> := <ITestComponent.ebnf>
+
+<access> := "private"
+<modifiers> := "sealed"
+<className> := "NullTestComponentImpl"
+<implements> := <ITestComponent>
+
+<gameObject> := <GameObject> "gameObject"
+<Name> := <STRING_LITERAL> "Name"
+<publicProperties> :=   <gameObject>
+                        <Name>
+
+<EnableTest> := <void> "EnableTest(" <BOOLEAN_LITERAL> ")"
+<IsTestGroup> := <BOOLEAN_LITERAL> "IsTestGroup()"
+<GetTestGroup> := <ITestComponent> "GetTestGroup()"
+<exceptionType> := <STRING_LITERAL>
+<IsExceptionExpected> := <BOOLEAN_LITERAL> "IsExceptionExpected(" <exceptionType> ")"
+<ShouldSucceedOnException> := <BOOLEAN_LITERAL> "ShouldSucceedOnException()"
+<GetTimeout> := <DOUBLE_LITERAL> "GetTimeout()"
+<IsIgnored> := <BOOLEAN_LITERAL> "IsIgnored()"
+<ShouldSucceedOnAssertions> := <BOOLEAN_LITERAL> "ShouldSucceedOnAssertions()"
+<IsExludedOnThisPlatform> := <BOOLEAN_LITERAL> "IsExludedOnThisPlatform()"
+
+<publicMethods> :=  <CompareTo>
+                    <EnableTest>
+                    <IsTestGroup>
+                    <GetTestGroup>
+                    <IsExceptionExpected>
+                    <ShouldSucceedOnException>
+                    <GetTimeout>
+                    <IsIgnored>
+                    <ShouldSucceedOnAssertions>
+                    <IsExludedOnThisPlatform>

@@ -1,0 +1,8 @@
+<getURL> := "https://api.kongregate.com/api/authenticate.json?user_id=" <userId> "&game_auth_token=" <game_auth_token> "&api_key=" <apiKey>
+<response> :=   "{"
+                    "\"success\" : "
+                    (
+                       "true ," ("\"username\" : " <STRING_LITERAL> ", \"user_id\" : " <INTEGER_LITERAL> ",") |
+                       "false ," ("\"error\" : " <INTEGER_LITERAL> "," \"error_description\" : " <STRING_LITERAL>)
+                    )
+                "}"

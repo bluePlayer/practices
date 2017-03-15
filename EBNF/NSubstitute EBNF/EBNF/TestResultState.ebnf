@@ -1,0 +1,34 @@
+<byte> := <BYTE_LITERAL>
+
+<imports> :=    "System" |
+                "System.Collections.Generic" |
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<enumeratorName> := "TestResultState"
+
+<inherits> := <byte>
+
+<Inconlclusive> := "0"
+<NotRunnable> := "1"
+<Skipped> := "2"
+<Ignored> := "3"
+<Success> := "4"
+<Failure> := "5"
+<Error> := "6"
+<Cancelled> := "7"
+
+<fields> := <Inconlclusive> |
+            <NotRunnable> |
+            <Skipped> |
+            <Ignored> |
+            <Success> |
+            <Failure> |
+            <Error> |
+            <Cancelled>
+            
+<enumerator> := <imports> 
+                <nameSpace> 
+                <access> 
+                <enumeratorName> 
+                <fields>

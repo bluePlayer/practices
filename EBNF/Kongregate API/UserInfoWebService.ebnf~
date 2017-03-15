@@ -1,0 +1,35 @@
+(* --------------- User Info Web Service --------------------*)
+<userInfoGetURL> := "http://api.kongregate.com/api/user_info.json?" ("username" ["s"] | "user_id" ["s"]) "=" (<username> {"," <username>} | <user_id> {"," <user_id>})["&page_num=" <INTEGER_LITERAL>]["&friends=" <BOOLEAN_LITERAL>]
+
+<userInfo> := "\"page_num\" : " <INTEGER_LITERAL> ","
+              "\"num_pages\" : " <INTEGER_LITERAL> ","
+              "\"user_id\" : " <INTEGER_LITERAL> ","
+              "\"username\" : " <STRING_LITERAL> ","
+              "\"private\" : " <BOOLEAN_LITERAL> ","
+              "\"friends\" : " <array> ","
+              "\"friend_ids\" : " <array> ","
+              "\"user_vars\" : {"
+                "\"level\" : " <INTEGER_LITERAL> ","
+                "\"avatar_url\" : " <URL> ","
+                "\"chat_avatar_url\" : " <URL> ","
+                "\"game_title\" : " <STRING_LITERAL> ","
+                "\"game_url\" : " <URL> ","
+                "\"developer\" : " <BOOLEAN_LITERAL> ","
+                "\"moderator\" : " <BOOLEAN_LITERAL> ","
+                "\"admin\" : " <BOOLEAN_LITERAL>
+              "}" 
+              
+<responseFields> := "{"
+                        "\"success\" : " (
+                            "true, " (
+                                <userInfo> |
+                                "\"users\" : {"
+                                    <userInfo> {"," <userInfo>}
+                                "}" 
+                            ) |
+                            "false, " (
+                                "\"error\" : " <INTEGER_LITERAL> ","
+                                "\"error_description\" : " <STRING_LITERAL>
+                            )
+                        )
+                    "}"

@@ -1,0 +1,12 @@
+<imports> :=    "System" |
+                "System.Collections.Generic" |
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+
+<access> := "public"
+<className> := "InvalidPathException"
+<inherits> := "Exception"
+
+<path> := <STRING_LITERAL>
+<publicMethods> := "InvalidPathException(" <path> ")"

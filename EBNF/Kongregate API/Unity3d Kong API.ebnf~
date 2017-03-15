@@ -1,0 +1,29 @@
+<unityObjectName> := <STRING_LITERAL>
+<callbackFunctionName> := <STRING_LITERAL>
+<userId> := <INTEGER_LITERAL>
+<username> := "Guest" | <STRING_LITERAL>
+<args> := <cSharpObjectArray>
+<game_auth_token> := 
+
+<isKongregate> := "var isKongregate = false;"
+<apiContext> := <isKongregate>
+
+<userInfoString> := (<userId> "|" <username> "|" <game_auth_token>) (* A pipe -delimited (|) string containing the user id, username and game_auth_token *)
+<OnKongregateAPILoadedFunctionBody> :=  "// We now know we're on Kongregate"
+                                        "isKongregate = true;"
+ 
+                                        "// Split the user info up into tokens"
+                                        "var params = userInfoString.Split("|"[0]);"
+                                        "userId = parseInt(params[0]);"
+                                        "username = params[1];"
+                                        "gameAuthToken = params[2];"
+                                        
+<OnKongregateAPILoaded> :=  "function OnKongregateAPILoaded (" <userInfoString> ") {" 
+                                <OnKongregateAPILoadedFunctionBody>
+                            "}"
+<codeSnippet> :=    "if(typeof(kongregateUnitySupport) != 'undefined') {" +"
+                    "kongregateUnitySupport.initAPI('MyUnityObject', 'OnKongregateAPILoaded');" +"
+                    "};"
+<methods> :=    "initAPI(" <unityObjectName> ", " <callbackFunctionName> ")" |
+                "Application.ExternalEval(" <script> ")" |
+                "Application.ExternalCall(" <callbackFunctionName> ", " <args> ")"

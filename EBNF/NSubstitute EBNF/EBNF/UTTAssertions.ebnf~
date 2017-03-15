@@ -1,0 +1,19 @@
+<include> := <UTTAssertionComponent>.<assertionComponent>
+<imports> :=    "System" |
+                "System.Collections.Generic" |
+                "UnityEngine" |
+                "Object" = "UnityEngine.Object"
+
+<nameSpace> := "UnityTest"
+<access> := "public" 
+<modifiers> := "static"
+
+<assertionComponent> := 
+<gameObject> := <finishTheRule>
+<assertionComponentArray> := <assertionComponent> {", " <assertionComponent>}
+<publicMethods> :=  "CheckAssertions()" |
+                    "CheckAssertions(" <assertionComponent> ")" |
+                    "CheckAssertions(" <gameObject> ")" |
+                    "CheckAssertions(" <assertionComponentArray> ")"
+                    
+<methods> := <publicMethods>

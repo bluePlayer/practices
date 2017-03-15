@@ -1,0 +1,22 @@
+<include> := <UTTAssertionComponent>.<assertionComponent>
+<imports> :=    "System" |
+                "System.Collections.Generic" |
+                "UnityEngine"
+                
+<nameSpace> := "UnityEngine"
+<access> := "public"
+<className> := "AssertionException"
+<inherits> := "Exception"
+
+<readonly> := "readonly"
+<m_Assertion> := <readonly> <assertionComponent>
+<privateFields> := <m_Assertion>
+<fields> := <privateFields>
+
+<publicMethods> := "AssertionException(" <assertionComponent> ")"
+
+<methods> := <publicMethods>
+
+<override> := "override"
+<StackTrace> := <override> <STRING_LITERAL>
+<publicProperties> := <StackTrace>

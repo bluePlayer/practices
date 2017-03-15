@@ -1,0 +1,45 @@
+<include> := <ITestRunnerCallback.ebnf>
+
+<ITestRunnerCallback> := <finishTheRule>
+<TestComponent> := <finishTheRule>
+<TestResult> := <finishTheRule>
+<ITestComponent> := <finishTheRule>
+
+<imports> :=    "System" |
+                "System.Collections.Generic" |
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest.IntegrationTestRunner"
+<access> := "public"
+<className> := "TestRunnerCallbackList"
+<implements> := <ITestRunnerCallback>
+
+<m_CallbackList> := "readonly" <ListGenerics> <ITestRunnerCallback> "m_CallbackList"
+
+<privateFields> := <m_CallbackList>
+
+<Add> := <void> "Add(" <ITestRunnerCallback> ")"
+<Remove> := <void> "Remove(" <ITestRunnerCallback> ")"
+<RunStarted> := <void> "RunStarted(" <STRING_LITERAL> ", " <ListGenerics> <TestComponent> ")"
+<RunFinished> := <void> "RunFinished(" <ListGenerics> <TestResult> ")"
+<AllScenesFinished> := <void> "AllScenesFinished()"
+<TestStarted> := <void> "TestStarted(" <TestResult> ")"
+<TestFinished> := <void> "TestFinished(" <TestResult> ")"
+<TestRunInterrupted> := <void> "TestRunInterrupted(" <ListGenerics> <ITestComponent> ")"
+
+<publicMethods> :=  <Add>
+                    <Remove>
+                    <RunStarted>
+                    <RunFinished>
+                    <AllScenesFinished>
+                    <TestStarted>
+                    <TestFinished>
+                    <TestRunInterrupted>
+                    
+ <class> := <imports> 
+            <nameSpace> 
+            <access> 
+            <className> 
+            <implements> 
+            <privateFields> 
+            <publicMethods>

@@ -1,0 +1,75 @@
+<DropDownControl> := <finishTheRule>
+<cSharpType> := <finishTheRule>
+<DropDownControlGenerics> := <DropDownControl><cSharpType>
+<PropertyPathSelector> := <finishTheRule>
+<GUIContent> := <finishTheRule>
+<override> := "override"
+<void> := "void"
+<readonly> := "readonly"
+
+<imports> :=    "System" |
+                "System.Collections.Generic" |
+                "System.Linq" |
+                "System.Reflection" |
+                "UnityEditor" |
+                "UnityEngine" |
+                "UnityEditor.SceneManagement"
+                
+<nameSpace> := "UnityTest"
+<access> := "public"
+<className> := "AssertionComponentEditor"
+<inherits> := "Editor"
+
+
+<m_ComparerDropDown> := <readonly> <DropDownControlGenerics>
+<m_ThisPathSelector> := <readonly> <PropertyPathSelector>
+<m_OtherPathSelector> := <readonly> <PropertyPathSelector>
+
+<m_GUICheckAfterTimeGuiContent> := <readonly> <GUIContent>
+<m_GUIRepeatCheckTimeGuiContent> := <readonly> <GUIContent>
+<m_GUIRepeatEveryTimeGuiContent> := <readonly> <GUIContent>
+<m_GUICheckAfterFramesGuiContent> := <readonly> <GUIContent>
+<m_GUIRepeatCheckFrameGuiContent> := <readonly> <GUIContent>
+
+<privateFields> :=  <m_ComparerDropDown> |
+
+                    <m_ThisPathSelector> |
+                    <m_OtherPathSelector> |
+                    
+                    <m_GUICheckAfterTimeGuiContent> |
+                    <m_GUIRepeatCheckTimeGuiContent> |
+                    <m_GUIRepeatEveryTimeGuiContent> |
+                    <m_GUICheckAfterFramesGuiContent> |
+                    <m_GUIRepeatCheckFrameGuiContent> |
+                    
+                    <allComparersList>
+
+
+<OnInspectorGUI> := <override> <void> "OnInspectorGUI()"
+<publicMethods> :=  "AssertionComponentEditor()" |
+                    <OnInspectorGUI>
+<DrawOptionsForAfterPeriodOfTime> := <void> "DrawOptionsForAfterPeriodOfTime(" <assertionComponent> ")" 
+<DrawOptionsForOnUpdate> := <void> "DrawOptionsForOnUpdate(" <assertionComponent> ")"
+<DrawCompareToType> := <void> "DrawCompareToType(" <ComparerBase> ")"
+<DrawObjectCompareField> := <void> "DrawObjectCompareField(" <ComparerBase> ")"
+<DrawConstCompareField> := <void> "DrawConstCompareField(" <ComparerBase> ")"
+<DrawComparerSelection> := <BOOLEAN_LITERAL> "DrawComparerSelection(" <assertionComponent> ")"
+<DrawCustomFields> := <void> "DrawCustomFields(" <assertionComponent> ")"
+
+<privateMethods> := <DrawOptionsForAfterPeriodOfTime> |
+                    <DrawOptionsForOnUpdate> |
+                    <DrawCompareToType>
+                    <DrawOptionsForOnUpdate> |
+                    <DrawObjectCompareField> |
+                    <DrawConstCompareField> |
+                    <DrawComparerSelection> |
+                    <DrawCustomFields>
+                    
+<class> :=  <imports> 
+            <nameSpace> 
+            <access> 
+            <className> 
+            <inherits> 
+            <privateFields> 
+            <publicMethods> 
+            <privateMethods>

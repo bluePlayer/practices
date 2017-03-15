@@ -1,0 +1,8 @@
+<loadJavaScriptAPI> := "<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>"
+<functionBody> := <STRING_LITERAL>
+<callback> :=   "function () {" 
+                    "window.kongregate = kongregateAPI.getAPI();"
+                    <functionBody>
+                "}"
+<methods> :=    "loadAPI(" <callback> ")" |
+                "submit(" <statsName> ", " <NUMBER_LITERAL> ")"

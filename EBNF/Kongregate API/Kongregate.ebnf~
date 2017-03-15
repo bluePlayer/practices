@@ -1,0 +1,83 @@
+(* ------------- General Notes ---------------- *)
+<allows> := "submitting statistics" |
+            "allowing players to earn badges" |
+            "saving shared content"
+            
+<supports> :=   "ActionScript 2" |
+                "ActionScript 3" |
+                "Unity" |
+                "JavaScript"
+
+<loginCallbackFunction> := <JavaScriptFunction>
+<services> := "services." (
+                            "isGuest()" |
+                            "getUserId()" |
+                            "getUsername()" |
+                            "getGameAuthToken()" |
+                            "addEventListener(\"login\", " <loginCallbackFunction> ")" |
+                            "showRegistrationBox()"
+                          )
+<images> := "images." (
+                        "submitAvatar(" <rect> ", " <onAvatarCompleteCallback> ")"
+                      )
+<kongregateObject> :=  "kongregate."
+                            (<stats> |
+                            <services>)
+
+(* -------------- REST Server Side API -------------------- *)
+<tcpProtocol> := "HTTP"
+<tcpMethod> := "POST"
+<contentType> := "application/x-www-form-urlencoded"
+<notoficationsSentVia> := <tcpProtocol> <tcpMethod>
+
+<statisticsPageURL> := "http://www.kongregate.com/games/" <username> "/" <gameName> "/statistics"
+<retrieveAPIKeyURL> := "http://www.kongregate.com/games/" <username> "/" <gameName> "/api"
+<editGameURL> := "http://www.kongregate.com/games/" <username> "/" <gameName> "/edit"
+
+<event> := <STRING_LITERAL>
+<api_key> := <STRING_LITERAL>
+<currentDate> := <finishTheRule>
+<currentTime> := <finishTheRule>
+<time> := <currentDate> <currentTime> "-0700"
+<callbackFormat> := <event> <api_key> <time>
+
+<invalidateUserInventoryCallback> := "invalidate_user_inventory" | <user_id> <username> <game_auth_token> | <finishTheRule>
+                            
+(* ------------------ Statistics API -------------------- *)
+<typeOfStats> := "Max" | "Min" | "Add" | "Replace"
+<statName> := <STRING_LITERAL>   
+<statsDescription> := <STRING_LITERAL>
+<displayInLeaderBoards> := <BOOLEAN_LITERAL>
+<statistics> := <statName> <statsDescription> <typeOfStats> <displayInLeaderBoards>
+<stats> := "submit(" <statName> "," <NUMBER_LITERAL> ")"
+                    
+(* --------------- Submitting Statistics----------------- *)
+<submitStatsURL> := "https://api.kongregate.com/api/submit_statistics.json"
+<GamesWon> := <INTEGER_LITERAL>
+<Coins> := <INTEGER_LITERAL>
+<postData> := <userId> <api_key> <GamesWon> <Coins>
+<statsRespons> :=   "{"
+                        "\"success\" : " (
+                            "true" |
+                            ("false, " 
+                                "\"error\" : " <INTEGER_LITERAL> ","
+                                "\"error_description\" : " <STRING_LITERAL>
+                            )
+                        )  
+                    "}"
+
+(* ---------------- Retrieving High Scores -------------- *)
+<statsId> := <finishTheRule>
+<getHighScoreURL> := "http://www.kongregate.com/api/high_scores/" ("lifetime" | "weekly" | "daily" | "freinds") "/" <statsId> ".json"
+<responseFields> := "{"
+                        "\"per_page\" :" <INTEGER_LITERAL> ","
+                        "\"lifetime_scores\" : {"
+                            "\"score\" : " <INTEGER_LITERAL> ","
+                            "\"level\" : " <INTEGER_LITERAL> ","
+                            "\"username\" : " <username> ","
+                            "\"avatar_url\" : " <userAvatarURL>
+                        "}, "
+                        "\"success\" : " <BOOLEAN_LITERAL> ","
+                        "\"per_count\" : " <INTEGER_LITERAL>
+                    "}"
+

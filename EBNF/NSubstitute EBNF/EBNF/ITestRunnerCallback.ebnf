@@ -1,0 +1,21 @@
+<imports> :=    "System"
+                "System.Collections.Generic"
+                "UnityEngine"
+
+<nameSpace> := "UnityTest.IntegrationTestRunner"
+<access> := "public"
+<interfaceName> := "ITestRunnerCallback"
+
+<RunStarted> := <void> "RunStarted(" <STRING_LITERAL> ", " <ListGenerics> <TestComponent> ")"
+<RunFinished> := <void> "RunFinished(" <ListGenerics> <TestResult> ")"
+<AllScenesFinished> := <void> "AllScenesFinished()"
+<TestStarted> := <void> "TestStarted(" <TestResult> ")"
+<TestFinished> := <void> "TestFinished(" <TestResult> ")"
+<TestRunInterrupted> := <void> "TestRunInterrupted(" <ListGenerics> <ITestComponent> ")"
+
+<methods> := <RunStarted>
+             <RunFinished>
+             <AllScenesFinished>
+             <TestStarted>
+             <TestFinished>
+             <TestRunInterrupted>
