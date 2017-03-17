@@ -1,0 +1,35 @@
+<include> := <..><..><Common>.<ITestResult.ebnf>.<ITestResult>
+
+<attributes> := "Serializable"
+<modifiers> := "internal"
+<className> := "SerializableTestResult"
+<implements> := <ITestResult>
+
+<publicFields> := <TestResultState> "resultState"
+                    <STRING_LITERAL> "message"
+                    <BOOLEAN_LITERAl> "executed"
+                    <STRING_LITERAL> "name"
+                    <STRING_LITERAL> "fullName"
+                    <STRING_LITERAL> "id"
+                    <BOOLEAN_LITERAl> "isSuccess"
+                    <DOUBLE_LITERAL> "duration"
+                    <STRING_LITERAL> "stackTrace"
+                    <BOOLEAN_LITERAl> "isIgnored"
+                    
+ <publicProperties> := <TestResultState> "ResultState"
+                        <STRING_LITERAL> "MessageType"
+                        <STRING_LITERAL> "Logs"
+                        <BOOLEAN_LITERAl> "Executed"
+                        <STRING_LITERAL> "Name"
+                        <STRING_LITERAL> "FullName"
+                        <STRING_LITERAL> "Id"
+                        <BOOLEAN_LITERAl> "IsSuccess"
+                        <DOUBLE_LITERAL> "Duration"
+                        <STRING_LITERAL> "StackTrace"
+                        <BOOLEAN_LITERAl> "IsIgnored"
+                         
+<SerializableTestResult> := "[" <attributes> "]"
+                            <modifiers> "class" <className> ":" <implements> "{"
+                                <publicFields>
+                                <publicProperties>
+                            "}"

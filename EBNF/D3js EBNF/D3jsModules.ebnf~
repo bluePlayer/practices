@@ -1,0 +1,71 @@
+<include> := <Level2>.<Arrays>.<Statistics.ebnf>
+             <Level2>.<Arrays>.<Search.ebnf>
+
+<Arrays> := <Statistics>
+            <Search>
+            <Transformations>
+            <Histograms>
+            
+<Collections> :=    <Objects>
+                    <Maps>
+                    <Sets>
+                    <Nests>
+
+<Geographies> :=    <Paths>
+                    <Projections>
+                    <SphericalMath>
+                    <SphericalShapes>
+                    <Streams>
+                    <Transforms>
+                    
+<Scales> := <Continuous>
+            <Sequential>
+            <Quantize>
+            <Oridinal>
+            
+<Selections> := <Selecting>
+                <Modifying>
+                <Data>
+                <Events>
+                <Control>
+                <LocalVariables>
+                <Namespaces>
+                
+<Shapes> := <Arcs>
+            <Pies>
+            <Lines>
+            <Areas>
+            <Curves>
+            <Symbols>
+            <Stacks>
+            
+<D3jsModules> := <Arrays>
+                 <Axes>
+                 <Brushes>
+                 <Chords>
+                 <Collections>
+                 <Colors>
+                 <Dispatches>
+                 <Dragging>
+                 <Delimiter-Separated_Values>
+                 <Easings>
+                 <Forces>
+                 <NumberFormats>
+                 <Geographies>
+                 <Hierarchies>
+                 <Interpolators>
+                 <Paths>
+                 <Polygons>
+                 <Quadtrees>
+                 <Queues>
+                 <RandomNumbers>
+                 <Requests>
+                 <Scales>
+                 <Selections>
+                 <Shapes>
+                 <TimeFormats>
+                 <TimeIntervals>
+                 <Timers>
+                 <Transitions>
+                 <VoronoiDiagrams>
+                 <Zooming>

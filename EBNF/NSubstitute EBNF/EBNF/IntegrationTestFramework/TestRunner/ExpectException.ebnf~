@@ -1,0 +1,23 @@
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "ExpectExceptions"
+<inherits> := "Attribute"
+
+<succeedOnException> := <BOOLEAN_LITERAL> "succeedOnException"
+<exceptionTypeNames> := <stringArray> "exceptionTypeNames"
+<publicFields> := <exceptionTypeNames>
+                  <succeedOnException>
+
+<ExpectExceptions1> := "ExpectExceptions() : this(false)"
+<ExpectExceptions2> := "ExpectExceptions(" <BOOLEAN_LITERAL> ") : this(" <succeedOnException> ", new string[0])"   
+<ExpectExceptions3> := "ExpectExceptions(" <succeedOnException> ", " <exceptionTypeNames> ")" 
+<ExpectExceptions4> := "ExpectExceptions(" <succeedOnException> ", " <cSharpTypeArray> ")"
+<ExpectExceptions5> := "ExpectExceptions(" <exceptionTypeNames> ") : this(false, " <exceptionTypeNames> ")"
+<ExpectExceptions6> := "ExpectExceptions(" <cSharpTypeArray> ") : this (false, " <cSharpTypeArray> ")"
+      
+<publicMethods> := <ExpectExceptions1>
+                    <ExpectExceptions2>
+                    <ExpectExceptions3>
+                    <ExpectExceptions4>
+                    <ExpectExceptions5>
+                    <ExpectExceptions6>

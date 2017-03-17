@@ -1,0 +1,18 @@
+<RuntimePlatform> := <define>
+
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "ExcludePlatformAttribute"
+<inherits> := "Attribute"
+
+<publicFields> := <stringArray> "platformsToExclude"
+
+<RuntimePlatformArray> := <cSharpArray> <RuntimePlatform>
+<platformsToExclude> := <RuntimePlatformArray> "platformsToExclude"
+<publicMethods> := "ExcludePlatformAttribute(params " <platformsToExclude> ")"
+
+"[" <attributes> "]"
+<access> "class" <className> "{"
+    <publicFields>
+    <publicMethods>
+"}"

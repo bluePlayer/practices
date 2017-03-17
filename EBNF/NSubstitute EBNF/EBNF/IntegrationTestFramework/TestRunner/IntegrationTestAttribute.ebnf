@@ -1,0 +1,17 @@
+<imports> := <using> "System"
+                <using> "System.Collections.Generic"
+                <using> "System.IO"
+                <using> "UnityEngine"
+                
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+
+<access> := "public"
+<className> := "IntegrationTestAttribute"
+<inherits> := "Attribute"
+
+<privateFields> := "readonly" <STRING_LITERAL> "m_Path"
+
+<path> := <STRING_LITERAL>
+<scenePath> := <STRING_LITERAL>
+<publicMethods> := "IntegrationTestAttribute(" <path> ")"
+                    <BOOLEAN_LITERAL> "IncludeOne(" <scenePath> ")"

@@ -4,7 +4,7 @@
 <ListGenerics> := <finishTheRule>
 <TestComponent> := <finishTheRule>
 <TestRunnerConfigurator> := <finishTheRule>
-<IntegrationTestsProvider := <finishTheRule>
+<IntegrationTestsProvider> := <finishTheRule>
 
 <Serializable> := "Serializable"
 
@@ -107,7 +107,7 @@
                     <Create> |
                     <IsBatchMode>
                     
-<class> :=  <imports> 
+<TestRunner> :=  <imports> 
             <nameSpace> 
             <attributes> 
             <access> 

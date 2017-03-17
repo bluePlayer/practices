@@ -1,0 +1,19 @@
+<ResultDTO> := <define>
+<MessageType> := <define>
+
+<access> := "private"
+<interfaceName> := "ITransferInterface"
+
+<methods> := <void> "Transfer(ref " <ResultDTO>.<MessageType> ")"
+                <void> "Transfer(ref " <TestResultState> ")"
+                <void> "Transfer(ref " <BYTE_LITERAL> ")"
+                <void> "Transfer(ref " <BOOLEAN_LITERAl> ")"
+                <void> "Transfer(ref " <INTEGER_LITERAL> ")"
+                <void> "Transfer(ref " <FLOAT_LITERAL> ")"
+                <void> "Transfer(ref " <DOUBLE_LITERAL> ")"
+                <void> "Transfer(ref " <STRING_LITERAL> ")"
+                
+<ITransferInterface> := <access> "interface"
+                        <interfaceName> "{"
+                            <methods>
+                        "}"

@@ -1,0 +1,7 @@
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "TimeoutAttribute"
+<inherits> := "Attribute"
+
+<TimeoutAttribute> := "[" <attributes> "]"
+                        <access> "class" <className> ":" <inherits> "{}"

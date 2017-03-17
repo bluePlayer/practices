@@ -1,0 +1,10 @@
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "DynamicTestAttribute"
+<inherits> := "Attribute"
+
+<privateFields> := "readonly" <STRING_LITERAL> "m_SceneName"
+
+<sceneName> := <STRING_LITERAL>
+<publicMethods> := "DynamicTestAttribute(" <sceneName> ")"
+                   <BOOLEAN_LITERAl> "IncludeOnScene(" <sceneName> ")"

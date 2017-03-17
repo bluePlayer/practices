@@ -1,4 +1,5 @@
-<TestResultState> := <finishTheRule>
+<include> := <TestResultState.ebnf>.<TestResultState>
+
 <StackTrace> := <finishTheRule>
 
 <imports> :=    "System" |
@@ -8,7 +9,6 @@
                
 <access> := "public"
 <interfaceName> := "ITestResult"
-
 
 <ResultState> := <TestResultState> "ResultState"
 <Message> := <STRING_LITERAL> "Message"
@@ -34,7 +34,8 @@
                 <StackTrace> |
                 <IsIgnored>
                 
-<interface> :=  <imports>
-                <access>
-                <interfaceName>
-                <properties>
+<ITestResult> := <imports>
+                 <access> "interface" <interfaceName> "{"
+                    <properties>
+                 "}"
+                 

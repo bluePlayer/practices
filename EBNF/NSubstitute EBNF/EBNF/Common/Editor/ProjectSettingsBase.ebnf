@@ -1,0 +1,21 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "System.IO"
+                "System.Linq"
+                "UnityEditor"
+                "UnityEngine"
+<nameSpace> := "UnityTest"
+<access> := "public"
+<modifiers> := "abstract"
+<className> := "ProjectSettingsBase"
+<inherits> := "ScriptableObject"
+
+<k_SettingsPath> := "static readonly" <STRING_LITERAL> "k_SettingsPath = Path.Combine(\"UnityTestTools\", \"Common\")"
+<k_SettingsFolder> := "const" <STRING_LITERAL> "k_SettingsPath = \"Settings\""
+<privateFields> := <k_SettingsPath>
+                    <k_SettingsFolder>
+                    
+<Save> := "virtual" <void> "Save()"
+<Load> := "static" <cSharpType> "Load<" <cSharpType> "> where " <cSharpType> ": ProjectSettingsBase, new ()"
+<publicMethods> := <Save>
+                    <Load>

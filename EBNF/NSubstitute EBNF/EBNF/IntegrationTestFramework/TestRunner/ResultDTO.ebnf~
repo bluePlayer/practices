@@ -1,0 +1,57 @@
+<include> := <SerializableTestResult.ebnf>.<SerializableTestResult>
+
+<imports> := <using> "System"
+             <using> "System.Collections.Generic"
+             <using> "UnityEngine"
+             <using> "UnityEngine.SceneManagement"
+                
+<nameSpace> := "UnityTest"
+<attributes> := "Serializable"
+<access> := "public"
+<className> := "ResultDTO"
+
+<messageType> := "enum MessageType : " <BYTE_LITERAL> "{"
+                    "Ping"
+                    "RunStarted"
+                    "RunFinished"
+                    "TestStarted"
+                    "TestFinished"
+                    "RunInterrupted"
+                    "AllScenesFinished"                
+                "}" 
+                
+<levelCount> := <INTEGER_LITERAL> "levelCount"
+<loadedLevel> := <INTEGER_LITERAL> "loadedLevel"
+<loadedLevelName> := <STRING_LITERAL> "loadedLevelName"
+<testName> := <STRING_LITERAL> "testName"
+<testTimeot> := <FLOAT_LITERAL> "testTimeot"
+<testResult> := <ITestResult> "testResult"
+
+<publicFields> := <messageType>
+                    <levelCount>
+                    <loadedLevel>
+                    <loadedLevelName>
+                    <testName>
+                    <testTimeot>
+                    <testResult>
+                    
+<privateMethods> := "ResultDTO(" <messageType> ")"
+                    "static GetSerializableTestResult(" <TestResult> ")"
+
+<publicMethods> :=  "static" <ResultDTO> "CreatePing()"
+                    "static" <ResultDTO> "CreateRunStarted()"
+                    "static" <ResultDTO> "CreateRunFinished()"
+                    "static" <ResultDTO> "CreateTestStarted()"
+                    "static" <ResultDTO> "CreateRunFinished()"
+                    "static" <ResultDTO> "CreateAllScenesFinished()"
+                    
+<subclasses> := <SerializableTestResult>
+
+<ResultDTO> := <imports> "nameSpace" <nameSpace> "{"
+                    "[" <attributes> "]"
+                    <access> "class" <className> "{"
+                        <publicFields>
+                        <privateMethods>
+                        <publicMethods>
+                    "}"
+                "}"

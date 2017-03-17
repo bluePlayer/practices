@@ -1,0 +1,30 @@
+<min> := <NUMBER_LITERAL> "min(" <array> ["," <accessorFunction> ] ")" (* returns min value of an array. If the array is empty returns undefined. Ignores undefined, null and NaN values. Useful for ignoring missing data. Equvalent as calling array.map(accessorFunction) *)
+
+<max> := <NUMBER_LITERAL> "max(" <array> ["," <accessorFunction> ] ")" (* returns max value of an array. If the array is empty returns undefined. Ignores undefined, null and NaN values. Useful for ignoring missing data. Equvalent as calling array.map(accessorFunction) *)
+
+<extent> := "[" <NUMBER_LITERAL>, <NUMBER_LITERAL> "]" "extent(" <array> ["," <accessorFunction> ] ")" (* returns min and max values of an array. If the array is empty returns undefined. Ignores undefined, null and NaN values. Useful for ignoring missing data. Equvalent as calling array.map(accessorFunction) *)
+
+<sum> := <NUMBER_LITERAL> "sum(" <array> ["," <accessorFunction> ] ")" (* returns the sum of the values in an array. If the array is empty returns 0. Ignores undefined, null and NaN values. Useful for ignoring missing data. Equvalent as calling array.map(accessorFunction) *)
+
+<mean> := <NUMBER_LITERAL> "mean(" <array> ["," <accessorFunction> ] ")" (* returns the mean of the values in an array. If the array is empty returns undefined. Ignores undefined, null and NaN values. Useful for ignoring missing data. Equvalent as calling array.map(accessorFunction) *)
+
+<median> := <NUMBER_LITERAL> "median(" <array> ["," <accessorFunction> ] ")" (* Returns the median of the given array of numbers using the R-7 method. If the array is empty returns undefined. Ignores undefined, null and NaN values. Useful for ignoring missing data. Equvalent as calling array.map(accessorFunction) *)
+ 
+<p> := <NUMBER_LITERAL> (* number in the range [0, 1] *)
+<quantile> := <NUMBER_LITERAL> "quantile(" <array> "," <p> ["," <accessorFunction> ] ")" (* Returns the p-quantile of the given sorted array of numbers, where p is a number in the range [0, 1]. For example, the median can be computed using p = 0.5, the first quartile at p = 0.25, and the third quartile at p = 0.75. This particular implementation uses the R-7 method, which is the default for the R programming language and Excel. *)
+
+<variance> := <NUMBER_LITERAL> "variance(" <array> ["," <accessorFunction> ] ")" (* Returns an unbiased estimator of the population variance of the given array of numbers. If the array has fewer than two values, returns undefined. @See http://mathworld.wolfram.com/SampleVariance.html *)
+
+<deviation> := <NUMBER_LITERAL> "deviation(" <array> "," <p> ["," <accessorFunction> ] ")" (* Returns the standard deviation, defined as the square root of the bias-corrected variance, of the given array of numbers. If the array has fewer than two values, returns undefined. @See https://github.com/d3/d3-array/blob/master/README.md#variance *)
+
+<Statistics> := "d3." (
+                        <min> |
+                        <max> |
+                        <extent> |
+                        <sum> |
+                        <mean> |
+                        <median> |
+                        <quantile> |
+                        <variance> |
+                        <deviation>
+                      )

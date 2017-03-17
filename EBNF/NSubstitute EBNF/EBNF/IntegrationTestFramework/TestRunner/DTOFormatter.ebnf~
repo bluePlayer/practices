@@ -1,0 +1,18 @@
+<imports> := "System"
+                "System.IO"
+                "System.Runtime.Serialization"
+                "System.Text"
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+<access> := "public"
+<className> := "DTOFormatter"
+
+<subinterfaces> := <ITransferInterface>
+
+<subclasses> := <Writer>
+                <Reader>
+                
+<privateMethods> := <Transfer>
+                    <Serialize>
+                    <Deserialize>

@@ -1,8 +1,9 @@
 <byte> := <BYTE_LITERAL>
 
-<imports> :=    "System" |
-                "System.Collections.Generic" |
-                "UnityEngine"
+<imports> := <using> "System" |
+             <using> "System.Collections.Generic" |
+             <using> "UnityEngine"
+                
 <nameSpace> := "UnityTest"
 <access> := "public"
 <enumeratorName> := "TestResultState"
@@ -27,8 +28,9 @@
             <Error> |
             <Cancelled>
             
-<enumerator> := <imports> 
-                <nameSpace> 
-                <access> 
-                <enumeratorName> 
-                <fields>
+<TestResultState> := <imports> 
+                <nameSpace> "{"
+                    <access> "enum" <enumeratorName> "{"
+                        <fields>
+                    "}"
+                "}"

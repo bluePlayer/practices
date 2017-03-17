@@ -1,0 +1,26 @@
+<include> := <ITransferInterface.ebnf>.<ITransferInterface>
+
+<access> := "private"
+<className> := "Writer"
+<implements> := <ITransferInterface>
+
+<_stream> := "readonly" <Stream> "_stream"
+<privateFields> := <_stream>
+
+<privateMethods> := <void> "WriteConvertedNumber(" <byteArray> ")"
+
+<publicMethods> := <void> "Transfer(ref " <ResultDTO>.<MessageType> ")"
+                    <void> "Transfer(ref " <TestResultState> ")"
+                    <void> "Transfer(ref " <BYTE_LITERAL> ")"
+                    <void> "Transfer(ref " <BOOLEAN_LITERAl> ")"
+                    <void> "Transfer(ref " <INTEGER_LITERAL> ")"
+                    <void> "Transfer(ref " <FLOAT_LITERAL> ")"
+                    <void> "Transfer(ref " <DOUBLE_LITERAL> ")"
+                    <void> "Transfer(ref " <STRING_LITERAL> ")"
+                    
+<Write> := <access> "class" <className> ":" <implements> "{"
+                <privateFields>
+                <privateMethods>
+                <publicMethods>
+            "}"
+            

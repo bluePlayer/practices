@@ -1,0 +1,40 @@
+<imports> := <using> "System"
+             <using> "System.Collections.Generic"
+             <using> "System.Linq"
+             <using> "UnityEngine"
+             
+<nameSpace> := "UnityTest.IntegrationTestRunner"
+<className> := "IntegrationTestProvider"
+
+<testCollection> := "internal Dictionary<ITestComponent, HashSet<ITestComponent>> testCollection = new Dictionary<ITestComponent, HashSet<ITestComponent>>()"
+<currentTestGroup> := "internal ITestComponent currentTestGroup"
+<testToRun> := <IEnumerable><ITestComponent> "testToRun" 
+
+<internalFields> := <testCollection>
+                    <currentTestGroup>
+                    <testToRun>
+                    
+<tests> := <IEnumerable><ITestComponent> "tests"                    
+<test> := <ITestComponent> "test"
+<testGroup> := <ITestComponent> "testGroup"
+<group> := <ITestComponent> "group"
+
+<publicMethods> := "IntegrationTestProvider(" <tests> ")"
+                   <ITestComponent> "GetNextTest()"
+                   <void> "FinishTest(" <test> ")"
+                   <BOOLEAN_LITERAL> "AnyTestsLeft()"
+                   <ListGeneric><ITestComponent> "GetRemainingTests()"
+                   
+
+<privateMethods> := <void> "AddTestToList(" <test> ")"
+                    <ITestComponent> "FindNextTestGroup(" <testGroup> ")"
+                    <ITestComponent> "FindInnerTestGroup(" <group> ")"
+                    
+<IntegrationTestProvider> := <imports> 
+                             "namespace" <nameSpace> "{"
+                                "class" <className> "{"
+                                    <internalFields>
+                                    <publicMethods>
+                                    <privateMethods>
+                                "}"
+                             "}"

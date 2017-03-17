@@ -1,0 +1,40 @@
+<include> := <TestResultState.ebnf>.<TestResultState>
+
+<StackTrace> := <finishTheRule>
+
+<imports> :=    "System" |
+                "System.Collections.Generic" |
+                "UnityEngine" |
+                "UnityTest"
+               
+<access> := "public"
+<interfaceName> := "ITestResult"
+
+<ResultState> := <TestResultState> "ResultState"
+<Message> := <STRING_LITERAL> "Message"
+<Logs> := <STRING_LITERAL> "Logs"
+<Executed> := <BOOLEAN_LITERAL> "Executed"
+<Name> := <STRING_LITERAL> "Name"
+<FullName> := <STRING_LITERAL> "FullName"
+<Id> := <STRING_LITERAL> "Id"
+<IsSuccess> := <BOOLEAN_LITERAL> "IsSuccess"
+<Duration> := <DOUBLE_LITERAL> "Duration"
+<StackTrace> := <StackTrace> "StackTrace"
+<IsIgnored> := <BOOLEAN_LITERAL> "IsIgnored"
+
+<properties> := <ResultState>   |
+                <Message> |
+                <Logs> |
+                <Executed> |
+                <Name> |
+                <FullName> |
+                <Id> |
+                <IsSuccess> |
+                <Duration> |
+                <StackTrace> |
+                <IsIgnored>
+                
+<ITestResult> := <imports>
+                 <access>
+                 <interfaceName>
+                 <properties>

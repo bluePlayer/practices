@@ -1,0 +1,45 @@
+<binaryLogicOperator> := "&&" | "||" | "==" | "!="
+<unaryLogicOperator> := "!"
+<PPDCondition> := "(" 
+                        ["!"] <symbol1> <binaryLogicOperator> <symbol2> 
+                        {["!"] <symbol1> <binaryLogicOperator> <symbol2>} 
+                    ")"
+                    
+<ifPPD> := "#if" <PPDCondition> <cSharpCodeBlock> 
+            {<elifPPD>} 
+            [<elsePPD>]
+            "#endif"
+
+<elsePPD> := "#else" <cSharpCodeBlock>
+<elifPPD> := "#elif" <PPDCondition> <cSharpCodeBlock>
+<endif> := "#endif"
+
+<symbol> := <STRING_LITERAL>
+<symbol1> := <symbol>
+<symbol2> := <symbol>
+<definePPD> := "#define" <symbol> (* <symbol> evaluates to true *)
+<undefPPD> := "#undef" <symbol> (* <symbol> evaluates to false *)
+<warningPPD> := "#warning" <STRING_LITERAL>
+<errorPPD> := "#error" <STRING_LITERAL>
+<linePPD> := <define>
+<regionPPD> := <define>
+<endregionPPD> := <define>
+
+<pragmaName> := <STRING_LITERAL>
+<pragmaArguments> := <define>
+<pragmaPPD> := "#pragma" <pragmaName> <pragmaArguments>
+
+<PreprocessorDirectives> := <ifPPD>
+                            <elsePPD>
+                            <elifPPD>
+                            <endifPPD>
+                            <definePPD>
+                            <undefPPD>
+                            <warningPPD>
+                            <errorPPD>
+                            <linePPD>
+                            <regionPPD>
+                            <endregionPPD>
+                            <pragmaPPD>
+                            <pragmaWarningPPD>
+                            <pragmaChecksumPPD>

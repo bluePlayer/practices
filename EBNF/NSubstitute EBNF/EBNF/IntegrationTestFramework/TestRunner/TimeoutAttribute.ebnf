@@ -1,0 +1,15 @@
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "TimeoutAttribute"
+<inherits> := "Attribute"
+
+<publicFields> := <FLOAT_LITERAL> "timeout"
+
+<second> := <FLOAT_LITERAL>
+<publicMethods> := "TimeoutAttribute(" <seconds> ")"
+
+<TimeoutAttribute> := "[" <attributes> "]"
+                        <access> "class" <className> ":" <inherits> "{"
+                            <publicFields>
+                            <publicMethods>
+                        "}"

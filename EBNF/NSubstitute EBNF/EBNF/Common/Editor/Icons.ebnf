@@ -1,0 +1,56 @@
+<imports> :=    "System"
+                "System.Collections.Generic"
+                "System.IO"
+                "System.Linq"
+                "UnityEditor"
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+<access> := "public"
+<modifiers> := "static"
+<className> := "Icons"
+
+<k_IconsFolderName> := "const" <STRING_LITERAL> "k_IconsFolderName"
+<k_IconsFolderPath> := "readonly" <STRING_LITERAL> "k_IconsFolderPath"
+<k_IconsAssetsPath> := "readonly" <STRING_LITERAL> "k_IconsAssetsPath"
+
+<privateFields> :=  <k_IconsFolderName>
+                    <k_IconsFolderPath>
+                    <k_IconsAssetsPath>
+
+<FailImg> := "static readonly" <Texture2D> "FailImg"    
+<IgnoreImg> := "static readonly" <Texture2D> "IgnoreImg"
+<SuccessImg> := "static readonly" <Texture2D> "SuccessImg"
+<UnknownImg> := "static readonly" <Texture2D> "UnknownImg"
+<InconclusiveImg> := "static readonly" <Texture2D> "InconclusiveImg"
+<StopwatchImg> := "static readonly" <Texture2D> "StopwatchImg"
+
+<GUIUnknownImg> := "static readonly" <GUIContent> "GUIUnknownImg"
+<GUIInconclusiveImg> := "static readonly" <GUIContent> "GUIInconclusiveImg"
+<GUIIgnoreImg> := "static readonly" <GUIContent> "GUIIgnoreImg"
+<GUISuccessImg> := "static readonly" <GUIContent> "GUISuccessImg"
+<GUIFailImg> := "static readonly" <GUIContent> "GUIFailImg"
+
+<publicFields> :=   <FailImg>
+                    <IgnoreImg>
+                    <SuccessImg>
+                    <UnknownImg>
+                    <InconclusiveImg>
+                    <StopwatchImg>
+                    <GUIUnknownImg>
+                    <GUIInconclusiveImg>
+                    <GUIIgnoreImg>
+                    <GUISuccessImg>
+                    <GUIFailImg>
+                    
+ <fileName> := <STRING_LITERAL>
+ <privateMethods> := "static Icons()" |
+                        "static" <Texture2D> "LoadTexture(" <fileName> ")"
+                        
+ <Icons> := <imports>
+            <access>
+            <modifiers>
+            <className>
+            <privateFields> 
+            <publicFields>
+            <privateMethods>

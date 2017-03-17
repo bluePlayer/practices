@@ -1,0 +1,70 @@
+<include> := <ExcludePlatformAttribute.ebnf>.<ExcludePlatformAttribute>
+             <ExpectExceptions.ebnf>.<ExpectExceptions>
+             <IgnoreAttribute.ebnf>.<IgnoreAttribute>
+             <DynamicTestAttribute.ebnf>.<DynamicTestAttribute>
+             <SucceedWithAssertions.ebnf>.<SucceedWithAssertions>
+             <TimeoutAttribute.ebnf>.<TimeoutAttribute> 
+
+<imports> := <using> "System"
+                <using> "System.Collections.Generic"
+                <using> "System.IO"
+                <using> "System.Linq"
+                <using> "UnityEngine"
+                
+<access> := "public"
+<modifiers> := "static"
+<className> := "IntegrationTest"
+
+<passMessage> := "const" <STRING_LITERAL> "passMessage = \"IntegrationTest Pass\""
+<failMessage> := "const" <STRING_LITERAL> "failMessage = \"IntegrationTest Fail\""
+ 
+<publicFields> := <passMessage>
+                    <failMessage>
+
+<Pass1> := "static" <void> "Pass()"
+<Pass2> := "static" <void> "Pass(" <GameObject> ")"
+
+<Fail1> := "static" <void> "Fail(" <STRING_LITERAL> ")"
+<Fail2> := "static" <void> "Fail(" <GameObject> ", " <STRING_LITERAL> ")"
+<Fail3> := "static" <void> "Fail()"
+<Fail4> := "static" <void> "Fail(" <GameObject> ")"
+
+<Assert1> := "static" <void> "Assert(" <BOOLEAN_LITERAL> ")"
+<Assert2> := "static" <void> "Assert(" <GameObject> ", " <BOOLEAN_LITERAL> ")"
+<Assert3> := "static" <void> "Assert(" <BOOLEAN_LITERAL> ", " <STRING_LITERAL> ")"
+<Assert4> := "static" <void> "Assert(" <GameObject> ", " <BOOLEAN_LITERAL> ", " <STRING_LITERAL> ")"
+
+<publicMethods> := <Pass1>
+                    <Pass2>
+                    <Fail1>
+                    <Fail2>
+                    <Fail3>
+                    <Fail4>
+                    <Assert1>
+                    <Assert2>
+                    <Assert3>
+                    <Assert4>
+
+<LogResult1> := "static" <void> "LogResult(" <STRING_LITERAL> ")"
+<LogResult2> := "static" <void> "LogResult(" <GameObject> ", " <STRING_LITERAL> ")"
+   
+<FindTestObject> := "static" <GameObject> "FindTestObject(" <GameObject> ")"
+                     
+<privateMethods> := <LogResult1>
+                    <LogResult2>
+                    <FindTestObject>
+ 
+<subclasses> := <ExcludePlatformAttribute>
+                <ExpectExceptions>
+                <IgnoreAttribute>
+                <DynamicTestAttribute>
+                <SucceedWithAssertions>
+                <TimeoutAttribute> 
+                
+<IntegrationTest> := <imports>
+                    <access> <modifiers> "class" <className> "{"
+                        <publicFields>
+                        <publicMethods>
+                        <privateMethods>
+                        <subclasses>
+                    "}"

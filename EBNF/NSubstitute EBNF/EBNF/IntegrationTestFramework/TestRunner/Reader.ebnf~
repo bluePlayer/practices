@@ -1,0 +1,18 @@
+<access> := "private"
+<className> := "Reader"
+<implements> := "ITransferInterface"
+
+<privateFields> := <_stream>
+
+<privateMethods> := <byteArray> "ReadConvertedNumber(" <INTEGER_LITERAL> ")"
+
+<publicMethods> :=  "Writer(" <_stream> ")"
+                    <void> "Transfer(ref " <ResultDTO>.<MessageType> ")"
+                    <void> "Transfer(ref " <TestResultState> ")"
+                    <void> "Transfer(ref " <BYTE_LITERAL> ")"
+                    <void> "Transfer(ref " <BOOLEAN_LITERAl> ")"
+                    <void> "Transfer(ref " <INTEGER_LITERAL> ")"
+                    <void> "Transfer(ref " <FLOAT_LITERAL> ")"
+                    <void> "Transfer(ref " <DOUBLE_LITERAL> ")"
+                    <void> "Transfer(ref " <STRING_LITERAL> ")"
+

@@ -1,0 +1,33 @@
+<accessorFunction> := <JavaScriptFunction>
+<comparatorFunction> := <JavaScriptFunction> | <ascending> | <descending>
+
+<scan> := <INTEGER_LITERAL> "scan(" <array> ["," <comparatorFunction>] ")" (* Performs a linear scan of the specified array, returning the index of the least element according to the specified comparator. If the given array contains no comparable elements (i.e., the comparator returns NaN when comparing each element to itself), returns undefined. If comparator is not specified, it defaults to ascending.  *)
+
+<x> := <NUMBER_LITERAL>
+<lo> := <define>
+<hi> := <define>
+<bisectLeft> := <INTEGER_LITERAL> "bisectLeft(" <array> "," <x> ["," <lo> ["," <hi>]] ")"
+
+<bisect> := <INTEGER_LITERAL> "bisect(" <array> "," <x> ["," <lo> ["," <hi>]] ")"
+
+<bisectRight> := <INTEGER_LITERAL> "bisectRight(" <array> "," <x> ["," <lo> ["," <hi>]] ")"
+
+<leftFunction> := <INTEGER_LITERAL> "left(" <array> "," <x> ["," <lo> ["," <hi>]] ")" (* Equivalent to bisectLeft, but uses this bisector’s associated comparator. *)
+<rightFunction> := <INTEGER_LITERAL> "right(" <array> "," <x> ["," <lo> ["," <hi>]] ")" (* Equivalent to bisectRight, but uses this bisector’s associated comparator. *)
+<bisectorName> := <STRING_LITERAL>
+<bisectorObject> := <bisectorName> (<leftFunction> | <rightFunction>)
+<bisector> := <bisectorObject> "bisector(" (<accessorFunction> | <comparatorFunction>) ")"
+
+<ascending> := ("-1" | "0" | "1") "ascending(" <NUMBER_LITERAL> "," <NUMBER_LITERAL> ")" (* Returns -1 if a is less than b, or 1 if a is greater than b, or 0. This is the comparator function for natural order, and can be used in conjunction with the built-in array.sort method to arrange elements in ascending order. *)
+
+<descending> := ("-1" | "0" | "1") "descending(" <NUMBER_LITERAL> "," <NUMBER_LITERAL> ")" (* Returns -1 if a is greater than b, or 1 if a is less than b, or 0. This is the comparator function for reverse natural order, and can be used in conjunction with the built-in array sort method to arrange elements in descending order.  *)
+
+<Search> := "d3."(
+                    <scan> |
+                    <bisect> |
+                    <bisectRight> |
+                    <bisectLeft> |
+                    <bisector> |
+                    <ascending> |
+                    <descending>
+                )

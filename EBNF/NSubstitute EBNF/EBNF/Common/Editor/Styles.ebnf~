@@ -1,0 +1,34 @@
+<imports> := "System"
+                "System.Collections.Generic"
+                "UnityEditor"
+                "UnityEngine"
+                
+<nameSpace> := "UnityTest"
+<access> := "public"
+<modifiers> := "static"
+<className> := "Styles"
+
+<info> := "static" <GUIStyle> "info"
+<testList> := "static" <GUIStyle> "testList"
+<selectedFoldout> := "static" <GUIStyle> "selectedFoldout"
+<foldout> := "static" <GUIStyle> "foldout"
+<toolbarLabel> := "static" <GUIContent> "toolbarLabel"
+<testName> := "static" <GUIStyle> "testName"
+<k_SelectedColor> := "static readonly" <Color> "k_SelectedColor"
+
+<publicFields> := <info>
+                    <testList>
+                    <selectedFoldout>
+                    <foldout>
+                    <toolbarLabel>
+                    <testName>
+                    <k_SelectedColor>
+                    
+<privateMethods> := "static Styles()" 
+
+<Styles> := <imports>
+            <access>
+            <modifiers>
+            <className>
+            <publicFields>
+            <privateMethods>

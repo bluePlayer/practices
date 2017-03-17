@@ -107,14 +107,14 @@
                     <Create> |
                     <IsBatchMode>
                     
-<class> :=  <imports> 
-            <nameSpace> 
-            <attributes> 
-            <access> 
-            <className> 
-            <inherits> 
-            <privateFields> 
-            <publicFields> 
-            <publicProperties>      
-            <publcMethods>   
-            <privateMethods>     
+<TestRunner> := <imports> 
+                <nameSpace> 
+                <attributes> 
+                <access> 
+                <className> 
+                <inherits> 
+                <privateFields> 
+                <publicFields> 
+                <publicProperties>      
+                <publcMethods>   
+                <privateMethods>     

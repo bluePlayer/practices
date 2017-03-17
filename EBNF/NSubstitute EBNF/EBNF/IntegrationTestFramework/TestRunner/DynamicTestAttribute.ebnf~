@@ -1,0 +1,4 @@
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "DynamicTestAttribute"
+<inherits> := "Attribute"
