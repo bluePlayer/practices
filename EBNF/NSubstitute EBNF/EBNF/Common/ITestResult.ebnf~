@@ -35,6 +35,7 @@
                 <IsIgnored>
                 
 <ITestResult> := <imports>
-                 <access>
-                 <interfaceName>
-                 <properties>
+                 <access> "interface" <interfaceName> "{"
+                    <properties>
+                 "}"
+                 

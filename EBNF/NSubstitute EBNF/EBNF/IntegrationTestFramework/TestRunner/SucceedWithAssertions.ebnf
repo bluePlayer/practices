@@ -1,0 +1,7 @@
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "SucceedWithAssertions"
+<inherits> := "Attribute"
+
+<SucceedWithAssertions> := "[" <attributes> "]"
+                        <access> "class" <className> ":" <inherits> "{}"

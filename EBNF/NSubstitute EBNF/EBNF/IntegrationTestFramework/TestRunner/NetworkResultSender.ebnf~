@@ -1,1 +1,3 @@
-<UNITY_METRO>
+<UTT_SOCKETS_SUPPORTED> := "#if !UNITY_METRO"
+                           "#define UTT_SOCKETS_SUPPORTED"
+                           "#endif"

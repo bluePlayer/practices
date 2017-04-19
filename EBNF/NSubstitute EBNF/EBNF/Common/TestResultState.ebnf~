@@ -19,13 +19,13 @@
 <Error> := "6"
 <Cancelled> := "7"
 
-<fields> := <Inconlclusive> |
-            <NotRunnable> |
-            <Skipped> |
-            <Ignored> |
-            <Success> |
-            <Failure> |
-            <Error> |
+<fields> := <Inconlclusive> 
+            <NotRunnable> 
+            <Skipped> 
+            <Ignored> 
+            <Success> 
+            <Failure> 
+            <Error> 
             <Cancelled>
             
 <TestResultState> := <imports> 

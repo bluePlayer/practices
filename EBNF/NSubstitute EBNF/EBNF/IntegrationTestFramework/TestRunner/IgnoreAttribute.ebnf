@@ -1,0 +1,7 @@
+<attributes> := "AttributeUsage(AttributeTargets.Class, AllowMultiple = false)"
+<access> := "public"
+<className> := "IgnoreAttribute"
+<inherits> := "Attribute"
+
+<IgnoreAttribute> := "[" <attributes> "]"
+                        <access> "class" <className> ":" <inherits> "{}"
