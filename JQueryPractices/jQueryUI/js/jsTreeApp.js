@@ -2,10 +2,14 @@
  * @author vlado
  */
 var jsTreeApp = (function (jq) {'use strict';
-    var jsTree = null;
+    var jsTree = null,
+        chkBoxRadio = null;
 
     return {
         pageReady: function () {
+            chkBoxRadio = jq( "input" ).checkboxradio();
+            //chkBoxRadio.checkboxradio("option", "checked", "checked");
+            jq("#radio-3").prop('checked', "checked");
             jsTree = jq('#jstree_demo_div').jstree({
                 'core' : {
                     'data' : [

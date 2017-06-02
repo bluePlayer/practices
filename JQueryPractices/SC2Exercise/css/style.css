@@ -1,0 +1,41 @@
+body {
+    background-color: gray;
+}
+
+#profileDataFS {
+    float: left;
+    width: 450px;
+    display: inline-block;
+}
+
+#careerFS {
+    width: 450px;
+}
+
+#errorMsg {
+    color: red;
+}
+
+#statusMsg {
+    color: blue;
+}
+
+#swarmLevelsFS {
+    float: left;
+    width: 450px;
+    display: inline-block;
+}
+
+#campaignFS {
+    width: 450px;
+}
+
+#achievementsFS {
+    width: 450px;
+}
+
+#rewardsFS {
+    float: left;
+    width: 450px;
+    display: inline-block;
+}
