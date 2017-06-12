@@ -63,7 +63,7 @@
 	// autoload used in tinyMCE editor - do not delete
 	if(window.parent !== null && window.parent.getMathMLToLoad !== null){
 		var mathml = window.parent.getMathMLToLoad();
-
+        console.log(mathml);
 		if (mathml !== null) {
 			e1.mathEditor("setMathML", mathml);
 		}
