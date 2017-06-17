@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.min.css" rel="stylesheet"/>
+    <title>SC2 Exercise</title>
+</head>
+<body>
+
+    <h2 class="demoHeaders">SC2 Exercise</h2>
+    <p id="statusMsg"></p>
+    <p id="errorMsg"></p>
+    <fieldset id="profileDataFS">
+        <legend>Profile Data</legend>
+        <label for="profileNameTxt">Display Name</label>
+        <input type="text" id="profileNameTxt" name="profileNameTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="profileIdTxt">ID</label>
+        <input type="text" id="profileIdTxt" name="profileIdTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="realmTxt">Realm</label>
+        <input type="text" id="realmTxt" name="realmTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="clanNameTxt">Clan Name</label>
+        <input type="text" id="clanNameTxt" name="clanNameTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="clanTagTxt">Clan Tag</label>
+        <input type="text" id="clanTagTxt" name="clanTagTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="profilePathTxt">Profile Path</label>
+        <input type="text" id="profilePathTxt" name="profilePathTxt" disabled/>
+    </fieldset>
+    <fieldset id="careerFS">
+        <legend>Career</legend>
+        <label for="primaryRaceTxt">Primary Race</label>
+        <input type="text" id="primaryRaceTxt" name="primaryRaceTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="terranWinsTxt">Terran Wins</label>
+        <input type="text" id="terranWinsTxt" name="terranWinsTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="protossWinsTxt">Protoss Wins</label>
+        <input type="text" id="protossWinsTxt" name="protossWinsTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="zergWinsTxt">Zerg Wins</label>
+        <input type="text" id="zergWinsTxt" name="zergWinsTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="highest1v1RankTxt">Highest 1v1 Rank</label>
+        <input type="text" id="highest1v1RankTxt" name="highest1v1RankTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="seasonTotalGamesTxt">Season Total Games</label>
+        <input type="text" id="seasonTotalGamesTxt" name="seasonTotalGamesTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="careerTotalGamesTxt">Career Total Games</label>
+        <input type="text" id="careerTotalGamesTxt" name="careerTotalGamesTxt" disabled/>
+    </fieldset>
+    <fieldset id="swarmLevelsFS">
+        <legend>Swarm Levels</legend>
+        <label for="slLevelTxt">Level</label>
+        <input type="text" id="slLevelTxt" name="slLevelTxt" disabled/>
+        <br/>
+        <br/>
+        <fieldset id="slTerranFS">
+            <legend>Terran</legend>
+            <label for="terranLevelTxt">Level</label>
+            <input type="text" id="terranLevelTxt" name="terranLevelTxt" disabled/>
+            <br/>
+            <br/>
+            <label for="terranTotalLevelXPTxt">Total Level XP</label>
+            <input type="text" id="terranTotalLevelXPTxt" name="terranTotalLevelXPTxt" disabled/>
+            <br/>
+            <br/>
+            <label for="terranCurrentLevelXPTxt">Current Level XP</label>
+            <input type="text" id="terranCurrentLevelXPTxt" name="terranCurrentLevelXPTxt" disabled/>
+        </fieldset>
+        <fieldset id="slProtossFS">
+            <legend>Protoss</legend>
+            <label for="protossLevelTxt">Level</label>
+            <input type="text" id="protossLevelTxt" name="protossLevelTxt" disabled/>
+            <br/>
+            <br/>
+            <label for="protossTotalLevelXPTxt">Total Level XP</label>
+            <input type="text" id="protossTotalLevelXPTxt" name="protossTotalLevelXPTxt" disabled/>
+            <br/>
+            <br/>
+            <label for="protossCurrentLevelXPTxt">Current Level XP</label>
+            <input type="text" id="protossCurrentLevelXPTxt" name="protossCurrentLevelXPTxt" disabled/>
+        </fieldset>
+        <fieldset id="slZergFS">
+            <legend>Zerg</legend>
+            <label for="zergLevelTxt">Level</label>
+            <input type="text" id="zergLevelTxt" name="zergLevelTxt" disabled/>
+            <br/>
+            <br/>
+            <label for="zergTotalLevelXPTxt">Total Level XP</label>
+            <input type="text" id="zergTotalLevelXPTxt" name="zergTotalLevelXPTxt" disabled/>
+            <br/>
+            <br/>
+            <label for="zergCurrentLevelXPTxt">Current Level XP</label>
+            <input type="text" id="zergCurrentLevelXPTxt" name="zergCurrentLevelXPTxt" disabled/>
+        </fieldset>
+    </fieldset>
+    <fieldset id="campaignFS">
+        <legend>Campaign</legend>
+        <label for="wolTxt">WOL</label>
+        <input type="text" id="wolTxt" name="wolTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="hotsTxt">HOTS</label>
+        <input type="text" id="hotsTxt" name="hotsTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="lotvTxt">LOTV</label>
+        <input type="text" id="lotvTxt" name="lotvTxt" disabled/>
+    </fieldset>
+    <fieldset id="seasonFS">
+        <legend>Season</legend>
+        <label for="seasonIdTxt">Season ID</label>
+        <input type="text" id="seasonIdTxt" name="seasonIdTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="seasonNumberTxt">Season Number</label>
+        <input type="text" id="seasonNumberTxt" name="seasonNumberTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="seasonYearTxt">Season Year</label>
+        <input type="text" id="seasonYearTxt" name="seasonYearTxt" disabled/>
+        <br/>
+        <br/>
+        <label for="totalGamesThisSeasonTxt">Total Games This Season</label>
+        <input type="text" id="totalGamesThisSeasonTxt" name="totalGamesThisSeasonTxt" disabled/>
+        <br/>
+        <br/>
+        <fieldset id="statsFS">
+            <legend>Stats</legend>
+        </fieldset>
+    </fieldset>
+    <fieldset id="rewardsFS">
+        <legend>Rewards</legend>
+        <label for="earnedRewardsSel">Earned</label>
+        <select name="earnedRewardsSel" id="earnedRewardsSel">
+        </select>
+        <br/>
+        <br/>
+        <label for="selectedRewardsSel">Selected</label>
+        <select name="selectedRewardsSel" id="selectedRewardsSel">
+        </select>
+    </fieldset>
+    <fieldset id="achievementsFS">
+        <legend>Achievements</legend>
+        <label for="achievementsSel">Achievements</label>
+        <select name="achievementsSel" id="achievementsSel">
+        </select>
+        <fieldset id="pointsFS">
+            <legend>Total Points</legend>
+            <label for="totalPointsTxt">Total Points</label>
+            <input type="text" id="totalPointsTxt" name="totalPointsTxt" disabled/>
+            <br/>
+            <br/>
+            <fieldset id="categoryPointsFS">
+                <legend>Category Points</legend>
+                <label for="categoryPointsSel">Category Points</label>
+                <select name="categoryPointsSel" id="categoryPointsSel">
+                </select>
+            </fieldset>
+        </fieldset>
+    </fieldset>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
