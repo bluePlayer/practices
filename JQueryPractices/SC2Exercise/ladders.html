@@ -2,6 +2,7 @@
 <html>
 <head>
     <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.theme.min.css" rel="stylesheet"/>
     <link href="css/jquery-ui.min.css" rel="stylesheet"/>
     <link href="css/jquery.dataTables.css" rel="stylesheet"/>
     <title>Ladders</title>
@@ -11,7 +12,12 @@
     <p id="statusMsg"></p>
     <p id="errorMsg"></p>
     <fieldset id="laddersFS">
-        <table id="example" class="display" width="100%" cellspacing="0">
+        <label for="ladderId">Insert ladder ID</label>
+        <input type="text" required="required" id="ladderId" name="ladderId" title='Open your SC2 profile and copy the number after the "ladder" word in the URL'/>
+        <input type="button" value="Submit" id="loadDataBtn"/>
+        <br/>
+        <br/>
+        <table id="dataTable" class="display" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -40,6 +46,10 @@
             </tfoot>
         </table>
     </fieldset>
+
+    <div id="dialog" title="Information">
+        <p>Ladder ID must not be empty! Open your SC2 profile and copy the number after the "ladder" word in the URL.</p>
+    </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>

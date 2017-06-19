@@ -18,53 +18,41 @@ var laddersApp = (function (jq) {'use strict';
         realm = "1",
 
         // general html tags
+        dataTable = null,
+        noLadderIdDialog = null,
+        ladderIdText = null,
+        loadDataBtn = null,
         statusMsg = null,
         errorMsg = null;
 
     return {
-        getLadders: function () {
-            jq.ajax({
-                type: "GET",
-                contentType:"application/json",
-                dataType: "json",
-                context: laddersApp,
+        checkLadderId: function (e) {
+            ladderId = jq("#ladderId").val();
 
-                url: "https://eu.api.battle.net/sc2/ladder/" + ladderId,
-
-                data: {
-                    locale: locale,
-                    apiKey: apiKey
-                },
-
-                beforeSend: function (jqXHR, settings) {
-                    statusMsg.empty();
-                    errorMsg.empty();
-                    statusMsg.append("Sending request...");
-                },
-
-                success: function (data, textStatus, jqXHR) {
-                    console.dir(data);
-                },
-
-                error: function (jqXHR, textStatus, errorThrown) {
-                    errorMsg.append("Profile ladders data, error status: " + textStatus + ", error thrown: " + errorThrown);
-                }
-            });
+            if (ladderId === "" || ladderId === null || ladderId === undefined) {
+                noLadderIdDialog.dialog("open");
+                loadDataBtn.button("disable");
+            } else {
+                noLadderIdDialog.dialog("close");
+                loadDataBtn.button("enable");
+            }
         },
 
-        ready: function () {
-            statusMsg = jq("#statusMsg");
-            errorMsg = jq("#errorMsg");
+        reloadData: function (e) {
+            ladderId = jq("#ladderId").val();
+            dataTable.ajax.url("https://eu.api.battle.net/sc2/ladder/" + ladderId + "?locale=" + locale + "&apiKey=" + apiKey).load(function () {
+                console.log("loaded new data");
+            }, true);
+        },
 
-            laddersApp.getLadders();
-
-            jq('#example').DataTable({
+        loadData: function (e) {
+            dataTable = jq('#dataTable').DataTable({
                 "ajax": {
                     url: "https://eu.api.battle.net/sc2/ladder/" + ladderId + "?locale=" + locale + "&apiKey=" + apiKey,
                     dataSrc: 'ladderMembers'
-                },
+                 },
 
-                columns: [
+                 columns: [
                     { data: 'character.displayName' },
                     { data: 'character.clanName' },
                     { data: 'character.clanTag' },
@@ -74,8 +62,46 @@ var laddersApp = (function (jq) {'use strict';
                     { data: 'highestRank' },
                     { data: 'previousRank' },
                     { data: 'favoriteRaceP1' }
-                ]
+                 ]
             });
+        },
+
+        ready: function () {
+            statusMsg = jq("#statusMsg");
+            errorMsg = jq("#errorMsg");
+
+            ladderId = jq("#ladderId").val();
+
+            loadDataBtn = jq("#loadDataBtn").button();
+            loadDataBtn.on('click', laddersApp.reloadData);
+
+            ladderIdText = jq("#ladderId");
+            ladderIdText.on('input', laddersApp.checkLadderId);
+
+            noLadderIdDialog = jq("#dialog").dialog({
+                buttons: [
+                    {
+                        text: "Ok",
+                        icon: "ui-icon-info",
+                        click: function() {
+                            jq(this).dialog("close");
+                        }
+                    }
+                ],
+                modal: true
+            });
+
+            noLadderIdDialog.dialog("close");
+
+            if (ladderId === "" || ladderId === null || ladderId === undefined) {
+                noLadderIdDialog.dialog("open");
+                loadDataBtn.button("disable");
+            } else {
+                noLadderIdDialog.dialog("close");
+                loadDataBtn.button("enable");
+
+                laddersApp.loadData();
+            }
         }
     };
 }($));
