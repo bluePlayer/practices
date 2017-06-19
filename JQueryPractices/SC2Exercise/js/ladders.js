@@ -1,6 +1,6 @@
 var laddersApp = (function (jq) {'use strict';
-    var apiKey = "3hrfnmq7j2suwu98xy3f43ygyr5n22s9",
-        secret = "tMrrJefJqkAps5mX6Uvs6NgpY2SXFTDQ",
+    var apiKey = "",
+        secret = "",
         locale = "en_GB",
         ladderId = "192779",
 
