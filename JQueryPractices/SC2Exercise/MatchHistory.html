@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.theme.min.css" rel="stylesheet"/>
+    <link href="css/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <title>Match History</title>
+</head>
+<body>
+
+    <h2 class="demoHeaders">Match History</h2>
+    <p id="statusMsg"></p>
+    <p id="errorMsg"></p>
+
+    <fieldset id="matchHistoryFS">
+        <legend>Match History</legend>
+        <form id="matchHistoryForm">
+            <label for="profileIdText">Insert Profile ID</label>
+            <input type="text" required="required" id="profileIdText" name="profileIdText"/>
+            <br/>
+            <br/>
+            <label for="profileNameText">Insert Profile Name</label>
+            <input type="text" required="required" id="profileNameText" name="profileNameText"/>
+            <br/>
+            <br/>
+            <label for="regionText">Region</label>
+            <input type="text" required="required" id="regionText" name="regionText"/>
+            <br/>
+            <br/>
+            <label for="localeSelect">Locale</label>
+            <select id="localeSelect">
+                <option value="en_GB">English</option>
+                <option value="de_DE">Deutsch</option>
+                <option value="es_ES">Spanish</option>
+                <option value="fr_FR">French</option>
+                <option value="it_IT">Italian</option>
+                <option value="pl_PL">Polish</option>
+                <option value="pt_PT">Portugiese</option>
+                <option value="ru_RU">Russian</option>
+            </select>
+            <br/>
+            <br/>
+            <input type="button" value="Submit" id="loadMatchHistoryBtn"/>
+        </form>
+
+        <table id="dataTable" class="display" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Map</th>
+                    <th>Type</th>
+                    <th>Decision</th>
+                    <th>Speed</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Map</th>
+                    <th>Type</th>
+                    <th>Decision</th>
+                    <th>Speed</th>
+                    <th>Date</th>
+                </tr>
+            </tfoot>
+        </table>
+    </fieldset>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.dataTables.js"></script>
+    <script src="js/matchHistory.js"></script>
+</body>
+</html>
