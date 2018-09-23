@@ -1,0 +1,11 @@
+/home/vlado/Documents/DotNetCoreVezhba2/bin/Debug/netcoreapp2.1/DotNetCoreVezhba2.deps.json
+/home/vlado/Documents/DotNetCoreVezhba2/bin/Debug/netcoreapp2.1/DotNetCoreVezhba2.runtimeconfig.json
+/home/vlado/Documents/DotNetCoreVezhba2/bin/Debug/netcoreapp2.1/DotNetCoreVezhba2.runtimeconfig.dev.json
+/home/vlado/Documents/DotNetCoreVezhba2/bin/Debug/netcoreapp2.1/DotNetCoreVezhba2.dll
+/home/vlado/Documents/DotNetCoreVezhba2/bin/Debug/netcoreapp2.1/DotNetCoreVezhba2.pdb
+/home/vlado/Documents/DotNetCoreVezhba2/obj/Debug/netcoreapp2.1/DotNetCoreVezhba2.csprojAssemblyReference.cache
+/home/vlado/Documents/DotNetCoreVezhba2/obj/Debug/netcoreapp2.1/DotNetCoreVezhba2.csproj.CoreCompileInputs.cache
+/home/vlado/Documents/DotNetCoreVezhba2/obj/Debug/netcoreapp2.1/DotNetCoreVezhba2.AssemblyInfoInputs.cache
+/home/vlado/Documents/DotNetCoreVezhba2/obj/Debug/netcoreapp2.1/DotNetCoreVezhba2.AssemblyInfo.cs
+/home/vlado/Documents/DotNetCoreVezhba2/obj/Debug/netcoreapp2.1/DotNetCoreVezhba2.dll
+/home/vlado/Documents/DotNetCoreVezhba2/obj/Debug/netcoreapp2.1/DotNetCoreVezhba2.pdb

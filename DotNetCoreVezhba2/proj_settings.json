@@ -1,0 +1,12 @@
+{
+    "del1": {
+      "exeCommandPattern": false,
+      "exeInterpretPattern": false,
+      "exeCompositePattern": true
+    },
+
+    "del2": {
+      "key0": "value",
+      "key1": "value"
+    }
+  }
