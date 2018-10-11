@@ -105,6 +105,9 @@
     <Compile Include="ObjectAdapterPattern\ObjectAdapterClient.cs" />
     <Compile Include="ObjectAdapterPattern\ObjectAdaptor.cs" />
     <Compile Include="ObjectAdapterPattern\IAdaptee.cs" />
+    <Compile Include="PrototypePattern\ConcretePrototype1.cs" />
+    <Compile Include="PrototypePattern\ConcretePrototype2.cs" />
+    <Compile Include="PrototypePattern\Prototype.cs" />
     <Compile Include="ProxyPattern\Car.cs" />
     <Compile Include="ProxyPattern\Driver.cs" />
     <Compile Include="ProxyPattern\ICar.cs" />

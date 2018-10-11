@@ -5,6 +5,7 @@ using OOPPatternsWpf.AdapterTrial3;
 using OOPPatternsWpf.FactoryMethod;
 using OOPPatternsWpf.AbstractFactory;
 using OOPPatternsWpf.BridgePattern;
+using OOPPatternsWpf.PrototypePattern;
 
 namespace OOPPatternsWpf
 {
@@ -157,6 +158,21 @@ namespace OOPPatternsWpf
 
             db = new DeviceBridge(radioSwitch);
             statusBarTB.Text += db.On();
+        }
+
+        private void prototypePatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ConcretePrototype1 p1 = new ConcretePrototype1();
+            p1.proto1Field = 10;
+
+            ConcretePrototype2 p2 = new ConcretePrototype2();
+            p2.proto2Field = 20;
+
+            ConcretePrototype1 p11 = (ConcretePrototype1)p1.Clone();
+
+            ConcretePrototype2 p22 = (ConcretePrototype2)p2.Clone();
+
+            statusBarTB.Text = "proto 1: " + p11.proto1Field + ", proto 2: " + p22.proto2Field;
         }
     }
 }

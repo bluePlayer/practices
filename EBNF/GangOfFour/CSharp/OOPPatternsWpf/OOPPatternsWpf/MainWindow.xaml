@@ -30,6 +30,7 @@
         <Button Grid.Column="1" Grid.Row="1" Content="Test Factory Method Pattern" Name="factoryMethodPatternBtn" Click="factoryMethodPatternBtn_Click"/>
         <Button Grid.Column="2" Grid.Row="1" Content="Test Abstract Factory Pattern" Name="abstractFactoryPatternBtn" Click="abstractFactoryPatternBtn_Click"/>
         <Button Grid.Column="0" Grid.Row="2" Content="Test Bridge Pattern" Name="bridgePatternBtn" Click="bridgePatternBtn_Click"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="Test Prototype Pattern" Name="prototypePatternBtn" Click="prototypePatternBtn_Click"/>
         
         <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Name="statusBarSB">
             <StatusBarItem>
