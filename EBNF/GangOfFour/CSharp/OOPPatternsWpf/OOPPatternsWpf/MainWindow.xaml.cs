@@ -4,6 +4,7 @@ using OOPPatternsWpf.ObjectAdapterPattern;
 using OOPPatternsWpf.AdapterTrial3;
 using OOPPatternsWpf.FactoryMethod;
 using OOPPatternsWpf.AbstractFactory;
+using OOPPatternsWpf.BridgePattern;
 
 namespace OOPPatternsWpf
 {
@@ -140,6 +141,22 @@ namespace OOPPatternsWpf
                     statusBarTB.Text = "That format of type " + appearance + ", wasn't implemented!";
                 }
             }
+        }
+
+        private void bridgePatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            IDeviceBridge lightSwitch = new LightSwitch();
+            IDeviceBridge tvSwitch = new TVSwitch();
+            IDeviceBridge radioSwitch = new RadioSwitch();
+
+            DeviceBridge db = new DeviceBridge(lightSwitch);
+            statusBarTB.Text = db.On() + ", ";
+
+            db = new DeviceBridge(tvSwitch);
+            statusBarTB.Text += db.Off() + ", ";
+
+            db = new DeviceBridge(radioSwitch);
+            statusBarTB.Text += db.On();
         }
     }
 }

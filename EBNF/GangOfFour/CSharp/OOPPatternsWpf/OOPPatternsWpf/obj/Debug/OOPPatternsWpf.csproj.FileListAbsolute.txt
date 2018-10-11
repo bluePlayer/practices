@@ -35,6 +35,7 @@ C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWp
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\bin\Debug\OOPPatternsWpf.exe.config
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\bin\Debug\OOPPatternsWpf.exe
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\bin\Debug\OOPPatternsWpf.pdb
+C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\OOPPatternsWpf.csprojAssemblyReference.cache
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\MainWindow.baml
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\OOPPatternsWpf.g.resources
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\OOPPatternsWpf.Properties.Resources.resources
@@ -42,4 +43,3 @@ C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWp
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\OOPPatternsWpf.csproj.CoreCompileInputs.cache
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\OOPPatternsWpf.exe
 C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\OOPPatternsWpf.pdb
-C:\Users\Vlado\Documents\GitRepos\practices\EBNF\GangOfFour\CSharp\OOPPatternsWpf\OOPPatternsWpf\obj\Debug\OOPPatternsWpf.csprojAssemblyReference.cache
