@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace OOPPatternsWpf
 {
-    class RealSubjectClass:ProxyClass, Subject
+    class ProxyClass:ISubject
     {
-        public RealSubjectClass()
+        public void testFunction()
         {
-            base.testFunction();
+            Console.WriteLine("I am running the test!");
         }
     }
 }

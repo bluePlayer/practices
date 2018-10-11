@@ -21,7 +21,7 @@ namespace OOPPatternsWpf
         {
             if (driver.Age < 16)
             {
-                Console.WriteLine("Sorry, the driver is too young to drive.");
+                Console.WriteLine("Sorry, the driver is too young to drive! Driver age is " + driver.Age);
             }
             else
             {

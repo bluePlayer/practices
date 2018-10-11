@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOPPatternsWpf
 {
-    class ProxyClass:Subject
+    class Constants
     {
-        public void testFunction()
-        {
-            Console.WriteLine("I am running the test!");
-        }
+        public const short WIN_APPEARANCE = 1;
+        public const short OSX_APPEARANCE = 2;
     }
 }

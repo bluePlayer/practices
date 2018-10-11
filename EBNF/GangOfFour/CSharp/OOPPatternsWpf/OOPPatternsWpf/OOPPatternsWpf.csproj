@@ -55,20 +55,56 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AbstractFactory\IButton.cs" />
+    <Compile Include="AbstractFactory\IGUIFactory.cs" />
+    <Compile Include="AbstractFactory\OSXButton.cs" />
+    <Compile Include="AbstractFactory\OSXFactory.cs" />
+    <Compile Include="AbstractFactory\WinButton.cs" />
+    <Compile Include="AbstractFactory\WinFactory.cs" />
+    <Compile Include="AdapterTrial3\AdapterFormatsFactory.cs" />
+    <Compile Include="AdapterTrial3\AdapterFormatsType.cs" />
+    <Compile Include="AdapterTrial3\ClassA.cs" />
+    <Compile Include="AdapterTrial3\ClassAFormat1.cs" />
+    <Compile Include="AdapterTrial3\ClassAFormat1Adapter.cs" />
+    <Compile Include="AdapterTrial3\ClassB.cs" />
+    <Compile Include="AdapterTrial3\ClassFormatDots.cs" />
+    <Compile Include="AdapterTrial3\ClassFormatForwardSlash.cs" />
+    <Compile Include="AdapterTrial3\ClassFormatHash.cs" />
+    <Compile Include="AdapterTrial3\FormatDotsAdapter.cs" />
+    <Compile Include="AdapterTrial3\FormatForwardSlashAdapter.cs" />
+    <Compile Include="AdapterTrial3\FormatHashAdapter.cs" />
+    <Compile Include="AdapterTrial3\IStringProvider.cs" />
     <Compile Include="ClassAdapterPattern\ClassAdaptor.cs" />
     <Compile Include="ClassAdapterPattern\ClassAdaptorClient.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee1.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee2.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="FactoryMethod\CityPerson.cs" />
+    <Compile Include="FactoryMethod\Factory.cs" />
+    <Compile Include="FactoryMethod\FormatDots.cs" />
+    <Compile Include="FactoryMethod\FormatFactory.cs" />
+    <Compile Include="FactoryMethod\FormatForwardSlash.cs" />
+    <Compile Include="FactoryMethod\FormatHash.cs" />
+    <Compile Include="FactoryMethod\FormatsType.cs" />
+    <Compile Include="FactoryMethod\IPerson.cs" />
+    <Compile Include="FactoryMethod\IStringFormat.cs" />
+    <Compile Include="FactoryMethod\PersonType.cs" />
+    <Compile Include="FactoryMethod\Villager.cs" />
     <Compile Include="ObjectAdapterPattern\ObjectAdapterClient.cs" />
     <Compile Include="ObjectAdapterPattern\ObjectAdaptor.cs" />
     <Compile Include="ObjectAdapterPattern\IAdaptee.cs" />
-    <Compile Include="Car.cs" />
-    <Compile Include="Driver.cs" />
-    <Compile Include="ICar.cs" />
-    <Compile Include="ProxyCar.cs" />
-    <Compile Include="ProxyClass.cs" />
-    <Compile Include="RealSubjectClass.cs" />
-    <Compile Include="Subject.cs" />
+    <Compile Include="ProxyPattern\Car.cs" />
+    <Compile Include="ProxyPattern\Driver.cs" />
+    <Compile Include="ProxyPattern\ICar.cs" />
+    <Compile Include="OOPPatternsSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>OOPPatternsSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ProxyPattern\ProxyCar.cs" />
+    <Compile Include="ProxyPattern\ProxyClass.cs" />
+    <Compile Include="ProxyPattern\RealSubjectClass.cs" />
+    <Compile Include="ProxyPattern\ISubject.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +136,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="OOPPatternsSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>OOPPatternsSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

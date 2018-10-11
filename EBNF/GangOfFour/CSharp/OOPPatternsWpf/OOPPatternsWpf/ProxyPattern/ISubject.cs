@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOPPatternsWpf
 {
-    interface Subject
+    interface ISubject
     {
         void testFunction();
     }
