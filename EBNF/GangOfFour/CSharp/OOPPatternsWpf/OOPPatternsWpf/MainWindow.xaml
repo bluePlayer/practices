@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOPPatternsWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
     
     <Window.DataContext>
         OOPPatternsMainWindowMVVM
@@ -56,6 +56,8 @@
             <Button Content="Unregister Observer C" Name="unregisterC_Btn" Click="unregisterC_Btn_Click"/>
             <Button Content="Register Observer C" Name="registerC_Btn" Click="registerC_Btn_Click"/>
         </StackPanel>
+
+        <Button Grid.Column="0" Grid.Row="4" Content="Open Chat Window" Name="openChatWindowBtn" Click="openChatWindowBtn_Click"/>
 
         <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Name="statusBarSB">
             <StatusBarItem>

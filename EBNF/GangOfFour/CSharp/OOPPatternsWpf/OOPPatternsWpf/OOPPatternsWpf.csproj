@@ -74,6 +74,7 @@
     <Compile Include="AdapterTrial3\FormatForwardSlashAdapter.cs" />
     <Compile Include="AdapterTrial3\FormatHashAdapter.cs" />
     <Compile Include="AdapterTrial3\IStringProvider.cs" />
+    <Compile Include="BehavioralPatterns.cs" />
     <Compile Include="BridgePattern\AbstractBridge.cs" />
     <Compile Include="BridgePattern\Bridge1.cs" />
     <Compile Include="BridgePattern\Bridge2.cs" />
@@ -86,11 +87,15 @@
     <Compile Include="BridgePattern\LightSwitch.cs" />
     <Compile Include="BridgePattern\RadioSwitch.cs" />
     <Compile Include="BridgePattern\TVSwitch.cs" />
+    <Compile Include="ChatWindow.xaml.cs">
+      <DependentUpon>ChatWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClassAdapterPattern\ClassAdaptor.cs" />
     <Compile Include="ClassAdapterPattern\ClassAdaptorClient.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee1.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee2.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="CreationalPatterns.cs" />
     <Compile Include="FactoryMethod\CityPerson.cs" />
     <Compile Include="FactoryMethod\Factory.cs" />
     <Compile Include="FactoryMethod\FormatDots.cs" />
@@ -102,6 +107,11 @@
     <Compile Include="FactoryMethod\IStringFormat.cs" />
     <Compile Include="FactoryMethod\PersonType.cs" />
     <Compile Include="FactoryMethod\Villager.cs" />
+    <Compile Include="Mediator\Component.cs" />
+    <Compile Include="Mediator\Component1.cs" />
+    <Compile Include="Mediator\Component2.cs" />
+    <Compile Include="Mediator\IComponent.cs" />
+    <Compile Include="Mediator\Mediator.cs" />
     <Compile Include="ObjectAdapterPattern\ObjectAdapterClient.cs" />
     <Compile Include="ObjectAdapterPattern\ObjectAdaptor.cs" />
     <Compile Include="ObjectAdapterPattern\IAdaptee.cs" />
@@ -128,6 +138,11 @@
     <Compile Include="ProxyPattern\ProxyClass.cs" />
     <Compile Include="ProxyPattern\RealSubjectClass.cs" />
     <Compile Include="ProxyPattern\ISubject.cs" />
+    <Compile Include="StructuralPatterns.cs" />
+    <Page Include="ChatWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
