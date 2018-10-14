@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:OOPPatternsWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    
+    <Window.DataContext>
+        OOPPatternsMainWindowMVVM
+    </Window.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -22,7 +27,7 @@
             <RowDefinition/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        
+
         <Button Grid.Column="0" Grid.Row="0" Content="Test Proxy Pattern" Name="proxyPatternBtn" Click="proxyPatternBtn_Click"/>
         <Button Grid.Column="1" Grid.Row="0" Content="Test Class Adapter Pattern" Name="classAdapterPatternBtn" Click="classAdapterPatternBtn_Click"/>
         <Button Grid.Column="2" Grid.Row="0" Content="Test Object Adapter Pattern" Name="objectAdapterPatternBtn" Click="objectAdapterPatternBtn_Click"/>
@@ -32,6 +37,26 @@
         <Button Grid.Column="0" Grid.Row="2" Content="Test Bridge Pattern" Name="bridgePatternBtn" Click="bridgePatternBtn_Click"/>
         <Button Grid.Column="1" Grid.Row="2" Content="Test Prototype Pattern" Name="prototypePatternBtn" Click="prototypePatternBtn_Click"/>
         
+        <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
+            <Button Content="Print Observer State" Name="observerPatternBtn" Click="observerPatternBtn_Click"/>
+            <ComboBox Name="chooseStateCB" DisplayMemberPath="stateName" SelectedIndex="0" SelectionChanged="chooseStateCB_SelectionChanged"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3">
+            <Button Content="Unregister Observer A" Name="unregisterA_Btn" Click="unregisterA_Btn_Click"/>
+            <Button Content="Register Observer A" Name="registerA_Btn" Click="registerA_Btn_Click"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+            <Button Content="Unregister Observer B" Name="unregisterB_Btn" Click="unregisterB_Btn_Click"/>
+            <Button Content="Register Observer B" Name="registerB_Btn" Click="registerB_Btn_Click"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="3">
+            <Button Content="Unregister Observer C" Name="unregisterC_Btn" Click="unregisterC_Btn_Click"/>
+            <Button Content="Register Observer C" Name="registerC_Btn" Click="registerC_Btn_Click"/>
+        </StackPanel>
+
         <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Name="statusBarSB">
             <StatusBarItem>
                 <TextBlock Name="statusBarTB"/>

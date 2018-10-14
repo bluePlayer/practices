@@ -6,6 +6,8 @@ using OOPPatternsWpf.FactoryMethod;
 using OOPPatternsWpf.AbstractFactory;
 using OOPPatternsWpf.BridgePattern;
 using OOPPatternsWpf.PrototypePattern;
+using OOPPatternsWpf.ObserverPattern;
+using System.Collections.Generic;
 
 namespace OOPPatternsWpf
 {
@@ -14,6 +16,8 @@ namespace OOPPatternsWpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        OOPPatternsMainWindowMVVM mvvm;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,7 +25,31 @@ namespace OOPPatternsWpf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ISubject subject = new ProxyClass();
+            // TODO is there a way to initialize DataContext window without using contructors???
+            mvvm = new OOPPatternsMainWindowMVVM(); // (OOPPatternsMainWindowMVVM)this.DataContext;
+
+            mvvm.osStates = new List<ObserverState>();
+            mvvm.subject = new ProxyClass();
+            mvvm.os = new ObserverSubject();
+            mvvm.osA = new ObserverA();
+            mvvm.osB = new ObserverB();
+            mvvm.osC = new ObserverC();
+
+            ObserverState stateInit = new ObserverState(1, Constants.OBSERVER_STATE_INIT);
+            mvvm.osStates.Add(stateInit);
+
+            ObserverState stateReady = new ObserverState(2, Constants.OBSERVER_STATE_READY);
+            mvvm.osStates.Add(stateReady);
+
+            ObserverState stateProcessing = new ObserverState(3, Constants.OBSERVER_STATE_PROCESSIND);
+            mvvm.osStates.Add(stateProcessing);
+
+            ObserverState stateDone = new ObserverState(4, Constants.OBSERVER_STATE_DONE);
+            mvvm.osStates.Add(stateDone);
+
+            chooseStateCB.ItemsSource = mvvm.osStates;
+
+            this.DataContext = mvvm;
         }
 
         private void proxyPatternBtn_Click(object sender, RoutedEventArgs e)
@@ -93,6 +121,7 @@ namespace OOPPatternsWpf
             //b.setStringData(field);
 
             //statusBarTB.Text = b.getStringData();
+
         }
 
         private void factoryMethodPatternBtn_Click(object sender, RoutedEventArgs e)
@@ -173,6 +202,49 @@ namespace OOPPatternsWpf
             ConcretePrototype2 p22 = (ConcretePrototype2)p2.Clone();
 
             statusBarTB.Text = "proto 1: " + p11.proto1Field + ", proto 2: " + p22.proto2Field;
+        }
+
+        private void observerPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            statusBarTB.Text = mvvm.os.getObserversState();
+        }
+
+        private void unregisterA_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            mvvm.os.unregisterObserver(mvvm.osA);
+        }
+
+        private void registerA_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            mvvm.osA = new ObserverA();
+            mvvm.os.registerObserver(mvvm.osA);
+        }
+
+        private void unregisterB_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            mvvm.os.unregisterObserver(mvvm.osB);
+        }
+
+        private void registerB_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            mvvm.osB = new ObserverB();
+            mvvm.os.registerObserver(mvvm.osB);
+        }
+
+        private void unregisterC_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            mvvm.os.unregisterObserver(mvvm.osC);
+        }
+
+        private void registerC_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            mvvm.osC = new ObserverC();
+            mvvm.os.registerObserver(mvvm.osC);
+        }
+
+        private void chooseStateCB_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            mvvm.os.subjectState = ((ObserverState)chooseStateCB.SelectedValue);
         }
     }
 }

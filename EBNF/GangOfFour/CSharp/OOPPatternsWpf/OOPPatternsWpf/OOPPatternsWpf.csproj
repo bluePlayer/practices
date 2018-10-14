@@ -105,6 +105,14 @@
     <Compile Include="ObjectAdapterPattern\ObjectAdapterClient.cs" />
     <Compile Include="ObjectAdapterPattern\ObjectAdaptor.cs" />
     <Compile Include="ObjectAdapterPattern\IAdaptee.cs" />
+    <Compile Include="ObserverPattern\ObserverA.cs" />
+    <Compile Include="ObserverPattern\IObserverWPF.cs" />
+    <Compile Include="ObserverPattern\ObserverB.cs" />
+    <Compile Include="ObserverPattern\ObserverC.cs" />
+    <Compile Include="ObserverPattern\ObserverClass.cs" />
+    <Compile Include="ObserverPattern\ObserverState.cs" />
+    <Compile Include="ObserverPattern\ObserverSubject.cs" />
+    <Compile Include="OOPPatternsMainWindowMVVM.cs" />
     <Compile Include="PrototypePattern\ConcretePrototype1.cs" />
     <Compile Include="PrototypePattern\ConcretePrototype2.cs" />
     <Compile Include="PrototypePattern\Prototype.cs" />
