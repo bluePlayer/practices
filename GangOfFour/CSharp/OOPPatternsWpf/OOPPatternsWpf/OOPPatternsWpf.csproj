@@ -96,6 +96,15 @@
     <Compile Include="ClassAdapterPattern\IAdaptee2.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CreationalPatterns.cs" />
+    <Compile Include="FacadePattern\CarAccessories.cs" />
+    <Compile Include="FacadePattern\CarBody.cs" />
+    <Compile Include="FacadePattern\CarEngine.cs" />
+    <Compile Include="FacadePattern\CarFacade.cs" />
+    <Compile Include="FacadePattern\CarModel.cs" />
+    <Compile Include="FacadePattern\Facade.cs" />
+    <Compile Include="FacadePattern\SubsystemA.cs" />
+    <Compile Include="FacadePattern\SubsystemB.cs" />
+    <Compile Include="FacadePattern\SubsystemC.cs" />
     <Compile Include="FactoryMethod\CityPerson.cs" />
     <Compile Include="FactoryMethod\Factory.cs" />
     <Compile Include="FactoryMethod\FormatDots.cs" />
@@ -139,6 +148,12 @@
     <Compile Include="ProxyPattern\RealSubjectClass.cs" />
     <Compile Include="ProxyPattern\ISubject.cs" />
     <Compile Include="StructuralPatterns.cs" />
+    <Compile Include="TemplateMethodPattern\Categories.cs" />
+    <Compile Include="TemplateMethodPattern\ConcreteClassA .cs" />
+    <Compile Include="TemplateMethodPattern\ConcreteClassB.cs" />
+    <Compile Include="TemplateMethodPattern\DataAccessObject.cs" />
+    <Compile Include="TemplateMethodPattern\Products.cs" />
+    <Compile Include="TemplateMethodPattern\TemplateMethodBaseClass.cs" />
     <Page Include="ChatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,5 +201,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
