@@ -8,9 +8,9 @@ namespace OOPPatternsWpf.FacadePattern
 {
     class CarModel
     {
-        public void SetModel()
+        public void SetModel(string model)
         {
-            Console.WriteLine(" CarModel - SetModel");
+            Console.WriteLine(" CarModel - " + model);
         }
     }
 }

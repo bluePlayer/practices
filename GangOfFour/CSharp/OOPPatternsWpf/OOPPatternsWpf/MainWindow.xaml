@@ -58,7 +58,9 @@
         </StackPanel>
 
         <Button Grid.Column="0" Grid.Row="4" Content="Open Chat Window" Name="openChatWindowBtn" Click="openChatWindowBtn_Click"/>
-
+        <Button Grid.Column="1" Grid.Row="4" Content="Test Facade Pattern" Name="facadePatternBtn" Click="facadePatternBtn_Click"/>
+        <Button Grid.Column="2" Grid.Row="4" Content="Test Template Method Pattern" Name="templateMethodPatternBtn" Click="templateMethodPatternBtn_Click"/>
+        
         <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Name="statusBarSB">
             <StatusBarItem>
                 <TextBlock Name="statusBarTB"/>

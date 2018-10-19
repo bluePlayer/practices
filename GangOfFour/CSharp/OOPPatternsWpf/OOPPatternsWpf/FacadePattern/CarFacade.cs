@@ -27,10 +27,10 @@ namespace OOPPatternsWpf.FacadePattern
         public void CreateCompleteCar()
         {
             Console.WriteLine("******** Creating a Car **********");
-            model.SetModel();
-            engine.SetEngine();
-            body.SetBody();
-            accessories.SetAccessories();
+            model.SetModel("206");
+            engine.SetEngine("Petrol");
+            body.SetBody("Hatchback");
+            accessories.SetAccessories("child seat, cup holder");
 
             Console.WriteLine("******** Car creation is completed. **********");
         }

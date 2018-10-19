@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using OOPPatternsWpf.ObserverPattern;
 using System.Collections.Generic;
+using OOPPatternsWpf.FacadePattern;
 
 namespace OOPPatternsWpf
 {

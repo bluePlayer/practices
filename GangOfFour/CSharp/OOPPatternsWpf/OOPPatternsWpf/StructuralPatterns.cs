@@ -9,11 +9,18 @@ using OOPPatternsWpf.AdapterTrial3;
 using OOPPatternsWpf.ClassAdapterPattern;
 using OOPPatternsWpf.ObjectAdapterPattern;
 using OOPPatternsWpf.FactoryMethod;
+using OOPPatternsWpf.FacadePattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void facadePatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CarFacade cf = new CarFacade();
+            cf.CreateCompleteCar();
+        }
+
         private void proxyPatternBtn_Click(object sender, RoutedEventArgs e)
         {
             ICar car = new ProxyCar(new Driver(15));

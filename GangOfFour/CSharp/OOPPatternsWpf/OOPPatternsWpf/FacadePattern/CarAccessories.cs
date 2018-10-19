@@ -8,9 +8,9 @@ namespace OOPPatternsWpf.FacadePattern
 {
     class CarAccessories
     {
-        public void SetAccessories()
+        public void SetAccessories(string accessories)
         {
-            Console.WriteLine(" CarAccessories - SetAccessories");
+            Console.WriteLine(" CarAccessories - " + accessories);
         }
     }
 }

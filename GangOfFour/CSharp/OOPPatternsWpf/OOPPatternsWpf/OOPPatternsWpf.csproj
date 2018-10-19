@@ -147,6 +147,11 @@
     <Compile Include="ProxyPattern\ProxyClass.cs" />
     <Compile Include="ProxyPattern\RealSubjectClass.cs" />
     <Compile Include="ProxyPattern\ISubject.cs" />
+    <Compile Include="StrategyPattern\Customer.cs" />
+    <Compile Include="StrategyPattern\HappyHourStrategy.cs" />
+    <Compile Include="StrategyPattern\IBillingStrategy.cs" />
+    <Compile Include="StrategyPattern\NormalStrategy.cs" />
+    <Compile Include="StrategyPattern\StrategyPatternWiki.cs" />
     <Compile Include="StructuralPatterns.cs" />
     <Compile Include="TemplateMethodPattern\Categories.cs" />
     <Compile Include="TemplateMethodPattern\ConcreteClassA .cs" />

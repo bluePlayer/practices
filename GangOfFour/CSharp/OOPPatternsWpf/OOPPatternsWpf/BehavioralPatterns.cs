@@ -5,11 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using OOPPatternsWpf.ObserverPattern;
+using OOPPatternsWpf.TemplateMethodPattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        /// <summary>
+        /// TODO Check if possible to add Oledb file to use with this code.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void templateMethodPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TemplateMethodBaseClass aA = new ConcreteClassA();
+            aA.TemplateMethod();
+
+            TemplateMethodBaseClass aB = new ConcreteClassB();
+            aB.TemplateMethod();
+            // Wait for user
+
+            Console.Read();
+
+            DataAccessObject daoCategories = new Categories();
+            daoCategories.Run();
+
+            DataAccessObject daoProducts = new Products();
+            daoProducts.Run();
+
+            // Wait for user
+            Console.Read();
+        }
+
         private void observerPatternBtn_Click(object sender, RoutedEventArgs e)
         {
             statusBarTB.Text = mvvm.os.getObserversState();
