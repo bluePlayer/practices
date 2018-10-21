@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using OOPPatternsWpf.ObserverPattern;
 using OOPPatternsWpf.TemplateMethodPattern;
+using OOPPatternsWpf.StrategyPattern;
 
 namespace OOPPatternsWpf
 {
@@ -78,6 +79,34 @@ namespace OOPPatternsWpf
         private void chooseStateCB_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             mvvm.os.subjectState = ((ObserverState)chooseStateCB.SelectedValue);
+        }
+
+        private void strategyPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Prepare strategies
+            IBillingStrategy normalStrategy = new NormalStrategy();
+            IBillingStrategy happyHourStrategy = new HappyHourStrategy();
+            Customer firstCustomer = new Customer(normalStrategy);
+
+            // Normal billing
+            firstCustomer.Add(1.0, 1);
+
+            // Start Happy Hour
+            firstCustomer.Strategy = happyHourStrategy;
+            firstCustomer.Add(1.0, 2);
+
+            // New Customer
+            Customer secondCustomer = new Customer(happyHourStrategy);
+            secondCustomer.Add(0.8, 1);
+
+            // The Customer pays
+            firstCustomer.PrintBill();
+
+            // End Happy Hour
+            secondCustomer.Strategy = normalStrategy;
+            secondCustomer.Add(1.3, 2);
+            secondCustomer.Add(2.5, 1);
+            secondCustomer.PrintBill();
         }
     }
 }

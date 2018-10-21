@@ -94,6 +94,11 @@
     <Compile Include="ClassAdapterPattern\ClassAdaptorClient.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee1.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee2.cs" />
+    <Compile Include="CompositePattern\CompositeGraphic.cs" />
+    <Compile Include="CompositePattern\Ellipse.cs" />
+    <Compile Include="CompositePattern\IGraphic.cs" />
+    <Compile Include="CompositePattern\Rectangle.cs" />
+    <Compile Include="CompositePattern\Square.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CreationalPatterns.cs" />
     <Compile Include="FacadePattern\CarAccessories.cs" />

@@ -10,6 +10,7 @@ using OOPPatternsWpf.ClassAdapterPattern;
 using OOPPatternsWpf.ObjectAdapterPattern;
 using OOPPatternsWpf.FactoryMethod;
 using OOPPatternsWpf.FacadePattern;
+using OOPPatternsWpf.CompositePattern;
 
 namespace OOPPatternsWpf
 {
@@ -106,6 +107,40 @@ namespace OOPPatternsWpf
 
             db = new DeviceBridge(radioSwitch);
             statusBarTB.Text += db.On();
+        }
+
+        private void compositePatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // initialize variables
+            var compositeGraphic = new CompositeGraphic();
+            var compositeGraphic1 = new CompositeGraphic();
+            var compositeGraphic2 = new CompositeGraphic();
+
+            //Add 1 Graphic to compositeGraphic1
+            compositeGraphic1.Add(new Ellipse());
+
+            compositeGraphic1.AddRange(new Ellipse(), 
+                new Rectangle(9, 8, 10, 10), 
+                new Square(-19, -23, 40));
+
+            //Add 2 Graphic to compositeGraphic2
+            compositeGraphic2.AddRange(new Ellipse(),
+                new Ellipse());
+
+            /*Add 1 Graphic, compositeGraphic1, and 
+              compositeGraphic2 to compositeGraphic */
+            compositeGraphic.AddRange(new Ellipse(),
+                compositeGraphic1,
+                compositeGraphic2);
+
+            compositeGraphic.AddRange(new Ellipse(),
+                new Rectangle(10, 10, 20, 50),
+                new Rectangle(5, 5, 30, 45));
+
+            /*Prints the complete graphic 
+            (four times the string "Ellipse").*/
+            compositeGraphic.Print();
+            Console.ReadLine();
         }
     }
 }
