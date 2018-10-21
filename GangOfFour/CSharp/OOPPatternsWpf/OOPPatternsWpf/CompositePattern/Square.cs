@@ -10,8 +10,12 @@ namespace OOPPatternsWpf.CompositePattern
     {
         public Square(float xPos, float yPos, float wh):base(xPos, yPos, wh, wh)
         { 
+            
         }
 
+        /// <summary>
+        /// // TODO why it calls the Rectanlge Print() function instead of Square????
+        /// </summary>
         public new void Print()
         {
             Console.WriteLine("Square at postion, x: " + x + ", y: " + y + ", size: " + width);
