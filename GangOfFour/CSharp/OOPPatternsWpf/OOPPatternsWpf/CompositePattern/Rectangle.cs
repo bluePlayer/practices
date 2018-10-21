@@ -8,7 +8,7 @@ namespace OOPPatternsWpf.CompositePattern
 {
     class Rectangle: CompositeGraphic, IGraphic
     {
-        public Rectangle(float xPos, float yPos, float w, float h):base()
+        public Rectangle(float xPos, float yPos, float w, float h):base("Rectangle")
         {
             x = xPos;
             y = yPos;
@@ -18,7 +18,7 @@ namespace OOPPatternsWpf.CompositePattern
 
         public new void Print()
         {
-            Console.WriteLine("Rectangle at position, x: " + x + ", y: "+ y + ", size, width: " + width + ", height: " + height);
+            Console.WriteLine(name + " at position, x: " + x + ", y: "+ y + ", size, width: " + width + ", height: " + height);
         }
     }
 }

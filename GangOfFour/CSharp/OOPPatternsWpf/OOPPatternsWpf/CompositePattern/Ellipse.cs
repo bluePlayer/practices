@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace OOPPatternsWpf.CompositePattern
 {
-    class Ellipse:IGraphic
+    class Ellipse:CompositeGraphic, IGraphic
     {
-        public void Print()
+        public Ellipse(float xPos, float yPos, float w, float h):base("Ellipse")
         {
-            Console.WriteLine("Ellipse");
+            x = xPos;
+            y = yPos;
+            width = w;
+            height = h;
+        }
+
+        public new void Print()
+        {
+            Console.WriteLine(name + " at position, x: " + x + ", y: " + y + ", size, width: " + width + ", height: " + height);
         }
     }
 }

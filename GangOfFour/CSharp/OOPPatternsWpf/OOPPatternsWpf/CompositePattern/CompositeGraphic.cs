@@ -8,6 +8,7 @@ namespace OOPPatternsWpf.CompositePattern
 {
     class CompositeGraphic:IGraphic
     {
+        protected string name;
         public float x { get; set; }
         public float y { get; set; }
 
@@ -18,8 +19,9 @@ namespace OOPPatternsWpf.CompositePattern
         private readonly List<IGraphic> graphics;
 
         //Constructor 
-        public CompositeGraphic()
+        public CompositeGraphic(string name)
         {
+            this.name = name;
             //initialize generic Collection(Composition)
             graphics = new List<IGraphic>();
         }

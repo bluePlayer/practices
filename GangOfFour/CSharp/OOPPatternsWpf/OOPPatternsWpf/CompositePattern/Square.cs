@@ -9,8 +9,8 @@ namespace OOPPatternsWpf.CompositePattern
     class Square:Rectangle
     {
         public Square(float xPos, float yPos, float wh):base(xPos, yPos, wh, wh)
-        { 
-            
+        {
+            name = "Square";
         }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace OOPPatternsWpf.CompositePattern
         /// </summary>
         public new void Print()
         {
-            Console.WriteLine("Square at postion, x: " + x + ", y: " + y + ", size: " + width);
+            Console.WriteLine(name + " at postion, x: " + x + ", y: " + y + ", size: " + width);
         }
     }
 }
