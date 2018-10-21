@@ -63,6 +63,7 @@
         
         <Button Grid.Column="0" Grid.Row="5" Content="Test Strategy Pattern" Name="strategyPatternBtn" Click="strategyPatternBtn_Click"/>
         <Button Grid.Column="1" Grid.Row="5" Content="Test Composite Pattern" Name="compositePatternBtn" Click="compositePatternBtn_Click"/>
+        <Button Grid.Column="2" Grid.Row="5" Content="Test Iterator Pattern" Name="iteratorPatternBtn" Click="iteratorPatternBtn_Click"/>
         
         <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Name="statusBarSB">
             <StatusBarItem>

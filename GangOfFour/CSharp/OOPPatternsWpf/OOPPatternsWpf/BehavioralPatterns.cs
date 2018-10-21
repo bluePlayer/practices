@@ -7,6 +7,7 @@ using System.Windows;
 using OOPPatternsWpf.ObserverPattern;
 using OOPPatternsWpf.TemplateMethodPattern;
 using OOPPatternsWpf.StrategyPattern;
+using OOPPatternsWpf.IteratorPattern;
 
 namespace OOPPatternsWpf
 {
@@ -107,6 +108,60 @@ namespace OOPPatternsWpf
             secondCustomer.Add(1.3, 2);
             secondCustomer.Add(2.5, 1);
             secondCustomer.PrintBill();
+        }
+
+        private void iteratorPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            IEnumerable<int> primeNumbers = new List<int>();
+
+            // print elements by traversing an IEnumerable type of class. List in this case
+            primeNumbers = primeNumbers.Concat(new[] { 1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 });
+            
+            foreach (int number in primeNumbers)
+            {
+                Console.WriteLine("IEnumerable, prime number: " + number);
+            }
+
+            // print elements by traversing an IEnumerable type of class. Array in this case
+            IEnumerable<int> evenNumbers = new int[] { 0, 2, 4, 6, 8, 10, 12 };
+
+            foreach (int number in evenNumbers)
+            {
+                Console.WriteLine("IEnumerable, even number: " + number);
+            }
+
+            // print elements with IEnumerator.GetEnumerator() function in an array
+            IEnumerator<int> evenNumbersEnumerator = evenNumbers.GetEnumerator();
+
+            while (evenNumbersEnumerator.MoveNext())
+            {
+                Console.WriteLine("IEnumerator, even number: " + evenNumbersEnumerator.Current);
+            }
+
+            // print elements with IEnumerator.GetEnumerator() function
+            IEnumerator<int> primeNumbersEnumerator = primeNumbers.GetEnumerator();
+
+            while(primeNumbersEnumerator.MoveNext())
+            {
+                Console.WriteLine("IEnumerator, prime number: " + primeNumbersEnumerator.Current);
+            }
+
+            // implementing IEnumerable and IEnumerator interfaces on a plain class
+            Person[] peopleArray = new Person[3]
+            {
+                new Person("John", "Smith"),
+                new Person("Jim", "Johnson"),
+                new Person("Sue", "Rabon"),
+            };
+
+            People peopleList = new People(peopleArray);
+
+            foreach (Person p in peopleList)
+            {
+                Console.WriteLine(p.firstName + " " + p.lastName);
+            }
+
+            // TODO add examples for IList, BindingList, ObservableCollection
         }
     }
 }

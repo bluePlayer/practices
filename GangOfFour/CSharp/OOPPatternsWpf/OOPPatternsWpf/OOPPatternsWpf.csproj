@@ -123,6 +123,9 @@
     <Compile Include="FactoryMethod\IStringFormat.cs" />
     <Compile Include="FactoryMethod\PersonType.cs" />
     <Compile Include="FactoryMethod\Villager.cs" />
+    <Compile Include="IteratorPattern\People.cs" />
+    <Compile Include="IteratorPattern\PeopleEnum.cs" />
+    <Compile Include="IteratorPattern\Person.cs" />
     <Compile Include="Mediator\Component.cs" />
     <Compile Include="Mediator\Component1.cs" />
     <Compile Include="Mediator\Component2.cs" />
