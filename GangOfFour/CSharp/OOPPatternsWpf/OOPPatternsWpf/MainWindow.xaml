@@ -66,6 +66,7 @@
         <Button Grid.Column="1" Grid.Row="5" Content="Test Composite Pattern" Name="compositePatternBtn" Click="compositePatternBtn_Click"/>
         <Button Grid.Column="2" Grid.Row="5" Content="Test Iterator Pattern" Name="iteratorPatternBtn" Click="iteratorPatternBtn_Click"/>
         <Button Grid.Column="0" Grid.Row="6" Content="Test Visitor Pattern" Name="visitorPatternBtn" Click="visitorPatternBtn_Click"/>
+        <Button Grid.Column="1" Grid.Row="6" Content="Test Interpreter Pattern" Name="interpreterPatternBtn" Click="interpreterPatternBtn_Click"/>
         
         <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Name="statusBarSB">
             <StatusBarItem>

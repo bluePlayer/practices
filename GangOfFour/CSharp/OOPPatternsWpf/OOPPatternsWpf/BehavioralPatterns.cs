@@ -9,11 +9,43 @@ using OOPPatternsWpf.TemplateMethodPattern;
 using OOPPatternsWpf.StrategyPattern;
 using OOPPatternsWpf.IteratorPattern;
 using OOPPatternsWpf.VisitorPattern;
+using OOPPatternsWpf.InterpreterPattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void interpreterPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new Context();
+
+            // Usually a tree
+            var list = new List<AbstractExpression>();
+
+            // Populate 'abstract syntax tree'
+            list.Add(new TerminalExpression());
+            list.Add(new NonterminalExpression());
+            list.Add(new TerminalExpression());
+            list.Add(new TerminalExpression());
+
+            // Interpret
+            foreach (AbstractExpression exp in list)
+            {
+                exp.Interpret(context);
+            }
+
+            var digits = new List<AbstractExpression>();
+            digits.Add(new NumberOne());
+            digits.Add(new NumberTwo());
+            digits.Add(new Digits());
+            digits.Add(new NumberZero());
+
+            foreach (AbstractExpression exp in digits)
+            {
+                exp.Interpret(context);
+            }
+        }
+
         private void visitorPatternBtn_Click(object sender, RoutedEventArgs e)
         {
             // emulate 1+2+3
@@ -40,8 +72,8 @@ namespace OOPPatternsWpf
             Console.WriteLine(sb);
 
             // dynamic visitior
-            // TODO why it breaks on this code???
-            // emulate 1+2+3
+            //TODO why it breaks on this code ???
+            //emulate 1 + 2 + 3
             //var expr2 = new DynamicAddition(
             //  new DynamicAddition(
             //    new DynamicLiteral(1),
@@ -49,9 +81,9 @@ namespace OOPPatternsWpf
             //  ),
             //  new DynamicLiteral(3)
             //);
-            
+
             //var sb1 = new StringBuilder();
-            //DynamicExpressionPrinter.Print((dynamic)e, sb);
+            //DynamicExpressionPrinter.Print((dynamic)expr2, sb);
             //Console.WriteLine(sb);
         }
 

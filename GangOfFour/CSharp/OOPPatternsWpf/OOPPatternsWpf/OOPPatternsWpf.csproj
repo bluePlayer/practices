@@ -97,7 +97,6 @@
     <Compile Include="CompositePattern\Circle.cs" />
     <Compile Include="CompositePattern\CompositeGraphic.cs" />
     <Compile Include="CompositePattern\Ellipse.cs" />
-    <Compile Include="CompositePattern\GraphicTypes.cs" />
     <Compile Include="CompositePattern\IGraphic.cs" />
     <Compile Include="CompositePattern\Rectangle.cs" />
     <Compile Include="CompositePattern\Square.cs" />
@@ -123,6 +122,15 @@
     <Compile Include="FactoryMethod\IStringFormat.cs" />
     <Compile Include="FactoryMethod\PersonType.cs" />
     <Compile Include="FactoryMethod\Villager.cs" />
+    <Compile Include="InterpreterPattern\AbstractExpression.cs" />
+    <Compile Include="InterpreterPattern\Context.cs" />
+    <Compile Include="InterpreterPattern\Digits.cs" />
+    <Compile Include="InterpreterPattern\Integer.cs" />
+    <Compile Include="InterpreterPattern\NonterminalExpression.cs" />
+    <Compile Include="InterpreterPattern\NumberOne.cs" />
+    <Compile Include="InterpreterPattern\NumberTwo.cs" />
+    <Compile Include="InterpreterPattern\NumberZero.cs" />
+    <Compile Include="InterpreterPattern\TerminalExpression.cs" />
     <Compile Include="IteratorPattern\People.cs" />
     <Compile Include="IteratorPattern\PeopleEnum.cs" />
     <Compile Include="IteratorPattern\Person.cs" />
