@@ -169,6 +169,16 @@
     <Compile Include="TemplateMethodPattern\DataAccessObject.cs" />
     <Compile Include="TemplateMethodPattern\Products.cs" />
     <Compile Include="TemplateMethodPattern\TemplateMethodBaseClass.cs" />
+    <Compile Include="VisitorPattern\Addition.cs" />
+    <Compile Include="VisitorPattern\DynamicAddition.cs" />
+    <Compile Include="VisitorPattern\DynamicExpression.cs" />
+    <Compile Include="VisitorPattern\DynamicExpressionPrinter.cs" />
+    <Compile Include="VisitorPattern\DynamicLiteral.cs" />
+    <Compile Include="VisitorPattern\ExpressionPrinter.cs" />
+    <Compile Include="VisitorPattern\IExpression.cs" />
+    <Compile Include="VisitorPattern\IExpressionVisitor.cs" />
+    <Compile Include="VisitorPattern\Literal.cs" />
+    <Compile Include="VisitorPattern\Subtraction.cs" />
     <Page Include="ChatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

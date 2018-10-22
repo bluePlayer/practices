@@ -8,11 +8,53 @@ using OOPPatternsWpf.ObserverPattern;
 using OOPPatternsWpf.TemplateMethodPattern;
 using OOPPatternsWpf.StrategyPattern;
 using OOPPatternsWpf.IteratorPattern;
+using OOPPatternsWpf.VisitorPattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void visitorPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // emulate 1+2+3
+            var expr = new Addition(
+              new Addition(
+                new Literal(1),
+                new Literal(2)
+              ),
+              new Literal(3)
+            );
+
+            var expr1 = new Subtraction(
+              new Subtraction(
+                new Literal(1),
+                new Literal(2)
+              ),
+              new Literal(3)
+            );
+
+            var sb = new StringBuilder();
+            var expressionPrinter = new ExpressionPrinter(sb);
+            expr.Accept(expressionPrinter);
+            expr1.Accept(expressionPrinter);
+            Console.WriteLine(sb);
+
+            // dynamic visitior
+            // TODO why it breaks on this code???
+            // emulate 1+2+3
+            //var expr2 = new DynamicAddition(
+            //  new DynamicAddition(
+            //    new DynamicLiteral(1),
+            //    new DynamicLiteral(2)
+            //  ),
+            //  new DynamicLiteral(3)
+            //);
+            
+            //var sb1 = new StringBuilder();
+            //DynamicExpressionPrinter.Print((dynamic)e, sb);
+            //Console.WriteLine(sb);
+        }
+
         /// <summary>
         /// TODO Check if possible to add Oledb file to use with this code.
         /// </summary>
