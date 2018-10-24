@@ -10,11 +10,25 @@ using OOPPatternsWpf.StrategyPattern;
 using OOPPatternsWpf.IteratorPattern;
 using OOPPatternsWpf.VisitorPattern;
 using OOPPatternsWpf.InterpreterPattern;
+using OOPPatternsWpf.StatePattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void statePatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StateContext sc = new StateContext();
+
+            sc.writeName("Monday");
+            sc.writeName("Tuesday");
+            sc.writeName("Wednesday");
+            sc.writeName("Thursday");
+            sc.writeName("Friday");
+            sc.writeName("Saturday");
+            sc.writeName("Sunday");
+        }
+
         private void interpreterPatternBtn_Click(object sender, RoutedEventArgs e)
         {
             var context = new Context();

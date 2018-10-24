@@ -165,6 +165,10 @@
     <Compile Include="ProxyPattern\ProxyClass.cs" />
     <Compile Include="ProxyPattern\RealSubjectClass.cs" />
     <Compile Include="ProxyPattern\ISubject.cs" />
+    <Compile Include="StatePattern\IStatelike.cs" />
+    <Compile Include="StatePattern\StateContext.cs" />
+    <Compile Include="StatePattern\StateLowerCase.cs" />
+    <Compile Include="StatePattern\StateMultipleUpperCase.cs" />
     <Compile Include="StrategyPattern\Customer.cs" />
     <Compile Include="StrategyPattern\HappyHourStrategy.cs" />
     <Compile Include="StrategyPattern\IBillingStrategy.cs" />

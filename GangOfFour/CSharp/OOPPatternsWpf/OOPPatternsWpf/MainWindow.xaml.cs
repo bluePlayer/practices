@@ -59,7 +59,5 @@ namespace OOPPatternsWpf
             cw.Close();
             App.Current.Shutdown();
         }
-
-        
     }
 }
