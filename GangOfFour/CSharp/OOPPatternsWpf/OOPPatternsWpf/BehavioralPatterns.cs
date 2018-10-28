@@ -38,6 +38,46 @@ namespace OOPPatternsWpf
 
             // Handled by ConsoleLogger and EmailLogger
             logger.Message("Order Dispatched.", LogLevel.FunctionalMessage);
+
+            // --------------- chain of responsibility example 2 -----------------
+            string line;
+            double d = 0;
+            ManagerPPower manager = new ManagerPPower();
+            DirectorPPower director = new DirectorPPower();
+            VicePresidentPPower vp = new VicePresidentPPower();
+            PresidentPPower president = new PresidentPPower();
+            manager.setSuccessor(director);
+            director.setSuccessor(vp);
+            vp.setSuccessor(president);
+
+            // Press Ctrl+C to end.
+            try
+            {
+                while (true)
+                {
+                    Console.WriteLine("Enter the amount to check who should approve your expenditure.");
+                    Console.WriteLine(">");
+                    
+                    line = Console.ReadLine();
+                    line = Console.ReadLine();
+
+                    if (line == "exit") // Check string
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        d = Convert.ToDouble(line);
+                        //Double.parseDouble(new BufferedReader(new InputStreamReader(System.in)).readLine());
+                        manager.processRequest(new PurchaseRequest(d, "General"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                //System.exit(1);
+            }
         }
 
         private void statePatternBtn_Click(object sender, RoutedEventArgs e)
