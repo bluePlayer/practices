@@ -46,38 +46,52 @@ namespace OOPPatternsWpf
             DirectorPPower director = new DirectorPPower();
             VicePresidentPPower vp = new VicePresidentPPower();
             PresidentPPower president = new PresidentPPower();
+
             manager.setSuccessor(director);
             director.setSuccessor(vp);
             vp.setSuccessor(president);
 
-            // Press Ctrl+C to end.
-            try
-            {
-                while (true)
-                {
-                    Console.WriteLine("Enter the amount to check who should approve your expenditure.");
-                    Console.WriteLine(">");
-                    
-                    line = Console.ReadLine();
-                    line = Console.ReadLine();
+            manager.processRequest(new PurchaseRequest(10, "manager"));
+            director.processRequest(new PurchaseRequest(20, "director"));
+            vp.processRequest(new PurchaseRequest(30, "videpresident"));
 
-                    if (line == "exit") // Check string
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        d = Convert.ToDouble(line);
-                        //Double.parseDouble(new BufferedReader(new InputStreamReader(System.in)).readLine());
-                        manager.processRequest(new PurchaseRequest(d, "General"));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                //System.exit(1);
-            }
+            manager.processRequest(new PurchaseRequest(50, "manager"));
+            director.processRequest(new PurchaseRequest(60, "director"));
+            vp.processRequest(new PurchaseRequest(70, "videpresident"));
+
+            //Console.WriteLine();
+
+            // Press Ctrl+C to end.
+            //try
+            //{
+            //    while (true)
+            //    {
+            //        Console.WriteLine("Enter the amount to check who should approve your expenditure.");
+            //        Console.WriteLine(">");
+
+            //        line = Console.ReadLine();
+            //        Console.WriteLine(line.ToString());
+
+            //        line = Console.ReadLine();
+
+            //        if (line == "exit") // Check string
+            //        {
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            d = Convert.ToDouble(line);
+            //            //Double.parseDouble(new BufferedReader(new InputStreamReader(System.in)).readLine());
+            //            manager.processRequest(new PurchaseRequest(d, "General"));
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.Message);
+
+            //    //System.exit(1);
+            //}
         }
 
         private void statePatternBtn_Click(object sender, RoutedEventArgs e)

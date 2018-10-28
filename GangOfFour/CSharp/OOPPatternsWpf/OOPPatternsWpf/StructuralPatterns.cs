@@ -11,11 +11,37 @@ using OOPPatternsWpf.ObjectAdapterPattern;
 using OOPPatternsWpf.FactoryMethod;
 using OOPPatternsWpf.FacadePattern;
 using OOPPatternsWpf.CompositePattern;
+using OOPPatternsWpf.DecoratorPattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void decoratorPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CircleDecorator c = new CircleDecorator();
+            Console.WriteLine(c.StrFunc());
+
+            ColoredShape cc = new ColoredShape("red", c);
+            Console.WriteLine(cc.StrFunc());
+
+            // Create a decorated Window with horizontal and vertical scrollbars
+            DPWindow decoratedWindow = new HorizontalScrollBarDecorator(
+                    new VerticalScrollBarDecorator(new SimpleWindow()));
+
+            DPWindow decoratedWindow1 = new SimpleWindow();
+            Console.WriteLine(decoratedWindow1.GetDescription());
+
+            decoratedWindow1 = new VerticalScrollBarDecorator(decoratedWindow1);
+            Console.WriteLine(decoratedWindow1.GetDescription());
+
+            decoratedWindow1 = new HorizontalScrollBarDecorator(decoratedWindow1);
+            Console.WriteLine(decoratedWindow1.GetDescription());
+
+            // Print the Window's description
+            Console.WriteLine(decoratedWindow.GetDescription());
+        }
+
         private void facadePatternBtn_Click(object sender, RoutedEventArgs e)
         {
             CarFacade cf = new CarFacade();

@@ -113,6 +113,14 @@
     <Compile Include="CompositePattern\Square.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CreationalPatterns.cs" />
+    <Compile Include="DecoratorPattern\CircleDecorator.cs" />
+    <Compile Include="DecoratorPattern\ColoredShape.cs" />
+    <Compile Include="DecoratorPattern\HorizontalScrollBarDecorator.cs" />
+    <Compile Include="DecoratorPattern\Shape.cs" />
+    <Compile Include="DecoratorPattern\SimpleWindow.cs" />
+    <Compile Include="DecoratorPattern\VerticalScrollBarDecorator.cs" />
+    <Compile Include="DecoratorPattern\DPWindow.cs" />
+    <Compile Include="DecoratorPattern\WindowDecorator.cs" />
     <Compile Include="FacadePattern\CarAccessories.cs" />
     <Compile Include="FacadePattern\CarBody.cs" />
     <Compile Include="FacadePattern\CarEngine.cs" />
