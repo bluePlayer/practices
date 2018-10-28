@@ -13,7 +13,7 @@ namespace OOPPatternsWpf.DecoratorPattern
             this.windowToBeDecorated = windowToBeDecorated;
         }
 
-        public new void draw()
+        public override void draw()
         {
             base.draw();
             drawHorizontalScrollBar();
@@ -24,7 +24,7 @@ namespace OOPPatternsWpf.DecoratorPattern
             // Draw the horizontal scrollbar
         }
 
-        public new string GetDescription()
+        public override string GetDescription()
         {
             return base.GetDescription() + ", including horizontal scrollbars";
         }

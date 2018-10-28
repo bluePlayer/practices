@@ -15,12 +15,12 @@ namespace OOPPatternsWpf.DecoratorPattern
             this.windowToBeDecorated = windowToBeDecorated;
         }
 
-        public void draw()
+        public virtual void draw()
         {
             windowToBeDecorated.draw(); //Delegation
         }
 
-        public string GetDescription()
+        public virtual string GetDescription()
         {
             return windowToBeDecorated.GetDescription(); //Delegation
         }

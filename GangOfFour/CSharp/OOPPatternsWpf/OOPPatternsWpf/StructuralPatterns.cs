@@ -29,15 +29,6 @@ namespace OOPPatternsWpf
             DPWindow decoratedWindow = new HorizontalScrollBarDecorator(
                     new VerticalScrollBarDecorator(new SimpleWindow()));
 
-            DPWindow decoratedWindow1 = new SimpleWindow();
-            Console.WriteLine(decoratedWindow1.GetDescription());
-
-            decoratedWindow1 = new VerticalScrollBarDecorator(decoratedWindow1);
-            Console.WriteLine(decoratedWindow1.GetDescription());
-
-            decoratedWindow1 = new HorizontalScrollBarDecorator(decoratedWindow1);
-            Console.WriteLine(decoratedWindow1.GetDescription());
-
             // Print the Window's description
             Console.WriteLine(decoratedWindow.GetDescription());
         }
