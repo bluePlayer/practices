@@ -87,6 +87,11 @@
     <Compile Include="BridgePattern\LightSwitch.cs" />
     <Compile Include="BridgePattern\RadioSwitch.cs" />
     <Compile Include="BridgePattern\TVSwitch.cs" />
+    <Compile Include="ChainOfResponsibilityPattern\ConsoleLogger.cs" />
+    <Compile Include="ChainOfResponsibilityPattern\EmailLogger.cs" />
+    <Compile Include="ChainOfResponsibilityPattern\FileLogger.cs" />
+    <Compile Include="ChainOfResponsibilityPattern\Logger.cs" />
+    <Compile Include="ChainOfResponsibilityPattern\LogLevel.cs" />
     <Compile Include="ChatWindow.xaml.cs">
       <DependentUpon>ChatWindow.xaml</DependentUpon>
     </Compile>
