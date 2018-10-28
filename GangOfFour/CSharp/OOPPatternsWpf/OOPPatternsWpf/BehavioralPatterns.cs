@@ -40,8 +40,8 @@ namespace OOPPatternsWpf
             logger.Message("Order Dispatched.", LogLevel.FunctionalMessage);
 
             // --------------- chain of responsibility example 2 -----------------
-            string line;
-            double d = 0;
+            //string line;
+            //double d = 0;
             ManagerPPower manager = new ManagerPPower();
             DirectorPPower director = new DirectorPPower();
             VicePresidentPPower vp = new VicePresidentPPower();
@@ -51,13 +51,10 @@ namespace OOPPatternsWpf
             director.setSuccessor(vp);
             vp.setSuccessor(president);
 
-            manager.processRequest(new PurchaseRequest(10, "manager"));
-            director.processRequest(new PurchaseRequest(20, "director"));
-            vp.processRequest(new PurchaseRequest(30, "videpresident"));
-
-            manager.processRequest(new PurchaseRequest(50, "manager"));
-            director.processRequest(new PurchaseRequest(60, "director"));
-            vp.processRequest(new PurchaseRequest(70, "videpresident"));
+            manager.processRequest(new PurchaseRequest(10000, "manager"));
+            director.processRequest(new PurchaseRequest(20000, "director"));
+            vp.processRequest(new PurchaseRequest(30000, "videpresident"));
+            president.processRequest(new PurchaseRequest(60000, "president"));
 
             //Console.WriteLine();
 

@@ -31,6 +31,15 @@ namespace OOPPatternsWpf
 
             // Print the Window's description
             Console.WriteLine(decoratedWindow.GetDescription());
+
+            Coffee kafica = new SimpleCoffee();
+            Utils.printInfo(kafica);
+
+            kafica = new WithMilk(kafica);
+            Utils.printInfo(kafica);
+
+            kafica = new WithSprinkles(kafica);
+            Utils.printInfo(kafica);
         }
 
         private void facadePatternBtn_Click(object sender, RoutedEventArgs e)

@@ -114,13 +114,18 @@
     <Compile Include="Constants.cs" />
     <Compile Include="CreationalPatterns.cs" />
     <Compile Include="DecoratorPattern\CircleDecorator.cs" />
+    <Compile Include="DecoratorPattern\Coffee.cs" />
+    <Compile Include="DecoratorPattern\CoffeeDecorator.cs" />
     <Compile Include="DecoratorPattern\ColoredShape.cs" />
     <Compile Include="DecoratorPattern\HorizontalScrollBarDecorator.cs" />
     <Compile Include="DecoratorPattern\Shape.cs" />
+    <Compile Include="DecoratorPattern\SimpleCoffee.cs" />
     <Compile Include="DecoratorPattern\SimpleWindow.cs" />
     <Compile Include="DecoratorPattern\VerticalScrollBarDecorator.cs" />
     <Compile Include="DecoratorPattern\DPWindow.cs" />
     <Compile Include="DecoratorPattern\WindowDecorator.cs" />
+    <Compile Include="DecoratorPattern\WithMilk.cs" />
+    <Compile Include="DecoratorPattern\WithSprinkles.cs" />
     <Compile Include="FacadePattern\CarAccessories.cs" />
     <Compile Include="FacadePattern\CarBody.cs" />
     <Compile Include="FacadePattern\CarEngine.cs" />
@@ -200,6 +205,7 @@
     <Compile Include="TemplateMethodPattern\DataAccessObject.cs" />
     <Compile Include="TemplateMethodPattern\Products.cs" />
     <Compile Include="TemplateMethodPattern\TemplateMethodBaseClass.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="VisitorPattern\Addition.cs" />
     <Compile Include="VisitorPattern\DynamicAddition.cs" />
     <Compile Include="VisitorPattern\DynamicExpression.cs" />
