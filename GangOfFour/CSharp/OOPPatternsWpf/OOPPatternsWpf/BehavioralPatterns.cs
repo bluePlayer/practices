@@ -18,15 +18,15 @@ namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+
         private void commandPatternBtn_Click(object sender, RoutedEventArgs e)
         {
-            string[] arguments = new string[2];
-            arguments[0] = "ON";
-            arguments[1] = "OFF";
+            string[] arguments = new string[1];
+            arguments[0] = dataInputTB.Text.Trim();
 
             string argument = arguments.Length > 0 ? arguments[0].ToUpper() : null;
 
-            ISwitchable lamp = new Light();
+            ISwitchable lamp = new Light(statusBarTB);
 
             // Pass reference to the lamp instance to each command
             ICommand switchClose = new CloseSwitchCommand(lamp);
@@ -47,7 +47,7 @@ namespace OOPPatternsWpf
             }
             else
             {
-                Console.WriteLine("Argument \"ON\" or \"OFF\" is required.");
+                statusBarTB.Text = "Argument \"ON\" or \"OFF\" is required.";
             }
         }
 

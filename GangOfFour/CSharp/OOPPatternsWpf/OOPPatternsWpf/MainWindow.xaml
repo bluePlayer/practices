@@ -28,6 +28,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
@@ -78,7 +79,10 @@
 
         <Button Grid.Column="0" Grid.Row="8" Content="Test Command Pattern" Name="commandPatternBtn" Click="commandPatternBtn_Click"/>
 
-        <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="9" Name="statusBarSB">
+        <TextBlock Grid.Column="0" Grid.Row="9" Text="Command Pattern: " TextAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="9" Name="dataInputTB" />
+
+        <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="10" Name="statusBarSB">
             <StatusBarItem>
                 <TextBlock Name="statusBarTB"/>
             </StatusBarItem>
