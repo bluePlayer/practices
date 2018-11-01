@@ -7,11 +7,33 @@ using System.Windows;
 using OOPPatternsWpf.AbstractFactory;
 using OOPPatternsWpf.FactoryMethod;
 using OOPPatternsWpf.PrototypePattern;
+using OOPPatternsWpf.BuilderPattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void builderPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var builder = new LamborgihiniBuilder();
+            var director = new SportsCarBuildDirector(builder);
+
+            director.Construct();
+            BP_Car myRaceCar = builder.GetResult();
+
+            builder.NumDoors = 4;
+            //builder = new PeugeotBuilder();
+            myRaceCar = builder.GetResult();
+
+            statusBarTB.Text = myRaceCar.GetCarInfo();
+
+            // C# StringBuilder
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Test String Builder");
+            
+        }
+
         private void abstractFactoryPatternBtn_Click(object sender, RoutedEventArgs e)
         {
             var appearance = OOPPatternsSettings.Default.Appearance;

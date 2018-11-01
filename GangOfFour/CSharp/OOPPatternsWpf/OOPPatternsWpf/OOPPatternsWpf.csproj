@@ -87,6 +87,11 @@
     <Compile Include="BridgePattern\LightSwitch.cs" />
     <Compile Include="BridgePattern\RadioSwitch.cs" />
     <Compile Include="BridgePattern\TVSwitch.cs" />
+    <Compile Include="BuilderPattern\BP_Car.cs" />
+    <Compile Include="BuilderPattern\LamborgihiniBuilder.cs" />
+    <Compile Include="BuilderPattern\ICarBuilder.cs" />
+    <Compile Include="BuilderPattern\PeugeotBuilder.cs" />
+    <Compile Include="BuilderPattern\SportsCarBuildDirector.cs" />
     <Compile Include="ChainOfResponsibilityPattern\ConsoleLogger.cs" />
     <Compile Include="ChainOfResponsibilityPattern\DirectorPPower.cs" />
     <Compile Include="ChainOfResponsibilityPattern\EmailLogger.cs" />
