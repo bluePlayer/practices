@@ -27,6 +27,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
@@ -74,8 +75,10 @@
         <Button Grid.Column="0" Grid.Row="7" Content="Test Chain of Resp. Pattern" Name="chainOfRespPatternBtn" Click="chainOfRespPatternBtn_Click"/>
         <Button Grid.Column="1" Grid.Row="7" Content="Test Decorator Pattern" Name="decoratorPatternBtn" Click="decoratorPatternBtn_Click"/>
         <Button Grid.Column="2" Grid.Row="7" Content="Test Builder Pattern" Name="builderPatternBtn" Click="builderPatternBtn_Click"/>
-        
-        <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="8" Name="statusBarSB">
+
+        <Button Grid.Column="0" Grid.Row="8" Content="Test Command Pattern" Name="commandPatternBtn" Click="commandPatternBtn_Click"/>
+
+        <StatusBar Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="9" Name="statusBarSB">
             <StatusBarItem>
                 <TextBlock Name="statusBarTB"/>
             </StatusBarItem>

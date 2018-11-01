@@ -110,6 +110,12 @@
     <Compile Include="ClassAdapterPattern\ClassAdaptorClient.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee1.cs" />
     <Compile Include="ClassAdapterPattern\IAdaptee2.cs" />
+    <Compile Include="CommandPattern\CloseSwitchCommand.cs" />
+    <Compile Include="CommandPattern\ICommand.cs" />
+    <Compile Include="CommandPattern\ISwitchable.cs" />
+    <Compile Include="CommandPattern\Light.cs" />
+    <Compile Include="CommandPattern\OpenSwitchCommand.cs" />
+    <Compile Include="CommandPattern\Switch.cs" />
     <Compile Include="CompositePattern\Circle.cs" />
     <Compile Include="CompositePattern\CompositeGraphic.cs" />
     <Compile Include="CompositePattern\Ellipse.cs" />

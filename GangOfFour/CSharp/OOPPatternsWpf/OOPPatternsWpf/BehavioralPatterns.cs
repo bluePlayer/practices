@@ -12,11 +12,45 @@ using OOPPatternsWpf.VisitorPattern;
 using OOPPatternsWpf.InterpreterPattern;
 using OOPPatternsWpf.StatePattern;
 using OOPPatternsWpf.ChainOfResponsibilityPattern;
+using OOPPatternsWpf.CommandPattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void commandPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string[] arguments = new string[2];
+            arguments[0] = "ON";
+            arguments[1] = "OFF";
+
+            string argument = arguments.Length > 0 ? arguments[0].ToUpper() : null;
+
+            ISwitchable lamp = new Light();
+
+            // Pass reference to the lamp instance to each command
+            ICommand switchClose = new CloseSwitchCommand(lamp);
+            ICommand switchOpen = new OpenSwitchCommand(lamp);
+
+            // Pass reference to instances of the Command objects to the switch
+            Switch @switch = new Switch(switchClose, switchOpen);
+
+            if (argument == "ON")
+            {
+                // Switch (the Invoker) will invoke Execute() on the command object.
+                @switch.Open();
+            }
+            else if (argument == "OFF")
+            {
+                // Switch (the Invoker) will invoke the Execute() on the command object.
+                @switch.Close();
+            }
+            else
+            {
+                Console.WriteLine("Argument \"ON\" or \"OFF\" is required.");
+            }
+        }
+
         private void chainOfRespPatternBtn_Click(object sender, RoutedEventArgs e)
         {
             // Build the chain of responsibility
