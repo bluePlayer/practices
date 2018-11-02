@@ -13,11 +13,27 @@ using OOPPatternsWpf.InterpreterPattern;
 using OOPPatternsWpf.StatePattern;
 using OOPPatternsWpf.ChainOfResponsibilityPattern;
 using OOPPatternsWpf.CommandPattern;
+using OOPPatternsWpf.MementoPattern;
 
 namespace OOPPatternsWpf
 {
     partial class MainWindow
     {
+        private void mementoPatternBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OriginalObject original = new OriginalObject("Testing", "Memento Pattern");
+
+            statusBarTB.Text = original.String1 + ", " + original.String2 + " | ";
+
+            original.String1 = "Try change";
+            original.String2 = "original object";
+
+            statusBarTB.Text += original.String1 + ", " + original.String2 + " | ";
+
+            original.Revert();
+
+            statusBarTB.Text += original.String1 + ", " + original.String2 + " ";
+        }
 
         private void commandPatternBtn_Click(object sender, RoutedEventArgs e)
         {
