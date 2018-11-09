@@ -183,6 +183,15 @@ namespace OOPPatternsWpf
             {
                 exp.Interpret(context);
             }
+            
+            String expression = "w x z - +";
+            EvaluatorJava sentence = new EvaluatorJava(expression);
+            IDictionary<String, ExpressionJava> variables = new Dictionary<String, ExpressionJava>();
+            variables.Add("w", new NumberJava(5));
+            variables.Add("x", new NumberJava(10));
+            variables.Add("z", new NumberJava(42));
+            int result = sentence.interpret(variables);
+            Console.WriteLine("Interpreter, Java example: " + result);
         }
 
         private void visitorPatternBtn_Click(object sender, RoutedEventArgs e)
