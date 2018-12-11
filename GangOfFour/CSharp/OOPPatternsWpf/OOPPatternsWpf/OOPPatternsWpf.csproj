@@ -195,6 +195,9 @@
     <Compile Include="OOPPatternsMainWindowMVVM.cs" />
     <Compile Include="PrototypePattern\ConcretePrototype1.cs" />
     <Compile Include="PrototypePattern\ConcretePrototype2.cs" />
+    <Compile Include="PrototypePattern\Exercise2\CarRecord.cs" />
+    <Compile Include="PrototypePattern\Exercise2\Record.cs" />
+    <Compile Include="PrototypePattern\Exercise2\RECORD_TYPE_en.cs" />
     <Compile Include="PrototypePattern\Prototype.cs" />
     <Compile Include="ProxyPattern\Car.cs" />
     <Compile Include="ProxyPattern\Driver.cs" />
