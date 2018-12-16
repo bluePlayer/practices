@@ -195,8 +195,12 @@
     <Compile Include="OOPPatternsMainWindowMVVM.cs" />
     <Compile Include="PrototypePattern\ConcretePrototype1.cs" />
     <Compile Include="PrototypePattern\ConcretePrototype2.cs" />
+    <Compile Include="PrototypePattern\Exercise2\BikeRecord.cs" />
     <Compile Include="PrototypePattern\Exercise2\CarRecord.cs" />
+    <Compile Include="PrototypePattern\Exercise2\PersonRecord.cs" />
+    <Compile Include="PrototypePattern\Exercise2\Program.cs" />
     <Compile Include="PrototypePattern\Exercise2\Record.cs" />
+    <Compile Include="PrototypePattern\Exercise2\RecordFactory.cs" />
     <Compile Include="PrototypePattern\Exercise2\RECORD_TYPE_en.cs" />
     <Compile Include="PrototypePattern\Prototype.cs" />
     <Compile Include="ProxyPattern\Car.cs" />
