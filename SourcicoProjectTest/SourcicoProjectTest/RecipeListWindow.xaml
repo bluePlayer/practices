@@ -1,0 +1,73 @@
+﻿<Window x:Class="SourcicoProjectTest.RecipeListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SourcicoProjectTest.code"
+        mc:Ignorable="d"
+        Title="List of Recipes" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    
+    <Window.DataContext>
+        <local:MainMVVM/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <local:RecipeCountConverter x:Key="countConverter"/>
+        <local:RecipeListConverter x:Key="recipeListConverter"/>
+    </Window.Resources>
+    
+    <Grid>
+        <DataGrid Margin="5, 5, 5, 5" 
+                  SelectedItem="{Binding selectedRecipe}" 
+                  ItemsSource="{Binding recipesList}"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False" 
+                  KeyUp="DataGrid_KeyUp">
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Recipe ID"
+                      Binding="{Binding ID}" />
+                
+                <DataGridTextColumn Header="Recipe Name"
+                      Binding="{Binding name}" />
+                
+                <DataGridTextColumn Header="Recipe Source"
+                      Binding="{Binding source}" />
+                
+                <DataGridTextColumn Header="Num. of Ingredients"
+                      Binding="{Binding ingredients.Count}" />
+
+                <DataGridTextColumn Header="Ingredients"
+                      Binding="{Binding ingredients, Converter={StaticResource recipeListConverter}}" />
+                <!--<DataGridComboBoxColumn Header="Ingredients"
+                                        DisplayMemberPath="Name"
+                                        IsReadOnly="True"
+                                        SelectedItemBinding="{Binding selectedRecipe}"
+                                        ItemsSource="{Binding ingredients}" />-->
+
+                <DataGridTextColumn Header="Prep. Time"
+                      Binding="{Binding prepTime}" />
+
+                <DataGridTextColumn Header="Prep. Instructions"
+                      Binding="{Binding prepInstructions}" />
+
+                <DataGridTemplateColumn Header="Details">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Details" Name="detailsBtn" Click="detailsBtn_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Name="deleteBtn" Click="deleteBtn_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

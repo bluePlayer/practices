@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SourcicoProjectTest", "SourcicoProjectTest\SourcicoProjectTest.csproj", "{24B15B82-0D70-47CC-93CA-F26B29FFD4E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24B15B82-0D70-47CC-93CA-F26B29FFD4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B15B82-0D70-47CC-93CA-F26B29FFD4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B15B82-0D70-47CC-93CA-F26B29FFD4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B15B82-0D70-47CC-93CA-F26B29FFD4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7631DE0-B1EF-42F6-BFE7-9855EF47189A}
+	EndGlobalSection
+EndGlobal

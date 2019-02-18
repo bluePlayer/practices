@@ -1,0 +1,39 @@
+﻿<Window x:Class="SourcicoProjectTest.DeleteDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SourcicoProjectTest"
+        mc:Ignorable="d"
+        Title="Delete Recipe" Height="130" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" 
+                   Grid.Row="0" 
+                   Grid.ColumnSpan="2" 
+                   Margin="5, 5, 5, 5"
+                   TextAlignment="Center"
+                   Text="Would you like to delete this recipe?"/>
+
+        <Button Grid.Column="0" 
+                Grid.Row="1" 
+                Content="Yes" 
+                Margin="5, 5, 5, 5"
+                Name="deleteYesBtn" Click="deleteYesBtn_Click"/>
+        
+        <Button Grid.Column="1" 
+                Grid.Row="1" 
+                Content="No" 
+                Margin="5, 5, 5, 5"
+                Name="deleteNoBtn" Click="deleteNoBtn_Click"/>
+    </Grid>
+</Window>
