@@ -8,6 +8,8 @@ namespace SourcicoProjectTest.code
 {
     class Constants
     {
+        public const int PREP_INSTRUCTIONS_LIMIT = 50;
+
         public const string INGR_LIQUID = "Liquid";
         public const string INGR_SOLID = "Solid";
         public const string INGR_COUNT = "Count";

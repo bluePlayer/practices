@@ -73,6 +73,7 @@
     <Compile Include="code\IngredientQuantityConverter.cs" />
     <Compile Include="code\IngredientTypeConverter.cs" />
     <Compile Include="code\MinuteClass.cs" />
+    <Compile Include="code\PrepInstructionsConverter.cs" />
     <Compile Include="code\RecipeCountConverter.cs" />
     <Compile Include="code\RecipeEntryMVVM.cs" />
     <Compile Include="code\RecipeListConverter.cs" />
