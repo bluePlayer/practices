@@ -1,0 +1,15 @@
+﻿Installing assembly 'C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.InstallLog
+   assemblypath = C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.exe
+Committing assembly 'C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.InstallLog
+   assemblypath = C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.exe
+Uninstalling assembly 'C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.InstallLog
+   assemblypath = C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti\KopiranjeProekti\bin\Debug\KopiranjeProekti.exe

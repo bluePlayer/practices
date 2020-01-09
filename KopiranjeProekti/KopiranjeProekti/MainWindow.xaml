@@ -1,0 +1,189 @@
+﻿<Window x:Class="KopiranjeProekti.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KopiranjeProekti"
+        mc:Ignorable="d"
+        Title="Копирање проекти" Height="600" Width="1024" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <CheckBox Grid.Row="0" Grid.Column="0" IsChecked="{Binding kopirajNaSektorskiDisk}" Content="Секторски Патека" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5, 5, 5, 5"/>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" x:Name="sektorskiPatekaTB" Text="{Binding sektorskiPateka}" Margin="5, 5, 5, 5"/>
+            <Grid Grid.Column="1" Margin="5, 5, 5, 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding sektorskiCelnaPateka.statusBarPorakaPapki}"/>
+                <TextBlock Grid.Row="1" Text="{Binding sektorskiCelnaPateka.statusBarPorakaDatoteki}"/>
+            </Grid>
+        </Grid>
+
+        <CheckBox Grid.Row="1" Grid.Column="0" IsChecked="{Binding kopirajNaNASDisk}" Content="NAS Патека" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5, 5, 5, 5"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" x:Name="nasPatekaTB" Text="{Binding nasPateka}" Margin="5, 5, 5, 5"/>
+            <Grid Grid.Column="1" Margin="5, 5, 5, 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding nasCelnaPateka.statusBarPorakaPapki}"/>
+                <TextBlock Grid.Row="1" Text="{Binding nasCelnaPateka.statusBarPorakaDatoteki}"/>
+            </Grid>
+        </Grid>
+
+        <CheckBox Grid.Row="2" Grid.Column="0" IsChecked="{Binding kopirajNaSpodeluvanjeDisk}" Content="Споделување Патека" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5, 5, 5, 5"/>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" x:Name="spodeluvanjePatekaTB" Text="{Binding spodeluvanjePateka}" Margin="5, 5, 5, 5"/>
+            <Grid Grid.Column="1" Margin="5, 5, 5, 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding spodeluvanjeCelnaPateka.statusBarPorakaPapki}"/>
+                <TextBlock Grid.Row="1" Text="{Binding spodeluvanjeCelnaPateka.statusBarPorakaDatoteki}"/>
+            </Grid>
+        </Grid>
+
+        <CheckBox Grid.Row="3" Grid.Column="0" IsChecked="{Binding kopirajNaMcafeeServer}" Content="Архивирање" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5, 5, 5, 5"/>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" x:Name="mcafeeServerPatekaTB" Text="{Binding mcafeeServerPateka}" Margin="5, 5, 5, 5"/>
+            <Grid Grid.Column="1" Margin="5, 5, 5, 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding mcafeeServerCelnaPateka.statusBarPorakaPapki}"/>
+                <TextBlock Grid.Row="1" Text="{Binding mcafeeServerCelnaPateka.statusBarPorakaDatoteki}"/>
+            </Grid>
+        </Grid>
+
+        <CheckBox Grid.Row="4" Grid.Column="0" IsChecked="{Binding kopirajNaPoZhelbaPateka}" Content="Патека по желба" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5, 5, 5, 5"/>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" x:Name="poZhelbaPatekaTB" Text="{Binding poZhelbaPateka}" Margin="5, 5, 5, 5"/>
+            <Grid Grid.Column="1" Margin="5, 5, 5, 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding poZhelbaCelnaPateka.statusBarPorakaPapki}"/>
+                <TextBlock Grid.Row="1" Text="{Binding poZhelbaCelnaPateka.statusBarPorakaDatoteki}"/>
+            </Grid>
+        </Grid>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding brojProekti, StringFormat=Проекти: {0}}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5, 5, 5, 5"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" x:Name="proektiCB" DisplayMemberPath="ime" SelectedItem="{Binding izbranProekt}" ItemsSource="{Binding proekti}" Margin="5, 5, 5, 5" SelectionChanged="ProektiCB_SelectionChanged"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Бр. Проект" Margin="5, 5, 5, 5" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding izbranProekt.ID}" Margin="5, 5, 5, 5" VerticalAlignment="Center"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Име Проект" Margin="5, 5, 5, 5" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding izbranProekt.ime}" Margin="5, 5, 5, 5" VerticalAlignment="Center"/>
+
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="Патека Проект" Margin="5, 5, 5, 5" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding izbranProekt.pateka}" Margin="5, 5, 5, 5" VerticalAlignment="Center"/>
+
+        <CheckBox 
+            Grid.Row="9" 
+            Grid.Column="0" 
+            Margin="5, 5, 5, 5" 
+            Content="Створи zip архива" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="left" 
+            IsChecked="{Binding arhivirajProekt}" 
+            IsEnabled="False" />
+
+        <Grid
+            Grid.Column="1"
+            Grid.Row="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button 
+                Grid.Column="0" 
+                Name="vchitajXMLBtn" 
+                Margin="5, 5, 5, 5" 
+                Content="Вчитај XML" Click="VchitajXMLBtn_Click" 
+                />
+
+            <Button 
+                Margin="5, 5, 5, 5"
+                Grid.Column="3"
+                Content="За Апликацијата"
+                Name="zaSoftverotBtn" Click="ZaSoftverotBtn_Click"/>
+        </Grid>
+
+        <Button 
+            Grid.Column="0" 
+            Grid.Row="10" 
+            Name="kopirajProektBtn" 
+            Margin="5, 5, 5, 5" 
+            Content="Копирај Проект" 
+            IsEnabled="False" 
+            Click="kopirajProektBtn_Click"/>
+
+        <StatusBar Grid.Row="11" Grid.ColumnSpan="2">
+            <StatusBarItem>
+                <TextBlock x:Name="statusBarTB" Text="{Binding statusBarPoraka}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<proekti>
+  
+  <sektorskiPateka>C:\Users\vlzak\Documents\vezhba\sektorski</sektorskiPateka>
+  <nasPateka>C:\Users\vlzak\Documents\vezhba\NAS</nasPateka>
+  <spodeluvanjePateka>C:\Users\vlzak\Documents\vezhba\spodeluvanje</spodeluvanjePateka>
+  <mcafeeServerPateka>C:\Users\vlzak\Documents\vezhba\mcafeeServer</mcafeeServerPateka>
+  
+  <proekt>
+    <ime>WpfExercise1</ime>
+    <pateka>C:\Users\vlzak\Documents\c_sharp_vezhbi\WpfExercise1</pateka>
+  </proekt>
+
+  <proekt>
+    <ime>CsvHelperVezhba</ime>
+    <pateka>C:\Users\vlzak\Documents\c_sharp_vezhbi\CsvHelperVezhba</pateka>
+  </proekt>
+
+  <proekt>
+    <ime>RunPowerShellScriptsWPF</ime>
+    <pateka>C:\Users\vlzak\Documents\c_sharp_vezhbi\RunPowerShellScriptsWPF</pateka>
+  </proekt>
+  
+  <proekt>
+    <ime>BindingSample</ime>
+    <pateka>C:\Users\vlzak\Documents\c_sharp_vezhbi\BindingSample</pateka>
+  </proekt>
+  
+  <proekt>
+    <ime>KopiranjeProekti</ime>
+    <pateka>C:\Users\vlzak\Documents\c_sharp_vezhbi\KopiranjeProekti</pateka>
+  </proekt>
+  
+</proekti>

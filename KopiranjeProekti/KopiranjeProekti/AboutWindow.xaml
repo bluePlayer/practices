@@ -1,0 +1,89 @@
+﻿<Window x:Class="KopiranjeProekti.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KopiranjeProekti"
+        mc:Ignorable="d"
+        Title="За Софтверот" 
+        Height="320" 
+        Width="480" 
+        ResizeMode="NoResize"
+        Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--
+        <TextBlock 
+            Margin="5, 5, 5, 5"
+            Grid.Row="0" 
+            Grid.Column="0" 
+            VerticalAlignment="Center"
+            Text="{Binding opisNaSoftverot}"/>
+        -->
+
+        <Button
+            Margin="5, 5, 5, 5"
+            Grid.Row="0" 
+            Grid.Column="1"
+            Content="Упаство за Користење"
+            Name="upatsvoZaKoristenjeBtn" Click="UpatsvoZaKoristenjeBtn_Click"/>
+
+        <TextBlock 
+            Margin="5, 5, 5, 5"
+            Grid.Row="1" 
+            Grid.Column="0" 
+            VerticalAlignment="Center"
+            Text="{Binding vrstaNaSoftverot}"/>
+
+        <Button
+            Margin="5, 5, 5, 5"
+            Grid.Row="1" 
+            Grid.Column="1"
+            IsEnabled="False"
+            Content="Упаство за Програмери"/>
+
+        <TextBlock 
+            Margin="5, 5, 5, 5"
+            Grid.Row="2" 
+            Grid.Column="0" 
+            VerticalAlignment="Center"
+            Text="{Binding tvorec}"/>
+
+        <Button
+            Margin="5, 5, 5, 5"
+            Grid.Row="2" 
+            Grid.Column="1"
+            IsEnabled="False"
+            Content="Можни Подобрувања"/>
+
+        <Button
+            Margin="5, 5, 5, 5"
+            Grid.Row="3" 
+            Grid.Column="1"
+            IsEnabled="False"
+            Content="Историја на Измени"/>
+
+        <StatusBar
+            Grid.Row="5" 
+            Grid.ColumnSpan="2"
+            Grid.Column="0">
+            
+            <StatusBarItem>
+                <TextBlock x:Name="statusBarTB"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
