@@ -1,0 +1,6 @@
+1. Marketing would like to sit down and brainstorm a few Web-page
+designs with you. They are thinking of clickable image maps to take
+you to other pages, and so on. But they can't decide on a model for the
+image—maybe it's a car, or a phone, or a house. You have a list of target
+pages and content; they'd like to see a few prototypes. Oh, by the way,
+you have 15 minutes. What tools might you use?

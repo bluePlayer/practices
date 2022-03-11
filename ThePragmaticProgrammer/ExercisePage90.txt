@@ -1,0 +1,9 @@
+Design a small address book database (name, phone number,
+and so on) using a straightforward binary representation in your
+language of choice. Do this before reading the rest of this challenge.
+
+1. 1. Translate that format into a plain text format using XML.
+
+2. 2. For each version, add a new, variable-length field called
+directions in which you might enter directions to each person's
+house.

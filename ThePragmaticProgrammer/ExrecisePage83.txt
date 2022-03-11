@@ -1,0 +1,12 @@
+Start keeping a log of your estimates. For each, track how
+accurate you turned out to be. If your error was greater than 50%, try
+to find out where your estimate went wrong.
+
+9. You are asked "Which has a higher bandwidth: a 1Mbps
+communications line or a person walking between two computers with a full 4GB tape in their pocket?" What constraints will you put on your answer to ensure that the scope of your response is correct? (For example, you might say that the time taken to access the tape is ignored.)
+
+Probably the person with the tape is faster since it can cover the whole bandwidth(28.8 Gbits of transeferd data in 12 hours) of the comm line in few goes from one to other desk
+
+10. So, which has the higher bandwidth?
+
+The person with the tape.

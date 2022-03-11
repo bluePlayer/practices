@@ -1,0 +1,38 @@
+• Could some of the requirements of your current project be
+expressed in a domain-specific language? Would it be possible to
+write a compiler or translator that could generate most of the code
+required?
+• If you decide to adopt mini-languages as a way of programming
+closer to the problem domain, you're accepting that some effort will
+be required to implement them. Can you see ways in which the
+framework you develop for one project can be reused in others?
+
+
+Exercises
+
+1. We want to implement a mini-language to control a simple drawing
+package (perhaps a turtle-graphics system). The language consists of
+single-letter commands. Some commands are followed by a single
+number. For example, the following input would draw a rectangle.
+
+P 2 	# select pen 2
+D 	# pen down
+W 2 	# draw west 2cm
+N 1 	# then north 1
+E 2 	# then east 2
+S 1 	# then back south
+U 	# pen up
+
+Implement the code that parses this language. It should be designed so
+that it is simple to add new commands.
+
+2. Design a BNF grammar to parse a time specification. All of the
+following examples should be accepted.
+
+4pm, 7:38pm, 23:42, 3:16, 3:16am
+
+7. Implement a parser for the BNF grammar in Exercise 6 using yacc,
+bison, or a similar parser-generator .
+
+8. Implement the time parser using Perl. [Hint: Regular expressions
+make good parsers.]

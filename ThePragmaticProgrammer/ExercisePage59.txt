@@ -1,0 +1,62 @@
+- Consider the difference between large GUI-oriented tools
+typically found on Windows systems and small but combinable
+command line utilities used at shell prompts. Which set is more
+orthogonal, and why? Which is easier to use for exactly the purpose
+for which it was intended? Which set is easier to combine with other
+tools to meet new challenges?
+
+
+- C++ supports multiple inheritance, and Java allows a class to
+implement multiple interfaces. What impact does using these
+facilities have on orthogonality? Is there a difference in impact
+between using multiple inheritance and multiple interfaces? Is there
+a difference between using delegation and using inheritance?
+
+C++:
+
+class DNAMolecule {
+
+}
+
+class Animal {
+	float averageHeight;
+	float averageWidth;
+	float averageLenght;
+}
+
+class Organism {
+	DNAMolecule dna;
+}
+
+class Cat extends Animal, Organism {
+
+}
+
+Java:
+
+interface Organism {
+
+}
+
+class Animal {}
+
+1.
+
+class Split1 
+{
+	public Split1 (InputStreamReader rdr) {}
+	public void readNextLine() throws IOException {}
+	public int numFields () {}
+	public String getField (int fieldNo) {}
+}// correct
+
+class Split2 
+{
+	public Split2 (String line) {}
+	public int numFIelds () {}
+	public String getField (int fieldNo) {}
+}
+
+2. Modal dialog boxes
+
+3. OOP technology

@@ -1,0 +1,20 @@
+﻿diff, 
+UWIN
+EMACS
+vi
+Brief
+awk
+sed
+tcl
+Text Manipulation Language
+CASE tools
+LaTeX
+passive code generators
+active code generators
+Liskov Substitution Principle
+Eiffel
+Sather
+Nana
+Design by Contract
+
+strana 127

@@ -1,0 +1,22 @@
+ - Are there things that you're currently doing manually in a GUI?
+Do you ever pass instructions to colleagues that involve a number of
+individual "click this button," "select this item" steps? Could these be
+automated?
+
+ - Whenever you move to a new environment, make a point of
+finding out what shells are available. See if you can bring your
+current shell with you.
+
+ - Investigate alternatives to your current shell. If you come across
+a problem your shell can't address, see if an alternative shell would
+cope better.
+
+ - Some editors use full-blown languages for customization and
+scripting. Emacs, for example, uses Lisp. As one of the new
+languages you are going to learn this year, learn the language your
+editor uses. For anything you find yourself doing repeatedly, develop
+a set of macros (or equivalent) to handle it.
+
+ - Do you know everything your editor is capable of doing? Try to
+stump your colleagues who use the same editor. Try to accomplish
+any given editing task in as few keystrokes as possible.

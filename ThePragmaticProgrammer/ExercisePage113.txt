@@ -1,0 +1,13 @@
+1. Your C program uses an enumerated type to represent one of 100
+states. You'd like to be able to print out the state as a string (as
+opposed to a number) for debugging purposes. Write a script that
+reads from standard input a file containing
+
+Write a code generator that takes the input file in Figure 3.4, and
+generates output in two languages of your choice. Try to make it easy
+to add new languages.
+
+Points to ponder: If DBC is so powerful, why isn't it used more
+widely? Is it hard to come up with the contract? Does it make you
+think about issues you'd rather ignore for now? Does it force you to
+THINK!? Clearly, this is a dangerous tool!
