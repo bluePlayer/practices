@@ -1,0 +1,107 @@
+(* ---------------- Antlr4 Bash Shell tokens -------------- *)
+
+<antlr4> := 'java -Xmx500M -cp "/usr/local/lib/antlr-4.5.3-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+<bashUser> := <STRING_LITERAL>
+<computerName> : = <STRING_LITERAL>
+<folderName> := <STRING_LITERAL>
+<bashFolder> := '/' *<folderName>
+<bashCommands> := <EBNFForBashShellCommands>
+<noCommand> := <EMPTY_STRING>
+<bash> := (<bashUser> '@' <computerName> <bashFolder>) (<bashCommands> | <antlr4> (<noCommand> | <antlrCommand>))
+
+(* ---------------- Antlr4 Help tokens -------------- *)
+
+<anltrVersionString> := 'ANTLR Parser Generator  Version 4.5.3'
+<outputDirectoryHelp> := '-o ___ specify output directory where all output is generated' 
+<grammarsTokenFilesDirectoryHelp> := '-lib ___ specify location of grammars, tokens files'
+<genRuleAugTransNetDiagHelp> := '-atn generate rule augmented transition network diagrams'
+<grammarFileEncodingHelp> := '-encoding ___ specify grammar file encoding; e.g., euc-jp'
+<messageFormatHelp> := '-message-format ___ specify output style for messages in antlr, gnu, vs2005'
+<longMessagesHelp> := '-long-messages show exception details when available for errors and warnings'
+<listenerHelp> := '-listener generate parse tree listener (default)'
+<noListenerHelp> := '-no-listener don't generate parse tree listener'
+<visitorHelp> := '-visitor generate parse tree visitor'
+<noVisitorHelp> := '-no-visitor don't generate parse tree visitor (default)'
+<packageHelp> := '-package ___ specify a package/namespace for the generated code'
+<dependHelp> := '-depend generate file dependencies'
+<setOptionHelp> := '-D<option>=value set/override a grammar-level option'
+<errorHelp> := '-Werror treat warnings as errors'
+<dbgSTHelp> := '-XdbgST launch StringTemplate visualizer on generated code'
+<dbgSTWaitHelp> := '-XdbgSTWait wait for STViz to close before continuing'
+<forceAtnHelp> := '-Xforce-atn use the ATN simulator for all predictions'
+<logHelp> := '-Xlog dump lots of logging info to antlr-timestamp.log'
+
+<commandHelp> :=    <outputDirectoryHelp> '\n' 
+                    <grammarsTokenFilesDirectoryHelp> '\n'
+                    <genRuleAugTransNetDiagHelp> '\n'
+                    <grammarFileEncodingHelp> '\n'
+                    <messageFormatHelp> '\n'
+                    <longMessagesHelp> '\n'
+                    <listenerHelp> '\n'
+                    <noListenerHelp> '\n'
+                    <visitorHelp> '\n'
+                    <noVisitorHelp> '\n'
+                    <packageHelp> '\n'
+                    <dependHelp> '\n'
+                    <setOptionHelp> '\n'
+                    <errorHelp> '\n'
+                    <dbgSTHelp> '\n'
+                    <dbgSTWaitHelp> '\n'
+                    <forceAtnHelp> '\n'
+                    <logHelp>
+                    
+<antlrNoCommandOutput> := <anltrVersionString> '\n' <commandHelp>
+
+(* ---------------- Antlr4 Command tokens -------------- *)
+
+<directoryName> := <STRING_LITERAL>
+<option> := <STRING_LITERAL>
+<value> := <STRING_LITERAL>
+<fileEncoding> := ('en_US' | 'en_GB' | 'mk_MK' | 'fr_FR' | 'pt_PT' | 'pt_BR' | <daSeDovrshi> )
+
+<XbasedSwitchName> := 'X' ('dbgST' | 'dbgSTWait' | 'force-atn' | 'log')
+<switchName> := 'o' | 'lib' | 'atn' | 'encoding' | 'message-format' | 'long-messages' | 'listener' |
+                'no-listener' | 'visitor' | 'no-visitor' | 'package' | 'depend' | 'D<option>=value' |
+                'Werror' | <XbasedSwitchName>
+                    
+<antlr4CmdSwitch> := '-' <switchName>
+
+<outputStyle> := 'gnu' | 'vs2005' | 'antlr'
+
+<outputDirectory> := <antlr4> '-o' <directoryName>
+<grammarsTokenFilesDirectory> := <antlr4> '-lib' <directoryName>
+<genRuleAugTransNetDiag> := <antlr4> '-atn'
+<grammarFileEncoding> := <antlr4> '-encoding' <fileEncoding>
+<messageFormat> := <antlr4> '-message-format' <outputStyle>
+<longMessages> := <antlr4> '-long-messages'
+<listener> := <antlr4> '-listener'
+<noListener> := <antlr4> '-no-listener'
+<visitor> := <antlr4> '-visitor'
+<noVisitor> := <anltr4> '-no-visitor'
+<package> := <antrl4> (<package> | <namespace>)
+<depend> := <antlr4> '-depend'
+<setOption> := <antlr4> '-D' <option> '=' <value>
+<error> := <antlr4> '-Werror'
+<dbgST> := <antlr4> '-XdbgST'
+<dbgSTWait> := <antlr4> '-XdbgSTWait'
+<forceAtn> := <antlr4> '-Xforce-atn' 
+<log> := <antlr4> '-Xlog'
+
+<antlrCommand> :=   <outputDirectory> | 
+                    <grammarsTokenFilesDirectory> | 
+                    <genRuleAugTransNetDiag> | 
+                    <grammarFileEncoding> |
+                    <messageFormat> |
+                    <longMessages> |
+                    <listener> |
+                    <noListener> | 
+                    <visitor> |
+                    <noVisitor> |
+                    <package> |
+                    <depend> |
+                    <setOption> |
+                    <error> |
+                    <dbgST> |
+                    <dbgSTWait> |
+                    <forceAtn> |
+                    <log>

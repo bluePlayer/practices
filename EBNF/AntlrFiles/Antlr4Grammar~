@@ -1,0 +1,54 @@
+<antlr4> := 'alias antlr4 = java -Xmx500M -cp "/usr/local/lib/antlr-4.5.3-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+<bash> := <bashCommands> | <antlr4>
+
+<directoryName> := <STRING_LITERAL>
+<option> := <STRING_LITERAL>
+<value> := <STRING_LITERAL>
+
+<XbasedSwitchName> := 'X' ('dbgST' | 'dbgSTWait' | 'force-atn' | 'log')
+<switchName> := 'o' | 'lib' | 'atn' | 'encoding' | 'message-format' | 'long-messages' | 'listener' |
+                'no-listener' | 'visitor' | 'no-visitor' | 'package' | 'depend' | 'D<option>=value' |
+                'Werror' | <XbasedSwitchName>
+
+                
+<antlr4CmdSwitch> := '-' <switchName>
+
+<outputStyle> := 'gnu' | 'vs2005' | 'antlr'
+
+<outputDirectory> := <antlr4> '-o' <directoryName>
+<grammarsTokenFilesDirectory> := <antlr4> '-lib' <directoryName>
+<genRuleAugTransNetDiag> := <antlr4> '-atn'
+<grammarFileEncoding> := <antlr4> '-encoding' <directoryName>
+<messageFormat> := <antlr4> '-message-format' <outputStyle>
+<longMessages> := <antlr4> '-long-messages'
+<listener> := <antlr4> '-listener'
+<noListener> := <antlr4> '-no-listener'
+<visitor> := <antlr4> '-visitor'
+<noVisitor> := <anltr4> '-no-visitor'
+<package> := <antrl4> (<package> | <namespace>)
+<depend> := <antlr4> '-depend'
+<setOption> := <antlr4> '-D' <option> '=' <value>
+<error> := <antlr4> '-Werror'
+<dbgST> := <antlr4> '-XdbgST'
+<dbgSTWait> := <antlr4> '-XdbgSTWait'
+<forceAtn> := <antlr4> '-Xforce-atn' 
+<log> := <antlr4> '-Xlog'
+
+<antlrCommand> :=   <outputDirectory> | 
+                    <grammarsTokenFilesDirectory> | 
+                    <genRuleAugTransNetDiag> | 
+                    <grammarFileEncoding> |
+                    <messageFormat> |
+                    <longMessages> |
+                    <listener> |
+                    <noListener> | 
+                    <visitor> |
+                    <noVisitor> |
+                    <package> |
+                    <depend> |
+                    <setOption> |
+                    <error> |
+                    <dbgST> |
+                    <dbgSTWait> |
+                    <forceAtn> |
+                    <log>
